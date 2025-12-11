@@ -1,17 +1,12 @@
 from fastapi import APIRouter
 from backend.api.utils.helios_schema import HeliosInput, HeliosOutput
-from models.helios.HELIOS_SERVICE import run_helios_service
+from backend.digital_twin.helios.HELIOS_SERVICE import run_helios
 
 router = APIRouter(
     prefix="/helios",
-    tags=["HELIOS"]
+    tags=["HELIOS Digital Twin"]
 )
 
-
 @router.post("/run", response_model=HeliosOutput)
-def run_helios(data: HeliosInput):
-    """
-    Endpoint oficial del Digital Twin HELIOS.
-    Ejecuta EPSILON + SIGMA + POSEIDÓN + PIPELINE.
-    """
-    return run_helios_service(data.dict())
+def run_helios_endpoint(data: HeliosInput):
+    return run_helios(data.dict())
