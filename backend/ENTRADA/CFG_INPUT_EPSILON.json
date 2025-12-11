@@ -1,0 +1,17 @@
+{
+  "CFG_INPUT_EPSILON": {
+    "demanda_historica": [
+      2550, 3000, 1900, 3650, 900, 1660,
+      1900, 2450, 3500, 2800, 3100, 2950
+    ],
+    "periodos": 12,
+    "margen_bruto_pct": 0.25,
+
+    "product_id": "tuberías_y_fittings_pvc_sanitario",
+    "market_id": "mercado_sanitario_hidraulico",
+    "pais_principal": "CL",
+
+    "horizonte_meses": 3,
+    "activar_digital_twin": true
+  }
+}

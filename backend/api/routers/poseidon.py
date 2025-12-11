@@ -1,6 +1,17 @@
 from fastapi import APIRouter
-router = APIRouter(prefix="/poseidon", tags=["Poseidon"])
+from api.utils.poseidon_schema import PoseidonInput, PoseidonOutput
+from models.poseidon.POSEIDON_SERVICE import run_poseidon_service
 
-@router.get("/")
-def test_poseidon():
-    return {"mensaje": "Router de Poseidon operativo"}
+router = APIRouter(
+    prefix="/poseidon",
+    tags=["POSEIDON"]
+)
+
+
+@router.post("/run", response_model=PoseidonOutput)
+def run_poseidon(data: PoseidonInput):
+    """
+    Endpoint oficial del modelo POSEIDÓN.
+    Ejecuta el doble tanque + Kalman + Digital Twin.
+    """
+    return run_poseidon_service(data.dict())

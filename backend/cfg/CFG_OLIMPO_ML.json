@@ -1,0 +1,114 @@
+{
+    "CFG_OLIMPO_ML": {
+        "version": "1.0",
+        "descripcion": "Configuración del motor de Machine Learning de OLIMPO para corrección del Digital Twin",
+
+        "parametros_generales": {
+            "activar_ml": true,
+            "modo_prueba": false,
+            "guardar_logs": true,
+            "semilla_aleatoria": 42
+        },
+
+        "dataset": {
+            "target": "factor_correccion_y",
+
+            "features_habilitados": [
+                "phi_t", "phi_t_1", "g_t", "g_t_1",
+                "shock_producto_t", "shock_mercado_t",
+                "kappa_t", "delta_max_t", "psi_t",
+
+                "volatilidad_indice", "volatilidad_nivel",
+                "elasticidad_precio", "elasticidad_clase",
+                "margen_bruto_pct", "tendencia_tipo", "tendencia_pendiente",
+                "oferta_score", "demanda_score",
+
+                "shock_prob_mensual", "shock_magnitud_promedio",
+                "shock_magnitud_max", "impacto_demanda_mercado",
+                "impacto_precio_mercado", "coef_disipacion_mercado",
+                "coef_reverberacion_mercado", "tiempo_recuperacion_mercado",
+                "perfil_shock", "demanda_media_mercado",
+                "demanda_sigma_mercado",
+
+                "riesgo_comex_producto", "sensibilidad_usd",
+                "sensibilidad_eur", "variabilidad_tc",
+                "factor_costo_comex", "impacto_logistico_comex",
+                "lt_comex_meses",
+
+                "horizonte_epsilon", "alpha_ses", "activar_digital_twin",
+                "costo_unitario", "costo_pedido", "costo_mantencion_pct",
+                "periodos_anuales", "lead_time_cfg", "nivel_servicio_sigma",
+
+                "usar_kalman", "Q_kalman", "R_kalman",
+                "capacidad_max_mensual", "cobertura_objetivo",
+
+                "error_dt_t_1", "factor_corr_t_1", "error_trend_3m",
+                "desviacion_mc_p50", "desviacion_mc_p95"
+            ],
+
+            "min_observaciones_para_entrenar": 50,
+            "max_observaciones": 100000
+        },
+
+        "modelo": {
+            "tipo": "RandomForestRegressor",
+            "parametros": {
+                "n_estimators": 200,
+                "max_depth": 10,
+                "min_samples_split": 4,
+                "min_samples_leaf": 2,
+                "random_state": 42
+            },
+
+            "versionado_modelo": {
+                "ruta_modelo": "MODELOS/ML_MODEL_FORECAST.pkl",
+                "ruta_metadata": "MODELOS/ML_MODEL_FORECAST_META.json"
+            }
+        },
+
+        "seguridad_ml": {
+            "factor_minimo": 0.7,
+            "factor_maximo": 1.3,
+
+            "blending_lambda": 0.30,
+            "descripcion_lambda": "Nivel de influencia del ML sobre el forecast del Digital Twin. 0=sin efecto, 1=solo ML",
+
+            "activar_guardrails_hiperion": true,
+            "k_sigma_inferior": 2.0,
+            "k_sigma_superior": 2.5,
+
+            "activar_limites_dynamicos": true,
+            "limite_inferior_pct": 0.10,
+            "limite_superior_pct": 0.40,
+
+            "correccion_maxima_por_mes": 0.15
+        },
+
+        "pipeline": {
+            "orden_ejecucion": [
+                "cargar_cfg",
+                "cargar_dataset",
+                "preprocesar_datos",
+                "entrenar_modelo",
+                "validar_modelo",
+                "guardar_modelo",
+                "inferencia",
+                "aplicar_guardrails",
+                "generar_forecast_final"
+            ]
+        },
+
+        "user_ml": {
+            "activar_ml_usuario": false,
+            "ruta_log_usuario": "LOGS/USER_BEHAVIOR_LOG.json",
+            "variables_usuario": [
+                "horizonte_usado",
+                "shocks_consultados",
+                "productos_consultados",
+                "mercados_consultados",
+                "nivel_servicio_preferido",
+                "perfil_riesgo_deducido"
+            ]
+        }
+    }
+}

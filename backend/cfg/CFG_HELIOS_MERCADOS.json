@@ -1,0 +1,874 @@
+{
+  "mercados": [
+    {
+      "market_id": "mercado_sanitario_hidraulico",
+      "market_nombre": "Mercado Sanitario Hidráulico",
+      "sector_economico": "Construcción / Infraestructura",
+      "descripcion": "Configuración base del mercado Mercado Sanitario Hidráulico.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "tuberías_y_fittings_pvc_presión",
+        "tuberías_y_fittings_pvc_sanitario",
+        "tuberías_y_fittings_pvc_alcantarillado",
+        "tuberías_y_fittings_hdpe_agua_potable",
+        "tuberías_y_fittings_hdpe_alcantarillado",
+        "tuberías_y_fittings_ppr_agua_fría",
+        "tuberías_y_fittings_ppr_agua_caliente",
+        "tuberías_y_fittings_cobre_soldable",
+        "tuberías_y_fittings_cobre_roscado",
+        "válvulas_de_esfera_bronce",
+        "válvulas_de_compuerta_bronce",
+        "válvulas_de_retención_bronce",
+        "válvulas_pvc_industriales",
+        "válvulas_mariposa_hierro_fundido",
+        "uniones_y_coplas_mecánicas",
+        "bridas_y_accesorios_de_brida",
+        "medidores_de_agua_domiciliarios",
+        "medidores_de_agua_industriales",
+        "bombas_de_agua_domiciliarias",
+        "bombas_de_agua_industriales",
+        "filtros_y_accesorios_de_filtración",
+        "accesorios_para_estanque_y_aljibes",
+        "sellos,_teflones_y_pastas_sellantes",
+        "grifería_domiciliaria_básica",
+        "grifería_industrial",
+        "accesorios_de_gasfitería",
+        "calefón_y_accesorios",
+        "calentadores_y_boilers",
+        "kits_de_instalación_sanitaria",
+        "kits_reparación_fugas"
+      ]
+    },
+    {
+      "market_id": "mercado_construccion_materiales",
+      "market_nombre": "Mercado Construcción Materiales",
+      "sector_economico": "Construcción",
+      "descripcion": "Configuración base del mercado Mercado Construcción Materiales.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "cementos_y_morteros_premezclados",
+        "hormigón_en_saco_y_aditivos",
+        "fierro_de_construcción",
+        "bloques_de_hormigón",
+        "ladrillos_cerámicos",
+        "planchas_osb_y_terciados",
+        "perfiles_metálicos_livianos",
+        "yeso_y_volcanita",
+        "aislantes_térmicos",
+        "impermeabilizantes",
+        "pinturas_interiores_y_exteriores",
+        "esmaltes_sintéticos_y_al_agua",
+        "sellos_acrílicos_y_siliconas",
+        "puertas",
+        "ventanas_de_aluminio_y_pvc",
+        "cerámicos_y_porcelanatos",
+        "pegamentos_y_fragües",
+        "techumbres_zinc",
+        "policarbonato",
+        "revestimientos_siding",
+        "canaletas_y_accesorios",
+        "herrajes_puertas",
+        "cierres_perimetrales",
+        "adhesivos_construcción",
+        "anclajes_y_pernos",
+        "redes_eléctricas_domiciliarias",
+        "cajas_eléctricas",
+        "tableros_eléctricos",
+        "hormigón_liviano",
+        "productos_eléctricos_menores"
+      ]
+    },
+    {
+      "market_id": "mercado_retail_supermercado",
+      "market_nombre": "Mercado Retail Supermercado",
+      "sector_economico": "Consumo Masivo",
+      "descripcion": "Configuración base del mercado Mercado Retail Supermercado.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "arroz_y_granos",
+        "fideos_y_pastas",
+        "legumbres",
+        "aceites",
+        "azúcar",
+        "harinas",
+        "leche",
+        "yogures",
+        "quesos",
+        "carnes_envasadas",
+        "pollos",
+        "embutidos",
+        "congelados",
+        "pan_de_molde",
+        "galletas",
+        "snacks",
+        "bebidas",
+        "aguas_minerales",
+        "jugos",
+        "higiene_personal",
+        "limpieza_hogar",
+        "pañales",
+        "alimentos_mascotas",
+        "conservas",
+        "salsas",
+        "café",
+        "té",
+        "cereales",
+        "energéticas",
+        "platos_preparados"
+      ]
+    },
+    {
+      "market_id": "mercado_ferreteria_acabados",
+      "market_nombre": "Mercado Ferretería y Acabados",
+      "sector_economico": "Construcción / Terminaciones",
+      "descripcion": "Configuración base del mercado Mercado Ferretería y Acabados.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    },
+    {
+      "market_id": "mercado_agro_insumos",
+      "market_nombre": "Mercado Agro Insumos",
+      "sector_economico": "Agricultura / Agroindustria",
+      "descripcion": "Configuración base del mercado Mercado Agro Insumos.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    },
+    {
+      "market_id": "mercado_logistico_transporte",
+      "market_nombre": "Mercado Logístico y Transporte",
+      "sector_economico": "Servicios / Logística",
+      "descripcion": "Configuración base del mercado Mercado Logístico y Transporte.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    },
+    {
+      "market_id": "mercado_farmaceutico_salud",
+      "market_nombre": "Mercado Farmacéutico Salud",
+      "sector_economico": "Salud / Farmacéutica",
+      "descripcion": "Configuración base del mercado Mercado Farmacéutico Salud.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    },
+    {
+      "market_id": "mercado_electronica_tecnologia",
+      "market_nombre": "Mercado Electrónica Tecnología",
+      "sector_economico": "Tecnología / Consumo",
+      "descripcion": "Configuración base del mercado Mercado Electrónica Tecnología.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    },
+    {
+      "market_id": "mercado_industrial_MRO",
+      "market_nombre": "Mercado Industrial MRO",
+      "sector_economico": "Industrial / Mantenimiento",
+      "descripcion": "Configuración base del mercado Mercado Industrial MRO.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    },
+    {
+      "market_id": "mercado_financiero_PyME",
+      "market_nombre": "Mercado Financiero PyME",
+      "sector_economico": "Finanzas / Servicios",
+      "descripcion": "Configuración base del mercado Mercado Financiero PyME.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "producto_1",
+        "producto_2",
+        "producto_3",
+        "producto_4",
+        "producto_5",
+        "producto_6",
+        "producto_7",
+        "producto_8",
+        "producto_9",
+        "producto_10",
+        "producto_11",
+        "producto_12",
+        "producto_13",
+        "producto_14",
+        "producto_15",
+        "producto_16",
+        "producto_17",
+        "producto_18",
+        "producto_19",
+        "producto_20",
+        "producto_21",
+        "producto_22",
+        "producto_23",
+        "producto_24",
+        "producto_25",
+        "producto_26",
+        "producto_27",
+        "producto_28",
+        "producto_29",
+        "producto_30"
+      ]
+    }
+  ]
+}

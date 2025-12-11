@@ -1,0 +1,67 @@
+{
+  "CFG_HELIOS_GENERAL": {
+    "version": "1.0",
+    "descripcion": "Configuración maestra del motor HELIOS. Controla parámetros globales, ejecución de módulos, seguridad y comportamiento del Digital Twin.",
+    "engine": {
+      "modo": "NORMAL",
+      "activar_digital_twin": true,
+      "activar_comex": true,
+      "activar_market_shocks": true,
+      "activar_logs": true,
+      "nivel_log": "INFO",
+      "precision_decimales": 4,
+      "max_iteraciones": 5000,
+      "tolerancia_minima": 0.0001,
+      "paralelizacion": false
+    },
+    "modulos_activados": {
+      "epsilon": true,
+      "sigma": true,
+      "poseidon": true,
+      "limits_engine": true,
+      "comex": true,
+      "market_engine": true
+    },
+    "prioridad_modelos": {
+      "orden_principal": [
+        "epsilon",
+        "sigma",
+        "poseidon"
+      ],
+      "modo_combinacion": "PROMEDIO_PONDERADO",
+      "pesos_modelos": {
+        "epsilon": 0.5,
+        "sigma": 0.3,
+        "poseidon": 0.2
+      }
+    },
+    "digital_twin": {
+      "influencia_total": 0.75,
+      "influencia_mercado": 0.6,
+      "influencia_comex": 0.55,
+      "modo_shock": "ACTIVO",
+      "shock_threshold": 0.2,
+      "window_reaccion": 3
+    },
+    "seguridad_validaciones": {
+      "bloquear_calculo_si_falta_cfg": true,
+      "corregir_nan_automaticamente": true,
+      "corregir_negativos": true,
+      "min_datos_demanda": 6,
+      "max_datos_demanda": 12,
+      "modo_rigor": "ALTO"
+    },
+    "comportamiento_global": {
+      "suavizamiento_general": 0.1,
+      "valor_minimo_forecast": 0,
+      "permitir_shocks_extremos": false,
+      "max_factor_ajuste": 3.0
+    },
+    "auditoria": {
+      "registrar_inputs": true,
+      "registrar_outputs": true,
+      "guardar_archivos_intermedios": false,
+      "activar_trazabilidad": true
+    }
+  }
+}

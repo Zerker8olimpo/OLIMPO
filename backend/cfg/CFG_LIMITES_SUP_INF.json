@@ -1,0 +1,59 @@
+{
+  "CFG_LIMITES_SUP_INF": {
+    "version": "2.0",
+    "descripcion": "Reglas dinámicas para calcular límites superiores e inferiores en Helios, integrando Epsilon, Sigma y Poseidón.",
+    "pesos_generales": {
+      "w_shock": 0.35,
+      "w_volatilidad": 0.25,
+      "w_estacionalidad": 0.1,
+      "w_pid": 0.15,
+      "w_elasticidad": 0.1,
+      "w_comex": 0.2
+    },
+    "reglas_globales": {
+      "formula_limite_superior": "forecast + (w_shock*shock + w_volatilidad*sigma + w_comex*impacto_comex + w_pid*pid_error + w_estacionalidad*estacionalidad)",
+      "formula_limite_inferior": "forecast - (w_shock*shock + w_volatilidad*sigma + w_elasticidad*elasticidad + w_pid*pid_error)"
+    },
+    "restricciones_globales": {
+      "limite_min_pct": 0.02,
+      "limite_max_pct": 0.8,
+      "limite_max_multiplo": 2.5
+    },
+    "modelos": {
+      "epsilon": {
+        "descripcion": "Epsilon aplica PID + SES + bandas dinámicas influenciadas por DT.",
+        "formula_limite_superior": "ses + pid_output + (w_shock*shock + w_volatilidad*sigma)",
+        "formula_limite_inferior": "ses - pid_output - (w_shock*shock + w_volatilidad*sigma)",
+        "restricciones": {
+          "min_pct": 0.05,
+          "max_pct": 0.6
+        }
+      },
+      "sigma": {
+        "descripcion": "Sigma ajusta EOQ, Q y ROP bajo bandas dinámicas del DT.",
+        "formula_limite_superior": "Q_base * (1 + w_shock*shock + w_comex*impacto_comex + w_pid*pid_q)",
+        "formula_limite_inferior": "Q_base * (1 - w_shock*shock - w_volatilidad*sigma)",
+        "restricciones": {
+          "min_pct": 0.1,
+          "max_pct": 0.5
+        }
+      },
+      "poseidon": {
+        "descripcion": "Poseidón usa Qmin, Qmax y PID dinámico afectado por COMEX y shocks.",
+        "formula_limite_superior": "Q_max * (1 + w_comex*impacto_comex + w_shock*shock)",
+        "formula_limite_inferior": "Q_min * (1 - w_shock*shock + w_elasticidad*elasticidad)",
+        "restricciones": {
+          "max_factor": 1.5,
+          "min_factor": 0.8
+        }
+      }
+    },
+    "parametros_digital_twin": {
+      "impacto_market": 0.75,
+      "impacto_comex": 0.6,
+      "impacto_volatilidad": 0.5,
+      "impacto_elasticidad": 0.4,
+      "impacto_riesgo_mercado": 0.7
+    }
+  }
+}

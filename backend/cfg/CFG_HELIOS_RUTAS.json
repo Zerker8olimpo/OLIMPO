@@ -1,0 +1,38 @@
+{
+  "CFG_HELIOS_RUTAS": {
+    "version": "2.0",
+    "descripcion": "Rutas maestras del sistema HELIOS para OLIMPO. Solo utiliza las carpetas CFG, ENTRADA y PREDICCION.",
+    "rutas_principales": {
+      "base_dir": "C:/Users/Usuario/Documents/tutorial/OLIMPO",
+      "cfg_dir": "C:/Users/Usuario/Documents/tutorial/OLIMPO/CFG",
+      "entrada_dir": "C:/Users/Usuario/Documents/tutorial/OLIMPO/ENTRADA",
+      "prediccion_dir": "C:/Users/Usuario/Documents/tutorial/OLIMPO/PREDICCION"
+    },
+    "cfg_archivos": {
+      "productos_cfg": "CFG_HELIOS_PRODUCTOS.json",
+      "mercados_cfg": "CFG_HELIOS_MERCADOS.json",
+      "shocks_cfg": "CFG_MERCADO_SHOCKS.json",
+      "demanda_mercado_cfg": "CFG_DEMANDA_MERCADO.json",
+      "comex_cfg": "CFG_HELIOS_COMEX.json",
+      "limites_sup_inf_cfg": "CFG_LIMITES_SUP_INF.json",
+      "helios_general_cfg": "CFG_HELIOS_GENERAL.json"
+    },
+    "rutas_input": {
+      "epsilon_input": "CFG_INPUT_EPSILON.json",
+      "sigma_input": "CFG_INPUT_SIGMA.json",
+      "poseidon_input": "CFG_INPUT_POSEIDON.json"
+    },
+    "rutas_prediccion_output": {
+      "resultado_epsilon": "PREDICCION_EPSILON.json",
+      "resultado_sigma": "PREDICCION_SIGMA.json",
+      "resultado_poseidon": "PREDICCION_POSEIDON.json",
+      "resultado_digital_twin": "PREDICCION_DT.json"
+    },
+    "digital_twin_rutas": {
+      "dt_shocks_cfg": "CFG_MERCADO_SHOCKS.json",
+      "dt_demanda_mercado_cfg": "CFG_DEMANDA_MERCADO.json",
+      "dt_comex_cfg": "CFG_HELIOS_COMEX.json",
+      "dt_limites_cfg": "CFG_LIMITES_SUP_INF.json"
+    }
+  }
+}

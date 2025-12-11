@@ -1,0 +1,85 @@
+{
+  "CFG_HELIOS_PIPELINE": {
+    "version": "1.0",
+    "descripcion": "Pipeline maestro de ejecución del sistema HELIOS para OLIMPO.",
+    "pipeline_activo": true,
+    "orden_ejecucion": [
+      "CARGAR_RUTAS",
+      "CARGAR_CFG_GENERAL",
+      "CARGAR_PRODUCTOS",
+      "CARGAR_MERCADOS",
+      "CARGAR_COMEX",
+      "CARGAR_SHOCKS_MERCADO",
+      "CARGAR_DEMANDA_MERCADO",
+      "CARGAR_LIMITES_DINAMICOS",
+      "CARGAR_INPUT_USUARIO",
+      "EJECUTAR_DIGITAL_TWIN",
+      "EJECUTAR_MODELO_FORECAST",
+      "APLICAR_LIMITES_FORECAST",
+      "GENERAR_SALIDA",
+      "GUARDAR_PREDICCION"
+    ],
+    "modulos": {
+      "cargar_rutas": {
+        "archivo": "CFG_HELIOS_RUTAS.json",
+        "descripcion": "Carga las rutas principales del sistema."
+      },
+      "cargar_cfg_general": {
+        "archivo": "CFG_HELIOS_GENERAL.json",
+        "descripcion": "Carga configuración maestra del engine."
+      },
+      "cargar_productos": {
+        "archivo": "CFG_HELIOS_PRODUCTOS.json",
+        "descripcion": "Carga productos, volatilidad, elasticidad y PID."
+      },
+      "cargar_mercados": {
+        "archivo": "CFG_HELIOS_MERCADOS.json",
+        "descripcion": "Carga los 10 mercados y su configuración macroeconómica."
+      },
+      "cargar_comex": {
+        "archivo": "CFG_HELIOS_COMEX.json",
+        "descripcion": "Carga la configuración internacional de COMEX por producto."
+      },
+      "cargar_shocks_mercado": {
+        "archivo": "CFG_MERCADO_SHOCKS.json",
+        "descripcion": "Carga los shocks por mercado, shocks globales y matriz de contagio."
+      },
+      "cargar_demanda_mercado": {
+        "archivo": "CFG_DEMANDA_MERCADO.json",
+        "descripcion": "Carga modelos Gauss+Bayes de demanda por mercado."
+      },
+      "cargar_limites_dinamicos": {
+        "archivo": "CFG_LIMITES_SUP_INF.json",
+        "descripcion": "Carga reglas dinámicas para límites superiores e inferiores."
+      },
+      "cargar_input_usuario": {
+        "archivos_entrada": [
+          "CFG_INPUT_EPSILON.json",
+          "CFG_INPUT_SIGMA.json",
+          "CFG_INPUT_POSEIDON.json"
+        ],
+        "descripcion": "Carga el archivo input del usuario según el modelo seleccionado."
+      },
+      "digital_twin": {
+        "descripcion": "Procesa shocks, COMEX, estacionalidad, elasticidad y volatilidad del Digital Twin.",
+        "bloquea_si_falta_cfg": true
+      },
+      "forecasting": {
+        "modelos_disponibles": [
+          "EPSILON",
+          "SIGMA",
+          "POSEIDON"
+        ],
+        "seleccion_por_input": true,
+        "descripcion": "Ejecuta el modelo elegido por el usuario."
+      },
+      "aplicar_limites_forecast": {
+        "descripcion": "Aplica límites dinámicos del Digital Twin al forecast generado."
+      },
+      "salida": {
+        "descripcion": "Genera archivo JSON con la predicción final.",
+        "prediccion_dir": "PREDICCION"
+      }
+    }
+  }
+}

@@ -32,3 +32,15 @@ app.include_router(sigma_router)
 app.include_router(poseidon_router)
 app.include_router(helios_router)
 app.include_router(user_router)
+
+from api.routers import epsilon
+app.include_router(epsilon.router)
+
+from api.routers import sigma
+app.include_router(sigma.router)
+
+from api.routers import poseidon
+app.include_router(poseidon.router)
+
+from api.routers import helios
+app.include_router(helios.router)
