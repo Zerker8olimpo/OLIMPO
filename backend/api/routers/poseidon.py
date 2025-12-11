@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.utils.poseidon_schema import PoseidonInput, PoseidonOutput
+from backend.api.utils.poseidon_schema import PoseidonInput, PoseidonOutput
 from models.poseidon.POSEIDON_SERVICE import run_poseidon_service
 
 router = APIRouter(

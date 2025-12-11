@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.utils.helios_schema import HeliosInput, HeliosOutput
+from backend.api.utils.helios_schema import HeliosInput, HeliosOutput
 from models.helios.HELIOS_SERVICE import run_helios_service
 
 router = APIRouter(

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from api.utils.sigma_schema import SigmaInput, SigmaOutput
+from backend.api.utils.sigma_schema import SigmaInput, SigmaOutput
 from models.sigma.SIGMA_SERVICE import run_sigma_service
 
 router = APIRouter(
