@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from backend.api.utils.epsilon_schema import EpsilonInput, EpsilonOutput
-from backend.digital_twin.epsilon.EPSILON_SERVICE import run_epsilon_service
+from backend.models.epsilon.EPSILON_SERVICE import run_epsilon_service
 
 router = APIRouter(
     prefix="/epsilon",
