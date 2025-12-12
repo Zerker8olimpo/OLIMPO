@@ -1,3 +1,33 @@
 fastapi
 uvicorn
 pydantic
+
+# Data processing
+pandas
+numpy
+scipy
+
+# Visualization
+fastapi
+uvicorn
+pydantic
+
+pandas
+numpy
+scipy
+
+matplotlib
+plotly
+
+openpyxl
+python-multipart
+
+pyyaml
+python-dotenv
+
+scikit-learn
+statsmodels
+
+requests
+anyio
+starlette
