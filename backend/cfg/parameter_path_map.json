@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "description": "Parameter Path Map for OLIMPO ML",
+  "cfg_files": {
+    "<CFG_FILE>": {
+      "<parameter_path>": {
+        "type": "float | int | bool",
+        "adjustment": "delta | range | freeze",
+        "min": 0.0,
+        "max": 1.0,
+        "max_delta": 0.05,
+        "cooldown_days": 14,
+        "source_modules": ["shock", "volatility", "phi", "psi"],
+        "forbidden_conditions": ["active_shock"],
+        "notes": "texto libre"
+      }
+    }
+  }
+}

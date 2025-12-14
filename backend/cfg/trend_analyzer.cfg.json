@@ -1,0 +1,44 @@
+{
+  "model": "TrendAnalyzer",
+  "version": "2.0",
+
+  "general": {
+    "min_length": 5
+  },
+
+  "regression": {
+    "window": 12,
+    "ml_tunable": true
+  },
+
+  "thresholds": {
+    "up": 0.25,
+    "down": 0.25,
+    "ml_tunable": true
+  },
+
+  "confidence": {
+    "full_window": 12,
+    "sigma_ref": 1.0,
+    "slope_ref": 0.4,
+
+    "w_base": 0.45,
+    "w_trend": 0.45,
+    "w_vol": 0.25,
+    "w_shock": 0.25,
+
+    "ml_tunable": true
+  },
+
+  "stability": {
+    "cv_low": 0.15,
+    "cv_high": 0.60,
+    "ml_tunable": true
+  },
+
+  "chaos": {
+    "sigma_threshold": 1.0,
+    "shock_threshold": 0.6,
+    "ml_tunable": true
+  }
+}

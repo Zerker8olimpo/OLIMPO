@@ -1,0 +1,16 @@
+{
+  "model": "MLDispatcher",
+  "version": "1.0",
+
+  "allowed_features": [
+    "psi_effective",
+    "psi_confidence",
+    "shock_flag",
+    "shock_intensity",
+    "volatility_total",
+    "trend_direction",
+    "trend_confidence",
+    "phi_value",
+    "phi_confidence"
+  ]
+}

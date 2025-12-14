@@ -1,0 +1,13 @@
+{
+  "model": "AlertDispatcher",
+  "version": "1.0",
+
+  "levels": {
+    "warning": 0.6,
+    "critical": 0.85
+  },
+
+  "confidence_min": 0.5,
+
+  "notify_on_shock": true
+}

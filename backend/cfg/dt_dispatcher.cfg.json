@@ -1,0 +1,12 @@
+{
+  "model": "DTDispatcher",
+  "version": "1.0",
+
+  "required_blocks": [
+    "shock",
+    "volatility",
+    "trend",
+    "phi",
+    "psi"
+  ]
+}

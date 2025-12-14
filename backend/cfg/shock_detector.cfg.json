@@ -1,0 +1,43 @@
+{
+  "model": "ShockDetector",
+  "version": "2.5",
+
+  "general": {
+    "min_length": 5,
+    "confidence_floor": 0.3
+  },
+
+  "z_score": {
+    "enabled": true,
+    "window": 10,
+    "threshold": 2.5,
+    "ml_tunable": true
+  },
+
+  "cusum": {
+    "enabled": true,
+    "k": 0.5,
+    "h": 5.0,
+    "ml_tunable": true
+  },
+
+  "breakpoint": {
+    "enabled": true,
+    "window": 10,
+    "threshold": 1.5,
+    "ml_tunable": true
+  },
+
+  "market_analysis": {
+    "enabled": true,
+    "relative_threshold": 0.2,
+    "ml_tunable": false
+  },
+
+  "weights": {
+    "z": 0.4,
+    "cusum": 0.4,
+    "break": 0.2,
+    "ml_tunable": true
+  }
+}

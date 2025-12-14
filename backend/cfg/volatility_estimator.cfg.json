@@ -1,0 +1,37 @@
+{
+  "model": "VolatilityEstimator",
+  "version": "2.5",
+
+  "general": {
+    "min_length": 5
+  },
+
+  "ewma": {
+    "lambda": 0.94,
+    "ml_tunable": true
+  },
+
+  "shock": {
+    "multiplier": 1.0,
+    "ml_tunable": true
+  },
+
+  "market": {
+    "enabled": true,
+    "ml_tunable": false
+  },
+
+  "weights": {
+    "historical": 0.35,
+    "ewma": 0.35,
+    "shock": 0.2,
+    "market": 0.1,
+    "ml_tunable": true
+  },
+
+  "risk_bands": {
+    "low": 0.5,
+    "medium": 1.0,
+    "ml_tunable": true
+  }
+}

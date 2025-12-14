@@ -1,0 +1,36 @@
+{
+  "model": "SensitivityPhi",
+  "version": "2.0",
+
+  "general": {
+    "min_length": 6
+  },
+
+  "windows": {
+    "short": 6,
+    "long": 24,
+    "stability": 8,
+    "ml_tunable": true
+  },
+
+  "weights": {
+    "short": 0.6,
+    "long": 0.4,
+    "ml_tunable": true
+  },
+
+  "limits": {
+    "max_phi": 1.5,
+    "ml_tunable": false
+  },
+
+  "stability": {
+    "max_std": 0.25,
+    "ml_tunable": true
+  },
+
+  "confidence": {
+    "sigma_ref": 1.0,
+    "ml_tunable": true
+  }
+}

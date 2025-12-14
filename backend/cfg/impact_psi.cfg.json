@@ -1,0 +1,35 @@
+{
+  "model": "ImpactPsi",
+  "version": "2.0",
+
+  "weights": {
+    "shock": 0.35,
+    "volatility": 0.30,
+    "phi": 0.20,
+    "relative": 0.15,
+    "ml_tunable": true
+  },
+
+  "penalties": {
+    "trend": 0.4,
+    "ml_tunable": true
+  },
+
+  "levels": {
+    "minor": 0.4,
+    "moderate": 0.7,
+    "ml_tunable": true
+  },
+
+  "limits": {
+    "max_psi": 1.5,
+    "ml_tunable": false
+  },
+
+  "confidence_weights": {
+    "shock": 0.4,
+    "phi": 0.35,
+    "trend": 0.25,
+    "ml_tunable": true
+  }
+}
