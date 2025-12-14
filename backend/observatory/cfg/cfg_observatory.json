@@ -1,0 +1,27 @@
+{
+  "quality": {
+    "alpha_invalid": 0.6,
+    "beta_outlier": 0.25,
+    "gamma_inconsistency": 0.15,
+    "outlier_limits": {},
+    "inconsistency_rules": []
+  },
+  "risk": {
+    "weights": {
+      "demand_variability": 0.25,
+      "lead_time_uncertainty": 0.25,
+      "market_volatility": 0.20,
+      "data_quality": 0.20,
+      "helios_gap": 0.10
+    },
+    "bands": {
+      "LOW": 0.25,
+      "MEDIUM": 0.55,
+      "HIGH": 0.75
+    }
+  },
+  "twin": {
+    "gap_threshold": 0.75,
+    "field_weights": {}
+  }
+}
