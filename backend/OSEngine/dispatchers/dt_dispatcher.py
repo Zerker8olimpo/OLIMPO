@@ -24,7 +24,7 @@ class DTDispatcher:
         # --------------------------------------------------
         # Validación mínima del estado
         # --------------------------------------------------
-        required_blocks = cfg["required_blocks"]
+        required_blocks = cfg.get("required_blocks", [])
 
         for block in required_blocks:
             if block not in system_state:

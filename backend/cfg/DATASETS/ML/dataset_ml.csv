@@ -1,0 +1,6 @@
+execution_id,timestamp_utc,market_id,product_id,phi,psi,volatility,trend,ml_effective_multiplier,factor_correccion_y
+3ad51111-cb7c-4f4a-9bc0-def78b058218,2025-12-16T02:37:03.245507,CL,SKU_001,,,,,1.0,
+c894a637-23fb-4087-9f6c-aeec27282d0e,2025-12-16T02:43:30.431009,CL,SKU_001,,,,,1.0,
+ad192e46-b9d6-490d-9e3e-53cfde537f37,2025-12-16T02:46:30.015126,CL,SKU_001,,,,,1.0,
+874e8b28-9c51-491d-8af8-52eb09f2777d,2025-12-16T02:48:14.103632,CL,SKU_001,,,,,1.0,
+6287c3e1-58b0-4f1e-871a-3f9edc95283a,2025-12-16T02:51:28.973238,CL,SKU_001,,,,,1.0,

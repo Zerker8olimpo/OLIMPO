@@ -750,7 +750,7 @@ class HeliosDigitalTwinEngine:
     # ORQUESTADOR ORIGINAL (archivo en PREDICCION)
     # ============================================================
 
-    def run(self) -> None:
+    def run(self, context: dict | None = None) -> None:
         """
         Versión original basada en archivos ENTRADA/ y salida en PREDICCION/.
         Se mantiene para compatibilidad con el modo script.

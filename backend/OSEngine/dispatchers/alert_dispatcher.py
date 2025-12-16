@@ -33,19 +33,26 @@ class AlertDispatcher:
         # --------------------------------------------------
         # Evaluación simple por niveles
         # --------------------------------------------------
-        levels = cfg["levels"]
+        # Cambio mínimo: default dict, no list
+        levels = cfg.get("levels", {})
 
-        if psi_value >= levels["critical"] and psi_confidence >= cfg["confidence_min"]:
+        # Umbrales defensivos (si no hay cfg, no dispara alertas)
+        critical_level = levels.get("critical", float("inf"))
+        warning_level = levels.get("warning", float("inf"))
+        confidence_min = cfg.get("confidence_min", 1.0)
+        notify_on_shock = cfg.get("notify_on_shock", False)
+
+        if psi_value >= critical_level and psi_confidence >= confidence_min:
             alert_triggered = True
             alert_level = "critical"
             message = "Impacto crítico detectado. Revisión inmediata recomendada."
 
-        elif psi_value >= levels["warning"] and psi_confidence >= cfg["confidence_min"]:
+        elif psi_value >= warning_level and psi_confidence >= confidence_min:
             alert_triggered = True
             alert_level = "warning"
             message = "Impacto elevado detectado. Se recomienda monitoreo."
 
-        elif shock_flag and cfg["notify_on_shock"]:
+        elif shock_flag and notify_on_shock:
             alert_triggered = True
             alert_level = "info"
             message = "Shock detectado. Contexto bajo observación."
