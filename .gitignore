@@ -1,7 +1,21 @@
-# Python virtual environments
-venv/
-backend/venv/
-
-# Python cache
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+backend/venv/
+
+# Datasets / outputs
+backend/cfg/DATASETS/
+*.csv
+
+# Env
+backend/.env
+
+# Editor
+.vscode/
+backend/.vscode/

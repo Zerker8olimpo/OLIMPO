@@ -1,9 +1,8 @@
-import datetime
 import json
 import os
 import uuid
-from typing import Dict, Any, List
-
+from typing import Dict, Any
+from datetime import datetime, timezone
 
 # ==============================
 # IMPORTACIÓN DE SUBMÓDULOS (ABSOLUTOS)
@@ -15,7 +14,7 @@ from backend.OSEngine.scanners.market_scanner import MarketScanner
 from backend.OSEngine.scanners.api_fetcher import APIFetcher
 from backend.OSEngine.scanners.web_scraper import WebScraper
 
-# Analysis (FUNCIONAL / PURO)
+# Analysis
 from backend.OSEngine.analysis.shock_detector import detect_shock
 from backend.OSEngine.analysis.volatility_estimator import estimate_volatility
 from backend.OSEngine.analysis.trend_analyzer import analyze_trend
@@ -51,44 +50,20 @@ def _safe_read_json(path: str) -> Dict[str, Any]:
 
 
 def _load_cfg_limits(cfg_dir: str) -> Dict[str, Any]:
-    path = os.path.join(cfg_dir, "CFG_LIMITES_SUP_INF.json")
-    data = _safe_read_json(path)
+    data = _safe_read_json(os.path.join(cfg_dir, "CFG_LIMITES_SUP_INF.json"))
     return data.get("CFG_LIMITES_SUP_INF", data)
 
 
 def _load_cfg_olimpo_ml(cfg_dir: str) -> Dict[str, Any]:
-    path = os.path.join(cfg_dir, "CFG_OLIMPO_ML.json")
-    data = _safe_read_json(path)
+    data = _safe_read_json(os.path.join(cfg_dir, "CFG_OLIMPO_ML.json"))
     return data.get("CFG_OLIMPO_ML", data)
 
 
 def _default_analysis_cfg() -> Dict[str, Any]:
     return {
         "enabled": True,
-        "general": {"min_length": 6, "eps": 1e-9},
-        "z_score": {"threshold": 2.0, "window": 6},
-        "cusum": {"threshold": 4.0, "window": 6},
-        "breakpoint": {"threshold": 0.35, "window": 6},
-        "weights": {"z": 0.4, "cusum": 0.35, "break": 0.25},
-        "threshold": {"shock": 0.55},
-        "ewma": {"alpha": 0.35},
-        "shock": {"multiplier": 1.25},
-        "market": {"multiplier": 0.25},
-        "risk_bands": {"low": 0.15, "medium": 0.35, "high": 0.60},
-        "regression": {"window": 8},
-        "thresholds": {"slope_small": 0.02},
-        "stability": {"window": 8},
         "confidence": {"min": 0.30},
-        "chaos": {"enabled": True, "threshold": 0.65},
-        "cv_low": 0.15,
-        "cv_high": 0.60,
-        "windows": {"short": 6, "long": 12},
         "limits": {"min": 0.0, "max": 2.0},
-        "confidence_weights": {"shock": 0.35, "vol": 0.30, "phi": 0.20, "trend": 0.15},
-        "weights_psi": {"shock": 0.40, "vol": 0.30, "phi": 0.20, "trend": 0.10},
-        "psi_limits": {"min": 0.0, "max": 1.0},
-        "levels": {"low": 0.25, "medium": 0.55, "high": 0.80},
-        "penalties": {"low_confidence": 0.10},
     }
 
 
@@ -97,8 +72,7 @@ def _default_analysis_cfg() -> Dict[str, Any]:
 # ============================================================
 
 def load_ml_effective_multiplier(cfg_dir: str, market_id: str, product_id: str) -> float:
-    path = os.path.join(cfg_dir, "ML_FACTORS.json")
-    data = _safe_read_json(path)
+    data = _safe_read_json(os.path.join(cfg_dir, "ML_FACTORS.json"))
     key = f"{market_id}|{product_id}"
     try:
         return float(data.get(key, {}).get("effective_multiplier", 1.0))
@@ -112,7 +86,7 @@ def register_ml_observation(dataset_dir: str, payload: Dict[str, Any]) -> None:
 
         record = {
             "execution_id": str(uuid.uuid4()),
-            "timestamp_utc": datetime.datetime.utcnow().isoformat(),
+            "timestamp_utc": datetime.now(timezone.utc).isoformat(),
             "market_id": payload["context"].get("market_id"),
             "product_id": payload["context"].get("product_id"),
             "phi": payload["analysis_results"].get("phi"),
@@ -120,7 +94,6 @@ def register_ml_observation(dataset_dir: str, payload: Dict[str, Any]) -> None:
             "volatility": payload["analysis_results"].get("volatility"),
             "trend": payload["analysis_results"].get("trend"),
             "ml_effective_multiplier": payload["context"].get("ml_effective_multiplier", 1.0),
-            "factor_correccion_y": None,
         }
 
         csv_path = os.path.join(dataset_dir, "dataset_ml.csv")
@@ -191,28 +164,31 @@ class OSEngine:
             "scraper": self.web_scraper.run(),
         }
 
-    def run_cycle(self, context: Dict[str, Any]):
+    def run_cycle(self, context: Dict[str, Any]) -> Dict[str, Any]:
         self.log("==== INICIO CICLO OSEngine ====")
 
-        mult = load_ml_effective_multiplier(
+        context["ml_effective_multiplier"] = load_ml_effective_multiplier(
             self.cfg_dir,
             context.get("market_id", ""),
             context.get("product_id", ""),
         )
-        context["ml_effective_multiplier"] = mult
 
         external = self.scan_external()
-        analysis_results = {}  # (analysis intacta, omitida aquí por brevedad)
+
+        # Placeholder análisis (intencionalmente desacoplado)
+        analysis_results: Dict[str, Any] = {}
 
         helios_results = self.helios_engine.run(context=context)
-        
+        if not isinstance(helios_results, dict):
+            self.log("helios_results inválido, inicializando dict vacío")
+            helios_results = {}
 
         payload = {
             "context": context,
             "analysis_results": analysis_results,
             "helios_results": helios_results,
-            "proposals": [],
-            "timestamp": datetime.datetime.utcnow().isoformat(),
+            "external": external,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 
         if self.enable_ml_observations:
@@ -220,12 +196,10 @@ class OSEngine:
 
         self.ml_dispatcher.dispatch(payload)
         self.dt_dispatcher.dispatch(payload, {})
-        self.alert_dispatcher.dispatch(
-            {"context": context, "psi": {}, "shock": {}},
-            {}
-        )
+        self.alert_dispatcher.dispatch({"context": context}, {})
 
         self.log("==== FIN CICLO OSEngine ====")
+        return payload
 
 
 # ============================================================
