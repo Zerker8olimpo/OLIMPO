@@ -19,3 +19,22 @@ backend/.env
 # Editor
 .vscode/
 backend/.vscode/
+
+# Entornos
+.venv/
+__pycache__/
+*.pyc
+
+# Configuración sensible
+.env
+
+# Base de datos local
+backend/db/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

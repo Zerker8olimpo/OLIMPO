@@ -31,3 +31,4 @@ statsmodels
 requests
 anyio
 starlette
+freeze
