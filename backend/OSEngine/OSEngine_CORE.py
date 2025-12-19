@@ -5,34 +5,34 @@ from typing import Dict, Any
 from datetime import datetime, timezone
 
 # ==============================
-# IMPORTACIÓN DE SUBMÓDULOS (ABSOLUTOS)
+# IMPORTACIÓN DE SUBMÓDULOS (ROOT = backend)
 # ==============================
 
 # Scanners
-from backend.OSEngine.scanners.news_scanner import NewsScanner
-from backend.OSEngine.scanners.market_scanner import MarketScanner
-from backend.OSEngine.scanners.api_fetcher import APIFetcher
-from backend.OSEngine.scanners.web_scraper import WebScraper
+from OSEngine.scanners.news_scanner import NewsScanner
+from OSEngine.scanners.market_scanner import MarketScanner
+from OSEngine.scanners.api_fetcher import APIFetcher
+from OSEngine.scanners.web_scraper import WebScraper
 
 # Analysis
-from backend.OSEngine.analysis.shock_detector import detect_shock
-from backend.OSEngine.analysis.volatility_estimator import estimate_volatility
-from backend.OSEngine.analysis.trend_analyzer import analyze_trend
-from backend.OSEngine.analysis.sensitivity_phi import compute_phi
-from backend.OSEngine.analysis.impact_psi import compute_psi
+from OSEngine.analysis.shock_detector import detect_shock
+from OSEngine.analysis.volatility_estimator import estimate_volatility
+from OSEngine.analysis.trend_analyzer import analyze_trend
+from OSEngine.analysis.sensitivity_phi import compute_phi
+from OSEngine.analysis.impact_psi import compute_psi
 
 # Proposals
-from backend.OSEngine.config_updater.cfg_pid_updater import PIDUpdater
-from backend.OSEngine.config_updater.cfg_stock_updater import StockUpdater
-from backend.OSEngine.config_updater.cfg_risk_updater import RiskUpdater
+from OSEngine.config_updater.cfg_pid_updater import PIDUpdater
+from OSEngine.config_updater.cfg_stock_updater import StockUpdater
+from OSEngine.config_updater.cfg_risk_updater import RiskUpdater
 
 # Dispatchers
-from backend.OSEngine.dispatchers.ml_dispatcher import MLDispatcher
-from backend.OSEngine.dispatchers.dt_dispatcher import DTDispatcher
-from backend.OSEngine.dispatchers.alert_dispatcher import AlertDispatcher
+from OSEngine.dispatchers.ml_dispatcher import MLDispatcher
+from OSEngine.dispatchers.dt_dispatcher import DTDispatcher
+from OSEngine.dispatchers.alert_dispatcher import AlertDispatcher
 
 # Digital Twin
-from backend.digital_twin.helios_engine import HeliosEngine
+from digital_twin.helios_engine import HeliosEngine
 
 
 # ============================================================
@@ -120,8 +120,8 @@ class OSEngine:
         self,
         ml_core,
         verbose: bool = True,
-        cfg_dir: str = "backend/cfg",
-        dataset_dir: str = "backend/cfg/DATASETS/ML",
+        cfg_dir: str = "cfg",
+        dataset_dir: str = "cfg/DATASETS/ML",
         enable_ml_observations: bool = True,
     ):
         self.verbose = verbose
@@ -175,7 +175,6 @@ class OSEngine:
 
         external = self.scan_external()
 
-        # Placeholder análisis (intencionalmente desacoplado)
         analysis_results: Dict[str, Any] = {}
 
         helios_results = self.helios_engine.run(context=context)
@@ -207,10 +206,10 @@ class OSEngine:
 # ============================================================
 
 if __name__ == "__main__":
-    from backend.models.olimpo_ml_core.olimpo_ml_core import OlimpoMLCore
+    from models.olimpo_ml_core.olimpo_ml_core import OlimpoMLCore
 
     engine = OSEngine(
-        ml_core=OlimpoMLCore(cfg_dir="backend/cfg"),
+        ml_core=OlimpoMLCore(cfg_dir="cfg"),
         verbose=True,
     )
 
