@@ -31,4 +31,6 @@ statsmodels
 requests
 anyio
 starlette
-freeze
+
+PyJWT>=2.8.0
+google-auth>=2.25.0
