@@ -1,44 +1,54 @@
-# backend/api/main.py
-
 from fastapi import FastAPI
-from dotenv import load_dotenv
-from pathlib import Path
-import os
 from fastapi.openapi.utils import get_openapi
-from backend.api.middleware.auth import JWTAuthMiddleware
+from pathlib import Path
+from dotenv import load_dotenv
+import os
 
 # ======================================================
-# CARGA FORZADA DEL .env
+# CONFIGURACIÓN DE ENTORNO
 # ======================================================
+
 ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
 
-if not ENV_PATH.exists():
-    raise RuntimeError(f".env NO encontrado en {ENV_PATH}")
+if ENV_PATH.exists():
+    load_dotenv(dotenv_path=ENV_PATH, override=True)
+    print("[CONFIG] .env cargado desde archivo")
+else:
+    print("[CONFIG] .env no encontrado, usando variables de entorno")
 
-load_dotenv(dotenv_path=ENV_PATH, override=True)
+# 🔐 SECRET KEY (JWT / Seguridad)
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-JWT_SECRET = os.getenv("JWT_SECRET")
-if not JWT_SECRET:
-    raise RuntimeError("JWT_SECRET no está cargado desde .env")
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY no configurada en variables de entorno")
+
+APP_ENV = os.getenv("APP_ENV", "development")
 
 # ======================================================
 # APP
 # ======================================================
+
 app = FastAPI(
     title="OLIMPO",
     version=os.getenv("APP_VERSION", "1.0.0"),
+    description="API oficial OLIMPO",
 )
 
 # ======================================================
 # MIDDLEWARE
 # ======================================================
+
 from backend.api.middleware.auth import JWTAuthMiddleware
 
-app.add_middleware(JWTAuthMiddleware)
+app.add_middleware(
+    JWTAuthMiddleware,
+    secret_key=SECRET_KEY
+)
 
 # ======================================================
 # ROUTERS
 # ======================================================
+
 from backend.api.routers.auth import router as auth_router
 from backend.api.routers.epsilon import router as epsilon_router
 from backend.api.routers.sigma import router as sigma_router
@@ -54,43 +64,41 @@ app.include_router(helios_router)
 # ======================================================
 # DEV TOKEN (SOLO DESARROLLO)
 # ======================================================
-from backend.api.security.jwt import create_olimpo_jwt
-
-APP_ENV = os.getenv("APP_ENV", "development")
 
 if APP_ENV == "development":
+    from backend.api.security.jwt import create_olimpo_jwt
 
     @app.get("/dev/token", tags=["dev"])
     def dev_token():
         """
         Endpoint SOLO para desarrollo.
-        No existe en producción.
+        NO existe en producción.
         """
         return {
             "access_token": create_olimpo_jwt(
-                {"sub": "dev_user", "role": "admin"}
+                payload={"sub": "dev_user", "role": "admin"},
+                secret_key=SECRET_KEY
             )
         }
 
 # ======================================================
 # OPENAPI + SECURITY
 # ======================================================
+
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
 
     openapi_schema = get_openapi(
         title="OLIMPO",
-        version="1.0.0",  # ← NO usar app.version
+        version="1.0.0",
         description="API oficial OLIMPO",
         routes=app.routes,
     )
 
-    # Asegurar estructura base
     openapi_schema.setdefault("components", {})
     openapi_schema["components"].setdefault("securitySchemes", {})
 
-    # JWT Bearer
     openapi_schema["components"]["securitySchemes"]["BearerAuth"] = {
         "type": "http",
         "scheme": "bearer",
