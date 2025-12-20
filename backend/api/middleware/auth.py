@@ -1,44 +1,28 @@
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from fastapi import HTTPException
-
-from backend.api.security.jwt import verify_token
-
-EXCLUDED_PREFIXES = (
-    "/docs",
-    "/openapi.json",
-    "/redoc",
-    "/auth/google",
-    "/static",
-)
-
+import os
 
 class JWTAuthMiddleware(BaseHTTPMiddleware):
+
     async def dispatch(self, request: Request, call_next):
-        path = request.url.path
 
-        # 1) Rutas públicas (prefix match)
-        if any(path == p or path.startswith(p + "/") or path.startswith(p) for p in EXCLUDED_PREFIXES):
-            return await call_next(request)
+        SECRET_KEY = os.getenv("SECRET_KEY")
 
-        # 2) Header Authorization
-        auth_header = request.headers.get("Authorization", "")
-        if not auth_header.startswith("Bearer "):
+        if not SECRET_KEY:
             return JSONResponse(
-                status_code=401,
-                content={"detail": "NOT_AUTHENTICATED"},
+                status_code=500,
+                content={"detail": "SECRET_KEY no configurada"}
             )
 
-        token = auth_header.replace("Bearer ", "", 1).strip()
+        # Rutas públicas
+        if request.url.path.startswith("/docs") \
+           or request.url.path.startswith("/openapi.json") \
+           or request.url.path.startswith("/auth") \
+           or request.url.path.startswith("/dev"):
+            return await call_next(request)
 
-        # 3) Verificar JWT OLIMPO
-        try:
-            payload = verify_token(token)
-            request.state.user = payload
-        except HTTPException as e:
-            return JSONResponse(status_code=e.status_code, content={"detail": e.detail})
-        except Exception:
-            return JSONResponse(status_code=401, content={"detail": "INVALID_TOKEN"})
+        # Aquí va tu lógica JWT real
+        # validate_token(request, SECRET_KEY)
 
         return await call_next(request)
