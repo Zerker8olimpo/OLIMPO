@@ -40,10 +40,7 @@ app = FastAPI(
 
 from backend.api.middleware.auth import JWTAuthMiddleware
 
-app.add_middleware(
-    JWTAuthMiddleware,
-    secret_key=SECRET_KEY
-)
+app.add_middleware(JWTAuthMiddleware)
 
 # ======================================================
 # ROUTERS
