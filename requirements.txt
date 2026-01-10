@@ -1,14 +1,18 @@
 # =========================
 # API
 # =========================
+# =========================
+# API
+# =========================
 fastapi
 uvicorn
-pydantic
+pydantic>=2.0
+pydantic-settings>=2.0
 starlette
 anyio
 
 # =========================
-# Database (FALTABA)
+# Database
 # =========================
 SQLAlchemy>=2.0
 psycopg2-binary
@@ -28,7 +32,7 @@ plotly
 openpyxl
 
 # =========================
-# File / form handling
+# File / env
 # =========================
 python-multipart
 pyyaml
