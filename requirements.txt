@@ -1,36 +1,48 @@
+# =========================
+# API
+# =========================
 fastapi
 uvicorn
 pydantic
+starlette
+anyio
 
+# =========================
+# Database (FALTABA)
+# =========================
+SQLAlchemy>=2.0
+psycopg2-binary
+
+# =========================
 # Data processing
+# =========================
 pandas
 numpy
 scipy
 
+# =========================
 # Visualization
-fastapi
-uvicorn
-pydantic
-
-pandas
-numpy
-scipy
-
+# =========================
 matplotlib
 plotly
-
 openpyxl
-python-multipart
 
+# =========================
+# File / form handling
+# =========================
+python-multipart
 pyyaml
 python-dotenv
 
+# =========================
+# ML / Stats
+# =========================
 scikit-learn
 statsmodels
 
+# =========================
+# Auth / Security
+# =========================
 requests
-anyio
-starlette
-
 PyJWT>=2.8.0
 google-auth>=2.25.0
