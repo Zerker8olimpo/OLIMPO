@@ -38,3 +38,9 @@ backend/db/*.db
 # OS
 .DS_Store
 Thumbs.db
+
+# Flutter app (OLIMPO mobile)
+app_olimpo/
+
+# Mobile app (NO subir al backend repo)
+app_olimpo_clean/

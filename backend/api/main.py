@@ -55,12 +55,18 @@ from backend.api.routers.epsilon import router as epsilon_router
 from backend.api.routers.sigma import router as sigma_router
 from backend.api.routers.poseidon import router as poseidon_router
 from backend.api.routers.helios import router as helios_router
+from backend.api.routers.me import router as me_router
+from backend.api.routers.billing_google import router as billing_google_router
+from backend.api.routers.billing_mercadopago import router as billing_mercadopago_router
 
 app.include_router(auth_router)
 app.include_router(epsilon_router)
 app.include_router(sigma_router)
 app.include_router(poseidon_router)
 app.include_router(helios_router)
+app.include_router(me_router)
+app.include_router(billing_google_router)
+app.include_router(billing_mercadopago_router)
 
 # ============================================================
 # HEALTH CHECK (IMPORTANTE PARA FLUTTER)

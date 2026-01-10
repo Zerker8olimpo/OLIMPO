@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>OLIMPO – Google Auth Test</title>
+
+  <!-- Google Identity -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<h2>Login OLIMPO con Google</h2>
+
+<!-- Google init -->
+<div id="g_id_onload"
+     data-client_id=190198278868-j8ci9dmiill776stm0v5h2m57f1rhbv4.apps.googleusercontent.com
+     data-context="signin"
+     data-ux_mode="popup"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<!-- Google button -->
+<div class="g_id_signin"
+     data-type="standard"
+     data-size="large">
+</div>
+
+<script>
+function handleCredentialResponse(response) {
+  console.log("ID TOKEN DE GOOGLE:");
+  console.log(response.credential);
+
+  fetch("http://127.0.0.1:8000/auth/google", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      id_token: response.credential
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("JWT OLIMPO:");
+    console.log(data.access_token);
+    alert("JWT recibido. Revisa la consola (F12).");
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error al enviar token");
+  });
+}
+</script>
+
+</body>
+</html>
