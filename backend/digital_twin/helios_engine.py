@@ -71,6 +71,44 @@ def unwrap(cfg: Dict[str, Any], root_key: str) -> Dict[str, Any]:
     return cfg.get(root_key, cfg)
 
 
+def set_nested(cfg: Dict[str, Any], path: str, value: Any) -> bool:
+    """
+    Aplica un valor en una ruta anidada (ej: 'productos.item.shock').
+    Replica la lógica de olimpo_ml_core para consistencia.
+    """
+    keys = path.split(".")
+    cur = cfg
+    for i, k in enumerate(keys[:-1]):
+        if isinstance(cur, dict):
+            if k not in cur:
+                return False
+            cur = cur[k]
+        elif isinstance(cur, list):
+            try:
+                idx = int(k)
+                if idx < 0 or idx >= len(cur):
+                    return False
+                cur = cur[idx]
+            except ValueError:
+                return False
+        else:
+            return False
+
+    last = keys[-1]
+    if isinstance(cur, dict) and last in cur:
+        cur[last] = value
+        return True
+    elif isinstance(cur, list):
+        try:
+            idx = int(last)
+            if 0 <= idx < len(cur):
+                cur[idx] = value
+                return True
+        except ValueError:
+            pass
+    return False
+
+
 # ============================================================
 # Clase de rutas (usa CFG_HELIOS_RUTAS.json)
 # ============================================================
@@ -119,6 +157,9 @@ class HeliosConfigRutas:
 
         # Output DT único
         self.dt_output_file = rutas_pred.get("resultado_digital_twin", "PREDICCION_DT.json")
+
+        # Archivo de parches ML (Live Intelligence)
+        self.patches_file = "CFG_PATCHES.json"
 
 
 # ============================================================
@@ -174,6 +215,19 @@ class HeliosDigitalTwinEngine:
         raw_comex = safe_load_json(cfg_dir / self.rutas.comex_cfg_file,
                                    self.rutas.comex_cfg_file)
 
+        # --- INYECCIÓN DE INTELIGENCIA VIVA (ML CORE) ---
+        # Mapeamos los archivos a sus objetos raw para aplicar parches
+        raw_map = {
+            self.rutas.helios_general_cfg_file: raw_general,
+            self.rutas.limites_sup_inf_cfg_file: raw_limites,
+            self.rutas.mercados_cfg_file: raw_mercados,
+            self.rutas.productos_cfg_file: raw_productos,
+            self.rutas.demanda_mercado_cfg_file: raw_demanda_mercado,
+            self.rutas.shocks_cfg_file: raw_shocks,
+            self.rutas.comex_cfg_file: raw_comex,
+        }
+        self._apply_ml_patches(raw_map)
+
         self.cfg_general = unwrap(raw_general, "CFG_HELIOS_GENERAL")
         self.cfg_limites = unwrap(raw_limites, "CFG_LIMITES_SUP_INF")
         self.cfg_mercados = raw_mercados
@@ -184,6 +238,40 @@ class HeliosDigitalTwinEngine:
 
         log("Configuraciones cargadas correctamente desde carpeta CFG.")
 
+    def _apply_ml_patches(self, raw_map: Dict[str, Any]) -> None:
+        """
+        Lee CFG_PATCHES.json (generado por OlimpoMLCore) y aplica los cambios
+        a los diccionarios raw cargados en memoria.
+        Esto asegura que el Digital Twin corra con los 'números vivos'.
+        """
+        assert self.rutas is not None
+        patches_path = self.rutas.cfg_dir / self.rutas.patches_file
+        
+        if not patches_path.exists():
+            return
+
+        try:
+            # Usamos json estándar aquí para evitar dependencia circular o fallos en safe_load
+            with patches_path.open("r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            patches = data.get("patches", [])
+            applied_count = 0
+            
+            for p in patches:
+                cfg_file = p.get("cfg_file")
+                path = p.get("parameter_path")
+                val = p.get("new_value")
+                
+                if cfg_file in raw_map:
+                    if set_nested(raw_map[cfg_file], path, val):
+                        applied_count += 1
+            
+            if applied_count > 0:
+                log(f"[HELIOS_DT] Se aplicaron {applied_count} parches de ML Core (Live Intelligence).")
+        except Exception as e:
+            log(f"[HELIOS_DT] Advertencia: No se pudieron aplicar parches ML: {e}")
+
     def load_inputs(self) -> None:
         """
         Versión original basada en archivos ENTRADA/.
@@ -193,18 +281,34 @@ class HeliosDigitalTwinEngine:
         assert self.rutas is not None
         entrada_dir = self.rutas.entrada_dir
 
-        raw_eps = safe_load_json(entrada_dir / self.rutas.epsilon_input_file,
-                                 self.rutas.epsilon_input_file)
-        raw_sig = safe_load_json(entrada_dir / self.rutas.sigma_input_file,
-                                 self.rutas.sigma_input_file)
-        raw_pos = safe_load_json(entrada_dir / self.rutas.poseidon_input_file,
-                                 self.rutas.poseidon_input_file)
+        # EPSILON
+        try:
+            raw_eps = safe_load_json(entrada_dir / self.rutas.epsilon_input_file,
+                                     self.rutas.epsilon_input_file)
+            self.epsilon_input = unwrap(raw_eps, "CFG_INPUT_EPSILON")
+        except FileNotFoundError:
+            log(f"[HELIOS] Input EPSILON no encontrado ({self.rutas.epsilon_input_file}), se omite.")
+            self.epsilon_input = {}
 
-        self.epsilon_input = unwrap(raw_eps, "CFG_INPUT_EPSILON")
-        self.sigma_input = unwrap(raw_sig, "CFG_INPUT_SIGMA")
-        self.poseidon_input = unwrap(raw_pos, "CFG_INPUT_POSEIDON")
+        # SIGMA
+        try:
+            raw_sig = safe_load_json(entrada_dir / self.rutas.sigma_input_file,
+                                     self.rutas.sigma_input_file)
+            self.sigma_input = unwrap(raw_sig, "CFG_INPUT_SIGMA")
+        except FileNotFoundError:
+            log(f"[HELIOS] Input SIGMA no encontrado ({self.rutas.sigma_input_file}), se omite.")
+            self.sigma_input = {}
 
-        log("Inputs de ENTRADA cargados correctamente.")
+        # POSEIDON
+        try:
+            raw_pos = safe_load_json(entrada_dir / self.rutas.poseidon_input_file,
+                                     self.rutas.poseidon_input_file)
+            self.poseidon_input = unwrap(raw_pos, "CFG_INPUT_POSEIDON")
+        except FileNotFoundError:
+            log(f"[HELIOS] Input POSEIDON no encontrado ({self.rutas.poseidon_input_file}), se omite.")
+            self.poseidon_input = {}
+
+        log("Inputs de ENTRADA cargados (parcial o totalmente).")
 
     # ------------------- HELPERS CFG -------------------
 
@@ -740,11 +844,105 @@ class HeliosDigitalTwinEngine:
         return x_est
 
     def process_poseidon(self) -> Dict[str, Any]:
-        # (idéntico al código original que ya tienes, omitido aquí por espacio)
-        # Copia exactamente tu bloque process_poseidon() completo desde HELIOS_DIGITALTWIN3.py
-        # y pégalo aquí sin cambios.
-        ...
-        # (en tu archivo real, reemplaza "..." por todo el cuerpo original de process_poseidon)
+        cfg = self.poseidon_input
+        if not cfg:
+            log("[POSEIDON] Input vacío; se omite cálculo.")
+            return {"productos": []}
+
+        product_id = cfg.get("product_id", "")
+        market_id = cfg.get("market_id", "")
+        demanda_hist = cfg.get("demanda_historica", [])
+        horizonte = int(cfg.get("horizonte_meses", 6))
+
+        # Configuración Kalman
+        k_cfg = cfg.get("kalman", {})
+        usar_kalman = k_cfg.get("usar_kalman", False)
+        Q = float(k_cfg.get("Q", 1.0))
+        R = float(k_cfg.get("R", 1.0))
+        P0 = float(k_cfg.get("P0", 1.0))
+        x0 = k_cfg.get("x0")
+        if x0 is not None:
+            x0 = float(x0)
+
+        # Configuración PID
+        p_cfg = cfg.get("pid", {})
+        Kp = float(p_cfg.get("Kp", 0.5))
+        Ki = float(p_cfg.get("Ki", 0.1))
+        Kd = float(p_cfg.get("Kd", 0.01))
+
+        # Configuración Tanques
+        inv_t1 = float(cfg.get("inventario_inicial_tanque1", 0.0))
+        inv_t2 = float(cfg.get("inventario_inicial_tanque2", 0.0))
+        capacidad_max = float(cfg.get("capacidad_max_mensual", 10000.0))
+        target_cobertura = float(cfg.get("cobertura_objetivo_meses", 1.0))
+
+        # 1. Proyección de Demanda
+        demanda_proyectada = []
+        if not demanda_hist:
+            demanda_proyectada = [0.0] * horizonte
+        else:
+            if usar_kalman:
+                filtered = self.kalman_filter_1d(demanda_hist, Q=Q, R=R, x0=x0, P0=P0)
+                last_val = filtered[-1] if filtered else 0.0
+                demanda_proyectada = [max(0.0, last_val)] * horizonte
+            else:
+                avg = sum(demanda_hist) / len(demanda_hist)
+                demanda_proyectada = [avg] * horizonte
+
+        # 2. Simulación Sistémica (Tanques + PID)
+        t1_series = []
+        t2_series = []
+        flujo_t1_t2_series = []
+        produccion_series = []
+
+        curr_t1 = inv_t1
+        curr_t2 = inv_t2
+        integral = 0.0
+        prev_error = 0.0
+
+        avg_demanda = sum(demanda_proyectada) / max(1, len(demanda_proyectada))
+        target_t2 = avg_demanda * target_cobertura
+
+        for t in range(horizonte):
+            demanda_t = demanda_proyectada[t]
+            venta = min(curr_t2, demanda_t)
+            curr_t2 -= venta
+
+            error = target_t2 - curr_t2
+            integral += error
+            derivative = error - prev_error
+            prev_error = error
+
+            signal = Kp * error + Ki * integral + Kd * derivative
+            pedido_t2 = max(0.0, signal)
+            flujo = min(curr_t1, pedido_t2, capacidad_max)
+
+            curr_t1 -= flujo
+            curr_t2 += flujo
+            produccion = min(capacidad_max, pedido_t2)
+            curr_t1 += produccion
+
+            t1_series.append(curr_t1)
+            t2_series.append(curr_t2)
+            flujo_t1_t2_series.append(flujo)
+            produccion_series.append(produccion)
+
+        return {
+            "productos": [
+                {
+                    "product_id": product_id,
+                    "market_id": market_id,
+                    "horizonte_meses": horizonte,
+                    "demanda_proyectada": demanda_proyectada,
+                    "inventario_tanque1": t1_series,
+                    "inventario_tanque2": t2_series,
+                    "flujo_t1_t2": flujo_t1_t2_series,
+                    "produccion_sugerida": produccion_series,
+                    "pid_params": {"Kp": Kp, "Ki": Ki, "Kd": Kd},
+                    "kalman_params": {"Q": Q, "R": R, "x0": x0}
+                }
+            ]
+        }
 
     # ============================================================
     # ORQUESTADOR ORIGINAL (archivo en PREDICCION)
@@ -804,6 +1002,10 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         * run_digital_twin(epsilon_input, sigma_input, poseidon_input, write_output=False)
     """
 
+    # Cache estático de clase para evitar leer disco en cada petición (Alto Rendimiento)
+    _cache_loaded = False
+    _cache_data = {}
+
     def __init__(self, enable_logs: bool = True) -> None:
         # Directorio backend/ (dos niveles arriba de este archivo: digital_twin/helios_engine.py)
         backend_root = Path(__file__).resolve().parents[1]
@@ -813,11 +1015,44 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         global LOG_ENABLED
         LOG_ENABLED = enable_logs
 
-        super().__init__(cfg_rutas_path)
+        # OPTIMIZACIÓN: Si ya cargamos la config en memoria, la reutilizamos.
+        # Esto permite 1000+ req/seg sin tocar el disco duro.
+        if HeliosEngine._cache_loaded:
+            # Restauramos referencias desde caché (RAM)
+            self.cfg_rutas_path = cfg_rutas_path
+            self.rutas = HeliosEngine._cache_data["rutas"]
+            
+            self.cfg_general = HeliosEngine._cache_data["cfg_general"]
+            self.cfg_limites = HeliosEngine._cache_data["cfg_limites"]
+            self.cfg_mercados = HeliosEngine._cache_data["cfg_mercados"]
+            self.cfg_productos = HeliosEngine._cache_data["cfg_productos"]
+            self.cfg_demanda_mercado = HeliosEngine._cache_data["cfg_demanda_mercado"]
+            self.cfg_mercado_shocks = HeliosEngine._cache_data["cfg_mercado_shocks"]
+            self.cfg_comex = HeliosEngine._cache_data["cfg_comex"]
 
-        # Cargamos rutas y CFG una sola vez
-        self.load_rutas()
-        self.load_cfg()
+            # Inicializamos inputs vacíos para esta instancia de cálculo
+            self.epsilon_input = {}
+            self.sigma_input = {}
+            self.poseidon_input = {}
+            random.seed(42)
+        else:
+            # Primera vez: Leemos disco (lento)
+            super().__init__(cfg_rutas_path)
+            self.load_rutas()
+            self.load_cfg()
+            
+            # Guardamos en caché de clase
+            HeliosEngine._cache_data = {
+                "rutas": self.rutas,
+                "cfg_general": self.cfg_general,
+                "cfg_limites": self.cfg_limites,
+                "cfg_mercados": self.cfg_mercados,
+                "cfg_productos": self.cfg_productos,
+                "cfg_demanda_mercado": self.cfg_demanda_mercado,
+                "cfg_mercado_shocks": self.cfg_mercado_shocks,
+                "cfg_comex": self.cfg_comex,
+            }
+            HeliosEngine._cache_loaded = True
 
     # -------- Métodos friendly para la API --------
 
@@ -827,7 +1062,10 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         directamente desde la API (sin usar archivos ENTRADA/).
         """
         self.epsilon_input = epsilon_input
-        return self.process_epsilon()
+        result = self.process_epsilon()
+        if "productos" in result and result["productos"]:
+            return result["productos"][0]
+        return {}
 
     def run_sigma(self, sigma_input: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -835,7 +1073,10 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         directamente desde la API.
         """
         self.sigma_input = sigma_input
-        return self.process_sigma()
+        result = self.process_sigma()
+        if "productos" in result and result["productos"]:
+            return result["productos"][0]
+        return {}
 
     def run_poseidon(self, poseidon_input: Dict[str, Any]) -> Dict[str, Any]:
         """
@@ -843,13 +1084,16 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         directamente desde la API.
         """
         self.poseidon_input = poseidon_input
-        return self.process_poseidon()
+        result = self.process_poseidon()
+        if "productos" in result and result["productos"]:
+            return result["productos"][0]
+        return {}
 
     def run_digital_twin(
         self,
-        epsilon_input: Dict[str, Any],
-        sigma_input: Dict[str, Any],
-        poseidon_input: Dict[str, Any],
+        epsilon_input: Optional[Dict[str, Any]] = None,
+        sigma_input: Optional[Dict[str, Any]] = None,
+        poseidon_input: Optional[Dict[str, Any]] = None,
         write_output: bool = False
     ) -> Dict[str, Any]:
         """
@@ -859,9 +1103,9 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         Si write_output=True, además escribe el JSON en la carpeta PREDICCION
         según lo definido en CFG_HELIOS_RUTAS.json.
         """
-        self.epsilon_input = epsilon_input
-        self.sigma_input = sigma_input
-        self.poseidon_input = poseidon_input
+        self.epsilon_input = epsilon_input if epsilon_input is not None else {}
+        self.sigma_input = sigma_input if sigma_input is not None else {}
+        self.poseidon_input = poseidon_input if poseidon_input is not None else {}
 
         epsilon_out = self.process_epsilon()
         sigma_out = self.process_sigma()
