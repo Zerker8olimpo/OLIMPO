@@ -1,6 +1,6 @@
 # backend/scripts/migrate_001_billing.py
 import sqlite3
-from backend.core.config import settings
+from backend.api.settings import settings
 
 def main():
     if not settings.DATABASE_URL.startswith("sqlite"):

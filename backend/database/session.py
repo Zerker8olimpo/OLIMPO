@@ -1,17 +1,11 @@
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from backend.api.settings import settings
 
-from backend.database.engine import engine
+engine = create_engine(settings.DATABASE_URL, pool_pre_ping=True)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine,
-    future=True
-)
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# Removed get_db from here as it is usually in api/deps.py or similar, 
+# but keeping SessionLocal for imports.
+# If you need get_db here for scripts:
+# def get_db(): ...

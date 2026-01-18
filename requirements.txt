@@ -1,52 +1,26 @@
-# =========================
-# API
-# =========================
-# =========================
-# API
-# =========================
-fastapi
-uvicorn
-pydantic>=2.0
-pydantic-settings>=2.0
-starlette
-anyio
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+gunicorn==22.0.0
 
-# =========================
-# Database
-# =========================
-SQLAlchemy>=2.0
-psycopg2-binary
+SQLAlchemy==2.0.36
+psycopg2-binary==2.9.10
 
-# =========================
-# Data processing
-# =========================
+python-jose[cryptography]==3.3.0
+pydantic==2.10.4
+pydantic-settings==2.7.0
+
+google-auth==2.36.0
+
+httpx==0.27.2
+python-multipart==0.0.20
+
+# correo
+aiosmtplib==3.0.2
+jinja2==3.1.5
+
+# Data & ML (Preserving existing)
 pandas
 numpy
 scipy
-
-# =========================
-# Visualization
-# =========================
-matplotlib
-plotly
-openpyxl
-
-# =========================
-# File / env
-# =========================
-python-multipart
-pyyaml
-python-dotenv
-
-# =========================
-# ML / Stats
-# =========================
 scikit-learn
 statsmodels
-
-# =========================
-# Auth / Security
-# =========================
-requests
-PyJWT>=2.8.0
-google-auth>=2.25.0

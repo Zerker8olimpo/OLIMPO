@@ -6841,8 +6841,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "pinturas_interiores",
+      "product_nombre": "Pinturas Interiores",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -6917,8 +6917,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "pinturas_exteriores",
+      "product_nombre": "Pinturas Exteriores",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -6993,8 +6993,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "esmaltes_sinteticos",
+      "product_nombre": "Esmaltes Sinteticos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7069,8 +7069,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "sellos_acrilicos_siliconas",
+      "product_nombre": "Sellos Acrilicos Siliconas",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7145,8 +7145,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "ceramicos_porcelanatos",
+      "product_nombre": "Ceramicos Porcelanatos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7221,8 +7221,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "adhesivos_fragues",
+      "product_nombre": "Adhesivos Fragues",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7297,8 +7297,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "herramientas_manuales",
+      "product_nombre": "Herramientas Manuales",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7373,8 +7373,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "herramientas_electricas",
+      "product_nombre": "Herramientas Electricas",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7449,8 +7449,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "herrajes_puertas_muebles",
+      "product_nombre": "Herrajes Puertas Muebles",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7525,8 +7525,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "cerraduras_seguridad",
+      "product_nombre": "Cerraduras Seguridad",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7601,8 +7601,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "canaletas_accesorios",
+      "product_nombre": "Canaletas Accesorios",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7677,8 +7677,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "tornillos_fijaciones",
+      "product_nombre": "Tornillos Fijaciones",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7753,8 +7753,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "abrasivos_discos",
+      "product_nombre": "Abrasivos Discos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7829,8 +7829,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "elementos_proteccion_personal",
+      "product_nombre": "Elementos Proteccion Personal",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7905,8 +7905,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "maderas_dimensionadas",
+      "product_nombre": "Maderas Dimensionadas",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -7981,8 +7981,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "perfiles_metalicos",
+      "product_nombre": "Perfiles Metalicos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8057,8 +8057,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "placas_yeso_volcanita",
+      "product_nombre": "Placas Yeso Volcanita",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8133,8 +8133,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "aislantes_termicos",
+      "product_nombre": "Aislantes Termicos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8209,8 +8209,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "iluminacion_domiciliaria",
+      "product_nombre": "Iluminacion Domiciliaria",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8285,8 +8285,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "enchufes_interruptores",
+      "product_nombre": "Enchufes Interruptores",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8361,8 +8361,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "tableros_electricos_basicos",
+      "product_nombre": "Tableros Electricos Basicos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8437,8 +8437,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "cables_electricos",
+      "product_nombre": "Cables Electricos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8513,8 +8513,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "adhesivos_construccion",
+      "product_nombre": "Adhesivos Construccion",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8589,8 +8589,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "espumas_expansivas",
+      "product_nombre": "Espumas Expansivas",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8665,8 +8665,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "siliconas_tecnicas",
+      "product_nombre": "Siliconas Tecnicas",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8741,8 +8741,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "lijas_papeles_abrasivos",
+      "product_nombre": "Lijas Papeles Abrasivos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8817,8 +8817,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "brochas_rodillos",
+      "product_nombre": "Brochas Rodillos",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8893,8 +8893,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "accesorios_pintura",
+      "product_nombre": "Accesorios Pintura",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -8969,8 +8969,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "escaleras_andamios",
+      "product_nombre": "Escaleras Andamios",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -9045,8 +9045,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "cajas_herramientas",
+      "product_nombre": "Cajas Herramientas",
       "market_id": "mercado_ferreteria_acabados",
       "market_nombre": "Mercado Ferreteria Acabados",
       "pid": {
@@ -9121,8 +9121,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "fertilizantes_granulares",
+      "product_nombre": "Fertilizantes Granulares",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9197,8 +9197,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "fertilizantes_liquidos",
+      "product_nombre": "Fertilizantes Liquidos",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9273,8 +9273,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "correctores_suelo",
+      "product_nombre": "Correctores Suelo",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9349,8 +9349,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "herbicidas",
+      "product_nombre": "Herbicidas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9425,8 +9425,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "fungicidas",
+      "product_nombre": "Fungicidas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9501,8 +9501,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "insecticidas",
+      "product_nombre": "Insecticidas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9577,8 +9577,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "semillas_cereales",
+      "product_nombre": "Semillas Cereales",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9653,8 +9653,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "semillas_hortalizas",
+      "product_nombre": "Semillas Hortalizas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9729,8 +9729,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "semillas_forrajeras",
+      "product_nombre": "Semillas Forrajeras",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9805,8 +9805,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "alimentos_animales",
+      "product_nombre": "Alimentos Animales",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9881,8 +9881,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "suplementos_ganado",
+      "product_nombre": "Suplementos Ganado",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -9957,8 +9957,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "sales_minerales",
+      "product_nombre": "Sales Minerales",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10033,8 +10033,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "bioestimulantes",
+      "product_nombre": "Bioestimulantes",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10109,8 +10109,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "reguladores_crecimiento",
+      "product_nombre": "Reguladores Crecimiento",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10185,8 +10185,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "sustratos_agricolas",
+      "product_nombre": "Sustratos Agricolas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10261,8 +10261,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "sistemas_riego",
+      "product_nombre": "Sistemas Riego",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10337,8 +10337,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "mangueras_agricolas",
+      "product_nombre": "Mangueras Agricolas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10413,8 +10413,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "cintas_goteo",
+      "product_nombre": "Cintas Goteo",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10489,8 +10489,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "bombas_riego",
+      "product_nombre": "Bombas Riego",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10565,8 +10565,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "estanques_agricolas",
+      "product_nombre": "Estanques Agricolas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10641,8 +10641,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "invernaderos",
+      "product_nombre": "Invernaderos",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10717,8 +10717,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "plasticos_agricolas",
+      "product_nombre": "Plasticos Agricolas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10793,8 +10793,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "mallas_sombra",
+      "product_nombre": "Mallas Sombra",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10869,8 +10869,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "equipos_fumigacion",
+      "product_nombre": "Equipos Fumigacion",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -10945,8 +10945,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "maquinaria_agricola_menor",
+      "product_nombre": "Maquinaria Agricola Menor",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -11021,8 +11021,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "repuestos_maquinaria_agricola",
+      "product_nombre": "Repuestos Maquinaria Agricola",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -11097,8 +11097,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "herramientas_agricolas",
+      "product_nombre": "Herramientas Agricolas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -11173,8 +11173,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "equipos_medicion_agro",
+      "product_nombre": "Equipos Medicion Agro",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -11249,8 +11249,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "control_plagas",
+      "product_nombre": "Control Plagas",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -11325,8 +11325,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "productos_postcosecha",
+      "product_nombre": "Productos Postcosecha",
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "pid": {
@@ -11401,8 +11401,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "transporte_ultima_milla",
+      "product_nombre": "Transporte Ultima Milla",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11477,8 +11477,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "transporte_interurbano",
+      "product_nombre": "Transporte Interurbano",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11553,8 +11553,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "transporte_internacional",
+      "product_nombre": "Transporte Internacional",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11629,8 +11629,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "almacenaje",
+      "product_nombre": "Almacenaje",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11705,8 +11705,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "cross_docking",
+      "product_nombre": "Cross Docking",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11781,8 +11781,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "servicios_flete",
+      "product_nombre": "Servicios Flete",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11857,8 +11857,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "combustible_logistico",
+      "product_nombre": "Combustible Logistico",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -11933,8 +11933,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "arriendo_camiones",
+      "product_nombre": "Arriendo Camiones",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12009,8 +12009,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "arriendo_furgones",
+      "product_nombre": "Arriendo Furgones",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12085,8 +12085,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "mantencion_flotas",
+      "product_nombre": "Mantencion Flotas",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12161,8 +12161,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "repuestos_vehiculos_comerciales",
+      "product_nombre": "Repuestos Vehiculos Comerciales",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12237,8 +12237,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "neumaticos_comerciales",
+      "product_nombre": "Neumaticos Comerciales",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12313,8 +12313,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "lubricantes_industriales",
+      "product_nombre": "Lubricantes Industriales",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12389,8 +12389,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "seguros_transporte",
+      "product_nombre": "Seguros Transporte",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12465,8 +12465,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "tracking_monitoreo",
+      "product_nombre": "Tracking Monitoreo",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12541,8 +12541,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "software_logistico",
+      "product_nombre": "Software Logistico",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12617,8 +12617,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "servicios_aduana",
+      "product_nombre": "Servicios Aduana",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12693,8 +12693,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "consolidacion_carga",
+      "product_nombre": "Consolidacion Carga",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12769,8 +12769,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "desconsolidacion_carga",
+      "product_nombre": "Desconsolidacion Carga",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12845,8 +12845,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "embalajes_industriales",
+      "product_nombre": "Embalajes Industriales",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12921,8 +12921,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "palets_contenedores",
+      "product_nombre": "Palets Contenedores",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -12997,8 +12997,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "servicios_reversa",
+      "product_nombre": "Servicios Reversa",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13073,8 +13073,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "logistica_frio",
+      "product_nombre": "Logistica Frio",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13149,8 +13149,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "operador_logistico_integral",
+      "product_nombre": "Operador Logistico Integral",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13225,8 +13225,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "courier_empresarial",
+      "product_nombre": "Courier Empresarial",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13301,8 +13301,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "ultima_milla_ecommerce",
+      "product_nombre": "Ultima Milla Ecommerce",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13377,8 +13377,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "gestion_inventarios_logisticos",
+      "product_nombre": "Gestion Inventarios Logisticos",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13453,8 +13453,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "centros_distribucion",
+      "product_nombre": "Centros Distribucion",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13529,8 +13529,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "logistica_puertos",
+      "product_nombre": "Logistica Puertos",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13605,8 +13605,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "logistica_aeropuertos",
+      "product_nombre": "Logistica Aeropuertos",
       "market_id": "mercado_logistico_transporte",
       "market_nombre": "Mercado Logistico Transporte",
       "pid": {
@@ -13681,8 +13681,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "medicamentos_genericos",
+      "product_nombre": "Medicamentos Genericos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -13757,8 +13757,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "medicamentos_marca",
+      "product_nombre": "Medicamentos Marca",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -13833,8 +13833,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "insumos_hospitalarios",
+      "product_nombre": "Insumos Hospitalarios",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -13909,8 +13909,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "material_quirurgico",
+      "product_nombre": "Material Quirurgico",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -13985,8 +13985,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "equipos_medicos_basicos",
+      "product_nombre": "Equipos Medicos Basicos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14061,8 +14061,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "dispositivos_medicos",
+      "product_nombre": "Dispositivos Medicos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14137,8 +14137,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "reactivos_laboratorio",
+      "product_nombre": "Reactivos Laboratorio",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14213,8 +14213,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "equipos_laboratorio",
+      "product_nombre": "Equipos Laboratorio",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14289,8 +14289,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "insumos_diagnostico",
+      "product_nombre": "Insumos Diagnostico",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14365,8 +14365,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "productos_ortopedia",
+      "product_nombre": "Productos Ortopedia",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14441,8 +14441,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "productos_rehabilitacion",
+      "product_nombre": "Productos Rehabilitacion",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14517,8 +14517,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "productos_odontologicos",
+      "product_nombre": "Productos Odontologicos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14593,8 +14593,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "farmacia_otc",
+      "product_nombre": "Farmacia Otc",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14669,8 +14669,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "vitaminas_suplementos",
+      "product_nombre": "Vitaminas Suplementos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14745,8 +14745,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "higiene_clinica",
+      "product_nombre": "Higiene Clinica",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14821,8 +14821,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "desinfectantes_clinicos",
+      "product_nombre": "Desinfectantes Clinicos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14897,8 +14897,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "proteccion_medica",
+      "product_nombre": "Proteccion Medica",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -14973,8 +14973,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "ropa_clinica",
+      "product_nombre": "Ropa Clinica",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15049,8 +15049,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "mobiliario_clinico",
+      "product_nombre": "Mobiliario Clinico",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15125,8 +15125,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "equipamiento_farmacia",
+      "product_nombre": "Equipamiento Farmacia",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15201,8 +15201,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "almacenaje_farmaceutico",
+      "product_nombre": "Almacenaje Farmaceutico",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15277,8 +15277,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "cadena_frio_farmaceutica",
+      "product_nombre": "Cadena Frio Farmaceutica",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15353,8 +15353,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "logistica_farmaceutica",
+      "product_nombre": "Logistica Farmaceutica",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15429,8 +15429,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "servicios_regulatorios",
+      "product_nombre": "Servicios Regulatorios",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15505,8 +15505,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "farmacovigilancia",
+      "product_nombre": "Farmacovigilancia",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15581,8 +15581,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "ensayos_clinicos",
+      "product_nombre": "Ensayos Clinicos",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15657,8 +15657,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "equipos_imagenologia",
+      "product_nombre": "Equipos Imagenologia",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15733,8 +15733,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "insumos_imagenologia",
+      "product_nombre": "Insumos Imagenologia",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15809,8 +15809,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "material_descartable_medico",
+      "product_nombre": "Material Descartable Medico",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15885,8 +15885,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "bioseguridad",
+      "product_nombre": "Bioseguridad",
       "market_id": "mercado_farmaceutico_salud",
       "market_nombre": "Mercado Farmaceutico Salud",
       "pid": {
@@ -15961,8 +15961,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "smartphones",
+      "product_nombre": "Smartphones",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16037,8 +16037,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "notebooks",
+      "product_nombre": "Notebooks",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16113,8 +16113,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "tablets",
+      "product_nombre": "Tablets",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16189,8 +16189,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "computadores_escritorio",
+      "product_nombre": "Computadores Escritorio",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16265,8 +16265,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "monitores",
+      "product_nombre": "Monitores",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16341,8 +16341,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "televisores",
+      "product_nombre": "Televisores",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16417,8 +16417,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "impresoras",
+      "product_nombre": "Impresoras",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16493,8 +16493,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "routers_y_redes",
+      "product_nombre": "Routers y Redes",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16569,8 +16569,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "almacenamiento_externo",
+      "product_nombre": "Almacenamiento Externo",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16645,8 +16645,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "discos_duros_ssd",
+      "product_nombre": "Discos Duros SSD",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16721,8 +16721,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "memorias_ram",
+      "product_nombre": "Memorias RAM",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16797,8 +16797,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "tarjetas_graficas",
+      "product_nombre": "Tarjetas Graficas",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16873,8 +16873,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "procesadores",
+      "product_nombre": "Procesadores",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -16949,8 +16949,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "placas_madre",
+      "product_nombre": "Placas Madre",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17025,8 +17025,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "fuentes_poder",
+      "product_nombre": "Fuentes Poder",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17101,8 +17101,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "perifericos_computacion",
+      "product_nombre": "Perifericos Computacion",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17177,8 +17177,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "teclados_y_mouse",
+      "product_nombre": "Teclados y Mouse",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17253,8 +17253,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "audifonos",
+      "product_nombre": "Audifonos",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17329,8 +17329,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "parlantes",
+      "product_nombre": "Parlantes",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17405,8 +17405,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "camaras_digitales",
+      "product_nombre": "Camaras Digitales",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17481,8 +17481,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "camaras_seguridad",
+      "product_nombre": "Camaras Seguridad",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17557,8 +17557,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "domotica_hogar",
+      "product_nombre": "Domotica Hogar",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17633,8 +17633,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "dispositivos_iot",
+      "product_nombre": "Dispositivos IoT",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17709,8 +17709,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "smartwatch_y_wearables",
+      "product_nombre": "Smartwatch y Wearables",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17785,8 +17785,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "accesorios_moviles",
+      "product_nombre": "Accesorios Moviles",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17861,8 +17861,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "cargadores_y_cables",
+      "product_nombre": "Cargadores y Cables",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -17937,8 +17937,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "baterias",
+      "product_nombre": "Baterias",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -18013,8 +18013,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "componentes_electronicos",
+      "product_nombre": "Componentes Electronicos",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -18089,8 +18089,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "herramientas_electronicas",
+      "product_nombre": "Herramientas Electronicas",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -18165,8 +18165,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "consumibles_tecnologicos",
+      "product_nombre": "Consumibles Tecnologicos",
       "market_id": "mercado_electronica_tecnologia",
       "market_nombre": "Mercado Electronica Tecnologia",
       "pid": {
@@ -18241,8 +18241,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "rodamientos",
+      "product_nombre": "Rodamientos",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18317,8 +18317,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "correas_transmision",
+      "product_nombre": "Correas Transmision",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18393,8 +18393,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "lubricantes_industriales",
+      "product_nombre": "Lubricantes Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18469,8 +18469,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "sellos_industriales",
+      "product_nombre": "Sellos Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18545,8 +18545,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "valvulas_industriales",
+      "product_nombre": "Valvulas Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18621,8 +18621,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "bombas_industriales",
+      "product_nombre": "Bombas Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18697,8 +18697,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "motores_electricos",
+      "product_nombre": "Motores Electricos",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18773,8 +18773,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "reductores_velocidad",
+      "product_nombre": "Reductores Velocidad",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18849,8 +18849,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "componentes_neumaticos",
+      "product_nombre": "Componentes Neumaticos",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -18925,8 +18925,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "componentes_hidraulicos",
+      "product_nombre": "Componentes Hidraulicos",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19001,8 +19001,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "instrumentacion_industrial",
+      "product_nombre": "Instrumentacion Industrial",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19077,8 +19077,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "sensores_industriales",
+      "product_nombre": "Sensores Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19153,8 +19153,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "automatizacion_industrial",
+      "product_nombre": "Automatizacion Industrial",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19229,8 +19229,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "tableros_control",
+      "product_nombre": "Tableros Control",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19305,8 +19305,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "cables_industriales",
+      "product_nombre": "Cables Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19381,8 +19381,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "iluminacion_industrial",
+      "product_nombre": "Iluminacion Industrial",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19457,8 +19457,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "herramientas_industriales",
+      "product_nombre": "Herramientas Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19533,8 +19533,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "equipos_medicion",
+      "product_nombre": "Equipos Medicion",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19609,8 +19609,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "seguridad_industrial",
+      "product_nombre": "Seguridad Industrial",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19685,8 +19685,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "consumibles_mro",
+      "product_nombre": "Consumibles Mro",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19761,8 +19761,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "abrasivos_industriales",
+      "product_nombre": "Abrasivos Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19837,8 +19837,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "adhesivos_industriales",
+      "product_nombre": "Adhesivos Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19913,8 +19913,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "filtros_industriales",
+      "product_nombre": "Filtros Industriales",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -19989,8 +19989,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "repuestos_maquinaria",
+      "product_nombre": "Repuestos Maquinaria",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20065,8 +20065,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "mantenimiento_predictivo",
+      "product_nombre": "Mantenimiento Predictivo",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20141,8 +20141,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "servicios_mantenimiento",
+      "product_nombre": "Servicios Mantenimiento",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20217,8 +20217,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "calibracion_equipos",
+      "product_nombre": "Calibracion Equipos",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20293,8 +20293,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "aislamiento_industrial",
+      "product_nombre": "Aislamiento Industrial",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20369,8 +20369,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "estructuras_metalicas",
+      "product_nombre": "Estructuras Metalicas",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20445,8 +20445,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "soportes_anclajes",
+      "product_nombre": "Soportes Anclajes",
       "market_id": "mercado_industrial_MRO",
       "market_nombre": "Mercado Industrial Mro",
       "pid": {
@@ -20521,8 +20521,8 @@
       }
     },
     {
-      "product_id": "producto_1",
-      "product_nombre": "Producto 1",
+      "product_id": "creditos_capital_trabajo",
+      "product_nombre": "Creditos Capital Trabajo",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -20597,8 +20597,8 @@
       }
     },
     {
-      "product_id": "producto_2",
-      "product_nombre": "Producto 2",
+      "product_id": "leasing_operativo",
+      "product_nombre": "Leasing Operativo",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -20673,8 +20673,8 @@
       }
     },
     {
-      "product_id": "producto_3",
-      "product_nombre": "Producto 3",
+      "product_id": "leasing_financiero",
+      "product_nombre": "Leasing Financiero",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -20749,8 +20749,8 @@
       }
     },
     {
-      "product_id": "producto_4",
-      "product_nombre": "Producto 4",
+      "product_id": "factoring",
+      "product_nombre": "Factoring",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -20825,8 +20825,8 @@
       }
     },
     {
-      "product_id": "producto_5",
-      "product_nombre": "Producto 5",
+      "product_id": "confirming",
+      "product_nombre": "Confirming",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -20901,8 +20901,8 @@
       }
     },
     {
-      "product_id": "producto_6",
-      "product_nombre": "Producto 6",
+      "product_id": "seguros_empresariales",
+      "product_nombre": "Seguros Empresariales",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -20977,8 +20977,8 @@
       }
     },
     {
-      "product_id": "producto_7",
-      "product_nombre": "Producto 7",
+      "product_id": "seguros_credito",
+      "product_nombre": "Seguros Credito",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21053,8 +21053,8 @@
       }
     },
     {
-      "product_id": "producto_8",
-      "product_nombre": "Producto 8",
+      "product_id": "cuentas_corrientes_empresa",
+      "product_nombre": "Cuentas Corrientes Empresa",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21129,8 +21129,8 @@
       }
     },
     {
-      "product_id": "producto_9",
-      "product_nombre": "Producto 9",
+      "product_id": "lineas_credito",
+      "product_nombre": "Lineas Credito",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21205,8 +21205,8 @@
       }
     },
     {
-      "product_id": "producto_10",
-      "product_nombre": "Producto 10",
+      "product_id": "tarjetas_empresa",
+      "product_nombre": "Tarjetas Empresa",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21281,8 +21281,8 @@
       }
     },
     {
-      "product_id": "producto_11",
-      "product_nombre": "Producto 11",
+      "product_id": "financiamiento_importaciones",
+      "product_nombre": "Financiamiento Importaciones",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21357,8 +21357,8 @@
       }
     },
     {
-      "product_id": "producto_12",
-      "product_nombre": "Producto 12",
+      "product_id": "financiamiento_exportaciones",
+      "product_nombre": "Financiamiento Exportaciones",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21433,8 +21433,8 @@
       }
     },
     {
-      "product_id": "producto_13",
-      "product_nombre": "Producto 13",
+      "product_id": "cobertura_cambiaria",
+      "product_nombre": "Cobertura Cambiaria",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21509,8 +21509,8 @@
       }
     },
     {
-      "product_id": "producto_14",
-      "product_nombre": "Producto 14",
+      "product_id": "servicios_forex",
+      "product_nombre": "Servicios Forex",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21585,8 +21585,8 @@
       }
     },
     {
-      "product_id": "producto_15",
-      "product_nombre": "Producto 15",
+      "product_id": "inversiones_corto_plazo",
+      "product_nombre": "Inversiones Corto Plazo",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21661,8 +21661,8 @@
       }
     },
     {
-      "product_id": "producto_16",
-      "product_nombre": "Producto 16",
+      "product_id": "fondos_mutuos_empresa",
+      "product_nombre": "Fondos Mutuos Empresa",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21737,8 +21737,8 @@
       }
     },
     {
-      "product_id": "producto_17",
-      "product_nombre": "Producto 17",
+      "product_id": "pagos_electronicos",
+      "product_nombre": "Pagos Electronicos",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21813,8 +21813,8 @@
       }
     },
     {
-      "product_id": "producto_18",
-      "product_nombre": "Producto 18",
+      "product_id": "pasarelas_pago",
+      "product_nombre": "Pasarelas Pago",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21889,8 +21889,8 @@
       }
     },
     {
-      "product_id": "producto_19",
-      "product_nombre": "Producto 19",
+      "product_id": "cobranza_externa",
+      "product_nombre": "Cobranza Externa",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -21965,8 +21965,8 @@
       }
     },
     {
-      "product_id": "producto_20",
-      "product_nombre": "Producto 20",
+      "product_id": "evaluacion_riesgo_crediticio",
+      "product_nombre": "Evaluacion Riesgo Crediticio",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22041,8 +22041,8 @@
       }
     },
     {
-      "product_id": "producto_21",
-      "product_nombre": "Producto 21",
+      "product_id": "scoring_financiero",
+      "product_nombre": "Scoring Financiero",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22117,8 +22117,8 @@
       }
     },
     {
-      "product_id": "producto_22",
-      "product_nombre": "Producto 22",
+      "product_id": "contabilidad_servicios",
+      "product_nombre": "Contabilidad Servicios",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22193,8 +22193,8 @@
       }
     },
     {
-      "product_id": "producto_23",
-      "product_nombre": "Producto 23",
+      "product_id": "auditoria_financiera",
+      "product_nombre": "Auditoria Financiera",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22269,8 +22269,8 @@
       }
     },
     {
-      "product_id": "producto_24",
-      "product_nombre": "Producto 24",
+      "product_id": "planificacion_tributaria",
+      "product_nombre": "Planificacion Tributaria",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22345,8 +22345,8 @@
       }
     },
     {
-      "product_id": "producto_25",
-      "product_nombre": "Producto 25",
+      "product_id": "gestion_flujo_caja",
+      "product_nombre": "Gestion Flujo Caja",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22421,8 +22421,8 @@
       }
     },
     {
-      "product_id": "producto_26",
-      "product_nombre": "Producto 26",
+      "product_id": "finanzas_corporativas_pyme",
+      "product_nombre": "Finanzas Corporativas Pyme",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22497,8 +22497,8 @@
       }
     },
     {
-      "product_id": "producto_27",
-      "product_nombre": "Producto 27",
+      "product_id": "banca_digital_empresas",
+      "product_nombre": "Banca Digital Empresas",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22573,8 +22573,8 @@
       }
     },
     {
-      "product_id": "producto_28",
-      "product_nombre": "Producto 28",
+      "product_id": "fintech_pyme",
+      "product_nombre": "Fintech Pyme",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22649,8 +22649,8 @@
       }
     },
     {
-      "product_id": "producto_29",
-      "product_nombre": "Producto 29",
+      "product_id": "asesoria_financiera",
+      "product_nombre": "Asesoria Financiera",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22725,8 +22725,8 @@
       }
     },
     {
-      "product_id": "producto_30",
-      "product_nombre": "Producto 30",
+      "product_id": "compliance_financiero",
+      "product_nombre": "Compliance Financiero",
       "market_id": "mercado_financiero_PyME",
       "market_nombre": "Mercado Financiero Pyme",
       "pid": {
@@ -22798,6 +22798,2448 @@
         "indicador_IPC_valor": 0.03,
         "indicador_USD_valor": 950,
         "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "energia_electrica",
+      "product_nombre": "Energía Eléctrica",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.5
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.02
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.2,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.5,
+        "shock_magnitud_media": 0.3,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 6,
+        "shock_buffer_recomendado": 0.8
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.05,
+        "indicador_USD_valor": 1.0,
+        "indicador_EUR_valor": 0.7
+      }
+    },
+    {
+      "product_id": "gas_natural",
+      "product_nombre": "Gas Natural",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.85,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.75,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.7
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.65
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.3,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.85,
+        "shock_tipo_principal": "GEOPOLITICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.5,
+        "shock_magnitud_media": 0.35,
+        "shock_magnitud_max": 0.7,
+        "shock_tiempo_recuperacion_meses": 8,
+        "shock_buffer_recomendado": 0.85
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.06,
+        "indicador_USD_valor": 1.0,
+        "indicador_EUR_valor": 0.6
+      }
+    },
+    {
+      "product_id": "combustibles_liquidos",
+      "product_nombre": "Combustibles Líquidos",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.7,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.5
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.7
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.4,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.9,
+        "shock_tipo_principal": "GEOPOLITICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.7,
+        "shock_magnitud_media": 0.4,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 9,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.07,
+        "indicador_USD_valor": 1.0,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "energias_renovables",
+      "product_nombre": "Energías Renovables",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.8,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.25,
+        "adapt_window_meses": 9
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.55
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.04
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.3,
+        "elasticidad_clase": "BAJA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.5,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.4,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.4,
+        "shock_tiempo_recuperacion_meses": 6,
+        "shock_buffer_recomendado": 0.6
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 0.8,
+        "indicador_EUR_valor": 0.6
+      }
+    },
+    {
+      "product_id": "infraestructura_electrica",
+      "product_nombre": "Infraestructura Eléctrica",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.85,
+        "pid_Ki": 0.17,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.22,
+        "adapt_window_meses": 12
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.25
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.4
+      },
+      "tipo_producto": {
+        "categoria": "CAPEX",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.03
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.6,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.45,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.3,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 9,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "MIXTO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.04,
+        "indicador_USD_valor": 0.9,
+        "indicador_EUR_valor": 0.7
+      }
+    },
+    {
+      "product_id": "servicios_utilities",
+      "product_nombre": "Servicios Utilities",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.15,
+        "pid_Kd": 0.03,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.2,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.2
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.3
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.5,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.25,
+        "shock_tipo_principal": "OPERACIONAL",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.2,
+        "shock_magnitud_media": 0.1,
+        "shock_magnitud_max": 0.25,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.4
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 0.4,
+        "indicador_EUR_valor": 0.3
+      }
+    },
+    {
+      "product_id": "diesel_industrial",
+      "product_nombre": "Diésel Industrial",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.7,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.55
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.75
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.35,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.9,
+        "shock_tipo_principal": "GEOPOLITICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.7,
+        "shock_magnitud_media": 0.45,
+        "shock_magnitud_max": 0.85,
+        "shock_tiempo_recuperacion_meses": 9,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.08,
+        "indicador_USD_valor": 1.0,
+        "indicador_EUR_valor": 0.6
+      }
+    },
+    {
+      "product_id": "gasolina",
+      "product_nombre": "Gasolina",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.75,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.7
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.4,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.85,
+        "shock_tipo_principal": "GEOPOLITICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.65,
+        "shock_magnitud_media": 0.4,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 8,
+        "shock_buffer_recomendado": 0.85
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.07,
+        "indicador_USD_valor": 1.0,
+        "indicador_EUR_valor": 0.6
+      }
+    },
+    {
+      "product_id": "glp",
+      "product_nombre": "Gas Licuado de Petróleo (GLP)",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.85,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.7
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.55
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.3,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.6,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.3,
+        "shock_magnitud_max": 0.55,
+        "shock_tiempo_recuperacion_meses": 6,
+        "shock_buffer_recomendado": 0.7
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.06,
+        "indicador_USD_valor": 0.9,
+        "indicador_EUR_valor": 0.6
+      }
+    },
+    {
+      "product_id": "gnl",
+      "product_nombre": "Gas Natural Licuado (GNL)",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.7
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.25,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.85,
+        "shock_tipo_principal": "GEOPOLITICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.5,
+        "shock_magnitud_media": 0.35,
+        "shock_magnitud_max": 0.7,
+        "shock_tiempo_recuperacion_meses": 8,
+        "shock_buffer_recomendado": 0.8
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.06,
+        "indicador_USD_valor": 1.0,
+        "indicador_EUR_valor": 0.65
+      }
+    },
+    {
+      "product_id": "almacenamiento_energia",
+      "product_nombre": "Almacenamiento de Energía",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.8,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.25,
+        "adapt_window_meses": 9
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.25
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "CAPEX",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.05
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.7,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.5,
+        "shock_tipo_principal": "TECNOLOGICO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.3,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 6,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.04,
+        "indicador_USD_valor": 0.85,
+        "indicador_EUR_valor": 0.6
+      }
+    },
+    {
+      "product_id": "eficiencia_energetica",
+      "product_nombre": "Eficiencia Energética",
+      "market_id": "mercado_energia_utilities",
+      "market_nombre": "Mercado Energía y Utilities",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.17,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.22,
+        "adapt_window_meses": 9
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.2
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.3
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.03
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.8,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.25,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.2,
+        "shock_magnitud_media": 0.15,
+        "shock_magnitud_max": 0.3,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.4
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 0.4,
+        "indicador_EUR_valor": 0.3
+      }
+    },
+    {
+      "product_id": "servicios_contables",
+      "product_nombre": "Servicios Contables",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.6,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.25,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.4
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.25
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.02
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.1,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.2,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.2,
+        "shock_magnitud_media": 0.1,
+        "shock_magnitud_max": 0.25,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.35
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.4,
+        "indicador_USD_valor": 0.2,
+        "indicador_EUR_valor": 0.2
+      }
+    },
+    {
+      "product_id": "servicios_legales",
+      "product_nombre": "Servicios Legales",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.55,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.95,
+        "pid_max_output": 1.15,
+        "adapt_learning_rate": 0.22,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.3
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.2
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.8,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.2,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.15,
+        "shock_magnitud_media": 0.1,
+        "shock_magnitud_max": 0.2,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.3
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.35,
+        "indicador_USD_valor": 0.15,
+        "indicador_EUR_valor": 0.15
+      }
+    },
+    {
+      "product_id": "servicios_it",
+      "product_nombre": "Servicios IT",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.25
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.3
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.04
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.3,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.25,
+        "shock_tipo_principal": "TECNOLOGICO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.25,
+        "shock_magnitud_media": 0.15,
+        "shock_magnitud_max": 0.3,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.4
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.25,
+        "indicador_EUR_valor": 0.25
+      }
+    },
+    {
+      "product_id": "servicios_rrhh",
+      "product_nombre": "Servicios RRHH",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.6,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.25,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.4
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.25
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.0,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.2,
+        "shock_tipo_principal": "LABORAL",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.2,
+        "shock_magnitud_media": 0.1,
+        "shock_magnitud_max": 0.25,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.35
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.35,
+        "indicador_USD_valor": 0.2,
+        "indicador_EUR_valor": 0.2
+      }
+    },
+    {
+      "product_id": "servicios_bpo",
+      "product_nombre": "Servicios BPO",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.65,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.25
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.3
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.03
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.2,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.25,
+        "shock_tipo_principal": "OPERACIONAL",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.25,
+        "shock_magnitud_media": 0.15,
+        "shock_magnitud_max": 0.3,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.4
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.25,
+        "indicador_EUR_valor": 0.25
+      }
+    },
+    {
+      "product_id": "servicios_cloud",
+      "product_nombre": "Servicios Cloud",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.26,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.2
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.35
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.05
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.4,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.35,
+        "shock_tipo_principal": "TECNOLOGICO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.3,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.35,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.45
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.25,
+        "indicador_USD_valor": 0.3,
+        "indicador_EUR_valor": 0.3
+      }
+    },
+    {
+      "product_id": "marketing_empresarial",
+      "product_nombre": "Marketing Empresarial",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.65,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.4
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "C"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.5,
+        "elasticidad_clase": "MUY_ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.4,
+        "shock_tipo_principal": "DEMANDA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.4,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.4
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.2,
+        "indicador_USD_valor": 0.2,
+        "indicador_EUR_valor": 0.2
+      }
+    },
+    {
+      "product_id": "capacitacion_empresarial",
+      "product_nombre": "Capacitación Empresarial",
+      "market_id": "mercado_servicios_empresariales",
+      "market_nombre": "Mercado Servicios Empresariales",
+      "pid": {
+        "pid_Kp": 0.6,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.24,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.45
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "BAJA",
+        "volatilidad_indice": 0.25
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "C"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 3
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.2,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "BAJA",
+        "shock_sensibilidad_indice": 0.2,
+        "shock_tipo_principal": "PRESUPUESTARIO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.2,
+        "shock_magnitud_media": 0.1,
+        "shock_magnitud_max": 0.25,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.35
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.15,
+        "indicador_EUR_valor": 0.15
+      }
+    },
+    {
+      "product_id": "textiles_basicos",
+      "product_nombre": "Textiles Básicos",
+      "market_id": "mercado_textil_vestuario",
+      "market_nombre": "Mercado Textil y Vestuario",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.5
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "INSUMO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.1,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.45,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.4,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.45
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.7,
+        "indicador_EUR_valor": 0.4
+      }
+    },
+    {
+      "product_id": "prendas_vestir",
+      "product_nombre": "Prendas de Vestir",
+      "market_id": "mercado_textil_vestuario",
+      "market_nombre": "Mercado Textil y Vestuario",
+      "pid": {
+        "pid_Kp": 0.75,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.55
+      },
+      "tipo_producto": {
+        "categoria": "CONSUMO",
+        "producto_criticidad": "C"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.6,
+        "elasticidad_clase": "MUY_ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.5,
+        "shock_tipo_principal": "DEMANDA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.3,
+        "shock_magnitud_max": 0.55,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.5
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.25,
+        "indicador_USD_valor": 0.8,
+        "indicador_EUR_valor": 0.5
+      }
+    },
+    {
+      "product_id": "calzado",
+      "product_nombre": "Calzado",
+      "market_id": "mercado_textil_vestuario",
+      "market_nombre": "Mercado Textil y Vestuario",
+      "pid": {
+        "pid_Kp": 0.72,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.5
+      },
+      "tipo_producto": {
+        "categoria": "CONSUMO",
+        "producto_criticidad": "C"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.4,
+        "elasticidad_clase": "MUY_ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.45,
+        "shock_tipo_principal": "DEMANDA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.4,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.45
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.25,
+        "indicador_USD_valor": 0.75,
+        "indicador_EUR_valor": 0.45
+      }
+    },
+    {
+      "product_id": "insumos_textiles",
+      "product_nombre": "Insumos Textiles",
+      "market_id": "mercado_textil_vestuario",
+      "market_nombre": "Mercado Textil y Vestuario",
+      "pid": {
+        "pid_Kp": 0.68,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.3
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "INSUMO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 3
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.9,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.4,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.35,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.4,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.45
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.65,
+        "indicador_EUR_valor": 0.4
+      }
+    },
+    {
+      "product_id": "confeccion_industrial",
+      "product_nombre": "Confección Industrial",
+      "market_id": "mercado_textil_vestuario",
+      "market_nombre": "Mercado Textil y Vestuario",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.27,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.5
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.0,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.4,
+        "shock_tipo_principal": "LABORAL",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.35,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.4,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.45
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "MIXTO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.6,
+        "indicador_EUR_valor": 0.4
+      }
+    },
+    {
+      "product_id": "transporte_publico",
+      "product_nombre": "Transporte Público",
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "pid": {
+        "pid_Kp": 0.8,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.5
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.6,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.55,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.5,
+        "indicador_USD_valor": 0.3,
+        "indicador_EUR_valor": 0.2
+      }
+    },
+    {
+      "product_id": "transporte_privado",
+      "product_nombre": "Transporte Privado",
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.55
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.5
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.8,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.6,
+        "shock_tipo_principal": "ENERGETICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.5,
+        "shock_magnitud_media": 0.3,
+        "shock_magnitud_max": 0.55,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.6
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.45,
+        "indicador_USD_valor": 0.4,
+        "indicador_EUR_valor": 0.25
+      }
+    },
+    {
+      "product_id": "logistica_transporte",
+      "product_nombre": "Logística de Transporte",
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "pid": {
+        "pid_Kp": 0.85,
+        "pid_Ki": 0.26,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.5
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.03
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.5,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.6,
+        "shock_magnitud_media": 0.35,
+        "shock_magnitud_max": 0.65,
+        "shock_tiempo_recuperacion_meses": 6,
+        "shock_buffer_recomendado": 0.7
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "MIXTO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.5,
+        "indicador_USD_valor": 0.6,
+        "indicador_EUR_valor": 0.4
+      }
+    },
+    {
+      "product_id": "flotas_electricas",
+      "product_nombre": "Flotas Eléctricas",
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "pid": {
+        "pid_Kp": 0.75,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.25,
+        "adapt_window_meses": 9
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.3
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "CAPEX",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.05
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.7,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.45,
+        "shock_tipo_principal": "TECNOLOGICO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.3,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 6,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.3,
+        "indicador_USD_valor": 0.7,
+        "indicador_EUR_valor": 0.5
+      }
+    },
+    {
+      "product_id": "infraestructura_vial",
+      "product_nombre": "Infraestructura Vial",
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "pid": {
+        "pid_Kp": 0.85,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.3,
+        "adapt_learning_rate": 0.22,
+        "adapt_window_meses": 12
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.25
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.4
+      },
+      "tipo_producto": {
+        "categoria": "CAPEX",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.02
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.4,
+        "elasticidad_clase": "INELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.4,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.25,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 9,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.4,
+        "indicador_USD_valor": 0.3,
+        "indicador_EUR_valor": 0.2
+      }
+    },
+    {
+      "product_id": "servicios_movilidad",
+      "product_nombre": "Servicios de Movilidad",
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "pid": {
+        "pid_Kp": 0.75,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.55
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.5
+      },
+      "tipo_producto": {
+        "categoria": "SERVICIO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.04
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.1,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.5,
+        "shock_tipo_principal": "REGULATORIO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.4,
+        "indicador_USD_valor": 0.35,
+        "indicador_EUR_valor": 0.25
+      }
+    },
+    {
+      "product_id": "seguros_generales",
+      "product_nombre": "Seguros Generales",
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "pid": {
+        "pid_Kp": 0.6,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.22,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.1
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "FINANCIERO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.7,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.5,
+        "shock_tipo_principal": "RIESGO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.6,
+        "indicador_USD_valor": 0.4,
+        "indicador_EUR_valor": 0.3
+      }
+    },
+    {
+      "product_id": "seguros_operacionales",
+      "product_nombre": "Seguros Operacionales",
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "pid": {
+        "pid_Kp": 0.58,
+        "pid_Ki": 0.17,
+        "pid_Kd": 0.04,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.2,
+        "adapt_learning_rate": 0.22,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.1
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.4
+      },
+      "tipo_producto": {
+        "categoria": "FINANCIERO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.6,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.45,
+        "shock_tipo_principal": "OPERACIONAL",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.4,
+        "shock_magnitud_media": 0.2,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.5
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.55,
+        "indicador_USD_valor": 0.35,
+        "indicador_EUR_valor": 0.25
+      }
+    },
+    {
+      "product_id": "seguros_transporte",
+      "product_nombre": "Seguros de Transporte",
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "pid": {
+        "pid_Kp": 0.6,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.24,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.15
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "FINANCIERO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.02
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.7,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.55,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.55
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.6,
+        "indicador_USD_valor": 0.45,
+        "indicador_EUR_valor": 0.3
+      }
+    },
+    {
+      "product_id": "financiamiento_corto_plazo",
+      "product_nombre": "Financiamiento de Corto Plazo",
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "pid": {
+        "pid_Kp": 0.75,
+        "pid_Ki": 0.3,
+        "pid_Kd": 0.08,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.05
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.65
+      },
+      "tipo_producto": {
+        "categoria": "FINANCIERO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.2,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.75,
+        "shock_tipo_principal": "LIQUIDEZ",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.6,
+        "shock_magnitud_media": 0.4,
+        "shock_magnitud_max": 0.7,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.7
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.7,
+        "indicador_USD_valor": 0.5,
+        "indicador_EUR_valor": 0.4
+      }
+    },
+    {
+      "product_id": "leasing_factoring",
+      "product_nombre": "Leasing y Factoring",
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "pid": {
+        "pid_Kp": 0.7,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.35,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.1
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.5
+      },
+      "tipo_producto": {
+        "categoria": "FINANCIERO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 3,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.02
+      },
+      "elasticidad": {
+        "elasticidad_precio": -1.0,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.6,
+        "shock_tipo_principal": "TASAS",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.3,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.6
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.65,
+        "indicador_USD_valor": 0.45,
+        "indicador_EUR_valor": 0.35
+      }
+    },
+    {
+      "product_id": "servicios_bancarios",
+      "product_nombre": "Servicios Bancarios y Medios de Pago",
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "pid": {
+        "pid_Kp": 0.65,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.9,
+        "pid_max_output": 1.25,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "BAJA",
+        "estacionalidad_indice": 0.05
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "tipo_producto": {
+        "categoria": "FINANCIERO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 5
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.5,
+        "elasticidad_clase": "MEDIA"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.55,
+        "shock_tipo_principal": "SISTEMICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.45,
+        "shock_magnitud_media": 0.3,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.6
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.7,
+        "indicador_USD_valor": 0.4,
+        "indicador_EUR_valor": 0.3
       }
     }
   ]

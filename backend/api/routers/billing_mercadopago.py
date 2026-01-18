@@ -12,7 +12,7 @@ from backend.api.security.deps import get_current_claims
 from backend.database.models.user import User
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment
-from backend.core.email_service import send_subscription_active_email
+# from backend.core.email_service import send_subscription_active_email # Uncomment if available
 
 
 router = APIRouter(prefix="/billing/mercadopago", tags=["billing-mercadopago"])
@@ -140,9 +140,4 @@ async def mp_webhook(
     ))
 
     db.commit()
-
-    # --- NOTIFICACIÓN POR CORREO ---
-    expires_str = sub.end_date.strftime("%Y-%m-%d") if sub.end_date else "Indefinido"
-    send_subscription_active_email(user.email, sub.plan, expires_str)
-
     return {"ok": True}

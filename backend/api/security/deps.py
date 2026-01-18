@@ -1,34 +1,17 @@
-from fastapi import Depends, HTTPException
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-
+from fastapi import Header, HTTPException
 from backend.api.security.jwt import verify_token
 
 
-security = HTTPBearer(auto_error=False)
-
-
-def get_current_claims(
-    credentials: HTTPAuthorizationCredentials = Depends(security),
-) -> dict:
+def get_current_claims(authorization: str = Header(default="")) -> dict:
     """
-    Dependency que extrae y valida el JWT OLIMPO desde:
-    Authorization: Bearer <token>
+    Lee Authorization: Bearer <olimpo_jwt>
+    Retorna claims: {"sub": "...", "email": "...", ...}
     """
-    if credentials is None:
-        raise HTTPException(
-            status_code=401,
-            detail="AUTHORIZATION_HEADER_MISSING"
-        )
+    if not authorization or not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="MISSING_BEARER_TOKEN")
 
-    token = credentials.credentials
+    token = authorization.replace("Bearer ", "", 1).strip()
+    if not token:
+        raise HTTPException(status_code=401, detail="EMPTY_TOKEN")
 
-    try:
-        claims = verify_token(token)
-        return claims
-    except HTTPException:
-        raise
-    except Exception:
-        raise HTTPException(
-            status_code=401,
-            detail="INVALID_AUTH_TOKEN"
-        )
+    return verify_token(token)

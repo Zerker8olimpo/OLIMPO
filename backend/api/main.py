@@ -58,6 +58,8 @@ from backend.api.routers.helios import router as helios_router
 from backend.api.routers.me import router as me_router
 from backend.api.routers.billing_google import router as billing_google_router
 from backend.api.routers.billing_mercadopago import router as billing_mercadopago_router
+from backend.api.routers.billing_google import router as billing_google_router
+from backend.api.routers.billing_mercadopago import router as billing_mercadopago_router
 from backend.api.routers.admin import router as admin_router
 
 app.include_router(auth_router)
@@ -66,6 +68,8 @@ app.include_router(sigma_router)
 app.include_router(poseidon_router)
 app.include_router(helios_router)
 app.include_router(me_router)
+app.include_router(billing_google_router)
+app.include_router(billing_mercadopago_router)
 app.include_router(billing_google_router)
 app.include_router(billing_mercadopago_router)
 app.include_router(admin_router)

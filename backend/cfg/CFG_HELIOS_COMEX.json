@@ -122,15 +122,27 @@
       {
         "pais": "Países Bajos",
         "codigo": "NL"
+      },
+      {
+        "pais": "Bolivia",
+        "codigo": "BO"
+      },
+      {
+        "pais": "Israel",
+        "codigo": "IL"
+      },
+      {
+        "pais": "Marruecos",
+        "codigo": "MA"
       }
     ],
     "comex_producto": [
       {
         "product_id": "tuberías_y_fittings_pvc_presión",
-        "import_principal": "Indonesia",
-        "import_secundario": "Argentina",
-        "export_principal": "Turquía",
-        "export_secundario": "China",
+        "import_principal": "China",
+        "import_secundario": "Brasil",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.85,
         "sensibilidad_eur": 0.6,
         "sensibilidad_petroleo": 0.52,
@@ -140,10 +152,10 @@
       },
       {
         "product_id": "tuberías_y_fittings_pvc_sanitario",
-        "import_principal": "Argentina",
-        "import_secundario": "Reino Unido",
-        "export_principal": "Colombia",
-        "export_secundario": "México",
+        "import_principal": "China",
+        "import_secundario": "Perú",
+        "export_principal": "Bolivia",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.64,
         "sensibilidad_eur": 0.26,
         "sensibilidad_petroleo": 0.54,
@@ -153,10 +165,10 @@
       },
       {
         "product_id": "tuberías_y_fittings_pvc_alcantarillado",
-        "import_principal": "Reino Unido",
-        "import_secundario": "Argentina",
-        "export_principal": "Portugal",
-        "export_secundario": "Alemania",
+        "import_principal": "China",
+        "import_secundario": "Perú",
+        "export_principal": "Bolivia",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.65,
         "sensibilidad_eur": 0.36,
         "sensibilidad_petroleo": 0.66,
@@ -166,10 +178,10 @@
       },
       {
         "product_id": "tuberías_y_fittings_hdpe_agua_potable",
-        "import_principal": "Argentina",
-        "import_secundario": "España",
-        "export_principal": "Indonesia",
-        "export_secundario": "Suecia",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.66,
         "sensibilidad_eur": 0.6,
         "sensibilidad_petroleo": 0.59,
@@ -179,10 +191,10 @@
       },
       {
         "product_id": "tuberías_y_fittings_hdpe_alcantarillado",
-        "import_principal": "Portugal",
-        "import_secundario": "Canadá",
-        "export_principal": "Portugal",
-        "export_secundario": "Japón",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.83,
         "sensibilidad_eur": 0.46,
         "sensibilidad_petroleo": 0.35,
@@ -192,10 +204,10 @@
       },
       {
         "product_id": "tuberías_y_fittings_ppr_agua_fría",
-        "import_principal": "Alemania",
-        "import_secundario": "Colombia",
-        "export_principal": "Canadá",
-        "export_secundario": "Corea del Sur",
+        "import_principal": "China",
+        "import_secundario": "Turquía",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
         "sensibilidad_usd": 0.87,
         "sensibilidad_eur": 0.38,
         "sensibilidad_petroleo": 0.68,
@@ -205,10 +217,10 @@
       },
       {
         "product_id": "tuberías_y_fittings_ppr_agua_caliente",
-        "import_principal": "Indonesia",
-        "import_secundario": "Vietnam",
-        "export_principal": "Nueva Zelanda",
-        "export_secundario": "Francia",
+        "import_principal": "China",
+        "import_secundario": "Turquía",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
         "sensibilidad_usd": 0.89,
         "sensibilidad_eur": 0.55,
         "sensibilidad_petroleo": 0.45,
@@ -244,10 +256,10 @@
       },
       {
         "product_id": "válvulas_de_esfera_bronce",
-        "import_principal": "Canadá",
-        "import_secundario": "Reino Unido",
-        "export_principal": "Suecia",
-        "export_secundario": "Canadá",
+        "import_principal": "China",
+        "import_secundario": "Italia",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.69,
         "sensibilidad_eur": 0.59,
         "sensibilidad_petroleo": 0.61,
@@ -257,10 +269,10 @@
       },
       {
         "product_id": "válvulas_de_compuerta_bronce",
-        "import_principal": "Japón",
-        "import_secundario": "Chile",
-        "export_principal": "India",
-        "export_secundario": "Canadá",
+        "import_principal": "China",
+        "import_secundario": "Italia",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.71,
         "sensibilidad_eur": 0.61,
         "sensibilidad_petroleo": 0.69,
@@ -270,10 +282,10 @@
       },
       {
         "product_id": "válvulas_de_retención_bronce",
-        "import_principal": "Vietnam",
-        "import_secundario": "Francia",
+        "import_principal": "China",
+        "import_secundario": "Italia",
         "export_principal": "Perú",
-        "export_secundario": "Ecuador",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.56,
         "sensibilidad_eur": 0.28,
         "sensibilidad_petroleo": 0.53,
@@ -335,10 +347,10 @@
       },
       {
         "product_id": "medidores_de_agua_domiciliarios",
-        "import_principal": "Alemania",
-        "import_secundario": "Turquía",
-        "export_principal": "Nueva Zelanda",
-        "export_secundario": "Chile",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.49,
         "sensibilidad_eur": 0.25,
         "sensibilidad_petroleo": 0.7,
@@ -348,10 +360,10 @@
       },
       {
         "product_id": "medidores_de_agua_industriales",
-        "import_principal": "Portugal",
-        "import_secundario": "Italia",
-        "export_principal": "Corea del Sur",
-        "export_secundario": "Sudáfrica",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.47,
         "sensibilidad_eur": 0.67,
         "sensibilidad_petroleo": 0.78,
@@ -413,10 +425,10 @@
       },
       {
         "product_id": "sellos,_teflones_y_pastas_sellantes",
-        "import_principal": "Suecia",
-        "import_secundario": "China",
-        "export_principal": "España",
-        "export_secundario": "Portugal",
+        "import_principal": "China",
+        "import_secundario": "Brasil",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.78,
         "sensibilidad_eur": 0.51,
         "sensibilidad_petroleo": 0.37,
@@ -829,10 +841,10 @@
       },
       {
         "product_id": "anclajes_y_pernos",
-        "import_principal": "Corea del Sur",
-        "import_secundario": "India",
-        "export_principal": "Chile",
-        "export_secundario": "Polonia",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.53,
         "sensibilidad_eur": 0.42,
         "sensibilidad_petroleo": 0.49,
@@ -1115,10 +1127,10 @@
       },
       {
         "product_id": "bebidas",
-        "import_principal": "Ecuador",
-        "import_secundario": "Nueva Zelanda",
-        "export_principal": "India",
-        "export_secundario": "Brasil",
+        "import_principal": "Argentina",
+        "import_secundario": "Brasil",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.61,
         "sensibilidad_eur": 0.31,
         "sensibilidad_petroleo": 0.43,
@@ -1167,10 +1179,10 @@
       },
       {
         "product_id": "limpieza_hogar",
-        "import_principal": "Francia",
+        "import_principal": "Brasil",
         "import_secundario": "China",
-        "export_principal": "México",
-        "export_secundario": "Reino Unido",
+        "export_principal": "Perú",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.48,
         "sensibilidad_eur": 0.25,
         "sensibilidad_petroleo": 0.65,
@@ -1296,7 +1308,7 @@
         "impacto_leadtime": 0.73
       },
       {
-        "product_id": "producto_1",
+        "product_id": "pinturas_interiores",
         "import_principal": "Canadá",
         "import_secundario": "Ecuador",
         "export_principal": "Japón",
@@ -1309,7 +1321,7 @@
         "impacto_leadtime": 0.57
       },
       {
-        "product_id": "producto_2",
+        "product_id": "pinturas_exteriores",
         "import_principal": "Vietnam",
         "import_secundario": "Sudáfrica",
         "export_principal": "Francia",
@@ -1322,7 +1334,7 @@
         "impacto_leadtime": 0.78
       },
       {
-        "product_id": "producto_3",
+        "product_id": "esmaltes_sinteticos",
         "import_principal": "Brasil",
         "import_secundario": "Corea del Sur",
         "export_principal": "Francia",
@@ -1335,7 +1347,7 @@
         "impacto_leadtime": 0.56
       },
       {
-        "product_id": "producto_4",
+        "product_id": "sellos_acrilicos_siliconas",
         "import_principal": "Colombia",
         "import_secundario": "Nueva Zelanda",
         "export_principal": "Malasia",
@@ -1348,7 +1360,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_5",
+        "product_id": "ceramicos_porcelanatos",
         "import_principal": "Indonesia",
         "import_secundario": "Argentina",
         "export_principal": "China",
@@ -1361,7 +1373,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_6",
+        "product_id": "adhesivos_fragues",
         "import_principal": "Ecuador",
         "import_secundario": "Suecia",
         "export_principal": "Polonia",
@@ -1374,11 +1386,11 @@
         "impacto_leadtime": 0.81
       },
       {
-        "product_id": "producto_7",
-        "import_principal": "Turquía",
-        "import_secundario": "Sudáfrica",
-        "export_principal": "Tailandia",
-        "export_secundario": "Ecuador",
+        "product_id": "herramientas_manuales",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
         "sensibilidad_usd": 0.6,
         "sensibilidad_eur": 0.24,
         "sensibilidad_petroleo": 0.7,
@@ -1387,11 +1399,11 @@
         "impacto_leadtime": 0.67
       },
       {
-        "product_id": "producto_8",
-        "import_principal": "España",
-        "import_secundario": "Canadá",
-        "export_principal": "Tailandia",
-        "export_secundario": "Países Bajos",
+        "product_id": "herramientas_electricas",
+        "import_principal": "China",
+        "import_secundario": "Corea del Sur",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.62,
         "sensibilidad_eur": 0.6,
         "sensibilidad_petroleo": 0.74,
@@ -1400,7 +1412,7 @@
         "impacto_leadtime": 0.83
       },
       {
-        "product_id": "producto_9",
+        "product_id": "herrajes_puertas_muebles",
         "import_principal": "Países Bajos",
         "import_secundario": "Reino Unido",
         "export_principal": "Canadá",
@@ -1413,7 +1425,7 @@
         "impacto_leadtime": 0.88
       },
       {
-        "product_id": "producto_10",
+        "product_id": "cerraduras_seguridad",
         "import_principal": "Indonesia",
         "import_secundario": "Colombia",
         "export_principal": "Perú",
@@ -1426,7 +1438,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_11",
+        "product_id": "canaletas_accesorios",
         "import_principal": "México",
         "import_secundario": "Ecuador",
         "export_principal": "Colombia",
@@ -1439,7 +1451,7 @@
         "impacto_leadtime": 0.36
       },
       {
-        "product_id": "producto_12",
+        "product_id": "tornillos_fijaciones",
         "import_principal": "Colombia",
         "import_secundario": "Argentina",
         "export_principal": "Ecuador",
@@ -1452,11 +1464,11 @@
         "impacto_leadtime": 0.79
       },
       {
-        "product_id": "producto_13",
-        "import_principal": "Tailandia",
-        "import_secundario": "Perú",
-        "export_principal": "USA",
-        "export_secundario": "Suecia",
+        "product_id": "abrasivos_discos",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.77,
         "sensibilidad_eur": 0.44,
         "sensibilidad_petroleo": 0.43,
@@ -1465,11 +1477,11 @@
         "impacto_leadtime": 0.6
       },
       {
-        "product_id": "producto_14",
-        "import_principal": "Brasil",
-        "import_secundario": "Corea del Sur",
-        "export_principal": "China",
-        "export_secundario": "Japón",
+        "product_id": "elementos_proteccion_personal",
+        "import_principal": "China",
+        "import_secundario": "México",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.67,
         "sensibilidad_eur": 0.43,
         "sensibilidad_petroleo": 0.79,
@@ -1478,7 +1490,7 @@
         "impacto_leadtime": 0.75
       },
       {
-        "product_id": "producto_15",
+        "product_id": "maderas_dimensionadas",
         "import_principal": "Nueva Zelanda",
         "import_secundario": "Tailandia",
         "export_principal": "Suecia",
@@ -1491,7 +1503,7 @@
         "impacto_leadtime": 0.5
       },
       {
-        "product_id": "producto_16",
+        "product_id": "perfiles_metalicos",
         "import_principal": "Malasia",
         "import_secundario": "Sudáfrica",
         "export_principal": "España",
@@ -1504,7 +1516,7 @@
         "impacto_leadtime": 0.9
       },
       {
-        "product_id": "producto_17",
+        "product_id": "placas_yeso_volcanita",
         "import_principal": "Tailandia",
         "import_secundario": "Colombia",
         "export_principal": "Sudáfrica",
@@ -1517,7 +1529,7 @@
         "impacto_leadtime": 0.66
       },
       {
-        "product_id": "producto_18",
+        "product_id": "aislantes_termicos",
         "import_principal": "Polonia",
         "import_secundario": "Reino Unido",
         "export_principal": "Italia",
@@ -1530,7 +1542,7 @@
         "impacto_leadtime": 0.84
       },
       {
-        "product_id": "producto_19",
+        "product_id": "iluminacion_domiciliaria",
         "import_principal": "Turquía",
         "import_secundario": "Brasil",
         "export_principal": "Turquía",
@@ -1543,7 +1555,7 @@
         "impacto_leadtime": 0.64
       },
       {
-        "product_id": "producto_20",
+        "product_id": "enchufes_interruptores",
         "import_principal": "Sudáfrica",
         "import_secundario": "México",
         "export_principal": "Canadá",
@@ -1556,7 +1568,7 @@
         "impacto_leadtime": 0.8
       },
       {
-        "product_id": "producto_21",
+        "product_id": "tableros_electricos_basicos",
         "import_principal": "Perú",
         "import_secundario": "Brasil",
         "export_principal": "México",
@@ -1569,7 +1581,7 @@
         "impacto_leadtime": 0.51
       },
       {
-        "product_id": "producto_22",
+        "product_id": "cables_electricos",
         "import_principal": "Países Bajos",
         "import_secundario": "Suecia",
         "export_principal": "Turquía",
@@ -1582,7 +1594,7 @@
         "impacto_leadtime": 0.73
       },
       {
-        "product_id": "producto_23",
+        "product_id": "adhesivos_construccion",
         "import_principal": "Australia",
         "import_secundario": "Italia",
         "export_principal": "Canadá",
@@ -1595,7 +1607,7 @@
         "impacto_leadtime": 0.65
       },
       {
-        "product_id": "producto_24",
+        "product_id": "espumas_expansivas",
         "import_principal": "Brasil",
         "import_secundario": "Portugal",
         "export_principal": "Países Bajos",
@@ -1608,7 +1620,7 @@
         "impacto_leadtime": 0.8
       },
       {
-        "product_id": "producto_25",
+        "product_id": "siliconas_tecnicas",
         "import_principal": "Vietnam",
         "import_secundario": "China",
         "export_principal": "USA",
@@ -1621,7 +1633,7 @@
         "impacto_leadtime": 0.73
       },
       {
-        "product_id": "producto_26",
+        "product_id": "lijas_papeles_abrasivos",
         "import_principal": "Portugal",
         "import_secundario": "Polonia",
         "export_principal": "Turquía",
@@ -1634,7 +1646,7 @@
         "impacto_leadtime": 0.38
       },
       {
-        "product_id": "producto_27",
+        "product_id": "brochas_rodillos",
         "import_principal": "Turquía",
         "import_secundario": "Suecia",
         "export_principal": "Polonia",
@@ -1647,7 +1659,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_28",
+        "product_id": "accesorios_pintura",
         "import_principal": "Canadá",
         "import_secundario": "Reino Unido",
         "export_principal": "Indonesia",
@@ -1660,7 +1672,7 @@
         "impacto_leadtime": 0.52
       },
       {
-        "product_id": "producto_29",
+        "product_id": "escaleras_andamios",
         "import_principal": "Chile",
         "import_secundario": "Francia",
         "export_principal": "Brasil",
@@ -1673,7 +1685,7 @@
         "impacto_leadtime": 0.57
       },
       {
-        "product_id": "producto_30",
+        "product_id": "cajas_herramientas",
         "import_principal": "Brasil",
         "import_secundario": "Turquía",
         "export_principal": "Nueva Zelanda",
@@ -1686,11 +1698,11 @@
         "impacto_leadtime": 0.32
       },
       {
-        "product_id": "producto_1",
-        "import_principal": "Japón",
-        "import_secundario": "Australia",
+        "product_id": "fertilizantes_granulares",
+        "import_principal": "China",
+        "import_secundario": "Perú",
         "export_principal": "Perú",
-        "export_secundario": "Portugal",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.7,
         "sensibilidad_eur": 0.52,
         "sensibilidad_petroleo": 0.38,
@@ -1699,11 +1711,11 @@
         "impacto_leadtime": 0.65
       },
       {
-        "product_id": "producto_2",
-        "import_principal": "Malasia",
-        "import_secundario": "Tailandia",
-        "export_principal": "Tailandia",
-        "export_secundario": "Australia",
+        "product_id": "fertilizantes_liquidos",
+        "import_principal": "China",
+        "import_secundario": "Perú",
+        "export_principal": "Perú",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.83,
         "sensibilidad_eur": 0.43,
         "sensibilidad_petroleo": 0.6,
@@ -1712,7 +1724,7 @@
         "impacto_leadtime": 0.81
       },
       {
-        "product_id": "producto_3",
+        "product_id": "correctores_suelo",
         "import_principal": "Tailandia",
         "import_secundario": "Francia",
         "export_principal": "Vietnam",
@@ -1725,11 +1737,11 @@
         "impacto_leadtime": 0.65
       },
       {
-        "product_id": "producto_4",
-        "import_principal": "USA",
-        "import_secundario": "Portugal",
-        "export_principal": "España",
-        "export_secundario": "India",
+        "product_id": "herbicidas",
+        "import_principal": "China",
+        "import_secundario": "India",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.88,
         "sensibilidad_eur": 0.23,
         "sensibilidad_petroleo": 0.52,
@@ -1738,11 +1750,11 @@
         "impacto_leadtime": 0.66
       },
       {
-        "product_id": "producto_5",
-        "import_principal": "Tailandia",
-        "import_secundario": "Corea del Sur",
-        "export_principal": "Turquía",
-        "export_secundario": "Perú",
+        "product_id": "fungicidas",
+        "import_principal": "China",
+        "import_secundario": "India",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.88,
         "sensibilidad_eur": 0.24,
         "sensibilidad_petroleo": 0.52,
@@ -1751,11 +1763,11 @@
         "impacto_leadtime": 0.45
       },
       {
-        "product_id": "producto_6",
-        "import_principal": "Ecuador",
-        "import_secundario": "México",
-        "export_principal": "Australia",
-        "export_secundario": "Vietnam",
+        "product_id": "insecticidas",
+        "import_principal": "China",
+        "import_secundario": "India",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
         "sensibilidad_usd": 0.6,
         "sensibilidad_eur": 0.58,
         "sensibilidad_petroleo": 0.56,
@@ -1764,7 +1776,7 @@
         "impacto_leadtime": 0.64
       },
       {
-        "product_id": "producto_7",
+        "product_id": "semillas_cereales",
         "import_principal": "Corea del Sur",
         "import_secundario": "Portugal",
         "export_principal": "Vietnam",
@@ -1777,7 +1789,7 @@
         "impacto_leadtime": 0.32
       },
       {
-        "product_id": "producto_8",
+        "product_id": "semillas_hortalizas",
         "import_principal": "Argentina",
         "import_secundario": "Portugal",
         "export_principal": "Italia",
@@ -1790,7 +1802,7 @@
         "impacto_leadtime": 0.67
       },
       {
-        "product_id": "producto_9",
+        "product_id": "semillas_forrajeras",
         "import_principal": "Indonesia",
         "import_secundario": "Francia",
         "export_principal": "Nueva Zelanda",
@@ -1803,7 +1815,7 @@
         "impacto_leadtime": 0.32
       },
       {
-        "product_id": "producto_10",
+        "product_id": "alimentos_animales",
         "import_principal": "Malasia",
         "import_secundario": "Colombia",
         "export_principal": "España",
@@ -1816,7 +1828,7 @@
         "impacto_leadtime": 0.32
       },
       {
-        "product_id": "producto_11",
+        "product_id": "suplementos_ganado",
         "import_principal": "Japón",
         "import_secundario": "México",
         "export_principal": "Chile",
@@ -1829,7 +1841,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_12",
+        "product_id": "sales_minerales",
         "import_principal": "Turquía",
         "import_secundario": "Italia",
         "export_principal": "Japón",
@@ -1842,7 +1854,7 @@
         "impacto_leadtime": 0.32
       },
       {
-        "product_id": "producto_13",
+        "product_id": "bioestimulantes",
         "import_principal": "México",
         "import_secundario": "Francia",
         "export_principal": "Indonesia",
@@ -1855,7 +1867,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_14",
+        "product_id": "reguladores_crecimiento",
         "import_principal": "Indonesia",
         "import_secundario": "Brasil",
         "export_principal": "Perú",
@@ -1868,7 +1880,7 @@
         "impacto_leadtime": 0.78
       },
       {
-        "product_id": "producto_15",
+        "product_id": "sustratos_agricolas",
         "import_principal": "Ecuador",
         "import_secundario": "Sudáfrica",
         "export_principal": "Polonia",
@@ -1881,11 +1893,11 @@
         "impacto_leadtime": 0.77
       },
       {
-        "product_id": "producto_16",
-        "import_principal": "Australia",
-        "import_secundario": "Chile",
-        "export_principal": "España",
-        "export_secundario": "Reino Unido",
+        "product_id": "sistemas_riego",
+        "import_principal": "China",
+        "import_secundario": "Israel",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.5,
         "sensibilidad_eur": 0.5,
         "sensibilidad_petroleo": 0.7,
@@ -1894,11 +1906,11 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_17",
-        "import_principal": "Australia",
-        "import_secundario": "Japón",
-        "export_principal": "Brasil",
-        "export_secundario": "Tailandia",
+        "product_id": "mangueras_agricolas",
+        "import_principal": "China",
+        "import_secundario": "Brasil",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.42,
         "sensibilidad_eur": 0.25,
         "sensibilidad_petroleo": 0.67,
@@ -1907,7 +1919,7 @@
         "impacto_leadtime": 0.69
       },
       {
-        "product_id": "producto_18",
+        "product_id": "cintas_goteo",
         "import_principal": "Turquía",
         "import_secundario": "Indonesia",
         "export_principal": "Portugal",
@@ -1920,7 +1932,7 @@
         "impacto_leadtime": 0.64
       },
       {
-        "product_id": "producto_19",
+        "product_id": "bombas_riego",
         "import_principal": "Ecuador",
         "import_secundario": "India",
         "export_principal": "Nueva Zelanda",
@@ -1933,7 +1945,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_20",
+        "product_id": "estanques_agricolas",
         "import_principal": "Brasil",
         "import_secundario": "China",
         "export_principal": "México",
@@ -1946,7 +1958,7 @@
         "impacto_leadtime": 0.82
       },
       {
-        "product_id": "producto_21",
+        "product_id": "invernaderos",
         "import_principal": "China",
         "import_secundario": "México",
         "export_principal": "India",
@@ -1959,7 +1971,7 @@
         "impacto_leadtime": 0.84
       },
       {
-        "product_id": "producto_22",
+        "product_id": "plasticos_agricolas",
         "import_principal": "Tailandia",
         "import_secundario": "Países Bajos",
         "export_principal": "Australia",
@@ -1972,7 +1984,7 @@
         "impacto_leadtime": 0.76
       },
       {
-        "product_id": "producto_23",
+        "product_id": "mallas_sombra",
         "import_principal": "Brasil",
         "import_secundario": "Portugal",
         "export_principal": "Reino Unido",
@@ -1985,7 +1997,7 @@
         "impacto_leadtime": 0.53
       },
       {
-        "product_id": "producto_24",
+        "product_id": "equipos_fumigacion",
         "import_principal": "Argentina",
         "import_secundario": "India",
         "export_principal": "Australia",
@@ -1998,7 +2010,7 @@
         "impacto_leadtime": 0.38
       },
       {
-        "product_id": "producto_25",
+        "product_id": "maquinaria_agricola_menor",
         "import_principal": "Portugal",
         "import_secundario": "Chile",
         "export_principal": "Portugal",
@@ -2011,7 +2023,7 @@
         "impacto_leadtime": 0.58
       },
       {
-        "product_id": "producto_26",
+        "product_id": "repuestos_maquinaria_agricola",
         "import_principal": "Indonesia",
         "import_secundario": "Francia",
         "export_principal": "Nueva Zelanda",
@@ -2024,7 +2036,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_27",
+        "product_id": "herramientas_agricolas",
         "import_principal": "Sudáfrica",
         "import_secundario": "Vietnam",
         "export_principal": "Italia",
@@ -2037,7 +2049,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_28",
+        "product_id": "equipos_medicion_agro",
         "import_principal": "Chile",
         "import_secundario": "Vietnam",
         "export_principal": "Canadá",
@@ -2050,11 +2062,11 @@
         "impacto_leadtime": 0.81
       },
       {
-        "product_id": "producto_29",
-        "import_principal": "Suecia",
-        "import_secundario": "Colombia",
-        "export_principal": "China",
-        "export_secundario": "Colombia",
+        "product_id": "control_plagas",
+        "import_principal": "China",
+        "import_secundario": "India",
+        "export_principal": "Perú",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.65,
         "sensibilidad_eur": 0.41,
         "sensibilidad_petroleo": 0.65,
@@ -2063,7 +2075,7 @@
         "impacto_leadtime": 0.59
       },
       {
-        "product_id": "producto_30",
+        "product_id": "productos_postcosecha",
         "import_principal": "Perú",
         "import_secundario": "Corea del Sur",
         "export_principal": "Perú",
@@ -2076,7 +2088,7 @@
         "impacto_leadtime": 0.43
       },
       {
-        "product_id": "producto_1",
+        "product_id": "transporte_ultima_milla",
         "import_principal": "Reino Unido",
         "import_secundario": "Japón",
         "export_principal": "Japón",
@@ -2089,7 +2101,7 @@
         "impacto_leadtime": 0.4
       },
       {
-        "product_id": "producto_2",
+        "product_id": "transporte_interurbano",
         "import_principal": "Colombia",
         "import_secundario": "Reino Unido",
         "export_principal": "Reino Unido",
@@ -2102,7 +2114,7 @@
         "impacto_leadtime": 0.74
       },
       {
-        "product_id": "producto_3",
+        "product_id": "transporte_internacional",
         "import_principal": "China",
         "import_secundario": "Sudáfrica",
         "export_principal": "Turquía",
@@ -2115,7 +2127,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_4",
+        "product_id": "almacenaje",
         "import_principal": "India",
         "import_secundario": "Tailandia",
         "export_principal": "Corea del Sur",
@@ -2128,7 +2140,7 @@
         "impacto_leadtime": 0.38
       },
       {
-        "product_id": "producto_5",
+        "product_id": "cross_docking",
         "import_principal": "Chile",
         "import_secundario": "Italia",
         "export_principal": "Tailandia",
@@ -2141,7 +2153,7 @@
         "impacto_leadtime": 0.3
       },
       {
-        "product_id": "producto_6",
+        "product_id": "servicios_flete",
         "import_principal": "Chile",
         "import_secundario": "Brasil",
         "export_principal": "Polonia",
@@ -2154,7 +2166,7 @@
         "impacto_leadtime": 0.7
       },
       {
-        "product_id": "producto_7",
+        "product_id": "combustible_logistico",
         "import_principal": "Vietnam",
         "import_secundario": "España",
         "export_principal": "Corea del Sur",
@@ -2167,7 +2179,7 @@
         "impacto_leadtime": 0.49
       },
       {
-        "product_id": "producto_8",
+        "product_id": "arriendo_camiones",
         "import_principal": "Alemania",
         "import_secundario": "Países Bajos",
         "export_principal": "Portugal",
@@ -2180,7 +2192,7 @@
         "impacto_leadtime": 0.8
       },
       {
-        "product_id": "producto_9",
+        "product_id": "arriendo_furgones",
         "import_principal": "Reino Unido",
         "import_secundario": "Indonesia",
         "export_principal": "Argentina",
@@ -2193,7 +2205,7 @@
         "impacto_leadtime": 0.38
       },
       {
-        "product_id": "producto_10",
+        "product_id": "mantencion_flotas",
         "import_principal": "Portugal",
         "import_secundario": "China",
         "export_principal": "Indonesia",
@@ -2206,11 +2218,11 @@
         "impacto_leadtime": 0.44
       },
       {
-        "product_id": "producto_11",
-        "import_principal": "Italia",
-        "import_secundario": "Turquía",
-        "export_principal": "Colombia",
-        "export_secundario": "Países Bajos",
+        "product_id": "repuestos_vehiculos_comerciales",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.45,
         "sensibilidad_eur": 0.35,
         "sensibilidad_petroleo": 0.49,
@@ -2219,7 +2231,7 @@
         "impacto_leadtime": 0.53
       },
       {
-        "product_id": "producto_12",
+        "product_id": "neumaticos_comerciales",
         "import_principal": "Vietnam",
         "import_secundario": "Australia",
         "export_principal": "Colombia",
@@ -2232,11 +2244,11 @@
         "impacto_leadtime": 0.6
       },
       {
-        "product_id": "producto_13",
-        "import_principal": "Perú",
-        "import_secundario": "Italia",
-        "export_principal": "Italia",
-        "export_secundario": "Francia",
+        "product_id": "lubricantes_industriales",
+        "import_principal": "USA",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.55,
         "sensibilidad_eur": 0.44,
         "sensibilidad_petroleo": 0.44,
@@ -2245,7 +2257,7 @@
         "impacto_leadtime": 0.3
       },
       {
-        "product_id": "producto_14",
+        "product_id": "seguros_transporte",
         "import_principal": "Japón",
         "import_secundario": "USA",
         "export_principal": "Brasil",
@@ -2258,7 +2270,7 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_15",
+        "product_id": "tracking_monitoreo",
         "import_principal": "México",
         "import_secundario": "Alemania",
         "export_principal": "Argentina",
@@ -2271,7 +2283,7 @@
         "impacto_leadtime": 0.67
       },
       {
-        "product_id": "producto_16",
+        "product_id": "software_logistico",
         "import_principal": "Portugal",
         "import_secundario": "Brasil",
         "export_principal": "Tailandia",
@@ -2284,7 +2296,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_17",
+        "product_id": "servicios_aduana",
         "import_principal": "Canadá",
         "import_secundario": "Perú",
         "export_principal": "Vietnam",
@@ -2297,7 +2309,7 @@
         "impacto_leadtime": 0.64
       },
       {
-        "product_id": "producto_18",
+        "product_id": "consolidacion_carga",
         "import_principal": "China",
         "import_secundario": "Perú",
         "export_principal": "Vietnam",
@@ -2310,7 +2322,7 @@
         "impacto_leadtime": 0.51
       },
       {
-        "product_id": "producto_19",
+        "product_id": "desconsolidacion_carga",
         "import_principal": "México",
         "import_secundario": "Reino Unido",
         "export_principal": "Argentina",
@@ -2323,11 +2335,11 @@
         "impacto_leadtime": 0.52
       },
       {
-        "product_id": "producto_20",
-        "import_principal": "Indonesia",
-        "import_secundario": "Países Bajos",
-        "export_principal": "Colombia",
-        "export_secundario": "India",
+        "product_id": "embalajes_industriales",
+        "import_principal": "China",
+        "import_secundario": "Brasil",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.57,
         "sensibilidad_eur": 0.31,
         "sensibilidad_petroleo": 0.68,
@@ -2336,11 +2348,11 @@
         "impacto_leadtime": 0.34
       },
       {
-        "product_id": "producto_21",
+        "product_id": "palets_contenedores",
         "import_principal": "China",
-        "import_secundario": "España",
-        "export_principal": "Polonia",
-        "export_secundario": "Colombia",
+        "import_secundario": "Brasil",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
         "sensibilidad_usd": 0.41,
         "sensibilidad_eur": 0.5,
         "sensibilidad_petroleo": 0.58,
@@ -2349,7 +2361,7 @@
         "impacto_leadtime": 0.82
       },
       {
-        "product_id": "producto_22",
+        "product_id": "servicios_reversa",
         "import_principal": "México",
         "import_secundario": "Argentina",
         "export_principal": "Argentina",
@@ -2362,7 +2374,7 @@
         "impacto_leadtime": 0.68
       },
       {
-        "product_id": "producto_23",
+        "product_id": "logistica_frio",
         "import_principal": "Corea del Sur",
         "import_secundario": "Argentina",
         "export_principal": "USA",
@@ -2375,7 +2387,7 @@
         "impacto_leadtime": 0.45
       },
       {
-        "product_id": "producto_24",
+        "product_id": "operador_logistico_integral",
         "import_principal": "Sudáfrica",
         "import_secundario": "Chile",
         "export_principal": "Brasil",
@@ -2388,7 +2400,7 @@
         "impacto_leadtime": 0.75
       },
       {
-        "product_id": "producto_25",
+        "product_id": "courier_empresarial",
         "import_principal": "India",
         "import_secundario": "Indonesia",
         "export_principal": "Tailandia",
@@ -2401,7 +2413,7 @@
         "impacto_leadtime": 0.4
       },
       {
-        "product_id": "producto_26",
+        "product_id": "ultima_milla_ecommerce",
         "import_principal": "Suecia",
         "import_secundario": "España",
         "export_principal": "Chile",
@@ -2414,7 +2426,7 @@
         "impacto_leadtime": 0.34
       },
       {
-        "product_id": "producto_27",
+        "product_id": "gestion_inventarios_logisticos",
         "import_principal": "Alemania",
         "import_secundario": "Tailandia",
         "export_principal": "Italia",
@@ -2427,11 +2439,11 @@
         "impacto_leadtime": 0.47
       },
       {
-        "product_id": "producto_28",
-        "import_principal": "Polonia",
-        "import_secundario": "Ecuador",
-        "export_principal": "Corea del Sur",
-        "export_secundario": "USA",
+        "product_id": "centros_distribucion",
+        "import_principal": "China",
+        "import_secundario": "Italia",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.47,
         "sensibilidad_eur": 0.58,
         "sensibilidad_petroleo": 0.55,
@@ -2440,7 +2452,7 @@
         "impacto_leadtime": 0.65
       },
       {
-        "product_id": "producto_29",
+        "product_id": "logistica_puertos",
         "import_principal": "USA",
         "import_secundario": "España",
         "export_principal": "India",
@@ -2453,7 +2465,7 @@
         "impacto_leadtime": 0.47
       },
       {
-        "product_id": "producto_30",
+        "product_id": "logistica_aeropuertos",
         "import_principal": "Argentina",
         "import_secundario": "Nueva Zelanda",
         "export_principal": "Indonesia",
@@ -2466,7 +2478,7 @@
         "impacto_leadtime": 0.75
       },
       {
-        "product_id": "producto_1",
+        "product_id": "medicamentos_genericos",
         "import_principal": "España",
         "import_secundario": "China",
         "export_principal": "Tailandia",
@@ -2479,7 +2491,7 @@
         "impacto_leadtime": 0.84
       },
       {
-        "product_id": "producto_2",
+        "product_id": "medicamentos_marca",
         "import_principal": "Chile",
         "import_secundario": "Japón",
         "export_principal": "Chile",
@@ -2492,7 +2504,7 @@
         "impacto_leadtime": 0.34
       },
       {
-        "product_id": "producto_3",
+        "product_id": "insumos_hospitalarios",
         "import_principal": "Ecuador",
         "import_secundario": "Alemania",
         "export_principal": "Sudáfrica",
@@ -2505,7 +2517,7 @@
         "impacto_leadtime": 0.7
       },
       {
-        "product_id": "producto_4",
+        "product_id": "material_quirurgico",
         "import_principal": "China",
         "import_secundario": "Países Bajos",
         "export_principal": "Países Bajos",
@@ -2518,7 +2530,7 @@
         "impacto_leadtime": 0.75
       },
       {
-        "product_id": "producto_5",
+        "product_id": "equipos_medicos_basicos",
         "import_principal": "Suecia",
         "import_secundario": "Países Bajos",
         "export_principal": "Turquía",
@@ -2531,7 +2543,7 @@
         "impacto_leadtime": 0.88
       },
       {
-        "product_id": "producto_6",
+        "product_id": "dispositivos_medicos",
         "import_principal": "Suecia",
         "import_secundario": "España",
         "export_principal": "Francia",
@@ -2544,7 +2556,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_7",
+        "product_id": "reactivos_laboratorio",
         "import_principal": "Indonesia",
         "import_secundario": "Brasil",
         "export_principal": "España",
@@ -2557,7 +2569,7 @@
         "impacto_leadtime": 0.45
       },
       {
-        "product_id": "producto_8",
+        "product_id": "equipos_laboratorio",
         "import_principal": "Indonesia",
         "import_secundario": "Japón",
         "export_principal": "China",
@@ -2570,7 +2582,7 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_9",
+        "product_id": "insumos_diagnostico",
         "import_principal": "Portugal",
         "import_secundario": "Alemania",
         "export_principal": "Japón",
@@ -2583,7 +2595,7 @@
         "impacto_leadtime": 0.76
       },
       {
-        "product_id": "producto_10",
+        "product_id": "productos_ortopedia",
         "import_principal": "Australia",
         "import_secundario": "Países Bajos",
         "export_principal": "Argentina",
@@ -2596,7 +2608,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_11",
+        "product_id": "productos_rehabilitacion",
         "import_principal": "Turquía",
         "import_secundario": "Alemania",
         "export_principal": "Alemania",
@@ -2609,7 +2621,7 @@
         "impacto_leadtime": 0.48
       },
       {
-        "product_id": "producto_12",
+        "product_id": "productos_odontologicos",
         "import_principal": "Vietnam",
         "import_secundario": "Argentina",
         "export_principal": "Nueva Zelanda",
@@ -2622,7 +2634,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_13",
+        "product_id": "farmacia_otc",
         "import_principal": "Malasia",
         "import_secundario": "México",
         "export_principal": "China",
@@ -2635,7 +2647,7 @@
         "impacto_leadtime": 0.65
       },
       {
-        "product_id": "producto_14",
+        "product_id": "vitaminas_suplementos",
         "import_principal": "Tailandia",
         "import_secundario": "India",
         "export_principal": "Suecia",
@@ -2648,7 +2660,7 @@
         "impacto_leadtime": 0.76
       },
       {
-        "product_id": "producto_15",
+        "product_id": "higiene_clinica",
         "import_principal": "Canadá",
         "import_secundario": "Sudáfrica",
         "export_principal": "Perú",
@@ -2661,7 +2673,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_16",
+        "product_id": "desinfectantes_clinicos",
         "import_principal": "Colombia",
         "import_secundario": "India",
         "export_principal": "Perú",
@@ -2674,7 +2686,7 @@
         "impacto_leadtime": 0.36
       },
       {
-        "product_id": "producto_17",
+        "product_id": "proteccion_medica",
         "import_principal": "USA",
         "import_secundario": "Australia",
         "export_principal": "Argentina",
@@ -2687,7 +2699,7 @@
         "impacto_leadtime": 0.51
       },
       {
-        "product_id": "producto_18",
+        "product_id": "ropa_clinica",
         "import_principal": "Canadá",
         "import_secundario": "Chile",
         "export_principal": "Canadá",
@@ -2700,7 +2712,7 @@
         "impacto_leadtime": 0.43
       },
       {
-        "product_id": "producto_19",
+        "product_id": "mobiliario_clinico",
         "import_principal": "Argentina",
         "import_secundario": "Turquía",
         "export_principal": "Corea del Sur",
@@ -2713,7 +2725,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_20",
+        "product_id": "equipamiento_farmacia",
         "import_principal": "España",
         "import_secundario": "India",
         "export_principal": "Francia",
@@ -2726,7 +2738,7 @@
         "impacto_leadtime": 0.31
       },
       {
-        "product_id": "producto_21",
+        "product_id": "almacenaje_farmaceutico",
         "import_principal": "USA",
         "import_secundario": "México",
         "export_principal": "Perú",
@@ -2739,7 +2751,7 @@
         "impacto_leadtime": 0.72
       },
       {
-        "product_id": "producto_22",
+        "product_id": "cadena_frio_farmaceutica",
         "import_principal": "Perú",
         "import_secundario": "Japón",
         "export_principal": "Ecuador",
@@ -2752,7 +2764,7 @@
         "impacto_leadtime": 0.53
       },
       {
-        "product_id": "producto_23",
+        "product_id": "logistica_farmaceutica",
         "import_principal": "Francia",
         "import_secundario": "Perú",
         "export_principal": "Italia",
@@ -2765,7 +2777,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_24",
+        "product_id": "servicios_regulatorios",
         "import_principal": "Polonia",
         "import_secundario": "Perú",
         "export_principal": "Francia",
@@ -2778,7 +2790,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_25",
+        "product_id": "farmacovigilancia",
         "import_principal": "Corea del Sur",
         "import_secundario": "Canadá",
         "export_principal": "Australia",
@@ -2791,7 +2803,7 @@
         "impacto_leadtime": 0.89
       },
       {
-        "product_id": "producto_26",
+        "product_id": "ensayos_clinicos",
         "import_principal": "Brasil",
         "import_secundario": "Australia",
         "export_principal": "Nueva Zelanda",
@@ -2804,7 +2816,7 @@
         "impacto_leadtime": 0.73
       },
       {
-        "product_id": "producto_27",
+        "product_id": "equipos_imagenologia",
         "import_principal": "Corea del Sur",
         "import_secundario": "Canadá",
         "export_principal": "Malasia",
@@ -2817,7 +2829,7 @@
         "impacto_leadtime": 0.53
       },
       {
-        "product_id": "producto_28",
+        "product_id": "insumos_imagenologia",
         "import_principal": "Vietnam",
         "import_secundario": "Suecia",
         "export_principal": "Canadá",
@@ -2830,7 +2842,7 @@
         "impacto_leadtime": 0.9
       },
       {
-        "product_id": "producto_29",
+        "product_id": "material_descartable_medico",
         "import_principal": "Sudáfrica",
         "import_secundario": "China",
         "export_principal": "USA",
@@ -2843,7 +2855,7 @@
         "impacto_leadtime": 0.67
       },
       {
-        "product_id": "producto_30",
+        "product_id": "bioseguridad",
         "import_principal": "Malasia",
         "import_secundario": "Francia",
         "export_principal": "USA",
@@ -2856,11 +2868,11 @@
         "impacto_leadtime": 0.38
       },
       {
-        "product_id": "producto_1",
-        "import_principal": "USA",
-        "import_secundario": "Italia",
-        "export_principal": "Chile",
-        "export_secundario": "Vietnam",
+        "product_id": "smartphones",
+        "import_principal": "China",
+        "import_secundario": "Vietnam",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.73,
         "sensibilidad_eur": 0.55,
         "sensibilidad_petroleo": 0.38,
@@ -2869,10 +2881,10 @@
         "impacto_leadtime": 0.64
       },
       {
-        "product_id": "producto_2",
-        "import_principal": "Chile",
-        "import_secundario": "Indonesia",
-        "export_principal": "Malasia",
+        "product_id": "notebooks",
+        "import_principal": "China",
+        "import_secundario": "Vietnam",
+        "export_principal": "Perú",
         "export_secundario": "Argentina",
         "sensibilidad_usd": 0.51,
         "sensibilidad_eur": 0.69,
@@ -2882,7 +2894,7 @@
         "impacto_leadtime": 0.67
       },
       {
-        "product_id": "producto_3",
+        "product_id": "tablets",
         "import_principal": "Alemania",
         "import_secundario": "Corea del Sur",
         "export_principal": "Vietnam",
@@ -2895,7 +2907,7 @@
         "impacto_leadtime": 0.88
       },
       {
-        "product_id": "producto_4",
+        "product_id": "computadores_escritorio",
         "import_principal": "Indonesia",
         "import_secundario": "Sudáfrica",
         "export_principal": "Malasia",
@@ -2908,7 +2920,7 @@
         "impacto_leadtime": 0.75
       },
       {
-        "product_id": "producto_5",
+        "product_id": "monitores",
         "import_principal": "España",
         "import_secundario": "México",
         "export_principal": "Indonesia",
@@ -2921,11 +2933,11 @@
         "impacto_leadtime": 0.74
       },
       {
-        "product_id": "producto_6",
-        "import_principal": "Nueva Zelanda",
-        "import_secundario": "Turquía",
-        "export_principal": "Japón",
-        "export_secundario": "Países Bajos",
+        "product_id": "televisores",
+        "import_principal": "China",
+        "import_secundario": "México",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.64,
         "sensibilidad_eur": 0.57,
         "sensibilidad_petroleo": 0.75,
@@ -2934,7 +2946,7 @@
         "impacto_leadtime": 0.34
       },
       {
-        "product_id": "producto_7",
+        "product_id": "impresoras",
         "import_principal": "Turquía",
         "import_secundario": "España",
         "export_principal": "Indonesia",
@@ -2947,11 +2959,11 @@
         "impacto_leadtime": 0.3
       },
       {
-        "product_id": "producto_8",
-        "import_principal": "Turquía",
-        "import_secundario": "Perú",
-        "export_principal": "Japón",
-        "export_secundario": "Reino Unido",
+        "product_id": "routers_y_redes",
+        "import_principal": "China",
+        "import_secundario": "Vietnam",
+        "export_principal": "Perú",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.67,
         "sensibilidad_eur": 0.26,
         "sensibilidad_petroleo": 0.79,
@@ -2960,7 +2972,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_9",
+        "product_id": "almacenamiento_externo",
         "import_principal": "Australia",
         "import_secundario": "Chile",
         "export_principal": "Malasia",
@@ -2973,7 +2985,7 @@
         "impacto_leadtime": 0.41
       },
       {
-        "product_id": "producto_10",
+        "product_id": "discos_duros_ssd",
         "import_principal": "India",
         "import_secundario": "Nueva Zelanda",
         "export_principal": "Polonia",
@@ -2986,7 +2998,7 @@
         "impacto_leadtime": 0.46
       },
       {
-        "product_id": "producto_11",
+        "product_id": "memorias_ram",
         "import_principal": "Vietnam",
         "import_secundario": "Indonesia",
         "export_principal": "Malasia",
@@ -2999,7 +3011,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_12",
+        "product_id": "tarjetas_graficas",
         "import_principal": "China",
         "import_secundario": "Alemania",
         "export_principal": "Portugal",
@@ -3012,7 +3024,7 @@
         "impacto_leadtime": 0.4
       },
       {
-        "product_id": "producto_13",
+        "product_id": "procesadores",
         "import_principal": "Canadá",
         "import_secundario": "India",
         "export_principal": "Polonia",
@@ -3025,7 +3037,7 @@
         "impacto_leadtime": 0.46
       },
       {
-        "product_id": "producto_14",
+        "product_id": "placas_madre",
         "import_principal": "Japón",
         "import_secundario": "Italia",
         "export_principal": "Colombia",
@@ -3038,7 +3050,7 @@
         "impacto_leadtime": 0.69
       },
       {
-        "product_id": "producto_15",
+        "product_id": "fuentes_poder",
         "import_principal": "Corea del Sur",
         "import_secundario": "Sudáfrica",
         "export_principal": "Argentina",
@@ -3051,7 +3063,7 @@
         "impacto_leadtime": 0.32
       },
       {
-        "product_id": "producto_16",
+        "product_id": "perifericos_computacion",
         "import_principal": "Chile",
         "import_secundario": "Reino Unido",
         "export_principal": "Argentina",
@@ -3064,7 +3076,7 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_17",
+        "product_id": "teclados_y_mouse",
         "import_principal": "Colombia",
         "import_secundario": "Argentina",
         "export_principal": "Vietnam",
@@ -3077,7 +3089,7 @@
         "impacto_leadtime": 0.46
       },
       {
-        "product_id": "producto_18",
+        "product_id": "audifonos",
         "import_principal": "Suecia",
         "import_secundario": "India",
         "export_principal": "Reino Unido",
@@ -3090,7 +3102,7 @@
         "impacto_leadtime": 0.47
       },
       {
-        "product_id": "producto_19",
+        "product_id": "parlantes",
         "import_principal": "Indonesia",
         "import_secundario": "Italia",
         "export_principal": "Polonia",
@@ -3103,7 +3115,7 @@
         "impacto_leadtime": 0.31
       },
       {
-        "product_id": "producto_20",
+        "product_id": "camaras_digitales",
         "import_principal": "Suecia",
         "import_secundario": "Tailandia",
         "export_principal": "Turquía",
@@ -3116,7 +3128,7 @@
         "impacto_leadtime": 0.3
       },
       {
-        "product_id": "producto_21",
+        "product_id": "camaras_seguridad",
         "import_principal": "Vietnam",
         "import_secundario": "Portugal",
         "export_principal": "México",
@@ -3129,11 +3141,11 @@
         "impacto_leadtime": 0.73
       },
       {
-        "product_id": "producto_22",
-        "import_principal": "Suecia",
-        "import_secundario": "Australia",
-        "export_principal": "Tailandia",
-        "export_secundario": "España",
+        "product_id": "domotica_hogar",
+        "import_principal": "China",
+        "import_secundario": "Corea del Sur",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.89,
         "sensibilidad_eur": 0.58,
         "sensibilidad_petroleo": 0.74,
@@ -3142,7 +3154,7 @@
         "impacto_leadtime": 0.46
       },
       {
-        "product_id": "producto_23",
+        "product_id": "dispositivos_iot",
         "import_principal": "Perú",
         "import_secundario": "Australia",
         "export_principal": "Ecuador",
@@ -3155,7 +3167,7 @@
         "impacto_leadtime": 0.49
       },
       {
-        "product_id": "producto_24",
+        "product_id": "smartwatch_y_wearables",
         "import_principal": "Japón",
         "import_secundario": "Reino Unido",
         "export_principal": "Indonesia",
@@ -3168,7 +3180,7 @@
         "impacto_leadtime": 0.56
       },
       {
-        "product_id": "producto_25",
+        "product_id": "accesorios_moviles",
         "import_principal": "Turquía",
         "import_secundario": "Japón",
         "export_principal": "Francia",
@@ -3181,7 +3193,7 @@
         "impacto_leadtime": 0.52
       },
       {
-        "product_id": "producto_26",
+        "product_id": "cargadores_y_cables",
         "import_principal": "Suecia",
         "import_secundario": "USA",
         "export_principal": "Ecuador",
@@ -3194,7 +3206,7 @@
         "impacto_leadtime": 0.6
       },
       {
-        "product_id": "producto_27",
+        "product_id": "baterias",
         "import_principal": "Malasia",
         "import_secundario": "Vietnam",
         "export_principal": "Japón",
@@ -3207,11 +3219,11 @@
         "impacto_leadtime": 0.5
       },
       {
-        "product_id": "producto_28",
-        "import_principal": "Suecia",
-        "import_secundario": "Sudáfrica",
-        "export_principal": "Italia",
-        "export_secundario": "Vietnam",
+        "product_id": "componentes_electronicos",
+        "import_principal": "China",
+        "import_secundario": "Corea del Sur",
+        "export_principal": "Perú",
+        "export_secundario": "Colombia",
         "sensibilidad_usd": 0.45,
         "sensibilidad_eur": 0.58,
         "sensibilidad_petroleo": 0.51,
@@ -3220,7 +3232,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_29",
+        "product_id": "herramientas_electronicas",
         "import_principal": "Australia",
         "import_secundario": "México",
         "export_principal": "Polonia",
@@ -3233,7 +3245,7 @@
         "impacto_leadtime": 0.31
       },
       {
-        "product_id": "producto_30",
+        "product_id": "consumibles_tecnologicos",
         "import_principal": "Tailandia",
         "import_secundario": "Colombia",
         "export_principal": "Colombia",
@@ -3246,11 +3258,11 @@
         "impacto_leadtime": 0.89
       },
       {
-        "product_id": "producto_1",
-        "import_principal": "Japón",
-        "import_secundario": "Colombia",
-        "export_principal": "USA",
-        "export_secundario": "Japón",
+        "product_id": "rodamientos",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.85,
         "sensibilidad_eur": 0.52,
         "sensibilidad_petroleo": 0.7,
@@ -3259,7 +3271,7 @@
         "impacto_leadtime": 0.49
       },
       {
-        "product_id": "producto_2",
+        "product_id": "correas_transmision",
         "import_principal": "Nueva Zelanda",
         "import_secundario": "Suecia",
         "export_principal": "Reino Unido",
@@ -3272,11 +3284,11 @@
         "impacto_leadtime": 0.41
       },
       {
-        "product_id": "producto_3",
-        "import_principal": "Tailandia",
-        "import_secundario": "Nueva Zelanda",
-        "export_principal": "México",
-        "export_secundario": "Malasia",
+        "product_id": "lubricantes_industriales",
+        "import_principal": "USA",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Ecuador",
         "sensibilidad_usd": 0.86,
         "sensibilidad_eur": 0.4,
         "sensibilidad_petroleo": 0.38,
@@ -3285,7 +3297,7 @@
         "impacto_leadtime": 0.83
       },
       {
-        "product_id": "producto_4",
+        "product_id": "sellos_industriales",
         "import_principal": "Sudáfrica",
         "import_secundario": "China",
         "export_principal": "Argentina",
@@ -3298,7 +3310,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_5",
+        "product_id": "valvulas_industriales",
         "import_principal": "Japón",
         "import_secundario": "India",
         "export_principal": "Colombia",
@@ -3311,7 +3323,7 @@
         "impacto_leadtime": 0.39
       },
       {
-        "product_id": "producto_6",
+        "product_id": "bombas_industriales",
         "import_principal": "Alemania",
         "import_secundario": "España",
         "export_principal": "Indonesia",
@@ -3324,7 +3336,7 @@
         "impacto_leadtime": 0.42
       },
       {
-        "product_id": "producto_7",
+        "product_id": "motores_electricos",
         "import_principal": "China",
         "import_secundario": "España",
         "export_principal": "Perú",
@@ -3337,7 +3349,7 @@
         "impacto_leadtime": 0.89
       },
       {
-        "product_id": "producto_8",
+        "product_id": "reductores_velocidad",
         "import_principal": "China",
         "import_secundario": "México",
         "export_principal": "China",
@@ -3350,7 +3362,7 @@
         "impacto_leadtime": 0.53
       },
       {
-        "product_id": "producto_9",
+        "product_id": "componentes_neumaticos",
         "import_principal": "Ecuador",
         "import_secundario": "Países Bajos",
         "export_principal": "Chile",
@@ -3363,7 +3375,7 @@
         "impacto_leadtime": 0.53
       },
       {
-        "product_id": "producto_10",
+        "product_id": "componentes_hidraulicos",
         "import_principal": "Indonesia",
         "import_secundario": "Perú",
         "export_principal": "Alemania",
@@ -3376,7 +3388,7 @@
         "impacto_leadtime": 0.41
       },
       {
-        "product_id": "producto_11",
+        "product_id": "instrumentacion_industrial",
         "import_principal": "Francia",
         "import_secundario": "Canadá",
         "export_principal": "India",
@@ -3389,7 +3401,7 @@
         "impacto_leadtime": 0.62
       },
       {
-        "product_id": "producto_12",
+        "product_id": "sensores_industriales",
         "import_principal": "USA",
         "import_secundario": "Perú",
         "export_principal": "Sudáfrica",
@@ -3402,7 +3414,7 @@
         "impacto_leadtime": 0.36
       },
       {
-        "product_id": "producto_13",
+        "product_id": "automatizacion_industrial",
         "import_principal": "Tailandia",
         "import_secundario": "Alemania",
         "export_principal": "Polonia",
@@ -3415,7 +3427,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_14",
+        "product_id": "tableros_control",
         "import_principal": "Indonesia",
         "import_secundario": "Reino Unido",
         "export_principal": "Indonesia",
@@ -3428,7 +3440,7 @@
         "impacto_leadtime": 0.43
       },
       {
-        "product_id": "producto_15",
+        "product_id": "cables_industriales",
         "import_principal": "Nueva Zelanda",
         "import_secundario": "Colombia",
         "export_principal": "Indonesia",
@@ -3441,7 +3453,7 @@
         "impacto_leadtime": 0.82
       },
       {
-        "product_id": "producto_16",
+        "product_id": "iluminacion_industrial",
         "import_principal": "Polonia",
         "import_secundario": "Portugal",
         "export_principal": "Indonesia",
@@ -3454,7 +3466,7 @@
         "impacto_leadtime": 0.33
       },
       {
-        "product_id": "producto_17",
+        "product_id": "herramientas_industriales",
         "import_principal": "Suecia",
         "import_secundario": "Australia",
         "export_principal": "Sudáfrica",
@@ -3467,7 +3479,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_18",
+        "product_id": "equipos_medicion",
         "import_principal": "Argentina",
         "import_secundario": "Vietnam",
         "export_principal": "Australia",
@@ -3480,7 +3492,7 @@
         "impacto_leadtime": 0.47
       },
       {
-        "product_id": "producto_19",
+        "product_id": "seguridad_industrial",
         "import_principal": "Alemania",
         "import_secundario": "China",
         "export_principal": "Tailandia",
@@ -3493,7 +3505,7 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_20",
+        "product_id": "consumibles_mro",
         "import_principal": "Canadá",
         "import_secundario": "Vietnam",
         "export_principal": "Alemania",
@@ -3506,11 +3518,11 @@
         "impacto_leadtime": 0.41
       },
       {
-        "product_id": "producto_21",
-        "import_principal": "Países Bajos",
-        "import_secundario": "Turquía",
-        "export_principal": "China",
-        "export_secundario": "Países Bajos",
+        "product_id": "abrasivos_industriales",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
         "sensibilidad_usd": 0.65,
         "sensibilidad_eur": 0.56,
         "sensibilidad_petroleo": 0.43,
@@ -3519,7 +3531,7 @@
         "impacto_leadtime": 0.85
       },
       {
-        "product_id": "producto_22",
+        "product_id": "adhesivos_industriales",
         "import_principal": "Turquía",
         "import_secundario": "Alemania",
         "export_principal": "Francia",
@@ -3532,7 +3544,7 @@
         "impacto_leadtime": 0.52
       },
       {
-        "product_id": "producto_23",
+        "product_id": "filtros_industriales",
         "import_principal": "Tailandia",
         "import_secundario": "Suecia",
         "export_principal": "Australia",
@@ -3545,7 +3557,7 @@
         "impacto_leadtime": 0.86
       },
       {
-        "product_id": "producto_24",
+        "product_id": "repuestos_maquinaria",
         "import_principal": "Polonia",
         "import_secundario": "México",
         "export_principal": "USA",
@@ -3558,7 +3570,7 @@
         "impacto_leadtime": 0.69
       },
       {
-        "product_id": "producto_25",
+        "product_id": "mantenimiento_predictivo",
         "import_principal": "Argentina",
         "import_secundario": "Canadá",
         "export_principal": "Brasil",
@@ -3571,7 +3583,7 @@
         "impacto_leadtime": 0.84
       },
       {
-        "product_id": "producto_26",
+        "product_id": "servicios_mantenimiento",
         "import_principal": "India",
         "import_secundario": "Australia",
         "export_principal": "Argentina",
@@ -3584,7 +3596,7 @@
         "impacto_leadtime": 0.6
       },
       {
-        "product_id": "producto_27",
+        "product_id": "calibracion_equipos",
         "import_principal": "Sudáfrica",
         "import_secundario": "Brasil",
         "export_principal": "India",
@@ -3597,7 +3609,7 @@
         "impacto_leadtime": 0.49
       },
       {
-        "product_id": "producto_28",
+        "product_id": "aislamiento_industrial",
         "import_principal": "USA",
         "import_secundario": "Malasia",
         "export_principal": "Polonia",
@@ -3610,7 +3622,7 @@
         "impacto_leadtime": 0.49
       },
       {
-        "product_id": "producto_29",
+        "product_id": "estructuras_metalicas",
         "import_principal": "Sudáfrica",
         "import_secundario": "Tailandia",
         "export_principal": "Tailandia",
@@ -3623,7 +3635,7 @@
         "impacto_leadtime": 0.45
       },
       {
-        "product_id": "producto_30",
+        "product_id": "soportes_anclajes",
         "import_principal": "Japón",
         "import_secundario": "Francia",
         "export_principal": "Tailandia",
@@ -3636,7 +3648,7 @@
         "impacto_leadtime": 0.76
       },
       {
-        "product_id": "producto_1",
+        "product_id": "creditos_capital_trabajo",
         "import_principal": "India",
         "import_secundario": "Reino Unido",
         "export_principal": "Vietnam",
@@ -3649,11 +3661,11 @@
         "impacto_leadtime": 0.85
       },
       {
-        "product_id": "producto_2",
-        "import_principal": "Polonia",
-        "import_secundario": "España",
-        "export_principal": "Corea del Sur",
-        "export_secundario": "Colombia",
+        "product_id": "leasing_operativo",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
         "sensibilidad_usd": 0.79,
         "sensibilidad_eur": 0.52,
         "sensibilidad_petroleo": 0.78,
@@ -3662,11 +3674,11 @@
         "impacto_leadtime": 0.5
       },
       {
-        "product_id": "producto_3",
-        "import_principal": "España",
-        "import_secundario": "Francia",
-        "export_principal": "USA",
-        "export_secundario": "Suecia",
+        "product_id": "leasing_financiero",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
         "sensibilidad_usd": 0.72,
         "sensibilidad_eur": 0.29,
         "sensibilidad_petroleo": 0.76,
@@ -3675,11 +3687,11 @@
         "impacto_leadtime": 0.52
       },
       {
-        "product_id": "producto_4",
-        "import_principal": "Francia",
-        "import_secundario": "Colombia",
-        "export_principal": "Indonesia",
-        "export_secundario": "Canadá",
+        "product_id": "factoring",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
         "sensibilidad_usd": 0.78,
         "sensibilidad_eur": 0.54,
         "sensibilidad_petroleo": 0.38,
@@ -3688,7 +3700,7 @@
         "impacto_leadtime": 0.65
       },
       {
-        "product_id": "producto_5",
+        "product_id": "confirming",
         "import_principal": "Malasia",
         "import_secundario": "India",
         "export_principal": "Países Bajos",
@@ -3701,7 +3713,7 @@
         "impacto_leadtime": 0.46
       },
       {
-        "product_id": "producto_6",
+        "product_id": "seguros_empresariales",
         "import_principal": "Australia",
         "import_secundario": "Vietnam",
         "export_principal": "Portugal",
@@ -3714,7 +3726,7 @@
         "impacto_leadtime": 0.77
       },
       {
-        "product_id": "producto_7",
+        "product_id": "seguros_credito",
         "import_principal": "Francia",
         "import_secundario": "Polonia",
         "export_principal": "Italia",
@@ -3727,7 +3739,7 @@
         "impacto_leadtime": 0.77
       },
       {
-        "product_id": "producto_8",
+        "product_id": "cuentas_corrientes_empresa",
         "import_principal": "Indonesia",
         "import_secundario": "Reino Unido",
         "export_principal": "Corea del Sur",
@@ -3740,7 +3752,7 @@
         "impacto_leadtime": 0.81
       },
       {
-        "product_id": "producto_9",
+        "product_id": "lineas_credito",
         "import_principal": "Argentina",
         "import_secundario": "Reino Unido",
         "export_principal": "Argentina",
@@ -3753,7 +3765,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_10",
+        "product_id": "tarjetas_empresa",
         "import_principal": "Reino Unido",
         "import_secundario": "India",
         "export_principal": "Alemania",
@@ -3766,7 +3778,7 @@
         "impacto_leadtime": 0.73
       },
       {
-        "product_id": "producto_11",
+        "product_id": "financiamiento_importaciones",
         "import_principal": "México",
         "import_secundario": "Nueva Zelanda",
         "export_principal": "Canadá",
@@ -3779,11 +3791,11 @@
         "impacto_leadtime": 0.67
       },
       {
-        "product_id": "producto_12",
-        "import_principal": "Argentina",
-        "import_secundario": "Polonia",
-        "export_principal": "Polonia",
-        "export_secundario": "Italia",
+        "product_id": "financiamiento_exportaciones",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
         "sensibilidad_usd": 0.78,
         "sensibilidad_eur": 0.69,
         "sensibilidad_petroleo": 0.71,
@@ -3792,7 +3804,7 @@
         "impacto_leadtime": 0.76
       },
       {
-        "product_id": "producto_13",
+        "product_id": "cobertura_cambiaria",
         "import_principal": "Francia",
         "import_secundario": "Polonia",
         "export_principal": "España",
@@ -3805,7 +3817,7 @@
         "impacto_leadtime": 0.72
       },
       {
-        "product_id": "producto_14",
+        "product_id": "servicios_forex",
         "import_principal": "Italia",
         "import_secundario": "España",
         "export_principal": "Brasil",
@@ -3818,7 +3830,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_15",
+        "product_id": "inversiones_corto_plazo",
         "import_principal": "Chile",
         "import_secundario": "Nueva Zelanda",
         "export_principal": "Tailandia",
@@ -3831,7 +3843,7 @@
         "impacto_leadtime": 0.37
       },
       {
-        "product_id": "producto_16",
+        "product_id": "fondos_mutuos_empresa",
         "import_principal": "Italia",
         "import_secundario": "Perú",
         "export_principal": "Brasil",
@@ -3844,7 +3856,7 @@
         "impacto_leadtime": 0.85
       },
       {
-        "product_id": "producto_17",
+        "product_id": "pagos_electronicos",
         "import_principal": "Australia",
         "import_secundario": "Polonia",
         "export_principal": "India",
@@ -3857,7 +3869,7 @@
         "impacto_leadtime": 0.36
       },
       {
-        "product_id": "producto_18",
+        "product_id": "pasarelas_pago",
         "import_principal": "Canadá",
         "import_secundario": "Tailandia",
         "export_principal": "Suecia",
@@ -3870,7 +3882,7 @@
         "impacto_leadtime": 0.31
       },
       {
-        "product_id": "producto_19",
+        "product_id": "cobranza_externa",
         "import_principal": "China",
         "import_secundario": "Nueva Zelanda",
         "export_principal": "Alemania",
@@ -3883,7 +3895,7 @@
         "impacto_leadtime": 0.76
       },
       {
-        "product_id": "producto_20",
+        "product_id": "evaluacion_riesgo_crediticio",
         "import_principal": "India",
         "import_secundario": "China",
         "export_principal": "Corea del Sur",
@@ -3896,7 +3908,7 @@
         "impacto_leadtime": 0.61
       },
       {
-        "product_id": "producto_21",
+        "product_id": "scoring_financiero",
         "import_principal": "Nueva Zelanda",
         "import_secundario": "Corea del Sur",
         "export_principal": "México",
@@ -3909,7 +3921,7 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_22",
+        "product_id": "contabilidad_servicios",
         "import_principal": "Sudáfrica",
         "import_secundario": "Polonia",
         "export_principal": "Tailandia",
@@ -3922,7 +3934,7 @@
         "impacto_leadtime": 0.68
       },
       {
-        "product_id": "producto_23",
+        "product_id": "auditoria_financiera",
         "import_principal": "Colombia",
         "import_secundario": "Australia",
         "export_principal": "Reino Unido",
@@ -3935,7 +3947,7 @@
         "impacto_leadtime": 0.48
       },
       {
-        "product_id": "producto_24",
+        "product_id": "planificacion_tributaria",
         "import_principal": "Vietnam",
         "import_secundario": "Sudáfrica",
         "export_principal": "Malasia",
@@ -3948,7 +3960,7 @@
         "impacto_leadtime": 0.88
       },
       {
-        "product_id": "producto_25",
+        "product_id": "gestion_flujo_caja",
         "import_principal": "Francia",
         "import_secundario": "España",
         "export_principal": "Italia",
@@ -3961,7 +3973,7 @@
         "impacto_leadtime": 0.68
       },
       {
-        "product_id": "producto_26",
+        "product_id": "finanzas_corporativas_pyme",
         "import_principal": "Alemania",
         "import_secundario": "Países Bajos",
         "export_principal": "Colombia",
@@ -3974,7 +3986,7 @@
         "impacto_leadtime": 0.68
       },
       {
-        "product_id": "producto_27",
+        "product_id": "banca_digital_empresas",
         "import_principal": "Tailandia",
         "import_secundario": "Perú",
         "export_principal": "Japón",
@@ -3987,7 +3999,7 @@
         "impacto_leadtime": 0.87
       },
       {
-        "product_id": "producto_28",
+        "product_id": "fintech_pyme",
         "import_principal": "Suecia",
         "import_secundario": "Colombia",
         "export_principal": "Alemania",
@@ -4000,7 +4012,7 @@
         "impacto_leadtime": 0.35
       },
       {
-        "product_id": "producto_29",
+        "product_id": "asesoria_financiera",
         "import_principal": "Corea del Sur",
         "import_secundario": "Colombia",
         "export_principal": "Perú",
@@ -4013,7 +4025,7 @@
         "impacto_leadtime": 0.41
       },
       {
-        "product_id": "producto_30",
+        "product_id": "compliance_financiero",
         "import_principal": "Perú",
         "import_secundario": "Brasil",
         "export_principal": "Reino Unido",
@@ -4024,6 +4036,279 @@
         "riesgo_geopolitico_producto": 0.29,
         "impacto_flete": 0.41,
         "impacto_leadtime": 0.42
+      },
+      {
+        "product_id": "energias_renovables",
+        "import_principal": "China",
+        "import_secundario": "Alemania",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.65,
+        "sensibilidad_eur": 0.55,
+        "sensibilidad_petroleo": 0.3,
+        "riesgo_geopolitico_producto": 0.4,
+        "impacto_flete": 0.7,
+        "impacto_leadtime": 0.6
+      },
+      {
+        "product_id": "infraestructura_electrica",
+        "import_principal": "China",
+        "import_secundario": "Brasil",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.7,
+        "sensibilidad_eur": 0.5,
+        "sensibilidad_petroleo": 0.4,
+        "riesgo_geopolitico_producto": 0.35,
+        "impacto_flete": 0.65,
+        "impacto_leadtime": 0.55
+      },
+      {
+        "product_id": "servicios_utilities",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.3,
+        "sensibilidad_eur": 0.2,
+        "sensibilidad_petroleo": 0.2,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "servicios_contables",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.2,
+        "sensibilidad_eur": 0.2,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "servicios_legales",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.15,
+        "sensibilidad_eur": 0.15,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "servicios_it",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.25,
+        "sensibilidad_eur": 0.25,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "servicios_rrhh",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.2,
+        "sensibilidad_eur": 0.2,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "servicios_bpo",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.25,
+        "sensibilidad_eur": 0.25,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "servicios_cloud",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.3,
+        "sensibilidad_eur": 0.3,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "marketing_empresarial",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.2,
+        "sensibilidad_eur": 0.2,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "capacitacion_empresarial",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.15,
+        "sensibilidad_eur": 0.15,
+        "sensibilidad_petroleo": 0.1,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
+      },
+      {
+        "product_id": "textiles_basicos",
+        "import_principal": "China",
+        "import_secundario": "India",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
+        "sensibilidad_usd": 0.7,
+        "sensibilidad_eur": 0.4,
+        "sensibilidad_petroleo": 0.5,
+        "riesgo_geopolitico_producto": 0.45,
+        "impacto_flete": 0.6,
+        "impacto_leadtime": 0.5
+      },
+      {
+        "product_id": "prendas_vestir",
+        "import_principal": "China",
+        "import_secundario": "Vietnam",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
+        "sensibilidad_usd": 0.8,
+        "sensibilidad_eur": 0.5,
+        "sensibilidad_petroleo": 0.4,
+        "riesgo_geopolitico_producto": 0.5,
+        "impacto_flete": 0.7,
+        "impacto_leadtime": 0.6
+      },
+      {
+        "product_id": "calzado",
+        "import_principal": "China",
+        "import_secundario": "Vietnam",
+        "export_principal": "Perú",
+        "export_secundario": "Bolivia",
+        "sensibilidad_usd": 0.75,
+        "sensibilidad_eur": 0.45,
+        "sensibilidad_petroleo": 0.45,
+        "riesgo_geopolitico_producto": 0.45,
+        "impacto_flete": 0.65,
+        "impacto_leadtime": 0.55
+      },
+      {
+        "product_id": "insumos_textiles",
+        "import_principal": "China",
+        "import_secundario": "India",
+        "export_principal": "Perú",
+        "export_secundario": "Argentina",
+        "sensibilidad_usd": 0.65,
+        "sensibilidad_eur": 0.4,
+        "sensibilidad_petroleo": 0.5,
+        "riesgo_geopolitico_producto": 0.4,
+        "impacto_flete": 0.55,
+        "impacto_leadtime": 0.5
+      },
+      {
+        "product_id": "diesel_industrial",
+        "import_principal": "USA",
+        "import_secundario": "Brasil",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.9,
+        "sensibilidad_eur": 0.6,
+        "sensibilidad_petroleo": 0.95,
+        "riesgo_geopolitico_producto": 0.8,
+        "impacto_flete": 0.85,
+        "impacto_leadtime": 0.7
+      },
+      {
+        "product_id": "gasolina",
+        "import_principal": "USA",
+        "import_secundario": "Ecuador",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.9,
+        "sensibilidad_eur": 0.6,
+        "sensibilidad_petroleo": 0.95,
+        "riesgo_geopolitico_producto": 0.8,
+        "impacto_flete": 0.85,
+        "impacto_leadtime": 0.7
+      },
+      {
+        "product_id": "glp",
+        "import_principal": "USA",
+        "import_secundario": "Argentina",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.85,
+        "sensibilidad_eur": 0.5,
+        "sensibilidad_petroleo": 0.9,
+        "riesgo_geopolitico_producto": 0.7,
+        "impacto_flete": 0.8,
+        "impacto_leadtime": 0.65
+      },
+      {
+        "product_id": "gnl",
+        "import_principal": "USA",
+        "import_secundario": "Trinidad y Tobago",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.9,
+        "sensibilidad_eur": 0.7,
+        "sensibilidad_petroleo": 0.85,
+        "riesgo_geopolitico_producto": 0.85,
+        "impacto_flete": 0.9,
+        "impacto_leadtime": 0.8
+      },
+      {
+        "product_id": "almacenamiento_energia",
+        "import_principal": "China",
+        "import_secundario": "Corea del Sur",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.75,
+        "sensibilidad_eur": 0.6,
+        "sensibilidad_petroleo": 0.4,
+        "riesgo_geopolitico_producto": 0.5,
+        "impacto_flete": 0.7,
+        "impacto_leadtime": 0.6
+      },
+      {
+        "product_id": "eficiencia_energetica",
+        "import_principal": "Chile",
+        "import_secundario": "Chile",
+        "export_principal": "Chile",
+        "export_secundario": "Chile",
+        "sensibilidad_usd": 0.3,
+        "sensibilidad_eur": 0.3,
+        "sensibilidad_petroleo": 0.2,
+        "riesgo_geopolitico_producto": 0.1,
+        "impacto_flete": 0.1,
+        "impacto_leadtime": 0.1
       }
     ]
   }
