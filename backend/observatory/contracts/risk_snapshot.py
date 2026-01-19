@@ -1,47 +1,39 @@
-"""
-Contrato formal del Risk Snapshot del Observatorio Estadístico.
+from datetime import datetime, UTC
+from typing import Literal, Optional
 
-Este modelo representa el riesgo implícito calculado POST-ejecución,
-como metadato observacional. No interviene en decisiones ni modifica
-resultados de los modelos core.
-
-INVARIANTES:
-- Read-only
-- Side-channel
-- Determinístico y explicable
-- No-interferencia decisional
-"""
-
-from typing import Dict, List
-from pydantic import BaseModel, Field
-
-
-class RiskDriverContribution(BaseModel):
-    """
-    Representa la contribución individual de un driver de riesgo.
-    """
-    driver: str
-    value: float = Field(..., ge=0.0, le=1.0)
-    weight: float = Field(..., ge=0.0, le=1.0)
-    contribution: float = Field(..., ge=0.0, le=1.0)
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class RiskSnapshot(BaseModel):
     """
-    Snapshot inmutable del riesgo implícito asociado a una decisión.
+    Snapshot estadístico de riesgo observado.
+    No implica decisión ni recomendación.
     """
 
-    # Score global
-    risk_score: float = Field(..., ge=0.0, le=1.0)
-    risk_band: str  # LOW | MEDIUM | HIGH | CRITICAL
+    account_id: str = Field(..., description="Identificador de la cuenta evaluada")
+    risk_level: Literal["LOW", "MEDIUM", "HIGH"] = Field(
+        ..., description="Nivel de riesgo estadístico observado"
+    )
 
-    # Drivers
-    drivers: Dict[str, float]
-    weights: Dict[str, float]
-    contributions: Dict[str, float]
+    risk_score: float = Field(
+        ..., ge=0.0, le=1.0, description="Score normalizado de riesgo [0,1]"
+    )
 
-    # Interpretabilidad
-    top_drivers: List[str]
+    volatility_index: float = Field(
+        ..., ge=0.0, description="Índice de volatilidad observada"
+    )
 
-    class Config:
-        frozen = True  # Garantiza inmutabilidad del snapshot
+    confidence: float = Field(
+        ..., ge=0.0, le=1.0, description="Confianza estadística del snapshot"
+    )
+
+    observation_window: int = Field(
+        ..., description="Ventana temporal utilizada (en periodos)"
+    )
+
+    observed_at: datetime = Field(
+        default_factory=lambda: datetime.now(UTC),
+        description="Timestamp de la observación"
+    )
+
+    model_config = ConfigDict(frozen=True)

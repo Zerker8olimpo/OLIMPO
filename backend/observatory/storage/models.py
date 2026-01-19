@@ -16,11 +16,11 @@ INVARIANTES:
 """
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, UTC
 from typing import Any, Dict, Optional
 
-from observatory.contracts.interaction_event import InteractionEvent
-from observatory.contracts.trend_snapshot import TrendSnapshot
+from backend.observatory.contracts.interaction_event import InteractionEvent
+from backend.observatory.contracts.trend_snapshot import TrendSnapshot
 
 
 # -------------------------------------------------
@@ -93,7 +93,7 @@ def build_event_record(
     """
     return ObservedEventRecord(
         record_id=record_id,
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
         event=event,
         metadata=metadata or {},
     )
@@ -111,7 +111,7 @@ def build_user_trend_record(
     """
     return UserTrendRecord(
         record_id=record_id,
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
         snapshot=snapshot,
         window_days=window_days,
         metadata=metadata or {},
@@ -130,7 +130,7 @@ def build_market_trend_record(
     """
     return MarketTrendRecord(
         record_id=record_id,
-        created_at=datetime.utcnow(),
+        created_at=datetime.now(UTC),
         snapshot=snapshot,
         window_days=window_days,
         metadata=metadata or {},

@@ -1,5 +1,6 @@
 # backend/api/routers/billing_google.py
 from datetime import datetime, timedelta
+import os
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
@@ -8,6 +9,7 @@ from sqlalchemy.orm import Session
 from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims
 from backend.database.models.user import User
+from backend.core.plans import PLANS
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment
 # from backend.core.email_service import send_subscription_active_email # Uncomment if available
@@ -44,6 +46,11 @@ def google_verify(
     if not plan:
         raise HTTPException(status_code=400, detail="UNKNOWN_PRODUCT_ID")
 
+    # Guard: En producción, no permitir stub
+    APP_ENV = os.getenv("APP_ENV", "development")
+    if APP_ENV == "production":
+        raise HTTPException(status_code=501, detail="GOOGLE_PLAY_VERIFICATION_NOT_IMPLEMENTED")
+
     # ============================================================
     # TODO: Verificación REAL con Google Play Developer API
     # - Validar purchase_token/product_id/package_name
@@ -53,7 +60,7 @@ def google_verify(
 
     # Stub operativo: activa 30 días (solo para que puedas probar end-to-end)
     start = datetime.utcnow()
-    end = start + timedelta(days=30)
+    end = start + PLANS[plan]["duration"]
 
     user = db.query(User).filter(User.email == email).one_or_none()
     if not user:
@@ -87,7 +94,7 @@ def google_verify(
     db.add(Payment(
         user_id=user.id,
         provider="google",
-        amount=0,          # En Google Play el monto lo puedes registrar vía config o metadata
+        amount=PLANS[plan]["price"],
         currency="CLP",
         status="approved",
         external_id=payload.purchase_token,

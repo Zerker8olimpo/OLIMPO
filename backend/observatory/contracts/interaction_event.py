@@ -13,7 +13,9 @@ INVARIANTES:
 
 from datetime import datetime
 from typing import Dict, List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
+
+from backend.observatory.contracts.risk_snapshot import RiskSnapshot
 
 
 class InputQuality(BaseModel):
@@ -22,14 +24,6 @@ class InputQuality(BaseModel):
     outlier_flags: List[str] = []
     inconsistency_flags: List[str] = []
     dq_penalty: float = Field(0.0, ge=0.0, le=1.0)
-
-
-class RiskSnapshot(BaseModel):
-    risk_score: float = Field(..., ge=0.0, le=1.0)
-    risk_band: str
-    drivers: Dict[str, float]
-    contributions: Dict[str, float]
-    top_drivers: List[str]
 
 
 class HeliosGapSnapshot(BaseModel):
@@ -72,5 +66,4 @@ class InteractionEvent(BaseModel):
     server_node: Optional[str] = None
     errors: Optional[List[str]] = None
 
-    class Config:
-        frozen = True  # Garantiza inmutabilidad del evento
+    model_config = ConfigDict(frozen=True)

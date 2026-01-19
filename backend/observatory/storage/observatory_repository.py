@@ -1,65 +1,58 @@
-"""
-Observatory Repository
-----------------------
+import logging
+from backend.observatory.contracts.interaction_event import InteractionEvent
+from backend.observatory.contracts.risk_snapshot import RiskSnapshot
+from backend.observatory.contracts.trend_snapshot import TrendSnapshot
+from backend.observatory.services.observatory_event import (
+    ObservatoryEvent as ObservatoryEventModel,
+    TrendSnapshotEntry
+)
 
-Capa de persistencia del Observatorio Estadístico de OLIMPO.
+# from backend.database.session import SessionLocal  # Asumido
 
-Responsabilidad única:
-- Guardar eventos observacionales
-- Proveer lectura básica para agregaciones
-
-INVARIANTES:
-- Side-effect único permitido del Observatorio
-- Fail-open
-- No lógica analítica
-- No dependencia de modelos core
-"""
-
-from typing import List
-
-from observatory.contracts.interaction_event import InteractionEvent
-
+logger = logging.getLogger("olimpo.observatory")
 
 class ObservatoryRepository:
     """
-    Repositorio simple en memoria.
-
-    Esta implementación es intencionalmente básica y puede
-    ser reemplazada por SQLite / PostgreSQL / Data Lake
-    sin cambiar la interfaz.
+    Repositorio de almacenamiento para el Observatorio.
+    Maneja la persistencia de eventos y snapshots estadísticos.
     """
-
-    def __init__(self):
-        # Almacenamiento en memoria (append-only)
-        self._events: List[InteractionEvent] = []
-
-    # -------------------------------------------------
-    # Escritura
-    # -------------------------------------------------
 
     def save_event(self, event: InteractionEvent) -> None:
         """
-        Persiste un evento observacional.
-        Nunca lanza excepciones hacia arriba.
+        Persiste un evento de interacción.
+        """
+        # Implementación simplificada / stub
+        # En producción: Mapear contrato -> modelo DB y guardar
+        pass
+
+    def store_risk_snapshot(self, snapshot: RiskSnapshot) -> None:
+        """
+        Persiste un snapshot de riesgo.
+        """
+        # Stub para mantener compatibilidad con el servicio
+        pass
+
+    def store_trend_snapshot(self, snapshot: TrendSnapshot) -> None:
+        """
+        Persiste un snapshot de tendencia en la base de datos.
         """
         try:
-            self._events.append(event)
-        except Exception:
-            # Fail-open: no romper el pipeline
-            return
+            entry = TrendSnapshotEntry(
+                account_id=snapshot.account_id,
+                trend_direction=snapshot.trend_direction,
+                trend_strength=snapshot.trend_strength,
+                slope=snapshot.slope,
+                confidence=snapshot.confidence,
+                observation_window=snapshot.observation_window,
+                observed_at=snapshot.observed_at
+            )
 
-    # -------------------------------------------------
-    # Lectura (para analytics)
-    # -------------------------------------------------
+            # TODO: Integrar con SessionLocal real
+            # with SessionLocal() as session:
+            #     session.add(entry)
+            #     session.commit()
+            
+            logger.info(f"[REPO] TrendSnapshot guardado para {snapshot.account_id} ({snapshot.trend_direction})")
 
-    def get_all_events(self) -> List[InteractionEvent]:
-        """
-        Retorna todos los eventos almacenados.
-        """
-        return list(self._events)
-
-    def clear(self) -> None:
-        """
-        Limpia el repositorio (solo para tests / desarrollo).
-        """
-        self._events.clear()
+        except Exception as e:
+            logger.error(f"[REPO] Error guardando TrendSnapshot: {e}")

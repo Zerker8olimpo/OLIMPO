@@ -3,6 +3,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 # ============================================================
 # CARGA DE ENV
@@ -21,9 +22,9 @@ else:
 # VARIABLES CRÍTICAS
 # ============================================================
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-if not SECRET_KEY:
-    raise RuntimeError("SECRET_KEY no configurada")
+JWT_SECRET = os.getenv("JWT_SECRET")
+if not JWT_SECRET:
+    raise RuntimeError("JWT_SECRET no configurada en .env")
 
 APP_ENV = os.getenv("APP_ENV", "development")
 APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
@@ -58,9 +59,9 @@ from backend.api.routers.helios import router as helios_router
 from backend.api.routers.me import router as me_router
 from backend.api.routers.billing_google import router as billing_google_router
 from backend.api.routers.billing_mercadopago import router as billing_mercadopago_router
-from backend.api.routers.billing_google import router as billing_google_router
-from backend.api.routers.billing_mercadopago import router as billing_mercadopago_router
 from backend.api.routers.admin import router as admin_router
+from backend.api.routers.reset_device import router as reset_device_router
+from backend.api.routers.account import router as account_router
 
 app.include_router(auth_router)
 app.include_router(epsilon_router)
@@ -70,15 +71,20 @@ app.include_router(helios_router)
 app.include_router(me_router)
 app.include_router(billing_google_router)
 app.include_router(billing_mercadopago_router)
-app.include_router(billing_google_router)
-app.include_router(billing_mercadopago_router)
 app.include_router(admin_router)
+app.include_router(reset_device_router)
+app.include_router(account_router)
 
 # ============================================================
 # HEALTH CHECK (IMPORTANTE PARA FLUTTER)
 # ============================================================
 
-@app.get("/health", tags=["system"])
+class HealthResponse(BaseModel):
+    status: str
+    env: str
+    version: str
+
+@app.get("/health", tags=["system"], response_model=HealthResponse)
 def health():
     return {
         "status": "ok",

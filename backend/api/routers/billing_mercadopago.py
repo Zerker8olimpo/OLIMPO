@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims
 from backend.database.models.user import User
+from backend.core.plans import PLANS, resolve_plan_by_amount
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment
 # from backend.core.email_service import send_subscription_active_email # Uncomment if available
@@ -39,9 +40,10 @@ def mp_create(
     if not email:
         raise HTTPException(status_code=401, detail="INVALID_TOKEN_CLAIMS")
 
-    prices = {"basic": 19990, "pro": 29990, "enterprise": 39990}
-    if payload.plan not in prices:
+    if payload.plan not in PLANS:
         raise HTTPException(status_code=400, detail="INVALID_PLAN")
+
+    plan_cfg = PLANS[payload.plan]
 
     # En tu web, debes loguear con el mismo JWT OLIMPO y llamar este endpoint.
     # external_reference = email (o user_id). Aquí uso email para evitar dependencia.
@@ -49,8 +51,8 @@ def mp_create(
         "items": [{
             "title": f"OLIMPO {payload.plan.upper()} {payload.period}",
             "quantity": 1,
-            "currency_id": "CLP",
-            "unit_price": prices[payload.plan]
+            "currency_id": plan_cfg["currency"],
+            "unit_price": plan_cfg["price"]
         }],
         "external_reference": email,
         # "notification_url": "https://TU_RENDER_URL/billing/mercadopago/webhook",
@@ -81,15 +83,18 @@ async def mp_webhook(
     if MP_WEBHOOK_SECRET and x_signature != MP_WEBHOOK_SECRET:
         raise HTTPException(status_code=401, detail="INVALID_WEBHOOK_SIGNATURE")
 
+    # Guard: En producción, no permitir activación sin validación real
+    APP_ENV = os.getenv("APP_ENV", "development")
+    if APP_ENV == "production":
+        # En prod, aquí deberíamos consultar GET /v1/payments/{payment_id}
+        raise HTTPException(status_code=501, detail="MP_WEBHOOK_VERIFICATION_NOT_IMPLEMENTED")
+
     payload = await request.json()
 
-    # En eventos reales, suele venir payment_id y hay que consultar el pago.
-    # Para tenerlo operativo hoy, soportamos payloads con:
-    # { "status": "approved", "external_reference": "<email>", "plan": "pro", "payment_id": "..." }
     status = payload.get("status")
     external_reference = payload.get("external_reference")
-    plan = payload.get("plan")
     payment_id = payload.get("payment_id")
+    amount = payload.get("transaction_amount") # Asumimos que viene en el payload del webhook
 
     if not external_reference:
         raise HTTPException(status_code=400, detail="MISSING_EXTERNAL_REFERENCE")
@@ -97,16 +102,18 @@ async def mp_webhook(
     if status != "approved":
         return {"ok": True}
 
-    if plan not in ("basic", "pro", "enterprise"):
-        # Si no envías plan en webhook, deberás obtenerlo consultando el pago en MP.
-        raise HTTPException(status_code=400, detail="MISSING_OR_INVALID_PLAN")
+    # Determinamos el plan basado en el monto pagado para evitar fraudes
+    plan = resolve_plan_by_amount(amount) if amount else payload.get("plan")
+
+    if plan not in PLANS:
+        raise HTTPException(status_code=400, detail="INVALID_PLAN_OR_AMOUNT")
 
     user = db.query(User).filter(User.email == external_reference).one_or_none()
     if not user:
         raise HTTPException(status_code=404, detail="USER_NOT_FOUND")
 
     start = datetime.utcnow()
-    end = start + timedelta(days=30)
+    end = start + PLANS[plan]["duration"]
 
     sub = db.query(Subscription).filter(Subscription.user_id == user.id).one_or_none()
     if not sub:
@@ -133,7 +140,7 @@ async def mp_webhook(
     db.add(Payment(
         user_id=user.id,
         provider="mercadopago",
-        amount=0,
+        amount=PLANS[plan]["price"],
         currency="CLP",
         status="approved",
         external_id=str(payment_id) if payment_id else None,

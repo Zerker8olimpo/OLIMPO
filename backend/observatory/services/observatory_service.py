@@ -15,11 +15,15 @@ INVARIANTES:
 - No toca modelos, HELIOS ni OLIMPO Core
 """
 
-from typing import Dict, Optional
+import logging
+from typing import Any, Dict, Optional, List
 
-from observatory.builders.interaction_event_builder import InteractionEventBuilder
-from observatory.storage.observatory_repository import ObservatoryRepository
+from backend.observatory.builders.interaction_event_builder import InteractionEventBuilder
+from backend.observatory.storage.observatory_repository import ObservatoryRepository
+from backend.observatory.analytics.risk_calculator import RiskCalculator
+from backend.observatory.analytics.trend_calculator import TrendCalculator
 
+logger = logging.getLogger("olimpo.observatory")
 
 class ObservatoryService:
     """
@@ -102,3 +106,89 @@ class ObservatoryService:
         except Exception:
             # Fail-open absoluto: el pipeline nunca se entera
             return
+
+    def observe_execution(
+        self,
+        context: Dict[str, Any],
+        inputs: Dict[str, Any],
+        outputs: Dict[str, Any],
+        model_name: str
+    ) -> None:
+        """
+        Método adaptador para registrar ejecuciones desde endpoints (BackgroundTasks).
+        Mapea el contexto genérico a la estructura específica del Observatorio.
+        """
+        if not self.enabled:
+            return
+
+        try:
+            # Extracción de contexto con valores por defecto seguros
+            user_id = context.get("gmail", "anonymous")
+            device_id = context.get("device_id", "unknown")
+            app_version = context.get("app_version", "unknown")
+            platform = context.get("platform", "unknown")
+            timestamp = context.get("timestamp")
+
+            # Reutilizamos log_interaction para mantener la lógica centralizada
+            # Mapeamos los inputs/outputs a una estructura que el builder pueda consumir
+            # Nota: inputs en log_interaction espera Dict[str, float], aquí pasamos Any.
+            # El builder debe ser lo suficientemente robusto para serializarlo (JSON).
+            
+            self.log_interaction(
+                user_id_hash=user_id,
+                model_name=model_name,
+                product_key="ACCOUNT", # Contexto de cuenta, no de producto
+                market_key="GLOBAL",
+                app_version=app_version,
+                source=f"{platform}_background",
+                inputs=inputs,
+                driver_values={}, # No aplica para evaluación de cuenta
+                request_id=device_id, # Usamos device_id como traza si no hay request_id
+                # Pasamos outputs como parte de la metadata si el builder lo soporta, 
+                # o extendemos log_interaction en el futuro.
+            )
+
+            # --- Integración Risk + Trend (Cierre del flujo) ---
+            
+            # 1. Extracción de serie numérica para análisis
+            values: List[float] = inputs.get("values", [])
+            if not isinstance(values, list):
+                values = []
+
+            observation_window = len(values) if values else 1
+            account_id = user_id
+
+            # 2. Cálculo de Snapshots
+            risk_snapshot = RiskCalculator.calculate_from_series(
+                account_id=account_id,
+                values=values,
+                observation_window=observation_window,
+            )
+
+            trend_snapshot = TrendCalculator.calculate_from_series(
+                account_id=account_id,
+                values=values,
+                observation_window=observation_window,
+            )
+
+            # 3. Persistencia de Snapshots
+            # Asumimos que el repositorio soporta estos métodos.
+            # Si no existen, el bloque try-except garantiza fail-open.
+            self.repository.store_risk_snapshot(risk_snapshot)
+            self.repository.store_trend_snapshot(trend_snapshot)
+            
+            logger.info(f"[OBSERVATORY] ✅ Evento registrado: {model_name} | User: {user_id}")
+
+        except Exception as e:
+            # Fail-open: Logueamos el error pero no interrumpimos nada
+            logger.error(f"[OBSERVATORY] ❌ Fallo en observe_execution: {str(e)}", exc_info=True)
+
+
+# Instancia global para importar en routers (Singleton)
+# Se asume que ObservatoryRepository maneja su propia conexión o sesión internamente.
+observatory_service = ObservatoryService(
+    cfg_quality={},
+    cfg_risk={},
+    repository=ObservatoryRepository(),
+    enabled=True
+)

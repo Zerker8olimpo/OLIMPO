@@ -1,48 +1,35 @@
-import sys
-import os
-from pathlib import Path
-from sqlalchemy import create_engine, text
-from dotenv import load_dotenv
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
-# 1. Configuración de rutas
-current_file = Path(__file__).resolve()
-backend_dir = current_file.parent.parent  # .../backend
-root_dir = backend_dir.parent             # .../OLIMPO
-sys.path.append(str(root_dir))
+from backend.api.db_deps import get_db
+from backend.database.models.user import User
+from backend.database.models.device import Device
+from backend.api.security.jwt import verify_google_id_token
 
-# 2. Cargar .env
-env_path = backend_dir / ".env"
-load_dotenv(env_path)
+router = APIRouter(prefix="/device", tags=["device"])
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+class ResetDeviceRequest(BaseModel):
+    email: str
+    id_token: str
 
-def reset_device_id(email: str):
-    """
-    Elimina el device_id asociado a un usuario para permitirle
-    iniciar sesión en un nuevo dispositivo.
-    """
-    if not DATABASE_URL:
-        print("❌ Error: DATABASE_URL no encontrada en .env")
-        return
+@router.post("/reset")
+def reset_device(data: ResetDeviceRequest, db: Session = Depends(get_db)):
+    # 1. Validar Identidad
+    try:
+        user_info = verify_google_id_token(data.id_token)
+        if user_info.get("email") != data.email:
+            raise HTTPException(status_code=403, detail="Token email mismatch")
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Invalid identity: {str(e)}")
 
-    print(f"🔄 Conectando a DB para resetear dispositivo de: {email}")
-    
-    engine = create_engine(DATABASE_URL)
-    
-    # Usamos SQL directo para evitar dependencias de modelos en scripts de mantenimiento simples
-    query = text("UPDATE users SET device_id = NULL WHERE email = :email")
-    
-    with engine.connect() as conn:
-        result = conn.execute(query, {"email": email})
-        conn.commit()
-        
-        if result.rowcount > 0:
-            print(f"✅ Éxito: Dispositivo desvinculado para {email}")
-        else:
-            print(f"⚠️ No se encontró el usuario {email} o no se requirieron cambios.")
+    # 2. Buscar Usuario
+    user = db.query(User).filter(User.email == data.email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Uso: python -m backend.scripts.reset_device <email_usuario>")
-    else:
-        reset_device_id(sys.argv[1])
+    # 3. Desactivar todos los dispositivos activos (Reset)
+    db.query(Device).filter(Device.user_id == user.id).update({"is_active": False})
+    db.commit()
+
+    return {"status": "ok", "message": "Devices reset successfully"}

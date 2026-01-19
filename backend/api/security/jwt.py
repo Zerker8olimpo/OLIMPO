@@ -75,6 +75,7 @@ def create_olimpo_jwt(user_info: dict) -> str:
     now = datetime.now(timezone.utc)
     payload = {
         "sub": str(user_info.get("sub", "")),
+        "user_id": user_info.get("user_id"),
         "email": user_info.get("email"),
         "name": user_info.get("name"),
         "provider": "google",

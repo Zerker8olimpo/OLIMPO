@@ -44,7 +44,11 @@ def auth_google(
     user = db.query(User).filter(User.email == email).first()
     if not user:
         # Usuario nuevo: Lo creamos y vinculamos este dispositivo
-        user = User(email=email, device_id=data.device_id, is_active=True)
+        user = User(
+            email=email, 
+            device_id=data.device_id, 
+            is_active=True,
+        )
         db.add(user)
         db.commit()
         db.refresh(user)
@@ -56,7 +60,7 @@ def auth_google(
             status_code=409,
             detail={
                 "error": "DEVICE_MISMATCH",
-                "message": "Esta cuenta ya está vinculada a otro dispositivo. Contacte soporte para cambiarlo.",
+                "message": "Esta cuenta ya está vinculada a otro dispositivo. Puede resetearlo para continuar.",
             },
         )
 
@@ -67,6 +71,12 @@ def auth_google(
         db.commit()
 
     # 4. Generar JWT de sesión
+    # El JWT ahora es de identidad pura. El plan se resuelve dinámicamente en el servidor.
+    user_info.update({
+        "user_id": user.id,
+        "provider": "google"
+    })
+    
     access_token = create_olimpo_jwt(user_info)
 
     return {

@@ -12,18 +12,17 @@ INVARIANTES:
 - No-interferencia decisional
 """
 
-from datetime import datetime
-from typing import Dict, Optional
+from datetime import datetime, UTC
+from typing import Any, Dict, Optional
 import uuid
 
-from observatory.contracts.interaction_event import (
+from backend.observatory.contracts.interaction_event import (
     InteractionEvent,
     InputQuality,
     HeliosGapSnapshot,
 )
-from observatory.contracts.risk_snapshot import RiskSnapshot
-from observatory.quality.input_quality_analyzer import InputQualityAnalyzer
-from observatory.risk.risk_engine import RiskEngine
+from backend.observatory.contracts.risk_snapshot import RiskSnapshot
+from backend.observatory.analytics.risk_calculator import RiskCalculator
 
 
 class InteractionEventBuilder:
@@ -32,8 +31,10 @@ class InteractionEventBuilder:
     """
 
     def __init__(self, cfg_quality: Dict, cfg_risk: Dict):
-        self.quality_analyzer = InputQualityAnalyzer(cfg_quality)
-        self.risk_engine = RiskEngine(cfg_risk)
+        # En una implementación completa, aquí se inicializarían los analizadores.
+        # Para mantener el builder puro y sin dependencias pesadas, solo guardamos config.
+        self.cfg_quality = cfg_quality
+        self.cfg_risk = cfg_risk
 
     def build(
         self,
@@ -44,7 +45,7 @@ class InteractionEventBuilder:
         market_key: str,
         app_version: str,
         source: str,
-        inputs: Dict[str, float],
+        inputs: Dict[str, Any],
         driver_values: Dict[str, float],
         helios_gap_score: Optional[float] = None,
         helios_gap_fields: Optional[Dict[str, float]] = None,
@@ -61,15 +62,26 @@ class InteractionEventBuilder:
         Nunca lanza excepciones hacia arriba.
         """
         try:
-            # 1. Calidad de entrada
-            quality_dict = self.quality_analyzer.analyze(inputs)
-            input_quality = InputQuality(**quality_dict)
+            # 1. Calidad de entrada (Stub / Default)
+            # El builder estructura los datos, no ejecuta análisis pesado.
+            input_quality = InputQuality(
+                score=1.0,
+                dq_penalty=0.0,
+                issues=[],
+                missing_fields=[]
+            )
 
-            # 2. Riesgo implícito
-            risk_snapshot: RiskSnapshot = self.risk_engine.compute(
-                drivers=driver_values,
-                dq_penalty=input_quality.dq_penalty,
-                helios_gap_score=helios_gap_score,
+            # 2. Riesgo implícito (Calculado)
+            # Extraemos valores numéricos de los inputs para medir volatilidad
+            numeric_values = [
+                float(v) for v in inputs.values() 
+                if isinstance(v, (int, float)) and not isinstance(v, bool)
+            ]
+
+            risk_snapshot = RiskCalculator.calculate_from_series(
+                account_id=user_id_hash,
+                values=numeric_values,
+                observation_window=self.cfg_risk.get("observation_window", 12),
             )
 
             # 3. Gap vs HELIOS (opcional)
@@ -77,7 +89,7 @@ class InteractionEventBuilder:
             if helios_gap_score is not None:
                 helios_gap = HeliosGapSnapshot(
                     gap_score=helios_gap_score,
-                    gap_fields=helios_gap_fields,
+                    gap_fields=helios_gap_fields or {},
                     twin_snapshot_id=twin_snapshot_id,
                     twin_version=twin_version,
                 )
@@ -85,7 +97,7 @@ class InteractionEventBuilder:
             # 4. Evento final
             return InteractionEvent(
                 event_id=str(uuid.uuid4()),
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(UTC),
                 user_id_hash=user_id_hash,
                 session_id=session_id,
                 tenant_id=tenant_id,
@@ -108,7 +120,7 @@ class InteractionEventBuilder:
             # Fail-open absoluto: evento mínimo sin análisis
             return InteractionEvent(
                 event_id=str(uuid.uuid4()),
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(UTC),
                 user_id_hash=user_id_hash,
                 session_id=session_id,
                 tenant_id=tenant_id,
@@ -118,14 +130,14 @@ class InteractionEventBuilder:
                 app_version=app_version,
                 source=source,
                 inputs=inputs,
-                input_quality=InputQuality(),
+                input_quality=InputQuality(score=0.0, dq_penalty=0.0, issues=[], missing_fields=[]),
                 risk_snapshot=RiskSnapshot(
+                    account_id=user_id_hash,
+                    risk_level="LOW",
                     risk_score=0.0,
-                    risk_band="LOW",
-                    drivers={},
-                    weights={},
-                    contributions={},
-                    top_drivers=[],
+                    volatility_index=0.0,
+                    confidence=0.0,
+                    observation_window=1,
                 ),
                 helios_gap=None,
                 latency_ms=latency_ms,

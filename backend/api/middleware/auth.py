@@ -1,8 +1,10 @@
 import os
 
-from fastapi import Request
+from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
+
+# from backend.api.security.jwt import verify_token
 
 
 class JWTAuthMiddleware(BaseHTTPMiddleware):
@@ -14,35 +16,16 @@ class JWTAuthMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next):
 
-        SECRET_KEY = os.getenv("SECRET_KEY")
+        JWT_SECRET = os.getenv("JWT_SECRET")
 
-        if not SECRET_KEY:
+        if not JWT_SECRET:
             return JSONResponse(
                 status_code=500,
-                content={"detail": "SECRET_KEY no configurada"}
+                content={"detail": "JWT_SECRET no configurada"}
             )
 
-        # ============================================================
-        # RUTAS PÚBLICAS (NO REQUIEREN AUTH)
-        # ============================================================
-
-        public_paths = (
-            "/health",
-            "/docs",
-            "/openapi.json",
-            "/auth",
-            "/dev",
-        )
-
-        if request.url.path.startswith(public_paths):
-            return await call_next(request)
-
-        # ============================================================
-        # JWT REAL (SE IMPLEMENTA EN FASE POSTERIOR)
-        # ============================================================
-
-        # Ejemplo futuro:
-        # token = request.headers.get("Authorization")
-        # validate_token(token, SECRET_KEY)
+        # NOTA: La validación de seguridad se ha movido a Depends(get_current_claims)
+        # en cada router individual para mayor granularidad.
+        # Este middleware queda reservado para logging o inyección de contexto global si fuera necesario.
 
         return await call_next(request)
