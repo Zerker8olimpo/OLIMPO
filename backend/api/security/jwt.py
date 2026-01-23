@@ -1,7 +1,7 @@
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from fastapi import HTTPException
-import jwt
+from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
 from backend.core.config import settings
 
