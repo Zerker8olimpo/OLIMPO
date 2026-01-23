@@ -22,28 +22,33 @@ def me_subscription(
     Respuesta estable para Flutter.
     """
     email = claims.get("email")
+    device_id = claims.get("device_id")
     if not email:
-        return {"authenticated": False, "plan": "none", "provider": None, "status": "expired", "expires_at": None}
+        return {"authenticated": False, "plan": "basic", "provider": None, "status": "inactive", "expires_at": None}
 
-    user = db.query(User).filter(User.email == email).one_or_none()
+    user = db.query(User).filter(User.email == email).first()
     if not user:
-        return {"authenticated": True, "plan": "none", "provider": None, "status": "expired", "expires_at": None}
+        return {"authenticated": True, "plan": "basic", "provider": None, "status": "inactive", "expires_at": None}
 
-    sub = db.query(Subscription).filter(Subscription.user_id == user.id).one_or_none()
+    sub = (
+        db.query(Subscription)
+        .filter(
+            Subscription.user_id == user.id,
+            Subscription.device_id == device_id,
+            Subscription.status == "active",
+            Subscription.end_date > datetime.utcnow()
+        )
+        .order_by(Subscription.end_date.desc())
+        .first()
+    )
+
     if not sub:
-        return {"authenticated": True, "plan": "none", "provider": None, "status": "expired", "expires_at": None}
-
-    expires_at = sub.end_date.isoformat() if sub.end_date else None
-    # Si ya expiró y sigue "active", lo normalizas
-    if sub.end_date and sub.status == "active":
-        if sub.end_date < datetime.utcnow():
-            sub.status = "expired"
-            db.commit()
+        return {"authenticated": True, "plan": "basic", "provider": None, "status": "inactive", "expires_at": None}
 
     return {
         "authenticated": True,
-        "plan": sub.plan,
+        "plan": sub.plan_id,
         "provider": sub.provider,
         "status": sub.status,
-        "expires_at": expires_at
+        "expires_at": sub.end_date.isoformat() if sub.end_date else None
     }

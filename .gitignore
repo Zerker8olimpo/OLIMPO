@@ -45,3 +45,11 @@ app_olimpo/
 # Mobile app (NO subir al backend repo)
 app_olimpo_clean/
 app_mobile_flutter/
+
+# Local environment variables
+.env
+.env.local
+dev.db
+
+secrets/
+*.json

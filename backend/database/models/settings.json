@@ -1,7 +1,4 @@
 {
-  "python.analysis.extraPaths": [
-    ".",
-    "./backend"
-  ],
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe"
+  "python.analysis.extraPaths": ["."],
+  "python.analysis.importFormat": "absolute"
 }

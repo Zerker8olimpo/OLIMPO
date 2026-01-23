@@ -1,9 +1,9 @@
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from fastapi import HTTPException
-import os
 import jwt
 from datetime import datetime, timedelta, timezone
+from backend.core.config import settings
 
 JWT_ALGORITHM = "HS256"
 
@@ -13,17 +13,17 @@ JWT_ALGORITHM = "HS256"
 # =========================
 
 def _get_google_client_id() -> str:
-    client_id = os.getenv("GOOGLE_CLIENT_ID")
+    client_id = settings.GOOGLE_OAUTH_CLIENT_ID
     if not client_id:
         raise HTTPException(
             status_code=500,
-            detail="GOOGLE_CLIENT_ID not configured"
+            detail="GOOGLE_OAUTH_CLIENT_ID not configured"
         )
     return client_id
 
 
 def _get_jwt_secret() -> str:
-    secret = os.getenv("JWT_SECRET")
+    secret = settings.JWT_SECRET
     if not secret:
         raise HTTPException(
             status_code=500,
@@ -66,33 +66,34 @@ def verify_google_id_token(token: str) -> dict:
 # OLIMPO JWT
 # =========================
 
-def create_olimpo_jwt(user_info: dict) -> str:
-    """
-    Crea JWT propio de OLIMPO (HS256).
-    Este es el token que debe ir en Authorization: Bearer <token>
-    para /epsilon/run y cualquier endpoint protegido.
-    """
-    now = datetime.now(timezone.utc)
+def create_access_token(
+    *,
+    sub: str,
+    user_id: int,
+    email: str,
+    device_id: str,
+    plan: str,
+    test_mode: bool = False,
+    expires_delta: timedelta | None = None
+) -> str:
     payload = {
-        "sub": str(user_info.get("sub", "")),
-        "user_id": user_info.get("user_id"),
-        "email": user_info.get("email"),
-        "name": user_info.get("name"),
-        "provider": "google",
-        "iat": int(now.timestamp()),
-        "exp": int((now + timedelta(hours=8)).timestamp()),
+        "sub": str(user_id),
+        "google_sub": sub,
+        "user_id": user_id,
+        "email": email,
+        "device_id": device_id,
+        "plan": plan,
+        "test_mode": test_mode,
     }
 
-    return jwt.encode(
-        payload,
-        _get_jwt_secret(),
-        algorithm=JWT_ALGORITHM
-    )
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(hours=24)
 
+    payload["exp"] = expire
 
-# Backward-compat: algunos módulos/imports antiguos usan este nombre
-def create_access_token(user_info: dict) -> str:
-    return create_olimpo_jwt(user_info)
+    return jwt.encode(payload, _get_jwt_secret(), algorithm=JWT_ALGORITHM)
 
 
 def verify_token(token: str) -> dict:

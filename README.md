@@ -111,6 +111,24 @@ Características clave:
 
 ---
 
+## 🧩 Observatorio Estadístico (Fail‑Safe)
+
+El Observatorio Estadístico es un **módulo independiente**, diseñado bajo el principio arquitectónico oficial:
+
+> _Observa, registra y contextualiza. Nunca decide, corrige ni optimiza._
+
+Características clave:
+
+- Post‑ejecución (no bloqueante).
+- Read‑only sobre resultados.
+- No acoplado a modelos, HELIOS ni OLIMPO Core.
+- Registra patrones decisionales, errores, riesgo implícito y tendencias.
+- Usa estadística descriptiva, inferencial no paramétrica y análisis longitudinal.
+
+📄 Principio formal: `docs/architecture/observatory_principle.md`
+
+---
+
 ## 🧠 Flujo Conceptual del Sistema
 
 ```

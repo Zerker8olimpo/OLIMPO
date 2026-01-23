@@ -12,6 +12,7 @@ class Payment(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True, nullable=False)
+    subscription_id: Mapped[int | None] = mapped_column(ForeignKey("subscriptions.id"), nullable=True)
 
     provider: Mapped[str] = mapped_column(String(20), nullable=False)     # google | mercadopago
     amount: Mapped[int] = mapped_column(Integer, nullable=False)

@@ -1,12 +1,20 @@
-from fastapi import Header, HTTPException, Depends, status
+from fastapi import Security, HTTPException, Depends, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
-from datetime import datetime
+from datetime import datetime, timedelta
+import logging
 
 from backend.api.db_deps import get_db
 from backend.api.security.jwt import verify_token
+from backend.core.config import settings
+from backend.database.models.payment import Payment
 from backend.database.models.subscription import Subscription
 from backend.database.models.user import User
 from backend.core.plans import PLANS
+
+logger = logging.getLogger("olimpo.billing")
+
+bearer_scheme = HTTPBearer(auto_error=True)
 
 def get_active_subscription(db: Session, user_id: int):
     """
@@ -23,51 +31,107 @@ def get_active_subscription(db: Session, user_id: int):
         .first()
     )
 
+def validate_billing_policy(sub: Subscription, claims: dict, expected_provider: str):
+    """
+    PolicyAgent Centralizado: Valida integridad y estado de la suscripción.
+    Permite bypass de estados si test_mode es True.
+    """
+    # PAL DEV BYPASS
+    if settings.POLICY_MODE == "dev" or settings.DEV_BYPASS_POLICIES:
+        return
+
+    is_test_mode = claims.get("test_mode") is True
+    is_sandbox = settings.MP_ENV == "sandbox"
+
+    # 1. Validaciones de Integridad (SIEMPRE)
+    if sub.user_id != int(claims.get("user_id")):
+        raise HTTPException(status_code=403, detail="USER_MISMATCH")
+    if sub.device_id != claims.get("device_id"):
+        raise HTTPException(status_code=403, detail="DEVICE_MISMATCH")
+    if sub.provider != expected_provider:
+        logger.warning(
+            f"[BILLING_POLICY] PROVIDER_MISMATCH | "
+            f"User: {claims.get('user_id')} | "
+            f"SubID: {sub.id} | "
+            f"Device: {claims.get('device_id')} | "
+            f"Expected: {expected_provider} | "
+            f"Actual: {sub.provider} | "
+            f"TestMode: {is_test_mode}"
+        )
+        raise HTTPException(status_code=403, detail="PROVIDER_MISMATCH")
+
+    if is_test_mode:
+        return  # Bypass de políticas de entorno/estado
+
+    # 2. Políticas de Entorno/Estado
+    if not is_sandbox:
+        if sub.status != "active":
+            raise HTTPException(status_code=403, detail="PRODUCTION_REQUIRES_ACTIVE_SUBSCRIPTION")
+    else:
+        if sub.status not in ("pending", "active"):
+            raise HTTPException(status_code=403, detail="SANDBOX_REQUIRES_PENDING_OR_ACTIVE_SUBSCRIPTION")
+
+def activate_subscription_logic(
+    db: Session,
+    subscription: Subscription,
+    provider: str,
+    payment_ref: str,
+    amount: int = 0,
+    currency: str = "CLP",
+    start_date: datetime = None,
+    end_date: datetime = None,
+    auto_renew: bool = True
+):
+    """
+    Lógica única y normalizada para activar suscripciones.
+    Implementa idempotencia verificando el payment_ref.
+    """
+    # 1. Idempotencia: Verificar si este pago ya fue procesado
+    existing_payment = db.query(Payment).filter(
+        Payment.external_id == payment_ref,
+        Payment.status == "approved"
+    ).first()
+    if existing_payment:
+        return subscription
+
+    # 2. Actualizar Suscripción
+    subscription.status = "active"
+    subscription.provider = provider
+    subscription.external_reference = payment_ref
+    subscription.start_date = start_date or datetime.utcnow()
+    subscription.end_date = end_date or (subscription.start_date + timedelta(days=30))
+    subscription.auto_renew = auto_renew
+
+    # 3. Actualizar o Crear Registro de Pago
+    payment = db.query(Payment).filter(
+        Payment.subscription_id == subscription.id,
+        Payment.provider == provider,
+        Payment.status == "created"
+    ).first()
+
+    if not payment:
+        payment = Payment(user_id=subscription.user_id, subscription_id=subscription.id, provider=provider, amount=amount, currency=currency)
+        db.add(payment)
+
+    payment.status = "approved"
+    payment.external_id = payment_ref
+    db.commit()
+    return subscription
+
 def get_current_claims(
-    authorization: str = Header(default=""),
+    credentials: HTTPAuthorizationCredentials = Security(bearer_scheme),
     db: Session = Depends(get_db)
 ) -> dict:
     """
-    Lee Authorization: Bearer <olimpo_jwt>
-    Retorna claims: {"sub": "...", "email": "...", ...}
+    Valida el token JWT y asegura que contenga los claims obligatorios.
     """
-    if not authorization or not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="MISSING_BEARER_TOKEN")
-
-    token = authorization.replace("Bearer ", "", 1).strip()
-    if not token:
-        raise HTTPException(status_code=401, detail="EMPTY_TOKEN")
-
+    token = credentials.credentials
     claims = verify_token(token)
-    user_id = claims.get("user_id")
 
-    # Fallback: Si user_id no está en el token, lo resolvemos por email
-    if user_id is None:
-        email = claims.get("email")
-        if email:
-            user = db.query(User).filter(User.email == email).first()
-            if user:
-                user_id = user.id
-                # Inyectamos para que el resto de la cadena lo tenga disponible
-                claims["user_id"] = user_id
-
-    if user_id is None:
-        raise HTTPException(status_code=401, detail="Invalid token payload: user_id not found")
-
-    subscription = get_active_subscription(db, int(user_id))
-
-    if subscription:
-        plan = subscription.plan
-        plan_cfg = PLANS.get(plan)
-        
-        claims["plan"] = plan
-        claims["models"] = plan_cfg["models"] if plan_cfg else []
-        claims["subscription_expires_at"] = subscription.end_date.isoformat()
-    else:
-        # Usuario autenticado pero sin plan activo
-        claims["plan"] = None
-        claims["models"] = []
-        claims["subscription_expires_at"] = None
+    REQUIRED = ["user_id", "email", "device_id", "plan"]
+    for field in REQUIRED:
+        if field not in claims:
+            raise HTTPException(status_code=401, detail="INVALID_TOKEN_CLAIMS")
 
     return claims
 

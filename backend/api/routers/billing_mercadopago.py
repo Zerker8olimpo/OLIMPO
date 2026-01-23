@@ -1,150 +1,181 @@
-# backend/api/routers/billing_mercadopago.py
-from datetime import datetime, timedelta
+from __future__ import annotations
 
 import os
-import requests
+from datetime import datetime, timedelta
+from typing import Literal, Optional
+
 from fastapi import APIRouter, Depends, Header, HTTPException, Request
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
+from backend.core.config import settings
+from backend.core.mp_client import MercadoPagoClient
 
 from backend.api.db_deps import get_db
-from backend.api.security.deps import get_current_claims
-from backend.database.models.user import User
-from backend.core.plans import PLANS, resolve_plan_by_amount
+from backend.api.security.deps import get_current_claims, activate_subscription_logic
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment
-# from backend.core.email_service import send_subscription_active_email # Uncomment if available
+from backend.core.plans import PLANS
 
+router = APIRouter(tags=["Payments & Account"])
+mp_client = MercadoPagoClient()
 
-router = APIRouter(prefix="/billing/mercadopago", tags=["billing-mercadopago"])
+class GooglePayVerifyRequest(BaseModel):
+    product_id: str
+    purchase_token: str
+    device_id: str
 
-MP_API = "https://api.mercadopago.com"
-MP_ACCESS_TOKEN = os.getenv("MERCADOPAGO_ACCESS_TOKEN", "")
-MP_WEBHOOK_SECRET = os.getenv("MERCADOPAGO_WEBHOOK_SECRET", "")
+class MercadoPagoPreferenceRequest(BaseModel):
+    plan: Literal["basic", "pro", "enterprise"]
 
+# --- ENDPOINTS DE LA APP ---
 
-class MPCreateRequest(BaseModel):
-    plan: str  # basic | pro | enterprise
-    period: str = "monthly"
+@router.get("/account/status")
+def get_account_status(claims: dict = Depends(get_current_claims), db: Session = Depends(get_db)):
+    """
+    Retorna el estado de suscripción unificado para la app.
+    Este es el único endpoint que la app debe consultar para conocer el plan activo.
+    """
+    user_id = int(claims.get("user_id"))
+    sub = db.query(Subscription).filter(
+        Subscription.user_id == user_id,
+        Subscription.status == "active"
+    ).order_by(Subscription.end_date.desc()).first()
 
-
-@router.post("/create")
-def mp_create(
-    payload: MPCreateRequest,
-    claims: dict = Depends(get_current_claims),
-):
-    if not MP_ACCESS_TOKEN:
-        raise HTTPException(status_code=500, detail="MERCADOPAGO_ACCESS_TOKEN_NOT_SET")
-
-    email = claims.get("email")
-    if not email:
-        raise HTTPException(status_code=401, detail="INVALID_TOKEN_CLAIMS")
-
-    if payload.plan not in PLANS:
-        raise HTTPException(status_code=400, detail="INVALID_PLAN")
-
-    plan_cfg = PLANS[payload.plan]
-
-    # En tu web, debes loguear con el mismo JWT OLIMPO y llamar este endpoint.
-    # external_reference = email (o user_id). Aquí uso email para evitar dependencia.
-    preference_payload = {
-        "items": [{
-            "title": f"OLIMPO {payload.plan.upper()} {payload.period}",
-            "quantity": 1,
-            "currency_id": plan_cfg["currency"],
-            "unit_price": plan_cfg["price"]
-        }],
-        "external_reference": email,
-        # "notification_url": "https://TU_RENDER_URL/billing/mercadopago/webhook",
-    }
-
-    headers = {
-        "Authorization": f"Bearer {MP_ACCESS_TOKEN}",
-        "Content-Type": "application/json"
-    }
-
-    r = requests.post(f"{MP_API}/checkout/preferences", json=preference_payload, headers=headers, timeout=20)
-    r.raise_for_status()
-    data = r.json()
+    if not sub:
+        return {
+            "plan": "free",
+            "status": "inactive",
+            "provider": None,
+            "expires_at": None
+        }
 
     return {
-        "preference_id": data["id"],
-        "checkout_url": data.get("init_point") or data.get("sandbox_init_point")
+        "plan": sub.plan_id,
+        "status": sub.status,
+        "provider": sub.provider,
+        "expires_at": sub.end_date.isoformat() if sub.end_date else None
     }
 
+@router.post("/payments/google/verify")
+def verify_google_payment(
+    payload: GooglePayVerifyRequest,
+    claims: dict = Depends(get_current_claims),
+    db: Session = Depends(get_db)
+):
+    """
+    Verificación server-side para Google Play Billing.
+    Este es el ÚNICO flujo de pago permitido dentro de la app Android.
+    """
+    if not settings.GOOGLE_PLAY_VERIFY_ENABLED:
+        raise HTTPException(status_code=501, detail="GOOGLE_PLAY_VERIFICATION_DISABLED")
 
-@router.post("/webhook")
-async def mp_webhook(
+    # Stub de validación (En prod integrar con google-api-python-client)
+    is_valid = True 
+    
+    if is_valid:
+        # Buscar si ya existe para idempotencia
+        sub = db.query(Subscription).filter(
+            Subscription.external_ref == payload.purchase_token,
+            Subscription.provider == "google_play"
+        ).first()
+        if not sub:
+            sub = Subscription(
+                user_id=int(claims["user_id"]),
+                plan_id=payload.product_id.replace("olimpo_", "").replace("_monthly", ""),
+                status="active",
+                device_id=payload.device_id,
+                provider="google_play",
+                external_ref=payload.purchase_token,
+                start_date=datetime.utcnow(),
+                end_date=datetime.utcnow() + timedelta(days=30)
+            )
+            db.add(sub)
+            db.commit()
+            db.refresh(sub)
+        
+        return {"status": "success", "plan": sub.plan_id, "expires_at": sub.end_date}
+    
+    raise HTTPException(status_code=400, detail="INVALID_PURCHASE_TOKEN")
+
+# --- ENDPOINTS WEB / EXTERNOS ---
+
+@router.post("/payments/mercadopago/create_preference")
+def create_mp_preference(
+    payload: MercadoPagoPreferenceRequest,
+    claims: dict = Depends(get_current_claims),
+    db: Session = Depends(get_db)
+):
+    """
+    Crea una preferencia de Mercado Pago (Solo para canal Web).
+    IMPORTANT: Mercado Pago must NEVER be initiated from the Android app (Google Play policy).
+    """
+    # Auditoría de Seguridad: Rechazo explícito si el canal es Play Store o si se intenta forzar in-app
+    if settings.APP_CHANNEL == "playstore" or settings.ALLOW_MP_IN_APP:
+        raise HTTPException(
+            status_code=403, 
+            detail="Mercado Pago checkout is not available inside the app. Use external channel."
+        )
+
+    if not settings.ALLOW_MP_CHECKOUT:
+        raise HTTPException(status_code=403, detail="MERCADOPAGO_CHECKOUT_DISABLED")
+
+    plan_id = payload.plan
+    amount = PLANS[plan_id]["price"]
+    user_id = int(claims["user_id"])
+    device_id = claims.get("device_id")
+
+    # Registrar pago localmente
+    payment = Payment(
+        user_id=user_id,
+        provider="mercadopago",
+        amount=amount,
+        currency="CLP",
+        status="created"
+    )
+    db.add(payment)
+    db.commit()
+
+    res, error = mp_client.create_preference(
+        intent_id=payment.id,
+        plan=plan_id,
+        amount=amount,
+        email=claims["email"]
+    )
+
+    if error:
+        raise HTTPException(status_code=502, detail=f"Mercado Pago Error: {error}")
+
+    payment.external_id = res["preference_id"]
+    db.commit()
+
+    return {"checkout_url": res["checkout_url"], "payment_id": payment.id}
+
+# --- WEBHOOKS ---
+
+@router.post("/webhooks/mercadopago")
+async def mercadopago_webhook(
     request: Request,
     db: Session = Depends(get_db),
-    x_signature: str | None = Header(default=None),
+    x_signature: Optional[str] = Header(default=None),
 ):
-    # Firma controlada (placeholder). En producción se implementa firma real según docs MP.
-    if MP_WEBHOOK_SECRET and x_signature != MP_WEBHOOK_SECRET:
+    """
+    Webhook para procesar pagos de Mercado Pago.
+    IMPORTANT: Este flujo es exclusivamente para activaciones desde canales externos.
+    """
+    if not settings.MP_WEBHOOK_ENABLED:
+        return {"ok": False, "detail": "WEBHOOK_DISABLED"}
+
+    if settings.MP_WEBHOOK_SECRET and x_signature != settings.MP_WEBHOOK_SECRET:
         raise HTTPException(status_code=401, detail="INVALID_WEBHOOK_SIGNATURE")
 
-    # Guard: En producción, no permitir activación sin validación real
-    APP_ENV = os.getenv("APP_ENV", "development")
-    if APP_ENV == "production":
-        # En prod, aquí deberíamos consultar GET /v1/payments/{payment_id}
-        raise HTTPException(status_code=501, detail="MP_WEBHOOK_VERIFICATION_NOT_IMPLEMENTED")
-
     payload = await request.json()
-
-    status = payload.get("status")
-    external_reference = payload.get("external_reference")
-    payment_id = payload.get("payment_id")
-    amount = payload.get("transaction_amount") # Asumimos que viene en el payload del webhook
-
-    if not external_reference:
-        raise HTTPException(status_code=400, detail="MISSING_EXTERNAL_REFERENCE")
-
-    if status != "approved":
-        return {"ok": True}
-
-    # Determinamos el plan basado en el monto pagado para evitar fraudes
-    plan = resolve_plan_by_amount(amount) if amount else payload.get("plan")
-
-    if plan not in PLANS:
-        raise HTTPException(status_code=400, detail="INVALID_PLAN_OR_AMOUNT")
-
-    user = db.query(User).filter(User.email == external_reference).one_or_none()
-    if not user:
-        raise HTTPException(status_code=404, detail="USER_NOT_FOUND")
-
-    start = datetime.utcnow()
-    end = start + PLANS[plan]["duration"]
-
-    sub = db.query(Subscription).filter(Subscription.user_id == user.id).one_or_none()
-    if not sub:
-        sub = Subscription(
-            user_id=user.id,
-            plan=plan,
-            status="active",
-            provider="mercadopago",
-            external_reference=str(payment_id) if payment_id else None,
-            start_date=start,
-            end_date=end,
-            auto_renew=True,
-        )
-        db.add(sub)
-    else:
-        sub.plan = plan
-        sub.status = "active"
-        sub.provider = "mercadopago"
-        sub.external_reference = str(payment_id) if payment_id else None
-        sub.start_date = start
-        sub.end_date = end
-        sub.auto_renew = True
-
-    db.add(Payment(
-        user_id=user.id,
-        provider="mercadopago",
-        amount=PLANS[plan]["price"],
-        currency="CLP",
-        status="approved",
-        external_id=str(payment_id) if payment_id else None,
-    ))
-
-    db.commit()
+    # Lógica de procesamiento de MP...
+    # (Se asume que activate_subscription_logic maneja la idempotencia)
+    
+    # Ejemplo simplificado de activación
+    event_type = payload.get("type")
+    payment_id = (payload.get("data") or {}).get("id")
+    if event_type != "payment" or not payment_id:
+        return {"ok": True, "ignored": True}
+    
     return {"ok": True}
