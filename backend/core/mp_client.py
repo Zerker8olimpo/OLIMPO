@@ -1,21 +1,20 @@
+import os
 import requests
 from backend.core.settings import settings
 
 class MercadoPagoClient:
     def __init__(self):
+        self.enabled = os.getenv("ALLOW_MP_CHECKOUT", "false").lower() == "true"
+        self.access_token = os.getenv("MP_ACCESS_TOKEN")
+
+        if self.enabled and not self.access_token:
+            raise RuntimeError(
+                "Mercado Pago enabled but access token not configured."
+            )
+
         self.base_url = "https://api.mercadopago.com"
-        
-        # Selección de token basada en el modo de Mercado Pago
-        if settings.MERCADOPAGO_MODE == "prod":
-            self.token = settings.MP_ACCESS_TOKEN
-        else:
-            self.token = settings.MP_ACCESS_TOKEN_SANDBOX
-
-        if not self.token:
-            raise RuntimeError("Mercado Pago access token not configured. Check your .env file.")
-
         self.headers = {
-            "Authorization": f"Bearer {self.token}",
+            "Authorization": f"Bearer {self.access_token}",
             "Content-Type": "application/json"
         }
 

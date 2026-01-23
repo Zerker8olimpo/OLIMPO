@@ -17,7 +17,9 @@ from backend.database.models.payment import Payment
 from backend.core.plans import PLANS
 
 router = APIRouter(tags=["Payments & Account"])
-mp_client = MercadoPagoClient()
+
+def get_mp_client() -> MercadoPagoClient:
+    return MercadoPagoClient()
 
 class GooglePayVerifyRequest(BaseModel):
     product_id: str
@@ -135,6 +137,7 @@ def create_mp_preference(
     db.add(payment)
     db.commit()
 
+    mp_client = get_mp_client()
     res, error = mp_client.create_preference(
         intent_id=payment.id,
         plan=plan_id,
