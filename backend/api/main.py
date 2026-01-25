@@ -13,9 +13,14 @@ from backend.api.routers.me import router as me_router
 from backend.api.routers.billing_google import router as billing_google_router
 from backend.api.routers.billing_mercadopago import router as billing_mp_router
 
+# Configuración de Base de Datos
+from backend.database.session import engine
+from backend.database.base import Base
+
 # Registro de Modelos de Base de Datos
 # Importamos desde el paquete models para asegurar que SQLAlchemy registre todas las relaciones
 from backend.database.models import User, UserProfile, Subscription
+Base.metadata.create_all(bind=engine)
 
 # Models
 from backend.api.routers.epsilon import router as epsilon_router
