@@ -26,6 +26,9 @@ from backend.database.models import (
 )
 Base.metadata.create_all(bind=engine)
 
+# Check de depuración para Mercado Pago (Seguro: no imprime el valor)
+print(f"DEBUG: Token MP cargado: {bool(settings.MP_ACCESS_TOKEN)}")
+
 # Models
 from backend.api.routers.epsilon import router as epsilon_router
 from backend.api.routers.sigma import router as sigma_router
