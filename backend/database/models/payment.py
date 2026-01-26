@@ -1,10 +1,16 @@
 # backend/database/models/payment.py
 from datetime import datetime
+import enum
 
 from sqlalchemy import String, DateTime, ForeignKey, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 
 from backend.database.base import Base
+
+
+class PaymentProvider(str, enum.Enum):
+    GOOGLE = "google"
+    MERCADOPAGO = "mercadopago"
 
 
 class Payment(Base):
