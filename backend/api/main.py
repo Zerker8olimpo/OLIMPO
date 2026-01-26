@@ -12,6 +12,7 @@ from backend.api.routers.me import router as me_router
 # Billing
 from backend.api.routers.billing_google import router as billing_google_router
 from backend.api.routers.billing_mercadopago import router as billing_mp_router
+from backend.api.routers.web_portal import router as web_portal_router
 
 # Configuración de Base de Datos
 from backend.database.session import engine
@@ -52,6 +53,7 @@ app.include_router(me_router)
 app.include_router(reset_device_router)
 app.include_router(billing_google_router)
 app.include_router(billing_mp_router)
+app.include_router(web_portal_router)
 app.include_router(epsilon_router)
 app.include_router(sigma_router)
 app.include_router(poseidon_router)
