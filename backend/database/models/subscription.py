@@ -1,10 +1,11 @@
 # backend/database/models/subscription.py
 from datetime import datetime
 
-from sqlalchemy import String, DateTime, Boolean, ForeignKey, Integer
+from sqlalchemy import String, DateTime, Boolean, ForeignKey, Integer, Enum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.database.base import Base
+from .payment import PaymentProvider
 
 
 class Subscription(Base):
@@ -18,7 +19,7 @@ class Subscription(Base):
     plan_id: Mapped[str] = mapped_column(String(20), nullable=False)          # basic | pro | enterprise
     status: Mapped[str] = mapped_column(String(20), nullable=False)        # pending | active | expired | canceled
 
-    provider: Mapped[str] = mapped_column(String(20), default="google", nullable=False)  # google | mercadopago
+    provider: Mapped[PaymentProvider] = mapped_column(Enum(PaymentProvider), default=PaymentProvider.GOOGLE, nullable=False)
     external_ref: Mapped[str | None] = mapped_column(String(255), nullable=True)  # purchaseToken / payment_id
 
     start_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)

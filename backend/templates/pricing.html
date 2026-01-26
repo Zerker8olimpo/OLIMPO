@@ -123,7 +123,7 @@
             <div class="plan-name">Básico</div>
             <div class="plan-price">$19.990 <span>/mes</span></div>
             <div class="plan-description">Planificación de compras y control básico.</div>
-            <a href="{{ url_basic }}" class="btn-pay">Pagar con MP</a>
+            <a href="/web/checkout?plan=basic&user_id={{ user_id }}" class="btn-pay">Pagar con MP</a>
         </div>
 
         <div class="pricing-card featured">
@@ -131,14 +131,14 @@
             <div class="plan-name">Profesional</div>
             <div class="plan-price">$29.990 <span>/mes</span></div>
             <div class="plan-description">Gestión avanzada y soporte prioritario.</div>
-            <a href="{{ url_pro }}" class="btn-pay">Pagar con MP</a>
+            <a href="/web/checkout?plan=pro&user_id={{ user_id }}" class="btn-pay">Pagar con MP</a>
         </div>
 
         <div class="pricing-card">
             <div class="plan-name">Enterprise</div>
             <div class="plan-price">$39.990 <span>/mes</span></div>
             <div class="plan-description">Solución integral de cadena de suministro.</div>
-            <a href="{{ url_enterprise }}" class="btn-pay">Pagar con MP</a>
+            <a href="/web/checkout?plan=enterprise&user_id={{ user_id }}" class="btn-pay">Pagar con MP</a>
         </div>
     </div>
 </body>

@@ -20,7 +20,10 @@ from backend.database.base import Base
 
 # Registro de Modelos de Base de Datos
 # Importamos desde el paquete models para asegurar que SQLAlchemy registre todas las relaciones
-from backend.database.models import User, UserProfile, Subscription
+from backend.database.models import (
+    User, UserProfile, Subscription, Payment, 
+    Device, WebhookEvent, ObservatoryEvent, EmailOutbox
+)
 Base.metadata.create_all(bind=engine)
 
 # Models
