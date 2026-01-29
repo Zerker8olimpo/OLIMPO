@@ -13,6 +13,7 @@ class Subscription(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    # TODO [v1.1]: Eliminar device_id cuando se desacople la suscripción del dispositivo.
     device_id: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
 
     last_payment_intent_id: Mapped[int | None] = mapped_column(Integer, nullable=True)

@@ -31,6 +31,7 @@ class PaymentAuthority:
         # 4. Lógica de activación de suscripción
         if provider_status == "approved":
             # Buscamos suscripción existente para el par usuario+device
+            # TODO [v1.1]: Eliminar filtro device_id para desacoplar suscripción
             sub = db.query(Subscription).filter(
                 Subscription.user_id == intent.user_id,
                 Subscription.device_id == intent.device_id

@@ -27,7 +27,7 @@ class AccountInfo(BaseModel):
     gmail: str
 
 class SubscriptionInfo(BaseModel):
-    status: str  # none | active | expired
+    status: str  # NONE | ACTIVE | EXPIRED
     plan: str    # basic | pro | enterprise | none
     days_remaining: int
 
@@ -54,20 +54,27 @@ class EvaluateResponse(BaseModel):
 @router.post("/evaluate", response_model=EvaluateResponse)
 def evaluate_account(data: EvaluateRequest, db: Session = Depends(get_db)):
     # 1. Verificación de Identidad (Stateless)
+    google_sub = None
     try:
         user_info = verify_google_id_token(data.id_token)
         if user_info.get("email") != data.gmail:
             raise HTTPException(status_code=403, detail="Token email mismatch")
+        google_sub = user_info.get("sub")
     except Exception as e:
         raise HTTPException(status_code=401, detail=f"Invalid identity: {str(e)}")
 
     # 2. Obtener o Crear Usuario (Idempotente)
     user = db.query(User).filter(User.email == data.gmail).first()
     if not user:
-        user = User(email=data.gmail, is_active=True)
+        user = User(email=data.gmail, google_sub=google_sub, is_active=True)
         db.add(user)
         db.commit()
         db.refresh(user)
+    else:
+        # Migración progresiva: Guardar google_sub si no existe
+        if not user.google_sub and google_sub:
+            user.google_sub = google_sub
+            db.commit()
 
     # 3. Lógica de Dispositivo
     # Regla: 1 cuenta = 1 dispositivo activo.
@@ -93,22 +100,26 @@ def evaluate_account(data: EvaluateRequest, db: Session = Depends(get_db)):
             has_other_active_device = True
 
     # 4. Lógica de Suscripción
-    sub = db.query(Subscription).filter(Subscription.user_id == user.id, Subscription.status == "active").first()
+    # MVP: La suscripción está vinculada al dispositivo.
+    sub = db.query(Subscription).filter(
+        Subscription.user_id == user.id,
+        Subscription.device_id == data.device_id  # Strict MVP coupling
+    ).first()
     
-    sub_status = "none"
+    sub_status = "NONE"
     sub_plan = "none"
     days_remaining = 0
 
     if sub:
-        if sub.end_date and sub.end_date < datetime.utcnow():
+        # Normalización de estados a mayúsculas para consistencia con App
+        if sub.status == "active" and sub.end_date and sub.end_date < datetime.utcnow():
             sub.status = "expired"
             db.commit()
-            sub_status = "expired"
-            sub_plan = sub.plan
-        else:
-            sub_status = "active"
-            sub_plan = sub.plan
-            days_remaining = (sub.end_date - datetime.utcnow()).days if sub.end_date else 30
+            sub_status = "EXPIRED"
+        elif sub.status == "active":
+            sub_status = "ACTIVE"
+            sub_plan = sub.plan_id
+            days_remaining = max(0, (sub.end_date - datetime.utcnow()).days) if sub.end_date else 30
 
     # 5. Cálculo de Flags
     return EvaluateResponse(
@@ -116,9 +127,9 @@ def evaluate_account(data: EvaluateRequest, db: Session = Depends(get_db)):
         subscription=SubscriptionInfo(status=sub_status, plan=sub_plan, days_remaining=days_remaining),
         device=DeviceInfo(is_this_device=is_this_device, has_other_active_device=has_other_active_device),
         flags=Flags(
-            allow_app=(is_this_device and sub_status == "active"),
+            allow_app=(is_this_device and sub_status == "ACTIVE"),
             require_device_decision=has_other_active_device,
             allow_reset_device=has_other_active_device,
-            require_subscription=(sub_status != "active")
+            require_subscription=(sub_status != "ACTIVE")
         )
     )
