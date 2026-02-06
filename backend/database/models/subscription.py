@@ -22,6 +22,7 @@ class Subscription(Base):
 
     provider: Mapped[PaymentProvider] = mapped_column(Enum(PaymentProvider), default=PaymentProvider.GOOGLE, nullable=False)
     external_ref: Mapped[str | None] = mapped_column(String(255), nullable=True)  # purchaseToken / payment_id
+    google_product_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
 
     start_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     end_date: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)

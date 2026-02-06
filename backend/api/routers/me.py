@@ -24,31 +24,37 @@ def me_subscription(
     email = claims.get("email")
     device_id = claims.get("device_id")
     if not email:
-        return {"authenticated": False, "plan": "basic", "provider": None, "status": "inactive", "expires_at": None}
+        return {"active": False, "plan_id": "basic", "models": []}
 
     user = db.query(User).filter(User.email == email).first()
     if not user:
-        return {"authenticated": True, "plan": "basic", "provider": None, "status": "inactive", "expires_at": None}
+        return {"active": False, "plan_id": "basic", "models": []}
 
     sub = (
         db.query(Subscription)
         .filter(
             Subscription.user_id == user.id,
             Subscription.device_id == device_id,
-            Subscription.status == "active",
-            Subscription.end_date > datetime.utcnow()
         )
         .order_by(Subscription.end_date.desc())
         .first()
     )
 
-    if not sub:
-        return {"authenticated": True, "plan": "basic", "provider": None, "status": "inactive", "expires_at": None}
+    is_active = False
+    plan_id = "basic"
+    
+    if sub and sub.status == "active" and sub.end_date and sub.end_date > datetime.utcnow():
+        is_active = True
+        plan_id = sub.plan_id
+
+    plan_models = {
+        "basic": ["epsilon"],
+        "pro": ["epsilon", "sigma"],
+        "enterprise": ["epsilon", "sigma", "poseidon"],
+    }
 
     return {
-        "authenticated": True,
-        "plan": sub.plan_id,
-        "provider": sub.provider,
-        "status": sub.status,
-        "expires_at": sub.end_date.isoformat() if sub.end_date else None
+        "active": is_active,
+        "plan_id": plan_id,
+        "models": plan_models.get(plan_id, [])
     }
