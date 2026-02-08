@@ -17,6 +17,7 @@ from backend.core.plans import PLANS, PLAN_MODEL_MAP
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment, PaymentProvider
 from backend.core.email_service import send_subscription_active_email
+from backend.api.routers.account import format_subscription_status
 
 # Configuración de logs
 logger = logging.getLogger(__name__)
@@ -82,17 +83,22 @@ def verify_google_purchase(
     device_id = claims.get("device_id")
     
     # IDEMPOTENCIA: si ya existe purchase_token, retornar estado actual
-    # Usamos external_ref para guardar el purchase_token
-    sub = db.query(Subscription).filter(
+    # Esto maneja reintentos de red o llamadas duplicadas del cliente sin error.
+    existing_sub = db.query(Subscription).filter(
         Subscription.external_ref == payload.purchase_token
     ).first()
+    if existing_sub:
+        logger.info(f"[IDEMPOTENCY] Token {payload.purchase_token} already processed. Returning current state.")
+        return {
+            "status": "SUCCESS",
+            "subscription": format_subscription_status(existing_sub)
+        }
 
-    if not sub:
-        # Buscar suscripción existente por device_id/user_id para actualizarla
-        sub = db.query(Subscription).filter(
-            Subscription.user_id == user_id,
-            Subscription.device_id == device_id
-        ).order_by(Subscription.created_at.desc()).first()
+    # Buscar suscripción existente por device_id/user_id para actualizarla
+    sub = db.query(Subscription).filter(
+        Subscription.user_id == user_id,
+        Subscription.device_id == device_id
+    ).order_by(Subscription.created_at.desc()).first()
 
     if not sub:
         # Crear nueva suscripción pendiente
@@ -159,13 +165,8 @@ def verify_google_purchase(
 
     logger.info(f"[SESSION] JWT issued with plan={plan_id} models={PLAN_MODEL_MAP.get(plan_id, [])}")
 
+    # RESPUESTA AUTORITATIVA DE SESIÓN
     return {
-        "status": "active",
-        "plan": plan_id,
-        "expires_at": sub.end_date.isoformat() if sub.end_date else None,
-        "ok": True,
-        "active": True,
-        "plan_id": sub.plan_id,
-        "models": PLAN_MODEL_MAP.get(sub.plan_id, []),
-        "action": "REFRESH_SESSION"
+        "status": "SUCCESS",
+        "subscription": format_subscription_status(sub)
     }

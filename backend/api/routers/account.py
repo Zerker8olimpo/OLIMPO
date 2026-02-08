@@ -14,6 +14,31 @@ router = APIRouter(prefix="/account", tags=["account"])
 logger = logging.getLogger(__name__)
 
 
+def format_subscription_status(sub: Subscription | None) -> dict:
+    """
+    DTO Unificado de Estado de Suscripción.
+    Fuente única de verdad para /account/me y /billing/google/verify.
+    """
+    status = {
+        "has_active_plan": False,
+        "plan": "basic",
+        "allowed_models": PLAN_MODEL_MAP.get("basic", []),
+        "expires_at": None,
+        "provider": None
+    }
+
+    if sub and sub.status == "active" and sub.end_date and sub.end_date > datetime.utcnow():
+        status["has_active_plan"] = True
+        status["plan"] = sub.plan_id
+        status["allowed_models"] = PLAN_MODEL_MAP.get(sub.plan_id, [])
+        status["expires_at"] = sub.end_date.isoformat()
+        
+        provider_val = sub.provider.value if hasattr(sub.provider, 'value') else str(sub.provider)
+        status["provider"] = "google_play" if "google" in str(provider_val).lower() else provider_val
+
+    return status
+
+
 @router.get("/subscription")
 def get_account_subscription(
     claims: dict = Depends(get_current_claims),
@@ -91,7 +116,7 @@ def get_account_me(
     if not user:
         return response
 
-    # Consultar suscripción activa en DB
+    # Consultar suscripción en DB (incluso si no está activa, para saber el último estado)
     sub = (
         db.query(Subscription)
         .filter(
@@ -102,14 +127,14 @@ def get_account_me(
         .first()
     )
 
-    if sub and sub.status == "active" and sub.end_date and sub.end_date > datetime.utcnow():
-        response["plan"] = sub.plan_id
-        response["has_active_plan"] = True
-        # Normalizamos el provider para el frontend
-        provider_val = sub.provider.value if hasattr(sub.provider, 'value') else str(sub.provider)
-        response["subscription_provider"] = "google_play" if "google" in str(provider_val).lower() else provider_val
-        response["models_enabled"] = PLAN_MODEL_MAP.get(sub.plan_id, [])
+    # Usar el DTO unificado (Flattened para mantener compatibilidad con /me existente)
+    sub_status = format_subscription_status(sub)
+    
+    response["plan"] = sub_status["plan"]
+    response["has_active_plan"] = sub_status["has_active_plan"]
+    response["subscription_provider"] = sub_status["provider"]
+    response["models_enabled"] = sub_status["allowed_models"]
 
-    logger.info(f"[ACCOUNT] Returning plan={response['plan']} models={response['models_enabled']}")
+    logger.info(f"[ACCOUNT] Returning plan={response['plan']} active={response['has_active_plan']}")
     
     return response
