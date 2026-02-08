@@ -148,13 +148,13 @@ def verify_google_purchase(
     db.add(sub)
     db.commit()
     
-    logger.info(f"[SUBSCRIPTION] User {user_id} activated plan {plan_id}")
-
     plan_models = {
         "basic": ["epsilon"],
         "pro": ["epsilon", "sigma"],
         "enterprise": ["epsilon", "sigma", "poseidon"],
     }
+
+    logger.info(f"[SESSION] JWT issued with plan={plan_id} models={plan_models.get(plan_id, [])}")
 
     return {
         "status": "active",

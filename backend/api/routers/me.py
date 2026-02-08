@@ -24,11 +24,11 @@ def me_subscription(
     email = claims.get("email")
     device_id = claims.get("device_id")
     if not email:
-        return {"active": False, "plan_id": "basic", "models": []}
+        return {"active": False, "plan": "basic", "plan_id": "basic", "models": [], "expires_at": None}
 
     user = db.query(User).filter(User.email == email).first()
     if not user:
-        return {"active": False, "plan_id": "basic", "models": []}
+        return {"active": False, "plan": "basic", "plan_id": "basic", "models": [], "expires_at": None}
 
     sub = (
         db.query(Subscription)
@@ -43,9 +43,12 @@ def me_subscription(
     is_active = False
     plan_id = "basic"
     
+    expires_at = None
+
     if sub and sub.status == "active" and sub.end_date and sub.end_date > datetime.utcnow():
         is_active = True
         plan_id = sub.plan_id
+        expires_at = sub.end_date.isoformat()
 
     plan_models = {
         "basic": ["epsilon"],
@@ -55,6 +58,8 @@ def me_subscription(
 
     return {
         "active": is_active,
+        "plan": plan_id,
         "plan_id": plan_id,
-        "models": plan_models.get(plan_id, [])
+        "models": plan_models.get(plan_id, []),
+        "expires_at": expires_at
     }
