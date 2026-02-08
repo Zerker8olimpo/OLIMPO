@@ -1,5 +1,6 @@
 # backend/api/routers/billing_google.py
 from datetime import datetime, timedelta
+import logging
 import os
 
 from fastapi import APIRouter, Depends, HTTPException
@@ -17,6 +18,8 @@ from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment, PaymentProvider
 from backend.core.email_service import send_subscription_active_email
 
+# Configuración de logs
+logger = logging.getLogger(__name__)
 
 # HARDENING: Lectura centralizada de la Public Key.
 # Se valida en tiempo de importación (startup) para asegurar integridad del entorno.
@@ -107,6 +110,16 @@ def verify_google_purchase(
     # Validar con Google Play
     # verify_with_google_play lanza HTTPException si falla
     google_data = verify_with_google_play(payload.product_id, payload.purchase_token)
+    
+    # Verificar que la suscripción esté activa (no expirada)
+    expiry_ms = int(google_data.get('expiryTimeMillis', 0))
+    if expiry_ms > 0:
+        expiry_dt = datetime.utcfromtimestamp(expiry_ms / 1000.0)
+        if expiry_dt < datetime.utcnow():
+            logger.warning(f"[SUBSCRIPTION] Attempt to verify expired token for user {user_id}")
+            raise HTTPException(status_code=400, detail="SUBSCRIPTION_EXPIRED")
+
+    logger.info("[SUBSCRIPTION] Google Play subscription validated")
 
     plan_id = _map_product_to_plan(payload.product_id)
     if not plan_id:
@@ -134,6 +147,8 @@ def verify_google_purchase(
     
     db.add(sub)
     db.commit()
+    
+    logger.info(f"[SUBSCRIPTION] User {user_id} activated plan {plan_id}")
 
     plan_models = {
         "basic": ["epsilon"],
@@ -142,9 +157,11 @@ def verify_google_purchase(
     }
 
     return {
+        "status": "active",
+        "plan": plan_id,
+        "expires_at": sub.end_date.isoformat() if sub.end_date else None,
         "ok": True,
         "active": True,
-        "plan": sub.plan_id,
         "plan_id": sub.plan_id,
         "models": plan_models.get(sub.plan_id, []),
         "action": "REFRESH_SESSION"
