@@ -13,7 +13,7 @@ from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims, validate_billing_policy, activate_subscription_logic
 from backend.core.config import settings
 from backend.database.models.user import User
-from backend.core.plans import PLANS
+from backend.core.plans import PLANS, PLAN_MODEL_MAP
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment, PaymentProvider
 from backend.core.email_service import send_subscription_active_email
@@ -125,6 +125,9 @@ def verify_google_purchase(
     if not plan_id:
         raise HTTPException(status_code=400, detail="UNKNOWN_PRODUCT_ID")
 
+    # Detectar cambio de plan (Upgrade/Downgrade)
+    previous_plan = sub.plan_id
+
     # Actualizar suscripción
     sub.provider = PaymentProvider.GOOGLE
     sub.status = "active"
@@ -148,13 +151,13 @@ def verify_google_purchase(
     db.add(sub)
     db.commit()
     
-    plan_models = {
-        "basic": ["epsilon"],
-        "pro": ["epsilon", "sigma"],
-        "enterprise": ["epsilon", "sigma", "poseidon"],
-    }
+    # Logs obligatorios para QA
+    if previous_plan != plan_id and sub.created_at < datetime.utcnow() - timedelta(seconds=10):
+        logger.info(f"[SUBSCRIPTION] user_id={user_id} upgraded plan={plan_id}")
+    else:
+        logger.info(f"[SUBSCRIPTION] user_id={user_id} plan={plan_id} active=true")
 
-    logger.info(f"[SESSION] JWT issued with plan={plan_id} models={plan_models.get(plan_id, [])}")
+    logger.info(f"[SESSION] JWT issued with plan={plan_id} models={PLAN_MODEL_MAP.get(plan_id, [])}")
 
     return {
         "status": "active",
@@ -163,6 +166,6 @@ def verify_google_purchase(
         "ok": True,
         "active": True,
         "plan_id": sub.plan_id,
-        "models": plan_models.get(sub.plan_id, []),
+        "models": PLAN_MODEL_MAP.get(sub.plan_id, []),
         "action": "REFRESH_SESSION"
     }

@@ -21,6 +21,9 @@ PLANS = {
     },
 }
 
+# Mapeo centralizado Plan -> Modelos (Requerimiento QA/Frontend)
+PLAN_MODEL_MAP = {k: v.get("models", []) for k, v in PLANS.items()}
+
 def resolve_plan_by_amount(amount: float) -> str | None:
     for plan_name, cfg in PLANS.items():
         if cfg["price"] == amount:
