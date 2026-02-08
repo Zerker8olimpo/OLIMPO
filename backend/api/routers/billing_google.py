@@ -18,6 +18,12 @@ from backend.database.models.payment import Payment, PaymentProvider
 from backend.core.email_service import send_subscription_active_email
 
 
+# HARDENING: Lectura centralizada de la Public Key.
+# Se valida en tiempo de importación (startup) para asegurar integridad del entorno.
+GOOGLE_PLAY_PUBLIC_KEY = os.getenv("GOOGLE_PLAY_PUBLIC_KEY")
+if not GOOGLE_PLAY_PUBLIC_KEY:
+    raise RuntimeError("CRITICAL: GOOGLE_PLAY_PUBLIC_KEY environment variable is missing.")
+
 router = APIRouter(prefix="/billing/google", tags=["billing-google"])
 
 

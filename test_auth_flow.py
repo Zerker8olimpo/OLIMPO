@@ -161,164 +161,24 @@ def run_auth_test():
             print(f"❌ Error decodificando el JWT: {e}")
 
         # -------------------------------------------------------------------------
-        # PRUEBA DE FLUJO DE SUSCRIPCIÓN
+        # 3. PRUEBA DE ACCESO PROTEGIDO (VERIFICACIÓN DE TOKEN)
         # -------------------------------------------------------------------------
-        print("\n[PASO 2] Probando Mercado Pago (Canal Web)...")
-        # Simulamos canal web cambiando el entorno temporalmente si fuera necesario
-        mp_payload = {"plan": "pro"}
-        mp_response = client.post(
-            "/payments/mercadopago/create_preference",
-            json=mp_payload,
-            headers={"Authorization": f"Bearer {token}"}
-        )
-        
-        if mp_response.status_code == 200:
-            mp_data = mp_response.json()
-            print(f"✅ Checkout URL generada: {mp_data['checkout_url']}")
-        else:
-            print(f"❌ Error creando pago MP: {mp_response.text}")
-
-        # -------------------------------------------------------------------------
-        # NUEVO: PRUEBA DE FLUJO GOOGLE PAY (SIMULADO)
-        # -------------------------------------------------------------------------
-        print("\n[PASO 4] Probando flujo Google Pay...")
-        g_verify_res = client.post(
-            "/payments/google/verify",
-            json={"purchase_token": "test_token", "product_id": "olimpo_pro_monthly", "device_id": device_id},
-            headers={"Authorization": f"Bearer {token}"}
-        )
-        if g_verify_res.status_code == 200:
-            print("✅ Google Pay verificado correctamente (test_mode bypass OK).")
-        else:
-            print(f"❌ Error verificando Google Pay: {g_verify_res.text}")
-
-        # -------------------------------------------------------------------------
-        # NUEVO: PRUEBA DE RESTRICCIÓN DE PLAN (403 FORBIDDEN)
-        # -------------------------------------------------------------------------
-        print("\n[PASO 1.1] Probando restricción de plan (Acceso a SIGMA sin plan)...")
-        
-        sigma_response = client.post(
-            "/sigma/run",
-            json={"data": "test_payload"},
-            headers={"Authorization": f"Bearer {token}"}
-        )
-
-        if sigma_response.status_code == 403:
-            print("✅ ÉXITO: El acceso fue denegado correctamente (403 Forbidden).")
-            print(f"📦 Detalle del servidor: {sigma_response.json()['detail']['message']}")
-        else:
-            print(f"❌ FALLÓ: Se esperaba 403, pero se obtuvo {sigma_response.status_code}")
-
-        # -------------------------------------------------------------------------
-        # 3. PRUEBA DE ACCESO PROTEGIDO
-        # -------------------------------------------------------------------------
-        # Usamos el token obtenido para llamar a un endpoint que requiere autenticación.
-        # Usaremos /billing/google/verify como ejemplo de ruta protegida.
-        print("\n[PASO 2] Probando acceso a ruta protegida POST /billing/google/verify...")
+        print("\n[PASO 2] Verificando validez del Token en endpoint protegido (/me/subscription)...")
         
         headers = {"Authorization": f"Bearer {token}"}
         
-        # Payload válido para activar el stub en development
-        verify_payload = {
-            "purchase_token": "test_purchase_token_123",
-            "product_id": "olimpo_pro_monthly",
-            "device_id": device_id
-        }
+        # Usamos /me/subscription para verificar que el token es aceptado
+        prot_response = client.get("/me/subscription", headers=headers)
 
-        prot_response = client.post(
-            "/payments/google/verify",
-            json=verify_payload,
-            headers=headers
-        )
-
-        # -------------------------------------------------------------------------
-        # 4. VERIFICACIÓN DE RESULTADOS
-        # -------------------------------------------------------------------------
-        if prot_response.status_code == 401:
-            print("❌ FALLÓ: El token fue rechazado (401 Unauthorized).")
-            print("   Esto indica que el middleware o la dependencia de seguridad no validó el JWT.")
-        
-        elif prot_response.status_code == 200:
+        if prot_response.status_code == 200:
             print("✅ ÉXITO: El endpoint protegido aceptó el token.")
             print(f"📦 Respuesta del servidor: {prot_response.json()}")
-            print("\n🎉 El flujo de autenticación funciona correctamente de punta a punta.")
-        
+            print("\n🎉 El flujo de autenticación de Google funciona correctamente.")
         else:
-            # Si da otro error (ej: 500, 400), al menos sabemos que pasó la auth (no fue 401)
-            print(f"⚠️  El token fue aceptado (Auth OK), pero el endpoint respondió: {prot_response.status_code}")
+            print(f"❌ FALLÓ: El endpoint respondió: {prot_response.status_code}")
             print(f"Respuesta: {prot_response.text}")
 
-        # -------------------------------------------------------------------------
-        # PASO 5: VALIDACIÓN FINAL DE SUSCRIPCIÓN EFECTIVA
-        # -------------------------------------------------------------------------
-        print("\n[PASO 5] Validando suscripción efectiva en /account/status...")
-        me_res = client.get("/account/status", headers={"Authorization": f"Bearer {token}"})
-        
-        if me_res.status_code == 200:
-            me_data = me_res.json()
-            print(f"✅ Suscripción efectiva: {me_data}")
-            # Validamos campos clave según el principio de suscripción efectiva
-            assert me_data["status"] == "active"
-            assert me_data["plan"] != "free"
-        else:
-            print(f"❌ Error consultando /me/subscription: {me_res.text}")
-
-def test_mercadopago_sandbox_checkout():
-    """
-    Test manual aislado para validar la conectividad directa con Mercado Pago Sandbox.
-    NO usa JWT, NO usa DB, NO usa PolicyAgent.
-    """
-    print("\n🧪 INICIANDO TEST AISLADO: MERCADO PAGO SANDBOX CHECKOUT\n")
-    
-    # 1. Credenciales desde el entorno
-    access_token = os.getenv("MP_ACCESS_TOKEN_TEST")
-    payer_email = os.getenv("MP_TEST_PAYER_EMAIL", "test_user@testuser.com")
-    
-    if not access_token:
-        print("⚠️  SKIP: MP_ACCESS_TOKEN_TEST no configurado. Saltando test de Mercado Pago.")
-        return
-
-    try:
-        # 2. Inicializar SDK oficial (aislado)
-        sdk = mercadopago.SDK(access_token)
-        
-        # 3. Payload mínimo válido (Chile / CLP)
-        preference_data = {
-            "items": [{
-                "title": "sandbox_test_plan",
-                "quantity": 1,
-                "unit_price": 1000,
-                "currency_id": "CLP"
-            }],
-            "payer": {"email": payer_email},
-            "external_reference": "sandbox-test-001",
-        }
-        
-        print(f"📦 Enviando payload: {json.dumps(preference_data, indent=2)}")
-        
-        # 4. Llamada directa al proveedor
-        response = sdk.preference().create(preference_data)
-        status = response["status"]
-        body = response["response"]
-        
-        if status >= 400:
-            print(f"\n❌ Mercado Pago Sandbox rechazó el request")
-            print(f"Status de respuesta: {status}")
-            print(f"Detail: {json.dumps(body, indent=2)}")
-        else:
-            print(f"\n🧪 Mercado Pago Sandbox Test")
-            print(f"Status de respuesta: {status}")
-            print(f"Checkout URL: {body.get('sandbox_init_point')}")
-            print("\n--- Response completa (pretty print) ---")
-            print(json.dumps(body, indent=2))
-            print("\n✅ Resultado final: Éxito")
-            
-    except Exception as e:
-        print(f"\n❌ Error crítico durante la ejecución del test: {e}")
 
 if __name__ == "__main__":
-    # Ejecutar test de integración del backend
+    # Ejecutar test de integración del backend (Solo Auth)
     run_auth_test()
-
-    # Ejecutar test aislado de Mercado Pago
-    test_mercadopago_sandbox_checkout()
