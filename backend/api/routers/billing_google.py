@@ -13,10 +13,11 @@ from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims, validate_billing_policy, activate_subscription_logic
 from backend.core.config import settings
 from backend.database.models.user import User
-from backend.core.plans import PLANS, PLAN_MODEL_MAP
+from backend.core.plans import normalize_plan, PLAN_MODEL_MAP
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment, PaymentProvider
 from backend.core.email_service import send_subscription_active_email
+from backend.api.security.jwt import create_access_token
 from backend.api.routers.account import format_subscription_status
 
 # Configuración de logs
@@ -28,21 +29,12 @@ GOOGLE_PLAY_PUBLIC_KEY = os.getenv("GOOGLE_PLAY_PUBLIC_KEY")
 if not GOOGLE_PLAY_PUBLIC_KEY:
     raise RuntimeError("CRITICAL: GOOGLE_PLAY_PUBLIC_KEY environment variable is missing.")
 
-router = APIRouter(prefix="/billing/google", tags=["billing-google"])
+router = APIRouter(tags=["billing-google"])
 
 
 class VerifyGooglePurchaseRequest(BaseModel):
     product_id: str
     purchase_token: str
-
-
-def _map_product_to_plan(product_id: str) -> str:
-    mapping = {
-        "olimpo_basic_monthly": "basic",
-        "olimpo_pro_monthly": "pro",
-        "olimpo_enterprise_monthly": "enterprise",
-    }
-    return mapping.get(product_id, "")
 
 
 def verify_with_google_play(product_id: str, token: str):
@@ -73,7 +65,8 @@ def verify_with_google_play(product_id: str, token: str):
         raise HTTPException(status_code=400, detail=f"Google Verification Failed: {str(e)}")
 
 
-@router.post("/verify")
+@router.post("/billing/google/verify")
+@router.post("/payments/google/verify")
 def verify_google_purchase(
     payload: VerifyGooglePurchaseRequest,
     db: Session = Depends(get_db),
@@ -82,16 +75,33 @@ def verify_google_purchase(
     user_id = claims.get("user_id")
     device_id = claims.get("device_id")
     
+    # Recuperar usuario para generar token
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="USER_NOT_FOUND")
+
     # IDEMPOTENCIA: si ya existe purchase_token, retornar estado actual
     # Esto maneja reintentos de red o llamadas duplicadas del cliente sin error.
     existing_sub = db.query(Subscription).filter(
         Subscription.external_ref == payload.purchase_token
     ).first()
     if existing_sub:
-        logger.info(f"[IDEMPOTENCY] Token {payload.purchase_token} already processed. Returning current state.")
+        logger.info(f"[IDEMPOTENCY] Token {payload.purchase_token} already processed. Returning current status.")
+        
+        existing_status = format_subscription_status(existing_sub)
+
+        new_token = create_access_token(
+            sub=str(user.id),
+            user_id=user.id,
+            email=user.email,
+            device_id=existing_sub.device_id,
+            plan=existing_sub.plan_id,
+        )
+
         return {
             "status": "SUCCESS",
-            "subscription": format_subscription_status(existing_sub)
+            "subscription": existing_status,
+            "access_token": new_token,
         }
 
     # Buscar suscripción existente por device_id/user_id para actualizarla
@@ -127,10 +137,7 @@ def verify_google_purchase(
 
     logger.info("[SUBSCRIPTION] Google Play subscription validated")
 
-    plan_id = _map_product_to_plan(payload.product_id)
-    if not plan_id:
-        raise HTTPException(status_code=400, detail="UNKNOWN_PRODUCT_ID")
-
+    plan_id = normalize_plan(payload.product_id)
     # Detectar cambio de plan (Upgrade/Downgrade)
     previous_plan = sub.plan_id
 
@@ -165,8 +172,24 @@ def verify_google_purchase(
 
     logger.info(f"[SESSION] JWT issued with plan={plan_id} models={PLAN_MODEL_MAP.get(plan_id, [])}")
 
+    status = format_subscription_status(sub)
+    
+    # Capa de compatibilidad: Asegurar contrato unificado
+    status["models"] = status.get("models_enabled", [])
+    status["models_enabled"] = status.get("models_enabled", [])
+    status["active"] = status.get("has_active_plan", False)
+
+    new_token = create_access_token(
+        sub=str(user.id),
+        user_id=user.id,
+        email=user.email,
+        device_id=sub.device_id,
+        plan=sub.plan_id,
+    )
+
     # RESPUESTA AUTORITATIVA DE SESIÓN
     return {
         "status": "SUCCESS",
-        "subscription": format_subscription_status(sub)
+        "subscription": status,
+        "access_token": new_token,
     }

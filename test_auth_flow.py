@@ -29,6 +29,7 @@ os.environ["APP_CHANNEL"] = "web"  # Permitimos MP para el test simulando canal 
 os.environ["ALLOW_MP_CHECKOUT"] = "True"
 os.environ["ALLOW_MP_IN_APP"] = "False"
 os.environ["PAYMENTS_MODE"] = "sandbox"
+os.environ["GOOGLE_PLAY_PUBLIC_KEY"] = "dummy_public_key_for_testing_environment"
 
 try:
     from backend.api.main import app
@@ -156,6 +157,11 @@ def run_auth_test():
             if decoded_payload.get("email") == test_email:
                 print("✅ JWT de identidad verificado correctamente.")
                 print("ℹ️  Nota: El plan y modelos se resuelven dinámicamente en el servidor (Arquitectura Fase 1).")
+            
+            # Asserts de endurecimiento
+            assert decoded_payload["plan"] == "basic"
+            assert "models_enabled" in decoded_payload
+            assert "epsilon" in decoded_payload["models_enabled"]
 
         except Exception as e:
             print(f"❌ Error decodificando el JWT: {e}")
@@ -174,6 +180,12 @@ def run_auth_test():
             print("✅ ÉXITO: El endpoint protegido aceptó el token.")
             print(f"📦 Respuesta del servidor: {prot_response.json()}")
             print("\n🎉 El flujo de autenticación de Google funciona correctamente.")
+            
+            resp = prot_response.json()
+            # Asserts de endurecimiento
+            assert resp["plan"] == "basic"
+            assert "models" in resp
+            assert "epsilon" in resp["models"]
         else:
             print(f"❌ FALLÓ: El endpoint respondió: {prot_response.status_code}")
             print(f"Respuesta: {prot_response.text}")

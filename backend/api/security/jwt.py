@@ -4,6 +4,7 @@ from fastapi import HTTPException
 from jose import jwt, JWTError
 from datetime import datetime, timedelta, timezone
 from backend.core.config import settings
+from backend.core.plans import PLAN_MODEL_MAP
 
 JWT_ALGORITHM = "HS256"
 
@@ -76,6 +77,7 @@ def create_access_token(
     test_mode: bool = False,
     expires_delta: timedelta | None = None
 ) -> str:
+    models = PLAN_MODEL_MAP.get(plan, [])
     payload = {
         "sub": str(user_id),
         "google_sub": sub,
@@ -83,13 +85,15 @@ def create_access_token(
         "email": email,
         "device_id": device_id,
         "plan": plan,
+        "models_enabled": models,
+        "models": models,  # Alias legacy para compatibilidad
         "test_mode": test_mode,
     }
 
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(hours=24)
+        expire = datetime.now(timezone.utc) + timedelta(hours=24)
 
     payload["exp"] = expire
 

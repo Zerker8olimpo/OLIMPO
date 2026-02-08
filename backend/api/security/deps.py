@@ -140,7 +140,8 @@ def require_model_access(model_name: str):
     Genera una dependencia que valida si el usuario tiene acceso al modelo solicitado.
     """
     def _access_checker(claims: dict = Depends(get_current_claims)):
-        if model_name not in claims.get("models", []):
+        models = claims.get("models_enabled") or claims.get("models") or []
+        if model_name not in models:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail={

@@ -7,6 +7,7 @@ from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims
 from backend.database.models.user import User
 from backend.database.models.subscription import Subscription
+from backend.core.plans import PLAN_MODEL_MAP
 
 
 router = APIRouter(prefix="/me", tags=["me"])
@@ -50,16 +51,14 @@ def me_subscription(
         plan_id = sub.plan_id
         expires_at = sub.end_date.isoformat()
 
-    plan_models = {
-        "basic": ["epsilon"],
-        "pro": ["epsilon", "sigma"],
-        "enterprise": ["epsilon", "sigma", "poseidon"],
-    }
+    models = PLAN_MODEL_MAP.get(plan_id, [])
 
     return {
         "active": is_active,
+        "has_active_plan": is_active,
         "plan": plan_id,
         "plan_id": plan_id,
-        "models": plan_models.get(plan_id, []),
+        "models": models,
+        "models_enabled": models,
         "expires_at": expires_at
     }

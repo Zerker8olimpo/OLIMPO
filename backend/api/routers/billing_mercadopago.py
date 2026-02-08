@@ -14,7 +14,7 @@ from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims, activate_subscription_logic
 from backend.database.models.subscription import Subscription
 from backend.database.models.payment import Payment
-from backend.core.plans import PLANS
+from backend.core.plans import normalize_plan
 
 router = APIRouter(tags=["Payments & Account"])
 
@@ -83,7 +83,7 @@ def verify_google_payment(
         if not sub:
             sub = Subscription(
                 user_id=int(claims["user_id"]),
-                plan_id=payload.product_id.replace("olimpo_", "").replace("_monthly", ""),
+                plan_id=normalize_plan(payload.product_id),
                 status="active",
                 device_id=payload.device_id,
                 provider="google_play",
@@ -122,7 +122,7 @@ def create_mp_preference(
         raise HTTPException(status_code=403, detail="MERCADOPAGO_CHECKOUT_DISABLED")
 
     plan_id = payload.plan
-    amount = PLANS[plan_id]["price"]
+    amount = {"basic": 19990, "pro": 29990, "enterprise": 39990}.get(plan_id, 19990)
     user_id = int(claims["user_id"])
     device_id = claims.get("device_id")
 
