@@ -28,10 +28,23 @@ def format_subscription_status(
     )
     plan_id = sub.plan_id if sub else "basic"
     
+    # 1. Derivar modelos desde la fuente de verdad (PLAN_MODEL_MAP)
+    models = PLAN_MODEL_MAP.get(plan_id, [])
+
+    # 2. Validación defensiva (Anti-estados imposibles)
+    # Si el plan está activo, NO puede tener lista de modelos vacía.
+    if has_active_plan and not models:
+        logger.error(f"[SUBSCRIPTION] Inconsistency detected: Active plan '{plan_id}' has no models. Fallback to basic.")
+        plan_id = "basic"
+        models = PLAN_MODEL_MAP.get("basic", [])
+
     status = {
         "has_active_plan": has_active_plan,
+        "active": has_active_plan,      # Alias legacy
         "plan": plan_id,
-        "models_enabled": PLAN_MODEL_MAP.get(plan_id, []),
+        "plan_id": plan_id,             # Alias legacy
+        "models_enabled": models,
+        "models": models,               # Alias legacy
         "expires_at": sub.end_date.isoformat() if sub and sub.end_date else None,
         "provider": str(sub.provider.value if hasattr(sub.provider, 'value') else sub.provider) if sub else None,
     }

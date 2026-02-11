@@ -173,11 +173,6 @@ def verify_google_purchase(
     logger.info(f"[SESSION] JWT issued with plan={plan_id} models={PLAN_MODEL_MAP.get(plan_id, [])}")
 
     status = format_subscription_status(sub)
-    
-    # Capa de compatibilidad: Asegurar contrato unificado
-    status["models"] = status.get("models_enabled", [])
-    status["models_enabled"] = status.get("models_enabled", [])
-    status["active"] = status.get("has_active_plan", False)
 
     new_token = create_access_token(
         sub=str(user.id),
