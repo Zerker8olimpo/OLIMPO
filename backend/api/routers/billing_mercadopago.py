@@ -31,73 +31,8 @@ class MercadoPagoPreferenceRequest(BaseModel):
 
 # --- ENDPOINTS DE LA APP ---
 
-@router.get("/account/status")
-def get_account_status(claims: dict = Depends(get_current_claims), db: Session = Depends(get_db)):
-    """
-    Retorna el estado de suscripción unificado para la app.
-    Este es el único endpoint que la app debe consultar para conocer el plan activo.
-    """
-    user_id = int(claims.get("user_id"))
-    sub = db.query(Subscription).filter(
-        Subscription.user_id == user_id,
-        Subscription.status == "active"
-    ).order_by(Subscription.end_date.desc()).first()
-
-    if not sub:
-        return {
-            "plan": "free",
-            "status": "inactive",
-            "provider": None,
-            "expires_at": None
-        }
-
-    return {
-        "plan": sub.plan_id,
-        "status": sub.status,
-        "provider": sub.provider,
-        "expires_at": sub.end_date.isoformat() if sub.end_date else None
-    }
-
-@router.post("/payments/google/verify")
-def verify_google_payment(
-    payload: GooglePayVerifyRequest,
-    claims: dict = Depends(get_current_claims),
-    db: Session = Depends(get_db)
-):
-    """
-    Verificación server-side para Google Play Billing.
-    Este es el ÚNICO flujo de pago permitido dentro de la app Android.
-    """
-    if not settings.GOOGLE_PLAY_VERIFY_ENABLED:
-        raise HTTPException(status_code=501, detail="GOOGLE_PLAY_VERIFICATION_DISABLED")
-
-    # Stub de validación (En prod integrar con google-api-python-client)
-    is_valid = True 
-    
-    if is_valid:
-        # Buscar si ya existe para idempotencia
-        sub = db.query(Subscription).filter(
-            Subscription.external_ref == payload.purchase_token,
-            Subscription.provider == "google_play"
-        ).first()
-        if not sub:
-            sub = Subscription(
-                user_id=int(claims["user_id"]),
-                plan_id=normalize_plan(payload.product_id),
-                status="active",
-                device_id=payload.device_id,
-                provider="google_play",
-                external_ref=payload.purchase_token,
-                start_date=datetime.utcnow(),
-                end_date=datetime.utcnow() + timedelta(days=30)
-            )
-            db.add(sub)
-            db.commit()
-            db.refresh(sub)
-        
-        return {"status": "success", "plan": sub.plan_id, "expires_at": sub.end_date}
-    
-    raise HTTPException(status_code=400, detail="INVALID_PURCHASE_TOKEN")
+# REMOVIDO: Endpoint stub de Google (/payments/google/verify). 
+# La verificación real y canónica vive en backend/api/routers/billing_google.py
 
 # --- ENDPOINTS WEB / EXTERNOS ---
 

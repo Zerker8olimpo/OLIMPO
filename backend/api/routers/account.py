@@ -14,6 +14,7 @@ router = APIRouter(prefix="/account", tags=["account"])
 logger = logging.getLogger(__name__)
 
 
+
 def format_subscription_status(
     sub: Optional[Subscription],
 ) -> dict:
@@ -23,7 +24,7 @@ def format_subscription_status(
     has_active_plan = bool(
         sub
         and sub.status == "active"
-        and sub.end_date
+        and sub.end_date #check si sub.end_date no es None
         and sub.end_date > datetime.utcnow()
     )
     plan_id = sub.plan_id if sub else "basic"
@@ -39,6 +40,7 @@ def format_subscription_status(
         models = PLAN_MODEL_MAP.get("basic", [])
 
     status = {
+
         "has_active_plan": has_active_plan,
         "active": has_active_plan,      # Alias legacy
         "plan": plan_id,
@@ -82,6 +84,7 @@ def get_account_subscription(
         f"[ACCOUNT] plan={response['plan']} active={response['has_active_plan']}"
     )
     return response
+
 
 
 @router.get("/me")

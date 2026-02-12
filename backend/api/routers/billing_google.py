@@ -6,6 +6,7 @@ import os
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import IntegrityError
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
@@ -14,7 +15,7 @@ from backend.api.security.deps import get_current_claims, validate_billing_polic
 from backend.core.config import settings
 from backend.database.models.user import User
 from backend.core.plans import normalize_plan, PLAN_MODEL_MAP
-from backend.database.models.subscription import Subscription
+from backend.database.models.subscription import Subscription, PaymentProvider
 from backend.database.models.payment import Payment, PaymentProvider
 from backend.core.email_service import send_subscription_active_email
 from backend.api.security.jwt import create_access_token
@@ -42,7 +43,7 @@ def verify_with_google_play(product_id: str, token: str):
     Llamada real a Google Play Developer API.
     """
     if not settings.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON:
-        raise HTTPException(status_code=500, detail="GOOGLE_PLAY_SERVICE_ACCOUNT_NOT_CONFIGURED")
+        raise HTTPException(status_code=500, detail="Google Play credentials not configured.")
 
     scopes = ['https://www.googleapis.com/auth/androidpublisher']
     creds = service_account.Credentials.from_service_account_file(
@@ -62,7 +63,8 @@ def verify_with_google_play(product_id: str, token: str):
         # startTimeMillis, expiryTimeMillis, acknowledgementState, etc.
         return result
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Google Verification Failed: {str(e)}")
+        logger.error(f"Google Play API error: {e}")
+        raise HTTPException(status_code=400, detail="Invalid purchase token.")
 
 
 @router.post("/billing/google/verify")
@@ -109,7 +111,6 @@ def verify_google_purchase(
         Subscription.user_id == user_id,
         Subscription.device_id == device_id
     ).order_by(Subscription.created_at.desc()).first()
-
     if not sub:
         # Crear nueva suscripción pendiente
         sub = Subscription(
@@ -123,10 +124,13 @@ def verify_google_purchase(
         db.commit()
         db.refresh(sub)
 
+    # Log
+    logger.info(f"[BILLING][GOOGLE] verify start user={user_id} device={device_id} product={payload.product_id}")
+        
     # Validar con Google Play
     # verify_with_google_play lanza HTTPException si falla
     google_data = verify_with_google_play(payload.product_id, payload.purchase_token)
-    
+
     # Verificar que la suscripción esté activa (no expirada)
     expiry_ms = int(google_data.get('expiryTimeMillis', 0))
     if expiry_ms > 0:
@@ -140,12 +144,13 @@ def verify_google_purchase(
     plan_id = normalize_plan(payload.product_id)
     # Detectar cambio de plan (Upgrade/Downgrade)
     previous_plan = sub.plan_id
-
+    
     # Actualizar suscripción
     sub.provider = PaymentProvider.GOOGLE
     sub.status = "active"
     sub.plan_id = plan_id
     sub.google_product_id = payload.product_id
+
     sub.external_ref = payload.purchase_token
     
     # Fechas desde Google
@@ -153,24 +158,56 @@ def verify_google_purchase(
         sub.start_date = datetime.utcfromtimestamp(int(google_data['startTimeMillis']) / 1000.0)
     else:
         sub.start_date = datetime.utcnow()
-        
+
     if 'expiryTimeMillis' in google_data:
         sub.end_date = datetime.utcfromtimestamp(int(google_data['expiryTimeMillis']) / 1000.0)
     else:
         sub.end_date = sub.start_date + timedelta(days=30)
 
     sub.auto_renew = google_data.get("autoRenewing", True)
-    
-    db.add(sub)
-    db.commit()
-    
-    # Logs obligatorios para QA
-    if previous_plan != plan_id and sub.created_at < datetime.utcnow() - timedelta(seconds=10):
-        logger.info(f"[SUBSCRIPTION] user_id={user_id} upgraded plan={plan_id}")
-    else:
-        logger.info(f"[SUBSCRIPTION] user_id={user_id} plan={plan_id} active=true")
 
-    logger.info(f"[SESSION] JWT issued with plan={plan_id} models={PLAN_MODEL_MAP.get(plan_id, [])}")
+    try:
+        db.add(sub)
+        db.commit()
+        db.refresh(sub)
+
+    except IntegrityError:
+        db.rollback()
+
+        logger.warning(
+            f"[IDEMPOTENCY] Race condition detected for token {payload.purchase_token}"
+        )
+
+        existing_sub = db.query(Subscription).filter(
+            Subscription.external_ref == payload.purchase_token
+        ).first()
+
+        if not existing_sub:
+            raise HTTPException(
+                status_code=500,
+                detail="Database integrity error during verification."
+            )
+
+        status = format_subscription_status(existing_sub)
+
+        new_token = create_access_token(
+            sub=str(user.id),
+            user_id=user.id,
+            email=user.email,
+            device_id=existing_sub.device_id,
+            plan=existing_sub.plan_id,
+        )
+
+        return {
+            "status": "SUCCESS",
+            "subscription": status,
+            "access_token": new_token,
+        }
+
+    # Logs obligatorios para QA
+    logger.info(
+        f"[SUBSCRIPTION] user_id={user_id} plan={plan_id} active=true expires={sub.end_date}"
+    )
 
     status = format_subscription_status(sub)
 
@@ -182,7 +219,6 @@ def verify_google_purchase(
         plan=sub.plan_id,
     )
 
-    # RESPUESTA AUTORITATIVA DE SESIÓN
     return {
         "status": "SUCCESS",
         "subscription": status,

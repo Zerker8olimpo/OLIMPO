@@ -10,7 +10,7 @@ from backend.core.config import settings
 from backend.database.models.payment import Payment
 from backend.database.models.subscription import Subscription
 from backend.database.models.user import User
-from backend.core.plans import PLANS
+from backend.core.plans import PLANS, PLAN_MODEL_MAP
 
 logger = logging.getLogger("olimpo.billing")
 
@@ -138,15 +138,34 @@ def get_current_claims(
 def require_model_access(model_name: str):
     """
     Genera una dependencia que valida si el usuario tiene acceso al modelo solicitado.
+    ESTRATEGIA: DB-First (Más seguro que JWT claims para evitar race conditions en expiración).
     """
-    def _access_checker(claims: dict = Depends(get_current_claims)):
-        models = claims.get("models_enabled") or claims.get("models") or []
-        if model_name not in models:
+    def _access_checker(
+        claims: dict = Depends(get_current_claims),
+        db: Session = Depends(get_db)
+    ):
+        user_id = claims.get("user_id")
+        device_id = claims.get("device_id")
+
+        # Consultar fuente de verdad (DB)
+        sub = get_active_subscription(db, user_id)
+        
+        # Validar existencia y propiedad del dispositivo
+        if not sub or sub.device_id != device_id:
+             # Fallback: Si no hay sub activa, asumimos plan 'basic' (si aplica) o denegamos
+             # Para modelos premium, denegamos.
+             current_plan = "basic"
+        else:
+             current_plan = sub.plan_id
+
+        allowed_models = PLAN_MODEL_MAP.get(current_plan, [])
+        
+        if model_name not in allowed_models:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail={
                     "error": "PLAN_RESTRICTION",
-                    "message": f"Tu plan actual ({claims.get('plan')}) no permite el acceso al modelo {model_name}.",
+                    "message": f"Tu plan actual ({current_plan}) no permite el acceso al modelo {model_name}.",
                     "action": "UPGRADE_PLAN"
                 }
             )
