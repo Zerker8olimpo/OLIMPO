@@ -1,0 +1,107 @@
+{
+  "EPSILON_INPUT_SCHEMA": {
+    "required": [
+      "demanda_historica",
+      "product_id",
+      "market_id",
+      "horizonte_meses"
+    ],
+    "optional": [
+      "periodos",
+      "margen_bruto_pct",
+      "pais_principal",
+      "activar_digital_twin"
+    ],
+    "types": {
+      "demanda_historica": "list[number]",
+      "periodos": "int",
+      "margen_bruto_pct": "float",
+      "product_id": "string",
+      "market_id": "string",
+      "pais_principal": "string",
+      "horizonte_meses": "int",
+      "activar_digital_twin": "bool"
+    },
+    "description": "Modelo EPSILON - Forecast de demanda con banda probabilística"
+  },
+
+  "SIGMA_INPUT_SCHEMA": {
+    "required": [
+      "demanda_historica",
+      "product_id",
+      "market_id",
+      "costo_unitario",
+      "costo_pedido",
+      "costo_mantencion_pct"
+    ],
+    "optional": [
+      "periodos",
+      "horizonte_meses",
+      "pais_principal",
+      "activar_digital_twin"
+    ],
+    "types": {
+      "demanda_historica": "list[number]",
+      "periodos": "int",
+      "product_id": "string",
+      "market_id": "string",
+      "pais_principal": "string",
+      "horizonte_meses": "int",
+      "costo_unitario": "float",
+      "costo_pedido": "float",
+      "costo_mantencion_pct": "float",
+      "activar_digital_twin": "bool"
+    },
+    "description": "Modelo SIGMA - Optimización de inventario EOQ y ROP"
+  },
+
+  "POSEIDON_INPUT_SCHEMA": {
+    "required": [
+      "demanda_historica",
+      "inventario_inicial_tanque1",
+      "inventario_inicial_tanque2"
+    ],
+    "optional": [
+      "product_id",
+      "market_id",
+      "pais_principal",
+      "periodos",
+      "horizonte_meses",
+      "activar_digital_twin",
+      "capacidad_max_mensual",
+      "porcentaje_capacidad_operativa",
+      "cobertura_objetivo_meses",
+      "cantidad_clientes",
+      "kalman",
+      "pid",
+      "flujo_produccion_max",
+      "flujo_demanda_estimado",
+      "capacidad_tanque_1",
+      "capacidad_tanque_2",
+      "guardar_intermedios"
+    ],
+    "types": {
+      "demanda_historica": "list[number]",
+      "product_id": "string",
+      "market_id": "string",
+      "pais_principal": "string",
+      "periodos": "int",
+      "horizonte_meses": "int",
+      "activar_digital_twin": "bool",
+      "inventario_inicial_tanque1": "float",
+      "inventario_inicial_tanque2": "float",
+      "capacidad_max_mensual": "float",
+      "porcentaje_capacidad_operativa": "float",
+      "cobertura_objetivo_meses": "float",
+      "cantidad_clientes": "int",
+      "kalman": "object",
+      "pid": "object",
+      "flujo_produccion_max": "float",
+      "flujo_demanda_estimado": "float",
+      "capacidad_tanque_1": "float",
+      "capacidad_tanque_2": "float",
+      "guardar_intermedios": "bool"
+    },
+    "description": "Modelo POSEIDON - Simulación dinámica de inventario con control Kalman + PID"
+  }
+}
