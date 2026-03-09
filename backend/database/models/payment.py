@@ -1,29 +1,30 @@
-# backend/database/models/payment.py
-from datetime import datetime
+from __future__ import annotations
+
 import enum
-
-from sqlalchemy import String, DateTime, ForeignKey, Integer, Enum
-from sqlalchemy.orm import Mapped, mapped_column
-
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from backend.database.base import Base
 
 
-class PaymentProvider(str, enum.Enum):
+class PaymentProvider(enum.Enum):
     GOOGLE = "google"
     MERCADOPAGO = "mercadopago"
+    MANUAL = "manual"
 
 
 class Payment(Base):
     __tablename__ = "payments"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True, nullable=False)
-    subscription_id: Mapped[int | None] = mapped_column(ForeignKey("subscriptions.id"), nullable=True)
+    id = Column(Integer, primary_key=True, index=True)
 
-    provider: Mapped[PaymentProvider] = mapped_column(Enum(PaymentProvider), nullable=False)
-    amount: Mapped[int] = mapped_column(Integer, nullable=False)
-    currency: Mapped[str] = mapped_column(String(8), default="CLP", nullable=False)
-    status: Mapped[str] = mapped_column(String(20), nullable=False)       # approved | refunded | failed | pending
-    external_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    subscription_id = Column(Integer, ForeignKey("subscriptions.id"))
 
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
+    provider = Column(String, nullable=False)
+    amount = Column(Integer, default=0)
+    currency = Column(String, default="CLP")
+
+    status = Column(String, default="created")
+    external_id = Column(String, nullable=True)
+
+    subscription = relationship("Subscription", back_populates="payments")

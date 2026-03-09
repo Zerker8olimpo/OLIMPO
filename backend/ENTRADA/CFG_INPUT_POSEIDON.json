@@ -1,47 +1,48 @@
 {
-  "CFG_INPUT_POSEIDON": {
-    "version": "2.0",
-    "descripcion": "Input unificado para el modelo Poseidón en Helios Digital Twin (SIMULACIÓN REALISTA).",
+  "version": "2.0",
+  "descripcion": "Input unificado para el modelo Poseidón en Helios Digital Twin",
 
-    "product_id": "tuberías_y_fittings_pvc_sanitario",
-    "market_id": "mercado_sanitario_hidraulico",
-    "pais_principal": "Chile",
+  "product_id": "tuberías_y_fittings_pvc_sanitario",
+  "market_id": "mercado_sanitario_hidraulico",
+  "pais_principal": "Chile",
 
-    "demanda_historica": [
-      2550, 3000, 1900, 3650, 900, 1660,
-      1900, 2450, 3500, 2800, 3100, 2950
-    ],
-    "periodos": 12,
-    "horizonte_meses": 6,
-    "activar_digital_twin": true,
+  "demanda_historica": [
+    2550, 3000, 1900, 3650, 900, 1660,
+    1900, 2450, 3500, 2800, 3100, 2950
+  ],
 
-    "capacidad_max_mensual": 6000,
-    "porcentaje_capacidad_operativa": 0.40,
-    "inventario_inicial_tanque1": 2000.0,
-    "cobertura_objetivo_meses": 1.0,
+  "periodos": 12,
+  "horizonte_meses": 6,
+  "activar_digital_twin": true,
 
-    "inventario_inicial_tanque2": 800.0,
-    "cantidad_clientes": 5,
+  "capacidad_max_mensual": 6000,
+  "porcentaje_capacidad_operativa": 0.40,
 
-    "kalman": {
-      "usar_kalman": true,
-      "Q": 1.0,
-      "R": 4.0,
-      "P0": 1.0,
-      "x0": 2550
-    },
+  "inventario_inicial_tanque1": 2000.0,
+  "inventario_inicial_tanque2": 800.0,
 
-    "pid": {
-      "Kp": 0.55,
-      "Ki": 0.12,
-      "Kd": 0.02
-    },
+  "cobertura_objetivo_meses": 1.0,
+  "cantidad_clientes": 5,
 
-    "flujo_produccion_max": 6000,
-    "flujo_demanda_estimado": 2600,
-    "capacidad_tanque_1": 9000,
-    "capacidad_tanque_2": 14000,
+  "kalman": {
+    "usar_kalman": true,
+    "Q": 1.0,
+    "R": 4.0,
+    "P0": 1.0,
+    "x0": 2550
+  },
 
-    "guardar_intermedios": false
-  }
+  "pid": {
+    "Kp": 0.55,
+    "Ki": 0.12,
+    "Kd": 0.02
+  },
+
+  "flujo_produccion_max": 6000,
+  "flujo_demanda_estimado": 2600,
+
+  "capacidad_tanque_1": 9000,
+  "capacidad_tanque_2": 14000,
+
+  "guardar_intermedios": false
 }

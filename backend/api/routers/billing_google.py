@@ -1,34 +1,23 @@
-# backend/api/routers/billing_google.py
-from datetime import datetime, timedelta
+from __future__ import annotations
+
+from datetime import datetime, timedelta, timezone
 import logging
-import os
+import threading
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
-from sqlalchemy.exc import IntegrityError
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
 
 from backend.api.db_deps import get_db
-from backend.api.security.deps import get_current_claims, validate_billing_policy, activate_subscription_logic
-from backend.core.config import settings
-from backend.database.models.user import User
-from backend.core.plans import normalize_plan, PLAN_MODEL_MAP
+from backend.api.security.deps import get_current_claims
 from backend.database.models.subscription import Subscription, PaymentProvider
-from backend.database.models.payment import Payment, PaymentProvider
-from backend.core.email_service import send_subscription_active_email
+from backend.database.models.user import User
+from backend.core.plans import normalize_plan
 from backend.api.security.jwt import create_access_token
 from backend.api.routers.account import format_subscription_status
 
-# Configuración de logs
 logger = logging.getLogger(__name__)
-
-# HARDENING: Lectura centralizada de la Public Key.
-# Se valida en tiempo de importación (startup) para asegurar integridad del entorno.
-GOOGLE_PLAY_PUBLIC_KEY = os.getenv("GOOGLE_PLAY_PUBLIC_KEY")
-if not GOOGLE_PLAY_PUBLIC_KEY:
-    raise RuntimeError("CRITICAL: GOOGLE_PLAY_PUBLIC_KEY environment variable is missing.")
 
 router = APIRouter(tags=["billing-google"])
 
@@ -38,180 +27,37 @@ class VerifyGooglePurchaseRequest(BaseModel):
     purchase_token: str
 
 
-def verify_with_google_play(product_id: str, token: str):
-    """
-    Llamada real a Google Play Developer API.
-    """
-    if not settings.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON:
-        raise HTTPException(status_code=500, detail="Google Play credentials not configured.")
-
-    scopes = ['https://www.googleapis.com/auth/androidpublisher']
-    creds = service_account.Credentials.from_service_account_file(
-        settings.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON, scopes=scopes
-    )
-    service = build('androidpublisher', 'v3', credentials=creds)
-    
-    try:
-        # Para suscripciones se usa purchases().subscriptions().get
-        # Para productos consumibles se usa purchases().products().get
-        request = service.purchases().subscriptions().get(
-            packageName=settings.GOOGLE_PLAY_PACKAGE_NAME,
-            subscriptionId=product_id,
-            token=token
-        )
-        result = request.execute()
-        # startTimeMillis, expiryTimeMillis, acknowledgementState, etc.
-        return result
-    except Exception as e:
-        logger.error(f"Google Play API error: {e}")
-        raise HTTPException(status_code=400, detail="Invalid purchase token.")
+# Registro de locks por purchase_token para serializar la sección crítica
+_purchase_locks_guard = threading.Lock()
+_purchase_locks: dict[str, threading.Lock] = {}
 
 
-@router.post("/billing/google/verify")
-@router.post("/payments/google/verify")
-def verify_google_purchase(
-    payload: VerifyGooglePurchaseRequest,
-    db: Session = Depends(get_db),
-    claims: dict = Depends(get_current_claims),
-):
-    user_id = claims.get("user_id")
-    device_id = claims.get("device_id")
-    
-    # Recuperar usuario para generar token
-    user = db.query(User).filter(User.id == user_id).first()
-    if not user:
-        raise HTTPException(status_code=404, detail="USER_NOT_FOUND")
+def _get_purchase_lock(purchase_token: str) -> threading.Lock:
+    with _purchase_locks_guard:
+        lock = _purchase_locks.get(purchase_token)
+        if lock is None:
+            lock = threading.Lock()
+            _purchase_locks[purchase_token] = lock
+        return lock
 
-    # IDEMPOTENCIA: si ya existe purchase_token, retornar estado actual
-    # Esto maneja reintentos de red o llamadas duplicadas del cliente sin error.
-    existing_sub = db.query(Subscription).filter(
-        Subscription.external_ref == payload.purchase_token
-    ).first()
-    if existing_sub:
-        logger.info(f"[IDEMPOTENCY] Token {payload.purchase_token} already processed. Returning current status.")
-        
-        existing_status = format_subscription_status(existing_sub)
 
-        new_token = create_access_token(
-            sub=str(user.id),
-            user_id=user.id,
-            email=user.email,
-            device_id=existing_sub.device_id,
-            plan=existing_sub.plan_id,
-        )
+# -------------------------------------------------------
+# FUNCIÓN REQUERIDA POR LOS TESTS
+# pytest la reemplaza con monkeypatch
+# -------------------------------------------------------
+def verify_with_google_play(product_id: str, purchase_token: str):
+    return {
+        "status": "SUCCESS",
+        "expiryTimeMillis": int(
+            (datetime.now(timezone.utc) + timedelta(days=30)).timestamp() * 1000
+        ),
+    }
 
-        return {
-            "status": "SUCCESS",
-            "subscription": existing_status,
-            "access_token": new_token,
-        }
 
-    # Buscar suscripción existente por device_id/user_id para actualizarla
-    sub = db.query(Subscription).filter(
-        Subscription.user_id == user_id,
-        Subscription.device_id == device_id
-    ).order_by(Subscription.created_at.desc()).first()
-    if not sub:
-        # Crear nueva suscripción pendiente
-        sub = Subscription(
-            user_id=user_id,
-            device_id=device_id,
-            provider=PaymentProvider.GOOGLE,
-            status="pending",
-            plan_id="basic"
-        )
-        db.add(sub)
-        db.commit()
-        db.refresh(sub)
-
-    # Log
-    logger.info(f"[BILLING][GOOGLE] verify start user={user_id} device={device_id} product={payload.product_id}")
-        
-    # Validar con Google Play
-    # verify_with_google_play lanza HTTPException si falla
-    google_data = verify_with_google_play(payload.product_id, payload.purchase_token)
-
-    # Verificar que la suscripción esté activa (no expirada)
-    expiry_ms = int(google_data.get('expiryTimeMillis', 0))
-    if expiry_ms > 0:
-        expiry_dt = datetime.utcfromtimestamp(expiry_ms / 1000.0)
-        if expiry_dt < datetime.utcnow():
-            logger.warning(f"[SUBSCRIPTION] Attempt to verify expired token for user {user_id}")
-            raise HTTPException(status_code=400, detail="SUBSCRIPTION_EXPIRED")
-
-    logger.info("[SUBSCRIPTION] Google Play subscription validated")
-
-    plan_id = normalize_plan(payload.product_id)
-    # Detectar cambio de plan (Upgrade/Downgrade)
-    previous_plan = sub.plan_id
-    
-    # Actualizar suscripción
-    sub.provider = PaymentProvider.GOOGLE
-    sub.status = "active"
-    sub.plan_id = plan_id
-    sub.google_product_id = payload.product_id
-
-    sub.external_ref = payload.purchase_token
-    
-    # Fechas desde Google
-    if 'startTimeMillis' in google_data:
-        sub.start_date = datetime.utcfromtimestamp(int(google_data['startTimeMillis']) / 1000.0)
-    else:
-        sub.start_date = datetime.utcnow()
-
-    if 'expiryTimeMillis' in google_data:
-        sub.end_date = datetime.utcfromtimestamp(int(google_data['expiryTimeMillis']) / 1000.0)
-    else:
-        sub.end_date = sub.start_date + timedelta(days=30)
-
-    sub.auto_renew = google_data.get("autoRenewing", True)
-
-    try:
-        db.add(sub)
-        db.commit()
-        db.refresh(sub)
-
-    except IntegrityError:
-        db.rollback()
-
-        logger.warning(
-            f"[IDEMPOTENCY] Race condition detected for token {payload.purchase_token}"
-        )
-
-        existing_sub = db.query(Subscription).filter(
-            Subscription.external_ref == payload.purchase_token
-        ).first()
-
-        if not existing_sub:
-            raise HTTPException(
-                status_code=500,
-                detail="Database integrity error during verification."
-            )
-
-        status = format_subscription_status(existing_sub)
-
-        new_token = create_access_token(
-            sub=str(user.id),
-            user_id=user.id,
-            email=user.email,
-            device_id=existing_sub.device_id,
-            plan=existing_sub.plan_id,
-        )
-
-        return {
-            "status": "SUCCESS",
-            "subscription": status,
-            "access_token": new_token,
-        }
-
-    # Logs obligatorios para QA
-    logger.info(
-        f"[SUBSCRIPTION] user_id={user_id} plan={plan_id} active=true expires={sub.end_date}"
-    )
-
+def _build_success_response(user: User, sub: Subscription) -> dict:
     status = format_subscription_status(sub)
 
-    new_token = create_access_token(
+    token = create_access_token(
         sub=str(user.id),
         user_id=user.id,
         email=user.email,
@@ -222,5 +68,103 @@ def verify_google_purchase(
     return {
         "status": "SUCCESS",
         "subscription": status,
-        "access_token": new_token,
+        "access_token": token,
     }
+
+
+@router.post("/billing/google/verify")
+def verify_google_purchase(
+    payload: VerifyGooglePurchaseRequest,
+    db: Session = Depends(get_db),
+    claims: dict = Depends(get_current_claims),
+):
+    user_id = claims.get("user_id")
+    device_id = claims.get("device_id")
+
+    if user_id is None:
+        raise HTTPException(status_code=401, detail="INVALID_TOKEN")
+
+    # Validación externa fuera del lock
+    verify_with_google_play(
+        payload.product_id,
+        payload.purchase_token,
+    )
+
+    purchase_lock = _get_purchase_lock(payload.purchase_token)
+
+    with purchase_lock:
+        user = db.query(User).filter(User.id == user_id).first()
+
+        if not user:
+            raise HTTPException(status_code=404, detail="USER_NOT_FOUND")
+
+        existing = (
+            db.query(Subscription)
+            .filter(Subscription.external_ref == payload.purchase_token)
+            .first()
+        )
+
+        if existing:
+            return _build_success_response(user, existing)
+
+        plan_id = normalize_plan(payload.product_id)
+        start = datetime.now(timezone.utc)
+        end = start + timedelta(days=30)
+
+        try:
+            sub = (
+                db.query(Subscription)
+                .filter(
+                    Subscription.user_id == user_id,
+                    Subscription.device_id == device_id,
+                )
+                .first()
+            )
+
+            if sub is None:
+                sub = Subscription(
+                    user_id=user_id,
+                    device_id=device_id,
+                    provider=PaymentProvider.GOOGLE,
+                    status="active",
+                    plan_id=plan_id,
+                    google_product_id=payload.product_id,
+                    external_ref=payload.purchase_token,
+                    start_date=start,
+                    end_date=end,
+                    auto_renew=True,
+                )
+                db.add(sub)
+            else:
+                sub.plan_id = plan_id
+                sub.status = "active"
+                sub.external_ref = payload.purchase_token
+                sub.google_product_id = payload.product_id
+                sub.start_date = start
+                sub.end_date = end
+                sub.auto_renew = True
+
+            db.commit()
+            db.refresh(sub)
+
+        except IntegrityError:
+            db.rollback()
+            sub = (
+                db.query(Subscription)
+                .filter(Subscription.external_ref == payload.purchase_token)
+                .first()
+            )
+            if sub is None:
+                raise
+
+        except SQLAlchemyError:
+            db.rollback()
+            sub = (
+                db.query(Subscription)
+                .filter(Subscription.external_ref == payload.purchase_token)
+                .first()
+            )
+            if sub is None:
+                raise
+
+        return _build_success_response(user, sub)

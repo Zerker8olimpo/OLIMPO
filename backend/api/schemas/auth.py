@@ -1,9 +1,13 @@
-from pydantic import BaseModel
+# backend/api/schemas/auth.py
+from __future__ import annotations
+
+from pydantic import BaseModel, Field
 
 
 class GoogleAuthRequest(BaseModel):
-    id_token: str
-    device_id: str
+    id_token: str = Field(..., min_length=10)
+    device_id: str = Field(..., min_length=3)
+    platform: str | None = None
 
 
 class AuthResponse(BaseModel):

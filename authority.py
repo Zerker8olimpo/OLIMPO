@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from sqlalchemy.orm import Session
 from backend.core.payment_models import PaymentIntent, PaymentEvent
 from backend.database.models.subscription import Subscription
@@ -26,7 +26,7 @@ class PaymentAuthority:
 
         # 3. Actualizar estado del Intent
         intent.status = provider_status
-        intent.updated_at = datetime.utcnow()
+        intent.updated_at = datetime.now(timezone.utc)
 
         # 4. Lógica de activación de suscripción
         if provider_status == "approved":
@@ -37,7 +37,7 @@ class PaymentAuthority:
                 Subscription.device_id == intent.device_id
             ).first()
 
-            now = datetime.utcnow()
+            now = datetime.now(timezone.utc)
             expires = now + timedelta(days=30)
 
             if not sub:

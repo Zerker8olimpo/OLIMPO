@@ -1,40 +1,21 @@
-# backend/api/main.py
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from fastapi import FastAPI
 from backend.core.config import settings
 
-# Core
-from backend.api.account import router as account_router
-from backend.api.routers.reset_device import router as reset_device_router
-from backend.api.routers.auth_google import router as auth_router
-from backend.api.routers.me import router as me_router
-
-# Billing
-from backend.api.routers.billing_google import router as billing_google_router
-from backend.api.routers.billing_mercadopago import router as billing_mp_router
-from backend.api.routers.web_portal import router as web_portal_router
-
-# Configuración de Base de Datos
+# DB
 from backend.database.session import engine
 from backend.database.base import Base
-
-# Registro de Modelos de Base de Datos
-# Importamos desde el paquete models para asegurar que SQLAlchemy registre todas las relaciones
-from backend.database.models import (
-    User, UserProfile, Subscription, Payment, 
-    Device, WebhookEvent, ObservatoryEvent, EmailOutbox
-)
+import backend.database.models  # importa package para registrar modelos existentes
 Base.metadata.create_all(bind=engine)
 
-# Check de depuración para Mercado Pago (Seguro: no imprime el valor)
-print(f"DEBUG: Token MP cargado: {bool(settings.MP_ACCESS_TOKEN)}")
-
-# Models
-from backend.api.routers.epsilon import router as epsilon_router
-from backend.api.routers.sigma import router as sigma_router
-from backend.api.routers.poseidon import router as poseidon_router
-from backend.api.routers.helios import router as helios_router
-
+# Routers existentes + nuevos
+from backend.api.routers.auth_google import router as auth_router
+from backend.api.routers.models import router as models_router
+from backend.api.routers.subscriptions import router as subscriptions_router
+from backend.api.routers.billing_google import router as billing_google_router
+from backend.api.routers.bootstrap import router as bootstrap_router
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -44,23 +25,19 @@ app = FastAPI(
     openapi_url="/openapi.json",
 )
 
+@app.exception_handler(StarletteHTTPException)
+async def custom_http_exception_handler(request: Request, exc: StarletteHTTPException):
+    if exc.status_code == 403 and isinstance(exc.detail, dict) and "action" in exc.detail:
+        return JSONResponse(status_code=403, content=exc.detail)
+
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+
 @app.get("/", tags=["system"])
 def root():
-    return {
-        "status": "ok",
-        "env": settings.APP_ENV,
-        "version": settings.APP_VERSION,
-    }
+    return {"status": "ok", "env": settings.APP_ENV, "version": settings.APP_VERSION}
 
-# Core
 app.include_router(auth_router)
-app.include_router(account_router)
-app.include_router(me_router)
-app.include_router(reset_device_router)
-app.include_router(billing_google_router)
-app.include_router(billing_mp_router)
-app.include_router(web_portal_router)
-app.include_router(epsilon_router)
-app.include_router(sigma_router)
-app.include_router(poseidon_router)
-app.include_router(helios_router)
+app.include_router(subscriptions_router)
+app.include_router(models_router)
+app.include_router(bootstrap_router)
+app.include_router(billing_google_router, tags=["Billing"])

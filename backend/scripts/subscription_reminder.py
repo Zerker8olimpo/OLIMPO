@@ -1,6 +1,6 @@
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # Configurar el path para importar el backend
@@ -28,10 +28,10 @@ def send_reminder_email(email: str, days_left: int, plan: str):
 def check_and_notify():
     db = SessionLocal()
     try:
-        print(f"🔍 [{datetime.now()}] Revisando suscripciones por vencer...")
+        print(f"🔍 [{datetime.now(timezone.utc)}] Revisando suscripciones por vencer...")
         
         # Calculamos el rango de tiempo para "dentro de 2 días"
-        today = datetime.utcnow()
+        today = datetime.now(timezone.utc)
         target_date_start = (today + timedelta(days=2)).replace(hour=0, minute=0, second=0)
         target_date_end = target_date_start + timedelta(days=1)
 

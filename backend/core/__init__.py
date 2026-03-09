@@ -1,1 +1,3 @@
-# Paquete Core de OLIMPO
+"""
+Core utilities and shared helpers.
+"""

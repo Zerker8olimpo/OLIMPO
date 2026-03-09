@@ -13,7 +13,7 @@ import sys
 import json
 import random
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Configuración de rutas
 current_file = Path(__file__).resolve()
@@ -22,7 +22,7 @@ cfg_dir = backend_dir / "cfg"
 patches_file = cfg_dir / "CFG_PATCHES.json"
 
 def run_os_engine():
-    print(f"[OSEngine] Iniciando escaneo de señales: {datetime.now()}")
+    print(f"[OSEngine] Iniciando escaneo de señales: {datetime.now(timezone.utc)}")
     
     patches = []
     
@@ -54,7 +54,7 @@ def run_os_engine():
     data = {
         "version": "1.0",
         "metadata": {
-            "generated_at": datetime.now().isoformat(),
+            "generated_at": datetime.now(timezone.utc).isoformat(),
             "source": "OSEngine_CORE"
         },
         "patches": patches

@@ -1,0 +1,3 @@
+"""
+OLIMPO backend package.
+"""

@@ -1,3 +1,4 @@
+# backend/api/routers/auth_google.py
 from fastapi import APIRouter, HTTPException, Depends
 from google.oauth2 import id_token
 from google.auth.transport import requests
@@ -8,9 +9,10 @@ from backend.database.models.user import User
 from backend.api.schemas.auth import GoogleAuthRequest, AuthResponse
 from backend.api.security.jwt import create_access_token
 from backend.core.config import settings
-from backend.api.security.deps import get_active_subscription
+from backend.services.subscription_service import get_active_subscription
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
 
 @router.post("/google", response_model=AuthResponse)
 def google_login(payload: GoogleAuthRequest, db: Session = Depends(get_db)):
@@ -24,10 +26,8 @@ def google_login(payload: GoogleAuthRequest, db: Session = Depends(get_db)):
         raise HTTPException(status_code=401, detail="Invalid Google token")
 
     email = idinfo["email"]
-    name = idinfo.get("name", "")
     sub = idinfo["sub"]
 
-    # 1. Buscar o Crear Usuario en DB
     user = db.query(User).filter(User.email == email).first()
     if not user:
         user = User(
@@ -39,23 +39,19 @@ def google_login(payload: GoogleAuthRequest, db: Session = Depends(get_db)):
         db.commit()
         db.refresh(user)
 
-    # 2. Política de UN SOLO DISPOSITIVO
+    # Política un dispositivo
     if user.device_id and user.device_id != payload.device_id:
         raise HTTPException(
             status_code=409,
-            detail={
-                "error": "DEVICE_MISMATCH",
-                "message": "Esta cuenta ya está vinculada a otro dispositivo.",
-            },
+            detail={"error": "DEVICE_MISMATCH", "message": "Esta cuenta ya está vinculada a otro dispositivo."},
         )
 
-    # Vincular dispositivo si el usuario no tenía uno (ej: creado manualmente)
     if not user.device_id:
         user.device_id = payload.device_id
         db.commit()
 
-    subscription = get_active_subscription(db, user.id)
-    current_plan = subscription.plan_id if subscription else "basic"
+    subscription = get_active_subscription(db, user_id=user.id, device_id=payload.device_id)
+    current_plan = subscription.plan_id if subscription else "no_plan"
 
     token = create_access_token(
         sub=sub,

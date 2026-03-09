@@ -78,6 +78,7 @@ def test_verify_google_race_condition(client, testing_db, mock_google_validation
     user = User(email="race_test@example.com", device_id="device_race_123", is_active=True)
     db_session.add(user)
     db_session.commit()
+    # Refrescamos para asegurar que el ID está disponible y el objeto está atado a la sesión
     db_session.refresh(user)
 
     jwt_token = create_access_token(
@@ -87,6 +88,7 @@ def test_verify_google_race_condition(client, testing_db, mock_google_validation
         device_id=user.device_id,
         plan="basic"
     )
+    # Cerramos la sesión explícitamente para asegurar que los datos están en la DB compartida (StaticPool)
     db_session.close()
 
     TEST_PURCHASE_TOKEN = "token_concurrente_unico_XYZ"

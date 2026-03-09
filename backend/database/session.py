@@ -1,11 +1,39 @@
+from __future__ import annotations
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from backend.api.settings import settings
+from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.pool import StaticPool
 
-engine = create_engine(settings.DATABASE_URL, pool_pre_ping=True)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+from backend.core.config import settings
 
-# Removed get_db from here as it is usually in api/deps.py or similar, 
-# but keeping SessionLocal for imports.
-# If you need get_db here for scripts:
-# def get_db(): ...
+DATABASE_URL = settings.DATABASE_URL
+
+if DATABASE_URL.startswith("sqlite"):
+    engine = create_engine(
+        DATABASE_URL,
+        connect_args={"check_same_thread": False},
+        poolclass=StaticPool,
+        future=True,
+    )
+else:
+    engine = create_engine(
+        DATABASE_URL,
+        future=True,
+    )
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    expire_on_commit=False,
+    bind=engine,
+)
+
+Base = declarative_base()
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

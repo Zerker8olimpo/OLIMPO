@@ -19,7 +19,7 @@ import math
 import random
 from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
-from datetime import datetime
+from datetime import datetime, timezone
 
 # ============================================================
 # FLAG GLOBAL PARA LOGS (se puede cambiar desde HeliosEngine)
@@ -623,6 +623,11 @@ class HeliosDigitalTwinEngine:
                     "p95": mc["p95"],
                     "compra_sugerida": compra_sugerida,
                     "shock_index": series["S_p"],
+                    # --- API CONTRACT ALIASES (Frontend Compatibility) ---
+                    "expected": mc["p50"],            # UI: Smooth/Expected
+                    "stress": mc["p95"],              # UI: Upper/Stress
+                    "recommendedPurchase": compra_sugerida,
+                    # -----------------------------------------------------
                     "phi_series": series["phi"],
                     "g_series": G,
                     "alpha_ses": alpha
@@ -802,6 +807,13 @@ class HeliosDigitalTwinEngine:
                     "params_dt": params_dt,
                     "lead_time_meses": lt_meses,
                     "nivel_servicio": nivel_servicio,
+                    # --- API CONTRACT ALIASES (Frontend Compatibility) ---
+                    "demandDt": demanda_dt,
+                    "eoqDt": eoq_dt,
+                    "ropDt": rop_dt,
+                    "leadTimeMeses": lt_meses,
+                    "nivelServicio": nivel_servicio,
+                    # -----------------------------------------------------
                 }
             ]
         }
@@ -939,7 +951,12 @@ class HeliosDigitalTwinEngine:
                     "flujo_t1_t2": flujo_t1_t2_series,
                     "produccion_sugerida": produccion_series,
                     "pid_params": {"Kp": Kp, "Ki": Ki, "Kd": Kd},
-                    "kalman_params": {"Q": Q, "R": R, "x0": x0}
+                    "kalman_params": {"Q": Q, "R": R, "x0": x0},
+                    # --- API CONTRACT ALIASES (Frontend Compatibility) ---
+                    "poseidonInventario1": t1_series,
+                    "poseidonInventario2": t2_series,
+                    "poseidonFlujo": flujo_t1_t2_series,
+                    # -----------------------------------------------------
                 }
             ]
         }
@@ -972,7 +989,7 @@ class HeliosDigitalTwinEngine:
                 "sigma": sigma_out,
                 "poseidon": poseidon_out,
                 "metadata": {
-                    "timestamp": datetime.now().isoformat(),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "engine": "HELIOS_DIGITALTWIN3",
                     "descripcion": "Salida unificada del Digital Twin para Epsilon, Sigma y Poseidón."
                 }
@@ -1086,7 +1103,10 @@ class HeliosEngine(HeliosDigitalTwinEngine):
         self.poseidon_input = poseidon_input
         result = self.process_poseidon()
         if "productos" in result and result["productos"]:
-            return result["productos"][0]
+            # P1 FIX: El mapper de frontend espera anidamiento raw['poseidon']
+            # Retornamos estructura { "poseidon": { ...data... } }
+            data = result["productos"][0]
+            return {"poseidon": data}
         return {}
 
     def run_digital_twin(
@@ -1118,7 +1138,7 @@ class HeliosEngine(HeliosDigitalTwinEngine):
                 "sigma": sigma_out,
                 "poseidon": poseidon_out,
                 "metadata": {
-                    "timestamp": datetime.now().isoformat(),
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
                     "engine": "HELIOS_BACKEND",
                     "descripcion": "Salida unificada del Digital Twin para API OLIMPO."
                 }

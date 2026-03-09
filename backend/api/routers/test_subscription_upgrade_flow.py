@@ -1,5 +1,5 @@
 import pytest
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -51,11 +51,11 @@ def client(db_session):
 
 # --- MOCK DE GOOGLE PLAY ---
 def fake_google_validation_pro(product_id, token):
-    future_date = datetime.utcnow() + timedelta(days=30)
+    future_date = datetime.now(timezone.utc) + timedelta(days=30)
     return {
         "expiryTimeMillis": int(future_date.timestamp() * 1000),
         "autoRenewing": True,
-        "startTimeMillis": int(datetime.utcnow().timestamp() * 1000)
+        "startTimeMillis": int(datetime.now(timezone.utc).timestamp() * 1000)
     }
 
 def test_upgrade_basic_to_pro(client, db_session, monkeypatch):
@@ -81,8 +81,8 @@ def test_upgrade_basic_to_pro(client, db_session, monkeypatch):
         plan_id="basic",
         status="active",
         external_ref=BASIC_TOKEN,
-        start_date=datetime.utcnow() - timedelta(days=5),
-        end_date=datetime.utcnow() + timedelta(days=25),
+        start_date=datetime.now(timezone.utc) - timedelta(days=5),
+        end_date=datetime.now(timezone.utc) + timedelta(days=25),
         auto_renew=True,
         provider=PaymentProvider.GOOGLE,
     )
@@ -134,5 +134,5 @@ def test_upgrade_basic_to_pro(client, db_session, monkeypatch):
     assert sub.plan_id == "pro"
     assert sub.status == "active"
     assert sub.external_ref == PRO_TOKEN
-    assert sub.end_date > datetime.utcnow()
+    assert sub.end_date > datetime.now(timezone.utc)
     assert sub.provider == PaymentProvider.GOOGLE

@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from sqlalchemy.orm import Session
 from backend.core.payment_models import PaymentIntent, PaymentStatus, SubscriptionStatus, PALAuditLog, PaymentEvent
 from backend.database.models.subscription import Subscription
@@ -27,7 +27,7 @@ class PaymentAuthority:
             return None
 
         intent.status = new_intent_status
-        intent.updated_at = datetime.utcnow()
+        intent.updated_at = datetime.now(timezone.utc)
 
         # Transición de Suscripción
         subscription = db.query(Subscription).filter(
@@ -49,9 +49,9 @@ class PaymentAuthority:
             subscription.plan_id = intent.plan_id
             subscription.provider = intent.provider
             subscription.last_payment_intent_id = intent.id
-            subscription.start_date = datetime.utcnow()
-            subscription.end_date = datetime.utcnow() + timedelta(days=30)
-            subscription.updated_at = datetime.utcnow()
+            subscription.start_date = datetime.now(timezone.utc)
+            subscription.end_date = datetime.now(timezone.utc) + timedelta(days=30)
+            subscription.updated_at = datetime.now(timezone.utc)
 
         # Registro de Auditoría
         audit = PALAuditLog(

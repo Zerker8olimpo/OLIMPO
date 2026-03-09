@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import String, DateTime, Integer, JSON, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 from backend.database.base import Base
@@ -12,4 +12,4 @@ class PaymentEvent(Base):
     source: Mapped[str] = mapped_column(String(50)) # local | verify | webhook
     payload: Mapped[dict] = mapped_column(JSON)
     
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
