@@ -1,55 +1,74 @@
-# Python
+# =========================================================
+# PYTHON
+# =========================================================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.pytest_cache/
+.pytest_cache/
 
-# Virtual environments
+# =========================================================
+# VIRTUAL ENVIRONMENTS
+# =========================================================
 venv/
 .venv/
 backend/venv/
+env/
 
-# Datasets / outputs
+# =========================================================
+# ENV VARIABLES / SECRETS
+# =========================================================
+.env
+backend/.env
+.env.local
+.env.production
+
+# secretos
+secrets/
+*.key
+*.pem
+
+# =========================================================
+# DATABASE (solo local)
+# =========================================================
+backend/db/*.db
+*.sqlite
+*.sqlite3
+dev.db
+
+# =========================================================
+# DATASETS / OUTPUTS
+# =========================================================
 backend/cfg/DATASETS/
 *.csv
 
-# Env
-backend/.env
-
-# Editor
+# =========================================================
+# EDITOR / IDE
+# =========================================================
 .vscode/
 backend/.vscode/
-
-# Entornos
-.venv/
-__pycache__/
-*.pyc
-
-# Configuración sensible
-.env
-
-# Base de datos local
-backend/db/*.db
-
-# IDE
-.vscode/
 .idea/
 
-# OS
+# =========================================================
+# OS FILES
+# =========================================================
 .DS_Store
 Thumbs.db
 
-# Flutter app (OLIMPO mobile)
+# =========================================================
+# FLUTTER / MOBILE (NO SUBIR AL BACKEND REPO)
+# =========================================================
 app_olimpo/
-
-# Mobile app (NO subir al backend repo)
 app_olimpo_clean/
 app_mobile_flutter/
 
-# Local environment variables
-.env
-
-dev.db
-
-secrets/
+# =========================================================
+# JSON GENERICOS (ignorados)
+# =========================================================
 *.json
+
+# =========================================================
+# PERMITIR CONFIGURACIONES DEL BACKEND
+# =========================================================
+!backend/cfg/*.json
