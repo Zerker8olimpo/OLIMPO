@@ -11,7 +11,6 @@ from backend.database.session import engine
 from backend.database.base import Base
 import backend.database.models  # registra todos los modelos SQLAlchemy
 
-Base.metadata.create_all(bind=engine)
 
 # -------------------------------------------------------
 # ROUTERS

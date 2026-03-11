@@ -2,43 +2,54 @@
 # PYTHON
 # =========================================================
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.pytest_cache/
+*.py[cod]
+*$py.class
+*.so
+
+# pytest
 .pytest_cache/
+*.pytest_cache/
+
+# coverage
+.coverage
+htmlcov/
 
 # =========================================================
 # VIRTUAL ENVIRONMENTS
 # =========================================================
-venv/
 .venv/
-backend/venv/
+venv/
 env/
+ENV/
+backend/venv/
 
 # =========================================================
 # ENV VARIABLES / SECRETS
 # =========================================================
 .env
+.env.*
 backend/.env
-.env.local
-.env.production
+backend/.env.*
+*.env
 
-# secretos
-secrets/
-*.key
+# claves privadas
 *.pem
+*.key
+*.crt
+secrets/
 
 # =========================================================
-# DATABASE (solo local)
+# DATABASE LOCAL (solo desarrollo)
 # =========================================================
 backend/db/*.db
+backend/db/*.sqlite
+backend/db/*.sqlite3
 *.sqlite
 *.sqlite3
 dev.db
 
 # =========================================================
-# DATASETS / OUTPUTS
+# DATASETS / ARCHIVOS GRANDES
 # =========================================================
 backend/cfg/DATASETS/
 *.csv
@@ -49,6 +60,8 @@ backend/cfg/DATASETS/
 .vscode/
 backend/.vscode/
 .idea/
+*.swp
+*.swo
 
 # =========================================================
 # OS FILES
@@ -57,18 +70,52 @@ backend/.vscode/
 Thumbs.db
 
 # =========================================================
-# FLUTTER / MOBILE (NO SUBIR AL BACKEND REPO)
+# LOGS
+# =========================================================
+*.log
+logs/
+
+# =========================================================
+# BUILD / CACHE
+# =========================================================
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# =========================================================
+# PYTHON PACKAGE CACHE
+# =========================================================
+pip-wheel-metadata/
+
+# =========================================================
+# MOBILE / FLUTTER (NO SUBIR AL BACKEND)
 # =========================================================
 app_olimpo/
 app_olimpo_clean/
 app_mobile_flutter/
 
 # =========================================================
-# JSON GENERICOS (ignorados)
+# TEMP FILES
 # =========================================================
-*.json
+tmp/
+temp/
+
+# =========================================================
+# JSON GENERADOS (no configs del backend)
+# =========================================================
+tmp/*.json
+logs/*.json
+data/*.json
 
 # =========================================================
 # PERMITIR CONFIGURACIONES DEL BACKEND
 # =========================================================
 !backend/cfg/*.json
+
+# =========================================================
+# ALEMBIC (SIEMPRE VERSIONAR)
+# =========================================================
+!backend/alembic/
+!backend/alembic/**
+!alembic.ini
