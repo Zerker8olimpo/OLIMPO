@@ -1,13 +1,13 @@
 {
   "CFG_HELIOS_RUTAS": {
-    "version": "2.1",
-    "descripcion": "Rutas maestras del sistema HELIOS para OLIMPO. Portables para Windows, Linux y Render.",
+    "version": "2.2",
+    "descripcion": "Rutas maestras HELIOS compatibles con Render",
 
     "rutas_principales": {
       "base_dir": ".",
-      "cfg_dir": "cfg",
-      "entrada_dir": "entrada",
-      "prediccion_dir": "prediccion"
+      "cfg_dir": "backend/cfg",
+      "entrada_dir": "backend/entrada",
+      "prediccion_dir": "backend/prediccion"
     },
 
     "cfg_archivos": {
