@@ -1,35 +1,57 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from backend.api.db_deps import get_db
 from backend.database.models.user import User
-from backend.database.models.device import Device
-from backend.api.security.jwt import verify_google_id_token
+from google.oauth2 import id_token
+from google.auth.transport import requests
+
+from backend.core.config import settings
 
 router = APIRouter(prefix="/device", tags=["device"])
 
+
 class ResetDeviceRequest(BaseModel):
     email: str
-    id_token: str
+    id_token: str  # Para validar identidad antes de resetear
+
 
 @router.post("/reset")
 def reset_device(data: ResetDeviceRequest, db: Session = Depends(get_db)):
-    # 1. Validar Identidad
-    try:
-        user_info = verify_google_id_token(data.id_token)
-        if user_info.get("email") != data.email:
-            raise HTTPException(status_code=403, detail="Token email mismatch")
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"Invalid identity: {str(e)}")
+    """
+    Permite desvincular el dispositivo actual asociado a un usuario.
+    No modifica el modelo ni la arquitectura existente.
+    """
 
-    # 2. Buscar Usuario
+    # 1️⃣ Validar token de Google para confirmar identidad
+    try:
+        idinfo = id_token.verify_oauth2_token(
+            data.id_token,
+            requests.Request(),
+            settings.GOOGLE_OAUTH_CLIENT_ID
+        )
+    except Exception:
+        raise HTTPException(status_code=401, detail="Invalid Google token")
+
+    # 2️⃣ Verificar que el email del token coincide con el solicitado
+    token_email = idinfo.get("email")
+    if token_email != data.email:
+        raise HTTPException(status_code=403, detail="Email mismatch")
+
+    # 3️⃣ Buscar usuario en base de datos
     user = db.query(User).filter(User.email == data.email).first()
+
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    # 3. Desactivar todos los dispositivos activos (Reset)
-    db.query(Device).filter(Device.user_id == user.id).update({"is_active": False})
+    # 4️⃣ Resetear dispositivo
+    user.device_id = None
+
     db.commit()
 
-    return {"status": "ok", "message": "Devices reset successfully"}
+    # 5️⃣ Respuesta (mantiene contrato existente)
+    return {
+        "status": "ok",
+        "message": "Dispositivo anterior desvinculado. Ahora puede ingresar con este dispositivo."
+    }

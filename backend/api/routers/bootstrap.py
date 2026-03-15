@@ -61,31 +61,17 @@ async def bootstrap(
 ):
     claims = claims or {}
 
-    raw_user_id = (
-        request.headers.get("X-User-Id")
-        or request.query_params.get("user_id")
-        or claims.get("user_id")
-    )
-
-    device_id = (
-        request.headers.get("X-Device-ID")
-        or request.query_params.get("device_id")
-        or claims.get("device_id")
-    )
+    raw_user_id = claims.get("user_id")
+    device_id = claims.get("device_id")
 
     resolved_user_id = _coerce_int(raw_user_id)
     resolved_device_id = _coerce_str(device_id)
 
     user: User | None = None
 
-    # Resolver usuario:
-    # 1) por header/query/claims si viene identificador explícito
-    # 2) si no viene, usar el primer usuario disponible (compatibilidad legacy)
+    # Resolver usuario únicamente desde JWT
     if resolved_user_id is not None:
         user = db.query(User).filter(User.id == resolved_user_id).first()
-
-    if user is None and resolved_user_id is None:
-        user = db.query(User).order_by(User.id.asc()).first()
 
     # Mantener contrato estable aunque no haya usuario
     if user is None:
@@ -105,7 +91,7 @@ async def bootstrap(
 
     user_device_id = _coerce_str(getattr(user, "device_id", None))
 
-    # Validar mismatch de dispositivo si el cliente/tóken envía device_id
+    # Validar mismatch de dispositivo si el tóken envía device_id
     if user_device_id and resolved_device_id and user_device_id != resolved_device_id:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
