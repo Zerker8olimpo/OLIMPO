@@ -146,3 +146,10 @@ def test_run_auth_flow():
         prot_response = client.get("/me/subscription", headers=headers)
         
         assert prot_response.status_code == 200
+        
+        # Validación del nuevo contrato unificado de suscripciones
+        data = prot_response.json()
+        assert "active" in data
+        assert "plan" in data
+        assert "status" in data
+        assert "expires_at" in data

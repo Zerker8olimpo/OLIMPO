@@ -63,18 +63,22 @@ def local_confirm(intent_id: int, approve: bool = True, db: Session = Depends(ge
     return {"status": intent.status, "subscription_active": sub is not None}
 
 @router.get("/me")
-def get_my_subscription(db: Session = Depends(get_db), claims: dict = Depends(get_current_claims)):
-    from backend.database.models.subscription import Subscription
-    sub = db.query(Subscription).filter(
-        Subscription.user_id == claims["user_id"],
-        Subscription.device_id == claims["device_id"]
-    ).first()
-    
-    if not sub:
-        return {"status": "inactive"}
-    
+def get_my_subscription(
+    db: Session = Depends(get_db),
+    claims: dict = Depends(get_current_claims),
+):
+    from backend.services.subscription_service import get_active_subscription
+
+    user_id = claims.get("user_id")
+    if not user_id:
+        return {"active": False, "plan": None, "status": "inactive", "expires_at": None}
+
+    user_id = int(user_id)
+    sub = get_active_subscription(db, user_id=user_id)
+
     return {
-        "plan": sub.plan_id,
-        "status": sub.status,
-        "expires_at": sub.end_date.isoformat() if sub.end_date else None
+        "active": bool(sub),
+        "plan": sub.plan_id if sub else None,
+        "status": "active" if sub else "inactive",
+        "expires_at": sub.end_date.isoformat() if sub and sub.end_date else None,
     }

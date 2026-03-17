@@ -67,9 +67,8 @@ def test_bootstrap_active_plan(mock_db, mock_claims):
     data = response.json()
     
     assert data["user"]["id"] == "100"
-    assert data["subscription"]["has_active_plan"] is True
-    assert data["subscription"]["plan_id"] == "pro"
-    assert "epsilon" in data["subscription"]["models_enabled"] # Asumiendo PRO incluye epsilon
+    assert data["subscription"]["active"] is True
+    assert data["subscription"]["plan"] == "pro"
     assert data["limits"]["max_runs_per_day"] > 0
 
     teardown_deps()
@@ -91,8 +90,8 @@ def test_bootstrap_no_plan(mock_db, mock_claims):
     assert response.status_code == 200
     data = response.json()
     
-    assert data["subscription"]["has_active_plan"] is False
-    assert data["subscription"]["plan_id"] is None
+    assert data["subscription"]["active"] is False
+    assert data["subscription"]["plan"] is None
     assert data["subscription"]["status"] == "inactive"
     # Debe devolver límites básicos (ej. 0 o default)
     assert "limits" in data
@@ -116,7 +115,7 @@ def test_bootstrap_expired_plan(mock_db, mock_claims):
     
     assert response.status_code == 200
     data = response.json()
-    assert data["subscription"]["has_active_plan"] is False
+    assert data["subscription"]["active"] is False
 
     teardown_deps()
 

@@ -6,26 +6,26 @@ from sqlalchemy.orm import Session
 
 from backend.api.db_deps import get_db
 from backend.api.security.deps import get_current_claims
-from backend.api.schemas.subscription import SubscriptionStatusResponse
-from backend.services.subscription_service import get_active_subscription, get_entitlements_for_plan
+from backend.services.subscription_service import get_active_subscription
 
 router = APIRouter(prefix="/subscriptions", tags=["subscriptions"])
 
 
-@router.get("/status", response_model=SubscriptionStatusResponse)
+@router.get("/status")
 def subscription_status(
     claims: dict = Depends(get_current_claims),
     db: Session = Depends(get_db),
 ):
-    user_id = int(claims["user_id"])
-    device_id = claims.get("device_id")
+    user_id = claims.get("user_id")
+    if not user_id:
+        return {"active": False, "plan": None, "status": "inactive", "expires_at": None}
 
-    sub = get_active_subscription(db, user_id=user_id, device_id=device_id)
-    if not sub:
-        return SubscriptionStatusResponse(planId=None, status="no_plan", entitlements=[])
+    user_id = int(user_id)
+    sub = get_active_subscription(db, user_id=user_id)
 
-    return SubscriptionStatusResponse(
-        planId=sub.plan_id,
-        status="active",
-        entitlements=get_entitlements_for_plan(sub.plan_id),
-    )
+    return {
+        "active": bool(sub),
+        "plan": sub.plan_id if sub else None,
+        "status": "active" if sub else "inactive",
+        "expires_at": sub.end_date.isoformat() if sub and sub.end_date else None,
+    }
