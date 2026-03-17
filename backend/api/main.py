@@ -34,6 +34,8 @@ from backend.api.routers.bootstrap import router as bootstrap_router
 # System (health / ready)
 from backend.api.routers.system import router as system_router
 
+# Device Reset
+from backend.api.routers.device_reset import router as device_reset_router
 
 # -------------------------------------------------------
 # FASTAPI APP
@@ -95,3 +97,11 @@ app.include_router(bootstrap_router)
 
 # Billing
 app.include_router(billing_google_router, tags=["Billing"])
+
+# Device Reset
+
+app.include_router(
+    device_reset_router,
+    prefix="/account",
+    tags=["account"]
+)
