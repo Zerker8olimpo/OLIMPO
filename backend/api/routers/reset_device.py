@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
@@ -10,6 +11,8 @@ from google.auth.transport import requests
 from backend.core.config import settings
 
 router = APIRouter(prefix="/device", tags=["device"])
+
+logger = logging.getLogger(__name__)
 
 
 class ResetDeviceRequest(BaseModel):
@@ -47,6 +50,7 @@ def reset_device(data: ResetDeviceRequest, db: Session = Depends(get_db)):
 
     # 4️⃣ Resetear dispositivo
     user.device_id = None
+    logger.warning(f"[DEVICE RESET] user_id={user.id}")
 
     db.commit()
 

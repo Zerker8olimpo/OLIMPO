@@ -61,7 +61,7 @@ def _build_success_response(user: User, sub: Subscription) -> dict:
         sub=str(user.id),
         user_id=user.id,
         email=user.email,
-        device_id=sub.device_id,
+        device_id=user.device_id,
         plan=sub.plan_id,
     )
 
@@ -116,7 +116,6 @@ def verify_google_purchase(
                 db.query(Subscription)
                 .filter(
                     Subscription.user_id == user_id,
-                    Subscription.device_id == device_id,
                 )
                 .first()
             )
@@ -124,7 +123,6 @@ def verify_google_purchase(
             if sub is None:
                 sub = Subscription(
                     user_id=user_id,
-                    device_id=device_id,
                     provider=PaymentProvider.GOOGLE,
                     status="active",
                     plan_id=plan_id,

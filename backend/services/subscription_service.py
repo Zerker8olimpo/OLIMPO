@@ -14,13 +14,11 @@ from backend.database.models.subscription import Subscription
 def get_active_subscription(
     db: Session,
     user_id: int,
-    device_id: str | None = None,
 ) -> Optional[Subscription]:
     """
     Fuente de verdad DB-first para suscripción activa.
     - status == "active"
     - end_date > now (o end_date NULL si decides permitirlo)
-    - opcional: amarra por device_id (recomendado)
     """
     now = datetime.now(timezone.utc)
 
@@ -29,9 +27,6 @@ def get_active_subscription(
         Subscription.status == "active",
         or_(Subscription.end_date.is_(None), Subscription.end_date > now),
     )
-
-    if device_id:
-        q = q.filter(Subscription.device_id == device_id)
 
     subscription = q.order_by(Subscription.end_date.desc().nullslast()).first()
 

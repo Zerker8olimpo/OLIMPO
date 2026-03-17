@@ -43,14 +43,18 @@ def google_login(payload: GoogleAuthRequest, db: Session = Depends(get_db)):
     if user.device_id and user.device_id != payload.device_id:
         raise HTTPException(
             status_code=409,
-            detail={"error": "DEVICE_MISMATCH", "message": "Esta cuenta ya está vinculada a otro dispositivo."},
+            detail={
+                "code": "DEVICE_MISMATCH",
+                "action": "REQUIRE_RESET",
+                "message": "Esta cuenta ya está vinculada a otro dispositivo."
+            },
         )
 
     if not user.device_id:
         user.device_id = payload.device_id
         db.commit()
 
-    subscription = get_active_subscription(db, user_id=user.id, device_id=payload.device_id)
+    subscription = get_active_subscription(db, user_id=user.id)
     current_plan = subscription.plan_id if subscription else "no_plan"
 
     token = create_access_token(

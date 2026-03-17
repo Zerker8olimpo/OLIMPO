@@ -78,7 +78,11 @@ def get_current_user(
 
     if user.device_id and device_id and user.device_id != device_id:
         raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT, detail="DEVICE_MISMATCH"
+            status_code=status.HTTP_409_CONFLICT,
+            detail={
+                "code": "DEVICE_MISMATCH",
+                "action": "REQUIRE_RESET"
+            }
         )
 
     return user
@@ -107,7 +111,6 @@ def require_entitlement(entitlement: str):
         sub = get_active_subscription(
             db,
             user_id=user_id,
-            device_id=device_id,
         )
 
         plan_id = resolve_plan(sub, claims)
@@ -167,9 +170,6 @@ def validate_billing_policy(
     if sub.user_id != int(claims.get("user_id")):
         raise HTTPException(status_code=403, detail="USER_MISMATCH")
 
-    if sub.device_id != claims.get("device_id"):
-        raise HTTPException(status_code=403, detail="DEVICE_MISMATCH")
-
     actual_provider = (
         str(sub.provider.value)
         if hasattr(sub.provider, "value")
@@ -182,7 +182,6 @@ def validate_billing_policy(
             f"[BILLING_POLICY] PROVIDER_MISMATCH | "
             f"user={claims.get('user_id')} "
             f"sub={sub.id} "
-            f"device={claims.get('device_id')} "
             f"expected={expected_provider} "
             f"actual={actual_provider}"
         )

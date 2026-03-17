@@ -59,6 +59,8 @@ class Subscription(Base):
         index=True,
     )
 
+    # ⚠️ DEPRECATED: device_id no debe usarse para validación
+    # La suscripción depende exclusivamente de user_id
     device_id: Mapped[str | None] = mapped_column(
         String(255),
         nullable=True,
