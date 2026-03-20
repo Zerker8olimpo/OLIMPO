@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, Dict, Optional
-
+from typing import Any, Dict, List, Optional
 from fastapi import BackgroundTasks, HTTPException
 
 from backend.api.schemas.model_io import ModelRunResponse
