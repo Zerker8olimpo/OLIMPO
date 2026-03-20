@@ -516,14 +516,23 @@ class OSEngineCore:
         dispatch_status: Dict[str, Any],
     ) -> Dict[str, Any]:
 
+        confidence = self._build_confidence(analysis_results, external_signals)
+        signals_summary = self._build_signals_summary(analysis_results, external_signals)
+        ttl = self._build_ttl(os_decision, analysis_results)
+        overlay_trace = self._build_overlay_trace(ctx, runtime_context, os_decision, confidence, ttl)
+
         return {
-            "version": "OS_ENGINE_CONTRACT_1.0",
+            "version": "OS_ENGINE_CONTRACT_1.1",
             "timestamp": ctx.timestamp,
             "context": asdict(ctx),
 
             "os_state": os_decision.os_state,
             "decision_mode": os_decision.decision_mode,
             "rationale": os_decision.rationale,
+            "confidence": confidence,
+            "signals_summary": signals_summary,
+            "ttl": ttl,
+            "overlay_trace": overlay_trace,
 
             "analysis_results": analysis_results,
             "runtime_context": asdict(runtime_context),
@@ -598,4 +607,73 @@ class OSEngineCore:
             "penalties": {"trend": 0.35},
             "levels": {"minor": 0.30, "moderate": 0.60},
             "confidence_weights": {"shock": 0.40, "phi": 0.30, "trend": 0.30},
+        }
+
+    def _build_confidence(self, analysis_results: Dict[str, Any], external_signals: Dict[str, Any]) -> Dict[str, Any]:
+        psi_conf = float(analysis_results.get("psi", {}).get("psi", {}).get("confidence", 0.0) or 0.0)
+        trend_conf = float(analysis_results.get("trend", {}).get("trend", {}).get("confidence", 0.0) or 0.0)
+        external_min = float(external_signals.get("quality", {}).get("confidence_min", 0.0) or 0.0)
+        external_mean = float(external_signals.get("quality", {}).get("confidence_mean", 0.0) or 0.0)
+        effective = round((psi_conf * 0.5) + (trend_conf * 0.3) + (external_mean * 0.2), 4)
+        return {
+            "effective": effective,
+            "psi": round(psi_conf, 4),
+            "trend": round(trend_conf, 4),
+            "external_min": round(external_min, 4),
+            "external_mean": round(external_mean, 4),
+        }
+
+    def _build_signals_summary(self, analysis_results: Dict[str, Any], external_signals: Dict[str, Any]) -> Dict[str, Any]:
+        shock = analysis_results.get("shock", {})
+        volatility = analysis_results.get("volatility", {})
+        trend = analysis_results.get("trend", {})
+        phi = analysis_results.get("phi", {})
+        psi = analysis_results.get("psi", {})
+        return {
+            "shock_flag": int(shock.get("shock_flag", 0) or 0),
+            "shock_intensity": round(float(shock.get("product", {}).get("intensity", 0.0) or 0.0), 4),
+            "volatility_band": str(volatility.get("risk_band", "low") or "low"),
+            "volatility_total": round(float(volatility.get("sigma", {}).get("total", 0.0) or 0.0), 4),
+            "trend_direction": str(trend.get("trend", {}).get("direction", "flat") or "flat"),
+            "trend_strength": round(float(trend.get("trend", {}).get("strength", 0.0) or 0.0), 4),
+            "phi_value": round(float(phi.get("phi", {}).get("value", 0.0) or 0.0), 4),
+            "psi_effective": round(float(psi.get("psi", {}).get("effective", 0.0) or 0.0), 4),
+            "external_quality": external_signals.get("quality", {}),
+        }
+
+    def _build_ttl(self, os_decision: OSDecision, analysis_results: Dict[str, Any]) -> Dict[str, Any]:
+        shock_flag = int(analysis_results.get("shock", {}).get("shock_flag", 0) or 0)
+        if os_decision.decision_mode == "SURVIVAL":
+            hours = 6
+        elif os_decision.decision_mode == "DEFENSIVE":
+            hours = 12
+        elif os_decision.decision_mode == "CONSERVATIVE":
+            hours = 24
+        else:
+            hours = 48
+        if shock_flag:
+            hours = max(4, hours // 2)
+        return {"unit": "hours", "value": hours}
+
+    def _build_overlay_trace(
+        self,
+        ctx: EngineContext,
+        runtime_context: RuntimeContext,
+        os_decision: OSDecision,
+        confidence: Dict[str, Any],
+        ttl: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        return {
+            "scope": {
+                "product_id": ctx.product_id,
+                "market_id": ctx.market_id,
+                "country": ctx.country,
+            },
+            "decision_mode": os_decision.decision_mode,
+            "os_state": os_decision.os_state,
+            "multipliers": dict(runtime_context.multipliers),
+            "flags": dict(runtime_context.flags),
+            "guardrails": dict(runtime_context.guardrails),
+            "confidence_effective": confidence.get("effective", 0.0),
+            "ttl": ttl,
         }

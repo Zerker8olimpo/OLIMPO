@@ -1,3 +1,1 @@
-"""
-OLIMPO backend package.
-"""
+# Inicializador del paquete backend

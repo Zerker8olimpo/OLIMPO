@@ -12,7 +12,7 @@ INVARIANTES:
 """
 
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, ConfigDict
 
 from backend.observatory.contracts.risk_snapshot import RiskSnapshot
@@ -20,9 +20,9 @@ from backend.observatory.contracts.risk_snapshot import RiskSnapshot
 
 class InputQuality(BaseModel):
     is_invalid: bool = False
-    missing_fields: List[str] = []
-    outlier_flags: List[str] = []
-    inconsistency_flags: List[str] = []
+    missing_fields: List[str] = Field(default_factory=list)
+    outlier_flags: List[str] = Field(default_factory=list)
+    inconsistency_flags: List[str] = Field(default_factory=list)
     dq_penalty: float = Field(0.0, ge=0.0, le=1.0)
 
 
@@ -49,7 +49,7 @@ class InteractionEvent(BaseModel):
     source: str  # mobile | web | api
 
     # Entradas del usuario
-    inputs: Dict[str, float]
+    inputs: Dict[str, Any]
 
     # Calidad de entrada
     input_quality: InputQuality
@@ -59,6 +59,9 @@ class InteractionEvent(BaseModel):
 
     # Contraste vs HELIOS (opcional)
     helios_gap: Optional[HeliosGapSnapshot] = None
+
+    # Contexto enriquecido del observatorio / OS_ENGINE
+    observatory_context: Optional[Dict[str, Any]] = None
 
     # Meta técnica
     latency_ms: Optional[int] = None

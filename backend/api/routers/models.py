@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from backend.api.schemas.model_io import ModelRunRequest, ModelRunResponse
@@ -15,6 +15,7 @@ router = APIRouter(prefix="/models", tags=["models"])
 @router.post("/run", response_model=ModelRunResponse)
 def run_models(
     req: ModelRunRequest,
+    background_tasks: BackgroundTasks,
     claims: dict = Depends(get_current_claims),
     db: Session = Depends(get_db),
 ):
@@ -38,7 +39,17 @@ def run_models(
             },
         )
 
+    user_context = {
+        "gmail": claims.get("email"),
+        "user_id": str(user_id),
+        "device_id": claims.get("device_id", "unknown"),
+        "app_version": "backend_pipeline",
+        "platform": "api"
+    }
+
     return run_model_and_adapt(
         model_name=model,
         params=req.modelParams,
+        background_tasks=background_tasks,
+        user_context=user_context
     )

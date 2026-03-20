@@ -7,12 +7,6 @@ Fachada única del Observatorio Estadístico de OLIMPO.
 Este servicio es el ÚNICO punto de integración con el pipeline del backend.
 Opera como side-channel post–ejecución, garantizando aislamiento total,
 fail-open y no-interferencia decisional.
-
-INVARIANTES:
-- Read-only
-- Side-channel
-- Fail-open (nunca bloquea el pipeline)
-- No toca modelos, HELIOS ni OLIMPO Core
 """
 
 import logging
@@ -25,11 +19,8 @@ from backend.observatory.analytics.trend_calculator import TrendCalculator
 
 logger = logging.getLogger("olimpo.observatory")
 
-class ObservatoryService:
-    """
-    Fachada del Observatorio Estadístico.
-    """
 
+class ObservatoryService:
     def __init__(
         self,
         *,
@@ -39,15 +30,8 @@ class ObservatoryService:
         enabled: bool = True,
     ):
         self.enabled = enabled
-        self.builder = InteractionEventBuilder(
-            cfg_quality=cfg_quality,
-            cfg_risk=cfg_risk,
-        )
+        self.builder = InteractionEventBuilder(cfg_quality=cfg_quality, cfg_risk=cfg_risk)
         self.repository = repository
-
-    # -------------------------------------------------
-    # API pública (único punto de entrada)
-    # -------------------------------------------------
 
     def log_interaction(
         self,
@@ -58,7 +42,7 @@ class ObservatoryService:
         market_key: str,
         app_version: str,
         source: str,
-        inputs: Dict[str, float],
+        inputs: Dict[str, Any],
         driver_values: Dict[str, float],
         helios_gap_score: Optional[float] = None,
         helios_gap_fields: Optional[Dict[str, float]] = None,
@@ -69,13 +53,8 @@ class ObservatoryService:
         latency_ms: Optional[int] = None,
         request_id: Optional[str] = None,
         server_node: Optional[str] = None,
+        observatory_context: Optional[Dict[str, Any]] = None,
     ) -> None:
-        """
-        Registra una interacción observacional.
-
-        Nunca lanza excepciones hacia el pipeline.
-        Si el Observatorio está deshabilitado, no hace nada.
-        """
         if not self.enabled:
             return
 
@@ -98,13 +77,10 @@ class ObservatoryService:
                 latency_ms=latency_ms,
                 request_id=request_id,
                 server_node=server_node,
+                observatory_context=observatory_context,
             )
-
-            # Persistencia (side-effect único permitido)
             self.repository.save_event(event)
-
         except Exception:
-            # Fail-open absoluto: el pipeline nunca se entera
             return
 
     def observe_execution(
@@ -112,83 +88,87 @@ class ObservatoryService:
         context: Dict[str, Any],
         inputs: Dict[str, Any],
         outputs: Dict[str, Any],
-        model_name: str
+        model_name: str,
+        observatory_context: Optional[Dict[str, Any]] = None,
     ) -> None:
-        """
-        Método adaptador para registrar ejecuciones desde endpoints (BackgroundTasks).
-        Mapea el contexto genérico a la estructura específica del Observatorio.
-        """
         if not self.enabled:
             return
 
         try:
-            # Extracción de contexto con valores por defecto seguros
-            user_id = context.get("gmail", "anonymous")
-            device_id = context.get("device_id", "unknown")
-            app_version = context.get("app_version", "unknown")
-            platform = context.get("platform", "unknown")
-            timestamp = context.get("timestamp")
+            user_id = str(context.get("gmail") or context.get("user_id") or "anonymous")
+            device_id = str(context.get("device_id") or "unknown")
+            app_version = str(context.get("app_version") or "unknown")
+            platform = str(context.get("platform") or "unknown")
+            product_key = str(context.get("product_id") or inputs.get("product_id") or "ACCOUNT")
+            market_key = str(context.get("market_id") or inputs.get("market_id") or "GLOBAL")
 
-            # Reutilizamos log_interaction para mantener la lógica centralizada
-            # Mapeamos los inputs/outputs a una estructura que el builder pueda consumir
-            # Nota: inputs en log_interaction espera Dict[str, float], aquí pasamos Any.
-            # El builder debe ser lo suficientemente robusto para serializarlo (JSON).
-            
+            merged_context = self._merge_observatory_context(observatory_context, inputs, outputs)
+
             self.log_interaction(
                 user_id_hash=user_id,
                 model_name=model_name,
-                product_key="ACCOUNT", # Contexto de cuenta, no de producto
-                market_key="GLOBAL",
+                product_key=product_key,
+                market_key=market_key,
                 app_version=app_version,
                 source=f"{platform}_background",
                 inputs=inputs,
-                driver_values={}, # No aplica para evaluación de cuenta
-                request_id=device_id, # Usamos device_id como traza si no hay request_id
-                # Pasamos outputs como parte de la metadata si el builder lo soporta, 
-                # o extendemos log_interaction en el futuro.
+                driver_values={},
+                request_id=device_id,
+                observatory_context=merged_context,
             )
 
-            # --- Integración Risk + Trend (Cierre del flujo) ---
-            
-            # 1. Extracción de serie numérica para análisis
-            values: List[float] = inputs.get("values", [])
-            if not isinstance(values, list):
-                values = []
-
+            values: List[float] = self._extract_values(inputs, outputs)
             observation_window = len(values) if values else 1
             account_id = user_id
 
-            # 2. Cálculo de Snapshots
             risk_snapshot = RiskCalculator.calculate_from_series(
                 account_id=account_id,
                 values=values,
                 observation_window=observation_window,
             )
-
             trend_snapshot = TrendCalculator.calculate_from_series(
                 account_id=account_id,
                 values=values,
                 observation_window=observation_window,
             )
 
-            # 3. Persistencia de Snapshots
-            # Asumimos que el repositorio soporta estos métodos.
-            # Si no existen, el bloque try-except garantiza fail-open.
             self.repository.store_risk_snapshot(risk_snapshot)
             self.repository.store_trend_snapshot(trend_snapshot)
-            
-            logger.info(f"[OBSERVATORY] ✅ Evento registrado: {model_name} | User: {user_id}")
-
+            logger.info("[OBSERVATORY] ✅ Evento registrado: %s | User: %s", model_name, user_id)
         except Exception as e:
-            # Fail-open: Logueamos el error pero no interrumpimos nada
-            logger.error(f"[OBSERVATORY] ❌ Fallo en observe_execution: {str(e)}", exc_info=True)
+            logger.error("[OBSERVATORY] ❌ Fallo en observe_execution: %s", str(e), exc_info=True)
+
+    def _merge_observatory_context(
+        self,
+        observatory_context: Optional[Dict[str, Any]],
+        inputs: Dict[str, Any],
+        outputs: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        context = dict(observatory_context or {})
+        context.setdefault("input_keys", sorted([str(k) for k in inputs.keys()])[:50])
+        context.setdefault("output_keys", sorted([str(k) for k in outputs.keys()])[:50])
+        context.setdefault("input_series_length", len(inputs.get("demanda_historica", []) or []))
+        return context
+
+    def _extract_values(self, inputs: Dict[str, Any], outputs: Dict[str, Any]) -> List[float]:
+        raw = inputs.get("values")
+        if isinstance(raw, list):
+            return [float(v) for v in raw if isinstance(v, (int, float)) and not isinstance(v, bool)]
+
+        demanda = inputs.get("demanda_historica")
+        if isinstance(demanda, list):
+            return [float(v) for v in demanda if isinstance(v, (int, float)) and not isinstance(v, bool)]
+
+        expected = outputs.get("expected") if isinstance(outputs, dict) else None
+        if isinstance(expected, list):
+            return [float(v) for v in expected if isinstance(v, (int, float)) and not isinstance(v, bool)]
+
+        return []
 
 
-# Instancia global para importar en routers (Singleton)
-# Se asume que ObservatoryRepository maneja su propia conexión o sesión internamente.
 observatory_service = ObservatoryService(
     cfg_quality={},
     cfg_risk={},
     repository=ObservatoryRepository(),
-    enabled=True
+    enabled=True,
 )

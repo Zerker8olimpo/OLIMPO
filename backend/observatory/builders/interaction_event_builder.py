@@ -31,10 +31,8 @@ class InteractionEventBuilder:
     """
 
     def __init__(self, cfg_quality: Dict, cfg_risk: Dict):
-        # En una implementación completa, aquí se inicializarían los analizadores.
-        # Para mantener el builder puro y sin dependencias pesadas, solo guardamos config.
-        self.cfg_quality = cfg_quality
-        self.cfg_risk = cfg_risk
+        self.cfg_quality = cfg_quality or {}
+        self.cfg_risk = cfg_risk or {}
 
     def build(
         self,
@@ -56,25 +54,17 @@ class InteractionEventBuilder:
         latency_ms: Optional[int] = None,
         request_id: Optional[str] = None,
         server_node: Optional[str] = None,
+        observatory_context: Optional[Dict[str, Any]] = None,
     ) -> InteractionEvent:
         """
         Construye y retorna un InteractionEvent inmutable.
         Nunca lanza excepciones hacia arriba.
         """
         try:
-            # 1. Calidad de entrada (Stub / Default)
-            # El builder estructura los datos, no ejecuta análisis pesado.
-            input_quality = InputQuality(
-                score=1.0,
-                dq_penalty=0.0,
-                issues=[],
-                missing_fields=[]
-            )
+            input_quality = self._build_input_quality(inputs)
 
-            # 2. Riesgo implícito (Calculado)
-            # Extraemos valores numéricos de los inputs para medir volatilidad
             numeric_values = [
-                float(v) for v in inputs.values() 
+                float(v) for v in inputs.values()
                 if isinstance(v, (int, float)) and not isinstance(v, bool)
             ]
 
@@ -84,7 +74,6 @@ class InteractionEventBuilder:
                 observation_window=self.cfg_risk.get("observation_window", 12),
             )
 
-            # 3. Gap vs HELIOS (opcional)
             helios_gap = None
             if helios_gap_score is not None:
                 helios_gap = HeliosGapSnapshot(
@@ -94,7 +83,6 @@ class InteractionEventBuilder:
                     twin_version=twin_version,
                 )
 
-            # 4. Evento final
             return InteractionEvent(
                 event_id=str(uuid.uuid4()),
                 timestamp=datetime.now(UTC),
@@ -110,6 +98,7 @@ class InteractionEventBuilder:
                 input_quality=input_quality,
                 risk_snapshot=risk_snapshot,
                 helios_gap=helios_gap,
+                observatory_context=observatory_context or {},
                 latency_ms=latency_ms,
                 request_id=request_id,
                 server_node=server_node,
@@ -117,7 +106,6 @@ class InteractionEventBuilder:
             )
 
         except Exception as exc:
-            # Fail-open absoluto: evento mínimo sin análisis
             return InteractionEvent(
                 event_id=str(uuid.uuid4()),
                 timestamp=datetime.now(UTC),
@@ -130,7 +118,13 @@ class InteractionEventBuilder:
                 app_version=app_version,
                 source=source,
                 inputs=inputs,
-                input_quality=InputQuality(score=0.0, dq_penalty=0.0, issues=[], missing_fields=[]),
+                input_quality=InputQuality(
+                    is_invalid=True,
+                    missing_fields=[],
+                    outlier_flags=[],
+                    inconsistency_flags=[],
+                    dq_penalty=1.0,
+                ),
                 risk_snapshot=RiskSnapshot(
                     account_id=user_id_hash,
                     risk_level="LOW",
@@ -140,8 +134,43 @@ class InteractionEventBuilder:
                     observation_window=1,
                 ),
                 helios_gap=None,
+                observatory_context={"builder_error": str(exc)},
                 latency_ms=latency_ms,
                 request_id=request_id,
                 server_node=server_node,
                 errors=[str(exc)],
             )
+
+    def _build_input_quality(self, inputs: Dict[str, Any]) -> InputQuality:
+        if not isinstance(inputs, dict):
+            return InputQuality(
+                is_invalid=True,
+                missing_fields=[],
+                outlier_flags=[],
+                inconsistency_flags=["inputs_not_dict"],
+                dq_penalty=1.0,
+            )
+
+        missing_fields = [str(k) for k, v in inputs.items() if v is None]
+        outlier_flags = []
+        inconsistency_flags = []
+
+        for key, value in inputs.items():
+            if isinstance(value, (int, float)) and not isinstance(value, bool):
+                try:
+                    fv = float(value)
+                    if abs(fv) > 1_000_000_000:
+                        outlier_flags.append(str(key))
+                except Exception:
+                    inconsistency_flags.append(f"invalid_numeric:{key}")
+            elif isinstance(value, list) and not value:
+                inconsistency_flags.append(f"empty_series:{key}")
+
+        penalty = min(1.0, (len(missing_fields) * 0.05) + (len(outlier_flags) * 0.03) + (len(inconsistency_flags) * 0.05))
+        return InputQuality(
+            is_invalid=penalty >= 0.8,
+            missing_fields=missing_fields,
+            outlier_flags=outlier_flags,
+            inconsistency_flags=inconsistency_flags,
+            dq_penalty=round(penalty, 4),
+        )
