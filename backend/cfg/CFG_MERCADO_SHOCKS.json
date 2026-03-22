@@ -1,7 +1,7 @@
 {
   "cfg_MERCADO_SHOCKS": {
-    "version": "1.0",
-    "descripcion": "Red neuronal de shocks para el Digital Twin de mercado de Helios.",
+    "version": "1.1",
+    "descripcion": "Red neuronal de shocks para el Digital Twin de mercado de Helios, extendida y alineada con el catálogo corregido de mercados.",
     "shocks_por_mercado": [
       {
         "market_id": "mercado_sanitario_hidraulico",
@@ -272,6 +272,141 @@
           "REGULATORIO": 6,
           "FINANCIERO": 3
         }
+      },
+      {
+        "market_id": "mercado_energia_utilities",
+        "market_nombre": "Mercado Energía y Utilities",
+        "shock_prob_mensual": 0.15,
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.63,
+        "shock_magnitud_promedio": 0.25,
+        "shock_magnitud_max": 0.6,
+        "shock_volatilidad_extra": 0.31,
+        "shock_tipo_principal": "OFERTA",
+        "impacto_demanda": 0.67,
+        "impacto_oferta": 0.78,
+        "impacto_precio": 0.79,
+        "impacto_logistica": 0.71,
+        "coeficiente_disipacion": 0.57,
+        "coeficiente_reverberacion": 0.4,
+        "tiempo_recuperacion_meses": 6,
+        "perfil_shock": "ESCALON",
+        "duracion_shock_por_tipo": {
+          "PRECIO": 6,
+          "DEMANDA": 5,
+          "OFERTA": 7,
+          "LOGISTICO": 7,
+          "REGULATORIO": 7,
+          "FINANCIERO": 5
+        }
+      },
+      {
+        "market_id": "mercado_servicios_empresariales",
+        "market_nombre": "Mercado Servicios Empresariales",
+        "shock_prob_mensual": 0.09,
+        "shock_frecuencia": "BAJA",
+        "shock_frecuencia_indice": 0.43,
+        "shock_magnitud_promedio": 0.1,
+        "shock_magnitud_max": 0.25,
+        "shock_volatilidad_extra": 0.19,
+        "shock_tipo_principal": "REGULATORIO",
+        "impacto_demanda": 0.75,
+        "impacto_oferta": 0.67,
+        "impacto_precio": 0.62,
+        "impacto_logistica": 0.46,
+        "coeficiente_disipacion": 0.76,
+        "coeficiente_reverberacion": 0.26,
+        "tiempo_recuperacion_meses": 2,
+        "perfil_shock": "IMPULSO",
+        "duracion_shock_por_tipo": {
+          "PRECIO": 2,
+          "DEMANDA": 1,
+          "OFERTA": 2,
+          "LOGISTICO": 3,
+          "REGULATORIO": 4,
+          "FINANCIERO": 2
+        }
+      },
+      {
+        "market_id": "mercado_textil_vestuario",
+        "market_nombre": "Mercado Textil y Vestuario",
+        "shock_prob_mensual": 0.13,
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.56,
+        "shock_magnitud_promedio": 0.2,
+        "shock_magnitud_max": 0.45,
+        "shock_volatilidad_extra": 0.27,
+        "shock_tipo_principal": "LOGISTICO",
+        "impacto_demanda": 0.82,
+        "impacto_oferta": 0.71,
+        "impacto_precio": 0.69,
+        "impacto_logistica": 0.71,
+        "coeficiente_disipacion": 0.66,
+        "coeficiente_reverberacion": 0.35,
+        "tiempo_recuperacion_meses": 4,
+        "perfil_shock": "SIERRA",
+        "duracion_shock_por_tipo": {
+          "PRECIO": 4,
+          "DEMANDA": 3,
+          "OFERTA": 5,
+          "LOGISTICO": 6,
+          "REGULATORIO": 5,
+          "FINANCIERO": 3
+        }
+      },
+      {
+        "market_id": "mercado_movilidad_transporte",
+        "market_nombre": "Mercado Movilidad y Transporte",
+        "shock_prob_mensual": 0.12,
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_volatilidad_extra": 0.25,
+        "shock_tipo_principal": "LOGISTICO",
+        "impacto_demanda": 0.78,
+        "impacto_oferta": 0.75,
+        "impacto_precio": 0.66,
+        "impacto_logistica": 0.8,
+        "coeficiente_disipacion": 0.71,
+        "coeficiente_reverberacion": 0.32,
+        "tiempo_recuperacion_meses": 3,
+        "perfil_shock": "PICO",
+        "duracion_shock_por_tipo": {
+          "PRECIO": 3,
+          "DEMANDA": 2,
+          "OFERTA": 4,
+          "LOGISTICO": 5,
+          "REGULATORIO": 4,
+          "FINANCIERO": 2
+        }
+      },
+      {
+        "market_id": "mercado_financiero_seguros",
+        "market_nombre": "Mercado Financiero y Seguros",
+        "shock_prob_mensual": 0.12,
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_volatilidad_extra": 0.25,
+        "shock_tipo_principal": "FINANCIERO",
+        "impacto_demanda": 0.78,
+        "impacto_oferta": 0.75,
+        "impacto_precio": 0.66,
+        "impacto_logistica": 0.8,
+        "coeficiente_disipacion": 0.71,
+        "coeficiente_reverberacion": 0.32,
+        "tiempo_recuperacion_meses": 3,
+        "perfil_shock": "ESCALON",
+        "duracion_shock_por_tipo": {
+          "PRECIO": 3,
+          "DEMANDA": 2,
+          "OFERTA": 3,
+          "LOGISTICO": 4,
+          "REGULATORIO": 4,
+          "FINANCIERO": 3
+        }
       }
     ],
     "shocks_globales": [
@@ -300,7 +435,12 @@
           "mercado_farmaceutico_salud": 0.47,
           "mercado_electronica_tecnologia": 0.86,
           "mercado_industrial_MRO": 0.85,
-          "mercado_financiero_PyME": 0.42
+          "mercado_financiero_PyME": 0.42,
+          "mercado_energia_utilities": 0.85,
+          "mercado_servicios_empresariales": 0.65,
+          "mercado_textil_vestuario": 0.72,
+          "mercado_movilidad_transporte": 0.69,
+          "mercado_financiero_seguros": 0.69
         }
       },
       {
@@ -328,7 +468,12 @@
           "mercado_farmaceutico_salud": 0.76,
           "mercado_electronica_tecnologia": 0.61,
           "mercado_industrial_MRO": 0.7,
-          "mercado_financiero_PyME": 0.96
+          "mercado_financiero_PyME": 0.96,
+          "mercado_energia_utilities": 0.84,
+          "mercado_servicios_empresariales": 0.49,
+          "mercado_textil_vestuario": 0.78,
+          "mercado_movilidad_transporte": 0.81,
+          "mercado_financiero_seguros": 0.81
         }
       },
       {
@@ -356,7 +501,12 @@
           "mercado_farmaceutico_salud": 0.91,
           "mercado_electronica_tecnologia": 0.74,
           "mercado_industrial_MRO": 0.92,
-          "mercado_financiero_PyME": 0.65
+          "mercado_financiero_PyME": 0.65,
+          "mercado_energia_utilities": 0.71,
+          "mercado_servicios_empresariales": 0.54,
+          "mercado_textil_vestuario": 0.69,
+          "mercado_movilidad_transporte": 0.73,
+          "mercado_financiero_seguros": 0.73
         }
       }
     ],
@@ -370,7 +520,12 @@
         "mercado_farmaceutico_salud": 0.67,
         "mercado_electronica_tecnologia": 0.55,
         "mercado_industrial_MRO": 0.43,
-        "mercado_financiero_PyME": 0.8
+        "mercado_financiero_PyME": 0.8,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_construccion_materiales": {
         "mercado_sanitario_hidraulico": 0.52,
@@ -381,7 +536,12 @@
         "mercado_farmaceutico_salud": 0.13,
         "mercado_electronica_tecnologia": 0.38,
         "mercado_industrial_MRO": 0.52,
-        "mercado_financiero_PyME": 0.74
+        "mercado_financiero_PyME": 0.74,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_retail_supermercado": {
         "mercado_sanitario_hidraulico": 0.29,
@@ -392,7 +552,12 @@
         "mercado_farmaceutico_salud": 0.68,
         "mercado_electronica_tecnologia": 0.49,
         "mercado_industrial_MRO": 0.38,
-        "mercado_financiero_PyME": 0.31
+        "mercado_financiero_PyME": 0.31,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_ferreteria_acabados": {
         "mercado_sanitario_hidraulico": 0.57,
@@ -403,7 +568,12 @@
         "mercado_farmaceutico_salud": 0.6,
         "mercado_electronica_tecnologia": 0.17,
         "mercado_industrial_MRO": 0.63,
-        "mercado_financiero_PyME": 0.37
+        "mercado_financiero_PyME": 0.37,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_agro_insumos": {
         "mercado_sanitario_hidraulico": 0.17,
@@ -414,7 +584,12 @@
         "mercado_farmaceutico_salud": 0.14,
         "mercado_electronica_tecnologia": 0.72,
         "mercado_industrial_MRO": 0.63,
-        "mercado_financiero_PyME": 0.47
+        "mercado_financiero_PyME": 0.47,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_logistico_transporte": {
         "mercado_sanitario_hidraulico": 0.69,
@@ -425,7 +600,12 @@
         "mercado_farmaceutico_salud": 0.22,
         "mercado_electronica_tecnologia": 0.61,
         "mercado_industrial_MRO": 0.66,
-        "mercado_financiero_PyME": 0.51
+        "mercado_financiero_PyME": 0.51,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.76,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.89,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_farmaceutico_salud": {
         "mercado_sanitario_hidraulico": 0.43,
@@ -436,7 +616,12 @@
         "mercado_logistico_transporte": 0.44,
         "mercado_electronica_tecnologia": 0.2,
         "mercado_industrial_MRO": 0.2,
-        "mercado_financiero_PyME": 0.57
+        "mercado_financiero_PyME": 0.57,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_electronica_tecnologia": {
         "mercado_sanitario_hidraulico": 0.83,
@@ -447,7 +632,12 @@
         "mercado_logistico_transporte": 0.63,
         "mercado_farmaceutico_salud": 0.4,
         "mercado_industrial_MRO": 0.55,
-        "mercado_financiero_PyME": 0.33
+        "mercado_financiero_PyME": 0.33,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_industrial_MRO": {
         "mercado_sanitario_hidraulico": 0.27,
@@ -458,7 +648,12 @@
         "mercado_logistico_transporte": 0.22,
         "mercado_farmaceutico_salud": 0.89,
         "mercado_electronica_tecnologia": 0.34,
-        "mercado_financiero_PyME": 0.77
+        "mercado_financiero_PyME": 0.77,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.85
       },
       "mercado_financiero_PyME": {
         "mercado_sanitario_hidraulico": 0.14,
@@ -469,7 +664,92 @@
         "mercado_logistico_transporte": 0.42,
         "mercado_farmaceutico_salud": 0.68,
         "mercado_electronica_tecnologia": 0.65,
-        "mercado_industrial_MRO": 0.35
+        "mercado_industrial_MRO": 0.35,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85,
+        "mercado_financiero_seguros": 0.89
+      },
+      "mercado_energia_utilities": {
+        "mercado_sanitario_hidraulico": 0.72,
+        "mercado_construccion_materiales": 0.72,
+        "mercado_retail_supermercado": 0.72,
+        "mercado_ferreteria_acabados": 0.72,
+        "mercado_agro_insumos": 0.72,
+        "mercado_logistico_transporte": 0.72,
+        "mercado_farmaceutico_salud": 0.72,
+        "mercado_electronica_tecnologia": 0.72,
+        "mercado_industrial_MRO": 0.72,
+        "mercado_financiero_PyME": 0.72,
+        "mercado_servicios_empresariales": 0.63,
+        "mercado_textil_vestuario": 0.74,
+        "mercado_movilidad_transporte": 0.72,
+        "mercado_financiero_seguros": 0.72
+      },
+      "mercado_servicios_empresariales": {
+        "mercado_sanitario_hidraulico": 0.68,
+        "mercado_construccion_materiales": 0.68,
+        "mercado_retail_supermercado": 0.68,
+        "mercado_ferreteria_acabados": 0.68,
+        "mercado_agro_insumos": 0.68,
+        "mercado_logistico_transporte": 0.76,
+        "mercado_farmaceutico_salud": 0.68,
+        "mercado_electronica_tecnologia": 0.68,
+        "mercado_industrial_MRO": 0.68,
+        "mercado_financiero_PyME": 0.68,
+        "mercado_energia_utilities": 0.63,
+        "mercado_textil_vestuario": 0.68,
+        "mercado_movilidad_transporte": 0.76,
+        "mercado_financiero_seguros": 0.68
+      },
+      "mercado_textil_vestuario": {
+        "mercado_sanitario_hidraulico": 0.76,
+        "mercado_construccion_materiales": 0.76,
+        "mercado_retail_supermercado": 0.76,
+        "mercado_ferreteria_acabados": 0.76,
+        "mercado_agro_insumos": 0.76,
+        "mercado_logistico_transporte": 0.76,
+        "mercado_farmaceutico_salud": 0.76,
+        "mercado_electronica_tecnologia": 0.76,
+        "mercado_industrial_MRO": 0.76,
+        "mercado_financiero_PyME": 0.76,
+        "mercado_energia_utilities": 0.74,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_movilidad_transporte": 0.76,
+        "mercado_financiero_seguros": 0.76
+      },
+      "mercado_movilidad_transporte": {
+        "mercado_sanitario_hidraulico": 0.85,
+        "mercado_construccion_materiales": 0.85,
+        "mercado_retail_supermercado": 0.85,
+        "mercado_ferreteria_acabados": 0.85,
+        "mercado_agro_insumos": 0.85,
+        "mercado_logistico_transporte": 0.89,
+        "mercado_farmaceutico_salud": 0.85,
+        "mercado_electronica_tecnologia": 0.85,
+        "mercado_industrial_MRO": 0.85,
+        "mercado_financiero_PyME": 0.85,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.76,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_financiero_seguros": 0.85
+      },
+      "mercado_financiero_seguros": {
+        "mercado_sanitario_hidraulico": 0.85,
+        "mercado_construccion_materiales": 0.85,
+        "mercado_retail_supermercado": 0.85,
+        "mercado_ferreteria_acabados": 0.85,
+        "mercado_agro_insumos": 0.85,
+        "mercado_logistico_transporte": 0.85,
+        "mercado_farmaceutico_salud": 0.85,
+        "mercado_electronica_tecnologia": 0.85,
+        "mercado_industrial_MRO": 0.85,
+        "mercado_financiero_PyME": 0.89,
+        "mercado_energia_utilities": 0.72,
+        "mercado_servicios_empresariales": 0.68,
+        "mercado_textil_vestuario": 0.76,
+        "mercado_movilidad_transporte": 0.85
       }
     },
     "reglas_market_producto": {

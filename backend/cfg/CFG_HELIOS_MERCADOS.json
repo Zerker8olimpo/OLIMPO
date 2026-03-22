@@ -502,8 +502,8 @@
         "mantencion_flotas",
         "repuestos_vehiculos_comerciales",
         "neumaticos_comerciales",
-        "lubricantes_industriales",
-        "seguros_transporte",
+        "lubricantes_flotas",
+        "servicios_seguro_transporte",
         "tracking_monitoreo",
         "software_logistico",
         "servicios_aduana",
@@ -1129,6 +1129,132 @@
         "ecommerce_moda",
         "marcas_privadas",
         "licencias_textiles"
+      ]
+    },
+    {
+      "market_id": "mercado_movilidad_transporte",
+      "market_nombre": "Mercado Movilidad y Transporte",
+      "sector_economico": "Servicios / Movilidad",
+      "descripcion": "Configuración base del mercado Mercado Movilidad y Transporte.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "transporte_publico",
+        "transporte_privado",
+        "logistica_transporte",
+        "flotas_electricas",
+        "infraestructura_vial",
+        "servicios_movilidad"
+      ]
+    },
+    {
+      "market_id": "mercado_financiero_seguros",
+      "market_nombre": "Mercado Financiero y Seguros",
+      "sector_economico": "Finanzas / Seguros",
+      "descripcion": "Configuración base del mercado Mercado Financiero y Seguros.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.04,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.6
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.6,
+        "sensibilidad_oferta": 0.7,
+        "sensibilidad_demanda": 0.75,
+        "sensibilidad_logistica": 0.8
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.45
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.3,
+        "shock_magnitud_promedio": 0.15,
+        "shock_magnitud_max": 0.4,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.8,
+        "elasticidad_ingreso_mercado": 0.4
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.7,
+        "impacto_USD": 0.85,
+        "impacto_EUR": 0.55
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.6
+        },
+        "pais_secundario_exportador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "productos_asociados": [
+        "seguros_generales",
+        "seguros_operacionales",
+        "seguros_transporte",
+        "financiamiento_corto_plazo",
+        "leasing_factoring",
+        "servicios_bancarios"
       ]
     }
   ]

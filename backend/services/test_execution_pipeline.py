@@ -55,7 +55,16 @@ def test_pipeline_async_observatory_dispatch(
             **valid_epsilon_params,
             "_runtime_overlay": {"applied": True}
         },
-        [{"param": "margen_bruto_pct", "base": 0.25, "effective": 0.30, "multiplier": 1.2, "source": "w_shock", "applied": True}]
+        [{
+            "param": "margen_bruto_pct", 
+            "rule": "mock_rule",
+            "os_state": "STABLE",
+            "base": 0.25, 
+            "effective": 0.30, 
+            "multiplier": 1.2, 
+            "source": "w_shock", 
+            "applied": True
+        }]
     )
     
     mock_call_helios.return_value = {
