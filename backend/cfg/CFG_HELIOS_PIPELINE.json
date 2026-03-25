@@ -1,6 +1,6 @@
 {
   "CFG_HELIOS_PIPELINE": {
-    "version": "1.0",
+    "version": "1.1",
     "descripcion": "Pipeline maestro de ejecución del sistema HELIOS para OLIMPO.",
     "pipeline_activo": true,
     "orden_ejecucion": [
@@ -34,7 +34,7 @@
       },
       "cargar_mercados": {
         "archivo": "CFG_HELIOS_MERCADOS.json",
-        "descripcion": "Carga los 10 mercados y su configuración macroeconómica."
+        "descripcion": "Carga la configuración macroeconómica y operativa de los mercados del sistema, incluyendo la separación entre agroinsumos, frutas, verduras y hortalizas frescas."
       },
       "cargar_comex": {
         "archivo": "CFG_HELIOS_COMEX.json",
@@ -46,7 +46,7 @@
       },
       "cargar_demanda_mercado": {
         "archivo": "CFG_DEMANDA_MERCADO.json",
-        "descripcion": "Carga modelos Gauss+Bayes de demanda por mercado."
+        "descripcion": "Carga modelos Gauss+Bayes de demanda por mercado con cobertura completa del catálogo."
       },
       "cargar_limites_dinamicos": {
         "archivo": "CFG_LIMITES_SUP_INF.json",

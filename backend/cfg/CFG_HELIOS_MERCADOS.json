@@ -352,7 +352,7 @@
       "market_id": "mercado_agro_insumos",
       "market_nombre": "Mercado Agro Insumos",
       "sector_economico": "Agricultura / Agroindustria",
-      "descripcion": "Configuración base del mercado Mercado Agro Insumos.",
+      "descripcion": "Mercado de insumos y soporte productivo agrícola para Chile. Se mantiene separado de frutas, verduras y hortalizas frescas por tener lógica de reposición, riesgo y estacionalidad distinta.",
       "macro_parametros": {
         "crecimiento_anual_esperado": 0.03,
         "inflacion_promedio": 0.04,
@@ -433,6 +433,267 @@
         "equipos_medicion_agro",
         "control_plagas",
         "productos_postcosecha"
+      ]
+    },
+    {
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "sector_economico": "Agroalimentos / Perecibles frescos",
+      "descripcion": "Canasta agregada de frutas frescas para mercado chileno, separada de verduras y hortalizas por estacionalidad, perecibilidad y exposición exportadora.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.032,
+        "inflacion_promedio": 0.041,
+        "indice_confianza_consumidor": 0.56,
+        "indice_actividad_sectorial": 0.63
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.72,
+        "sensibilidad_oferta": 0.82,
+        "sensibilidad_demanda": 0.78,
+        "sensibilidad_logistica": 0.86
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.62
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.42,
+        "shock_magnitud_promedio": 0.22,
+        "shock_magnitud_max": 0.65,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.95,
+        "elasticidad_ingreso_mercado": 0.38
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.82,
+        "impacto_USD": 0.58,
+        "impacto_EUR": 0.42
+      },
+      "tipo_mercado": "MIXTO",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.45
+        },
+        "pais_secundario_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        }
+      },
+      "productos_asociados": [
+        "manzanas_frescas",
+        "peras_frescas",
+        "uvas_mesa",
+        "kiwis_frescos",
+        "paltas_frescas",
+        "naranjas_frescas",
+        "limones_frescos",
+        "mandarinas_frescas",
+        "clementinas_frescas",
+        "pomelos_frescos",
+        "platanos_frescos",
+        "pinas_frescas",
+        "mangos_frescos",
+        "papayas_frescas",
+        "frutillas_frescas",
+        "frambuesas_frescas",
+        "arandanos_frescos",
+        "cerezas_frescas",
+        "ciruelas_frescas",
+        "duraznos_frescos",
+        "nectarines_frescas",
+        "damascos_frescos",
+        "melones_frescos",
+        "sandias_frescas",
+        "granadas_frescas",
+        "higos_frescos",
+        "caquis_frescos",
+        "chirimoyas_frescas",
+        "membrillos_frescos",
+        "nisperos_frescos"
+      ]
+    },
+    {
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "sector_economico": "Agroalimentos / Perecibles frescos",
+      "descripcion": "Canasta agregada de verduras frescas de hoja, hierbas, crucíferas y tallos para mercado chileno, con alta rotación, alta merma y fuerte sensibilidad logística.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.029,
+        "inflacion_promedio": 0.041,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.61
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.68,
+        "sensibilidad_oferta": 0.84,
+        "sensibilidad_demanda": 0.74,
+        "sensibilidad_logistica": 0.88
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.44,
+        "shock_magnitud_promedio": 0.2,
+        "shock_magnitud_max": 0.6,
+        "shock_recuperacion_meses": 2
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.72,
+        "elasticidad_ingreso_mercado": 0.28
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.86,
+        "impacto_USD": 0.46,
+        "impacto_EUR": 0.35
+      },
+      "tipo_mercado": "NACIONAL",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_secundario_exportador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.28
+        }
+      },
+      "productos_asociados": [
+        "lechuga_costina",
+        "lechuga_roman",
+        "lechuga_escarola",
+        "espinaca_fresca",
+        "acelga_fresca",
+        "rucula_fresca",
+        "berros_frescos",
+        "repollo_blanco",
+        "repollo_morado",
+        "repollo_chino",
+        "kale_fresca",
+        "brocoli_fresco",
+        "coliflor_fresca",
+        "coles_bruselas",
+        "apio_fresco",
+        "puerro_fresco",
+        "esparragos_frescos",
+        "alcachofas_frescas",
+        "cilantro_fresco",
+        "perejil_fresco",
+        "albahaca_fresca",
+        "menta_fresca",
+        "oregano_fresco",
+        "cebollin_fresco",
+        "endivia_fresca",
+        "radicchio_fresco",
+        "pak_choi_fresco",
+        "hojas_mix_ensalada",
+        "mostaza_verde",
+        "achicoria_fresca"
+      ]
+    },
+    {
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "sector_economico": "Agroalimentos / Perecibles frescos",
+      "descripcion": "Canasta agregada de hortalizas frescas para mercado chileno, separada de frutas y verduras por mezcla de raíces, bulbos, tubérculos, hortalizas de fruto y legumbres frescas.",
+      "macro_parametros": {
+        "crecimiento_anual_esperado": 0.03,
+        "inflacion_promedio": 0.041,
+        "indice_confianza_consumidor": 0.55,
+        "indice_actividad_sectorial": 0.62
+      },
+      "sensibilidad": {
+        "sensibilidad_precio": 0.65,
+        "sensibilidad_oferta": 0.78,
+        "sensibilidad_demanda": 0.72,
+        "sensibilidad_logistica": 0.81
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.58
+      },
+      "shock": {
+        "shock_probabilidad_anual": 0.38,
+        "shock_magnitud_promedio": 0.18,
+        "shock_magnitud_max": 0.52,
+        "shock_recuperacion_meses": 3
+      },
+      "elasticidad_mercado": {
+        "elasticidad_precio_mercado": -0.68,
+        "elasticidad_ingreso_mercado": 0.26
+      },
+      "impacto_financiero": {
+        "impacto_IPC": 0.83,
+        "impacto_USD": 0.48,
+        "impacto_EUR": 0.35
+      },
+      "tipo_mercado": "NACIONAL",
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_secundario_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.3
+        },
+        "pais_secundario_exportador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.25
+        }
+      },
+      "productos_asociados": [
+        "tomate_redondo",
+        "tomate_larga_vida",
+        "tomate_cherry",
+        "tomate_pera",
+        "pimiento_rojo",
+        "pimiento_verde",
+        "pimiento_amarillo",
+        "aji_verde",
+        "aji_rojo",
+        "pepino_ensalada",
+        "pepino_dulce",
+        "zapallo_italiano",
+        "berenjena_fresca",
+        "cebolla_amarilla",
+        "cebolla_morada",
+        "cebolla_perla",
+        "ajo_nacional",
+        "zanahoria_fresca",
+        "betarraga_fresca",
+        "rabanito_fresco",
+        "nabo_fresco",
+        "papas_consumo",
+        "papas_tempranas",
+        "camote_fresco",
+        "poroto_verde",
+        "poroto_granado",
+        "arveja_verde",
+        "haba_fresca",
+        "choclo_fresco",
+        "zapallo_camote"
       ]
     },
     {

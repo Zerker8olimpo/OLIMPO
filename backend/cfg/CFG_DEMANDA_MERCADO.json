@@ -1,7 +1,7 @@
 {
   "cfg_DEMANDA_MERCADO": {
-    "version": "1.0",
-    "descripcion": "Configuración de demanda por mercado para Digital Twin Helios.",
+    "version": "1.1",
+    "descripcion": "Configuración de demanda por mercado para Digital Twin Helios. Incluye cobertura completa de mercados y separación explícita entre agroinsumos, frutas, verduras y hortalizas frescas para contexto Chile.",
     "parametros_generales": {
       "horizonte_max_meses": 3,
       "resolucion_temporal": "MENSUAL",
@@ -339,6 +339,204 @@
         }
       },
       {
+        "market_id": "mercado_frutas_frescas",
+        "market_nombre": "Mercado Frutas Frescas",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.24,
+            "coef_asimetria": 0.17,
+            "cola_pesada": true
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 1.08,
+            "lambda_prior_k": 5.4,
+            "lambda_prior_theta": 0.2,
+            "peso_priori_vs_datos": 0.35
+          },
+          "ruido": {
+            "sigma_white_noise": 0.2,
+            "coef_AR1": 0.43,
+            "choques_idiosincraticos_prob": 0.16,
+            "choques_idiosincraticos_magnitud": 0.32
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              1.14,
+              1.1,
+              1.05,
+              0.92,
+              0.85,
+              0.87,
+              0.94,
+              0.98,
+              0.91,
+              0.97,
+              1.08,
+              1.19
+            ],
+            "descripcion": "Estacionalidad normalizada de canasta agregada de frutas frescas en Chile; combina picos de verano y ventanas invernales de cítricos."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.32,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.76,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.91,
+            "elasticidad_ingreso_mercado": 0.36
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.81,
+            "USD_sensibilidad": 0.56,
+            "EUR_sensibilidad": 0.39
+          }
+        }
+      },
+      {
+        "market_id": "mercado_verduras_frescas",
+        "market_nombre": "Mercado Verduras Frescas",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.27,
+            "coef_asimetria": 0.12,
+            "cola_pesada": true
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 0.98,
+            "lambda_prior_k": 5.1,
+            "lambda_prior_theta": 0.19,
+            "peso_priori_vs_datos": 0.33
+          },
+          "ruido": {
+            "sigma_white_noise": 0.22,
+            "coef_AR1": 0.39,
+            "choques_idiosincraticos_prob": 0.18,
+            "choques_idiosincraticos_magnitud": 0.34
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              0.88,
+              0.85,
+              0.89,
+              0.96,
+              1.06,
+              1.14,
+              1.18,
+              1.15,
+              1.08,
+              0.98,
+              0.9,
+              0.93
+            ],
+            "descripcion": "Estacionalidad normalizada de verduras frescas en Chile; pondera hojas, crucíferas, hierbas y tallos con mayor disponibilidad en otoño-invierno y primavera."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.29,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.74,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.69,
+            "elasticidad_ingreso_mercado": 0.24
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.86,
+            "USD_sensibilidad": 0.43,
+            "EUR_sensibilidad": 0.31
+          }
+        }
+      },
+      {
+        "market_id": "mercado_hortalizas_frescas",
+        "market_nombre": "Mercado Hortalizas Frescas",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.21,
+            "coef_asimetria": 0.11,
+            "cola_pesada": true
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 1.02,
+            "lambda_prior_k": 5.8,
+            "lambda_prior_theta": 0.18,
+            "peso_priori_vs_datos": 0.37
+          },
+          "ruido": {
+            "sigma_white_noise": 0.17,
+            "coef_AR1": 0.38,
+            "choques_idiosincraticos_prob": 0.14,
+            "choques_idiosincraticos_magnitud": 0.28
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              1.14,
+              1.12,
+              1.08,
+              1.02,
+              0.96,
+              0.9,
+              0.87,
+              0.9,
+              0.95,
+              1.0,
+              1.04,
+              1.02
+            ],
+            "descripcion": "Estacionalidad normalizada de hortalizas frescas en Chile; separa raíces y bulbos más estables de hortalizas de fruto y legumbres frescas más estacionales."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.24,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.8,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.65,
+            "elasticidad_ingreso_mercado": 0.25
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.82,
+            "USD_sensibilidad": 0.46,
+            "EUR_sensibilidad": 0.33
+          }
+        }
+      },
+      {
         "market_id": "mercado_logistico_transporte",
         "market_nombre": "Mercado Logístico y Transporte",
         "modelo_demanda": {
@@ -665,6 +863,336 @@
             "IPC_sensibilidad": 0.4,
             "USD_sensibilidad": 0.35,
             "EUR_sensibilidad": 0.64
+          }
+        }
+      },
+      {
+        "market_id": "mercado_energia_utilities",
+        "market_nombre": "Mercado Energía y Utilities",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.14,
+            "coef_asimetria": 0.05,
+            "cola_pesada": false
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 1.0,
+            "lambda_prior_k": 7.0,
+            "lambda_prior_theta": 0.14,
+            "peso_priori_vs_datos": 0.46
+          },
+          "ruido": {
+            "sigma_white_noise": 0.09,
+            "coef_AR1": 0.36,
+            "choques_idiosincraticos_prob": 0.09,
+            "choques_idiosincraticos_magnitud": 0.18
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              1.03,
+              1.01,
+              1.0,
+              0.99,
+              1.01,
+              1.02,
+              1.03,
+              1.02,
+              0.98,
+              0.96,
+              0.95,
+              1.0
+            ],
+            "descripcion": "Estacionalidad leve para mercado regulado/semi-regulado con sensibilidad a demanda operativa y energía."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.16,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.88,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.46,
+            "elasticidad_ingreso_mercado": 0.31
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.79,
+            "USD_sensibilidad": 0.58,
+            "EUR_sensibilidad": 0.47
+          }
+        }
+      },
+      {
+        "market_id": "mercado_servicios_empresariales",
+        "market_nombre": "Mercado Servicios Empresariales",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.13,
+            "coef_asimetria": 0.04,
+            "cola_pesada": false
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 0.96,
+            "lambda_prior_k": 7.4,
+            "lambda_prior_theta": 0.13,
+            "peso_priori_vs_datos": 0.5
+          },
+          "ruido": {
+            "sigma_white_noise": 0.08,
+            "coef_AR1": 0.34,
+            "choques_idiosincraticos_prob": 0.07,
+            "choques_idiosincraticos_magnitud": 0.16
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              1.0,
+              0.99,
+              1.02,
+              1.01,
+              1.0,
+              1.0,
+              0.99,
+              0.98,
+              1.0,
+              1.01,
+              1.02,
+              0.98
+            ],
+            "descripcion": "Estacionalidad baja; canasta de servicios empresariales con leve desaceleración invernal y cierre anual."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.15,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.9,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.61,
+            "elasticidad_ingreso_mercado": 0.44
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.67,
+            "USD_sensibilidad": 0.39,
+            "EUR_sensibilidad": 0.33
+          }
+        }
+      },
+      {
+        "market_id": "mercado_textil_vestuario",
+        "market_nombre": "Mercado Textil y Vestuario",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.23,
+            "coef_asimetria": 0.16,
+            "cola_pesada": true
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 1.06,
+            "lambda_prior_k": 5.6,
+            "lambda_prior_theta": 0.19,
+            "peso_priori_vs_datos": 0.36
+          },
+          "ruido": {
+            "sigma_white_noise": 0.17,
+            "coef_AR1": 0.37,
+            "choques_idiosincraticos_prob": 0.14,
+            "choques_idiosincraticos_magnitud": 0.28
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              0.86,
+              0.82,
+              0.88,
+              0.95,
+              1.08,
+              1.18,
+              1.2,
+              1.12,
+              0.96,
+              0.92,
+              0.94,
+              1.09
+            ],
+            "descripcion": "Estacionalidad alta por cambio de temporada, clima y campañas comerciales."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.3,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.75,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -1.02,
+            "elasticidad_ingreso_mercado": 0.52
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.64,
+            "USD_sensibilidad": 0.55,
+            "EUR_sensibilidad": 0.49
+          }
+        }
+      },
+      {
+        "market_id": "mercado_movilidad_transporte",
+        "market_nombre": "Mercado Movilidad y Transporte",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.18,
+            "coef_asimetria": 0.08,
+            "cola_pesada": false
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 1.01,
+            "lambda_prior_k": 6.2,
+            "lambda_prior_theta": 0.16,
+            "peso_priori_vs_datos": 0.41
+          },
+          "ruido": {
+            "sigma_white_noise": 0.12,
+            "coef_AR1": 0.4,
+            "choques_idiosincraticos_prob": 0.11,
+            "choques_idiosincraticos_magnitud": 0.22
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              1.09,
+              1.06,
+              0.98,
+              0.94,
+              0.93,
+              0.95,
+              0.98,
+              1.0,
+              0.97,
+              0.99,
+              1.04,
+              1.09
+            ],
+            "descripcion": "Estacionalidad moderada con picos de vacaciones y cierres operativos de fin de año."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.21,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.83,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.73,
+            "elasticidad_ingreso_mercado": 0.38
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.71,
+            "USD_sensibilidad": 0.69,
+            "EUR_sensibilidad": 0.53
+          }
+        }
+      },
+      {
+        "market_id": "mercado_financiero_seguros",
+        "market_nombre": "Mercado Financiero y Seguros",
+        "modelo_demanda": {
+          "tipo_modelo": "GAUSS_BAYES_MIXTO",
+          "gauss": {
+            "media_normalizada": 1.0,
+            "desviacion_relativa": 0.12,
+            "coef_asimetria": 0.05,
+            "cola_pesada": false
+          },
+          "bayes": {
+            "tipo_priori": "GAMMA_POISSON",
+            "lambda_prior_media": 0.97,
+            "lambda_prior_k": 7.6,
+            "lambda_prior_theta": 0.13,
+            "peso_priori_vs_datos": 0.52
+          },
+          "ruido": {
+            "sigma_white_noise": 0.08,
+            "coef_AR1": 0.33,
+            "choques_idiosincraticos_prob": 0.06,
+            "choques_idiosincraticos_magnitud": 0.15
+          },
+          "estacionalidad_mensual": {
+            "indices": [
+              1.01,
+              0.99,
+              1.0,
+              1.01,
+              0.99,
+              0.98,
+              0.99,
+              1.0,
+              1.01,
+              1.02,
+              1.01,
+              0.99
+            ],
+            "descripcion": "Estacionalidad baja para canasta financiera/aseguradora con renovaciones y cierres administrativos."
+          },
+          "escenarios": {
+            "base": {
+              "multiplicador_demanda": 1.0,
+              "probabilidad": 0.55
+            },
+            "optimista": {
+              "multiplicador_demanda": 1.14,
+              "probabilidad": 0.25
+            },
+            "pesimista": {
+              "multiplicador_demanda": 0.91,
+              "probabilidad": 0.2
+            }
+          },
+          "elasticidad_global": {
+            "elasticidad_precio_mercado": -0.58,
+            "elasticidad_ingreso_mercado": 0.42
+          },
+          "dependencia_indicadores": {
+            "IPC_sensibilidad": 0.66,
+            "USD_sensibilidad": 0.37,
+            "EUR_sensibilidad": 0.29
           }
         }
       }

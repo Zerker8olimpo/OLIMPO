@@ -11401,6 +11401,6846 @@
       }
     },
     {
+      "product_id": "manzanas_frescas",
+      "product_nombre": "Manzanas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.44
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.49
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.55,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.54,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.42,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.66
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.42
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "peras_frescas",
+      "product_nombre": "Peras Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.44
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.49
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.55,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.54,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.42,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.66
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.42
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "uvas_mesa",
+      "product_nombre": "Uvas de Mesa",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.64
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.64
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.63,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.72,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.63,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.52
+        },
+        "pais_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.68
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "MIXTO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "kiwis_frescos",
+      "product_nombre": "Kiwis Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.44
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.49
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.55,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.54,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.42,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.45,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.66
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.42
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.5
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "paltas_frescas",
+      "product_nombre": "Paltas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.64
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.64
+      },
+      "tipo_producto": {
+        "categoria": "ESTRATEGICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.63,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.72,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.63,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.52
+        },
+        "pais_importador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.68
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "MIXTO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "naranjas_frescas",
+      "product_nombre": "Naranjas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.82,
+        "pid_Ki": 0.19,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.76,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 5
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.52
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.53
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.59,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.58,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.48,
+        "shock_magnitud_media": 0.22,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.55
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "limones_frescos",
+      "product_nombre": "Limones Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.82,
+        "pid_Ki": 0.19,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.76,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 5
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.52
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.53
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.59,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.58,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.48,
+        "shock_magnitud_media": 0.22,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.55
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "mandarinas_frescas",
+      "product_nombre": "Mandarinas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.82,
+        "pid_Ki": 0.19,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.76,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 5
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.52
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.53
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.59,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.58,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.48,
+        "shock_magnitud_media": 0.22,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.55
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "clementinas_frescas",
+      "product_nombre": "Clementinas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.82,
+        "pid_Ki": 0.19,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.76,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 5
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.52
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.53
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.59,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.58,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.48,
+        "shock_magnitud_media": 0.22,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.55
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pomelos_frescos",
+      "product_nombre": "Pomelos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.82,
+        "pid_Ki": 0.19,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.76,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.28,
+        "adapt_window_meses": 5
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.52
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.53
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.59,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.58,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.48,
+        "shock_magnitud_media": 0.22,
+        "shock_magnitud_max": 0.5,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.55
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "platanos_frescos",
+      "product_nombre": "Plátanos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.84,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.38,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.48
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.58
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.68,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.78
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Ecuador",
+          "codigo": "EC",
+          "impacto": 0.75
+        },
+        "pais_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.7
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pinas_frescas",
+      "product_nombre": "Piñas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.84,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.38,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.48
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.58
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.68,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.78
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Ecuador",
+          "codigo": "EC",
+          "impacto": 0.75
+        },
+        "pais_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.7
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "mangos_frescos",
+      "product_nombre": "Mangos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.84,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.38,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.48
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.58
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.68,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.78
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Ecuador",
+          "codigo": "EC",
+          "impacto": 0.75
+        },
+        "pais_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.7
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "papayas_frescas",
+      "product_nombre": "Papayas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.84,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.38,
+        "adapt_learning_rate": 0.3,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.48
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.58
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.68,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.78
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Ecuador",
+          "codigo": "EC",
+          "impacto": 0.75
+        },
+        "pais_importador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.7
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "IMPORTADO"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "frutillas_frescas",
+      "product_nombre": "Frutillas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "frambuesas_frescas",
+      "product_nombre": "Frambuesas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "arandanos_frescos",
+      "product_nombre": "Arándanos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "cerezas_frescas",
+      "product_nombre": "Cerezas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "ciruelas_frescas",
+      "product_nombre": "Ciruelas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "duraznos_frescos",
+      "product_nombre": "Duraznos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "nectarines_frescas",
+      "product_nombre": "Nectarines Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "damascos_frescos",
+      "product_nombre": "Damascos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "melones_frescos",
+      "product_nombre": "Melones Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "sandias_frescas",
+      "product_nombre": "Sandías Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "granadas_frescas",
+      "product_nombre": "Granadas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.83,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.29,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.62
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.61
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.64,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.56,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.77
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.4
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "higos_frescos",
+      "product_nombre": "Higos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.34,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.75
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.72
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "CRECIENTE",
+        "tendencia_pendiente": 0.01
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.72,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.78,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.32,
+        "shock_magnitud_max": 0.72,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.88
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "China",
+          "codigo": "CN",
+          "impacto": 0.65
+        },
+        "pais_importador": {
+          "nombre": "USA",
+          "codigo": "US",
+          "impacto": 0.55
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "caquis_frescos",
+      "product_nombre": "Caquis Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.83,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.29,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.62
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.61
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.64,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.56,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.77
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.4
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "chirimoyas_frescas",
+      "product_nombre": "Chirimoyas Frescas",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.83,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.29,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.62
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.61
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.64,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.56,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.77
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.4
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "membrillos_frescos",
+      "product_nombre": "Membrillos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.83,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.29,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.62
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.61
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.64,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.56,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.77
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.4
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "nisperos_frescos",
+      "product_nombre": "Nísperos Frescos",
+      "market_id": "mercado_frutas_frescas",
+      "market_nombre": "Mercado Frutas Frescas",
+      "pid": {
+        "pid_Kp": 0.83,
+        "pid_Ki": 0.2,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.78,
+        "pid_max_output": 1.36,
+        "adapt_learning_rate": 0.29,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.62
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.61
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.64,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.53,
+        "shock_magnitud_media": 0.25,
+        "shock_magnitud_max": 0.56,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.77
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.4
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.45
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "lechuga_costina",
+      "product_nombre": "Lechuga Costina",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "lechuga_roman",
+      "product_nombre": "Lechuga Romana",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "lechuga_escarola",
+      "product_nombre": "Lechuga Escarola",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "espinaca_fresca",
+      "product_nombre": "Espinaca Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "acelga_fresca",
+      "product_nombre": "Acelga Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "rucula_fresca",
+      "product_nombre": "Rúcula Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "berros_frescos",
+      "product_nombre": "Berros Frescos",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "repollo_blanco",
+      "product_nombre": "Repollo Blanco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "repollo_morado",
+      "product_nombre": "Repollo Morado",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "repollo_chino",
+      "product_nombre": "Repollo Chino",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "kale_fresca",
+      "product_nombre": "Kale Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "brocoli_fresco",
+      "product_nombre": "Brócoli Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "coliflor_fresca",
+      "product_nombre": "Coliflor Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "coles_bruselas",
+      "product_nombre": "Coles de Bruselas",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.56
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.6
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.62,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.62,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.52,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.6,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.74
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.32
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "apio_fresco",
+      "product_nombre": "Apio Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "puerro_fresco",
+      "product_nombre": "Puerro Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "esparragos_frescos",
+      "product_nombre": "Espárragos Frescos",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "alcachofas_frescas",
+      "product_nombre": "Alcachofas Frescas",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "cilantro_fresco",
+      "product_nombre": "Cilantro Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.94,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.86,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.68
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.76
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.78,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.82,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.36,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.92
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.33
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "perejil_fresco",
+      "product_nombre": "Perejil Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.94,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.86,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.68
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.76
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.78,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.82,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.36,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.92
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.33
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "albahaca_fresca",
+      "product_nombre": "Albahaca Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.94,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.86,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.68
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.76
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.78,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.82,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.36,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.92
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.33
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "menta_fresca",
+      "product_nombre": "Menta Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.94,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.86,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.68
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.76
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.78,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.82,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.36,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.92
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.33
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "oregano_fresco",
+      "product_nombre": "Orégano Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.94,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.86,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.68
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.76
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.78,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.82,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.36,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.92
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.33
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "cebollin_fresco",
+      "product_nombre": "Cebollín Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.94,
+        "pid_Ki": 0.25,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.86,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.68
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.76
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.78,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.82,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.68,
+        "shock_magnitud_media": 0.36,
+        "shock_magnitud_max": 0.8,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.92
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.33
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.3
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "endivia_fresca",
+      "product_nombre": "Endivia Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "radicchio_fresco",
+      "product_nombre": "Radicchio Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pak_choi_fresco",
+      "product_nombre": "Pak Choi Fresco",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.88,
+        "pid_Ki": 0.22,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.42,
+        "adapt_learning_rate": 0.32,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.6
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.66
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.67,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.7,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.58,
+        "shock_magnitud_media": 0.28,
+        "shock_magnitud_max": 0.68,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.82
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.34
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.31
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "hojas_mix_ensalada",
+      "product_nombre": "Mix de Hojas para Ensalada",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "mostaza_verde",
+      "product_nombre": "Mostaza Verde",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "achicoria_fresca",
+      "product_nombre": "Achicoria Fresca",
+      "market_id": "mercado_verduras_frescas",
+      "market_nombre": "Mercado Verduras Frescas",
+      "pid": {
+        "pid_Kp": 0.92,
+        "pid_Ki": 0.24,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.85,
+        "pid_max_output": 1.45,
+        "adapt_learning_rate": 0.35,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.72
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.74
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.71,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.8,
+        "shock_tipo_principal": "LOGISTICO",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.66,
+        "shock_magnitud_media": 0.34,
+        "shock_magnitud_max": 0.78,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.9
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.35
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.32
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "tomate_redondo",
+      "product_nombre": "Tomate Redondo",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "tomate_larga_vida",
+      "product_nombre": "Tomate Larga Vida",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "tomate_cherry",
+      "product_nombre": "Tomate Cherry",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "tomate_pera",
+      "product_nombre": "Tomate Pera",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pimiento_rojo",
+      "product_nombre": "Pimiento Rojo",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pimiento_verde",
+      "product_nombre": "Pimiento Verde",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pimiento_amarillo",
+      "product_nombre": "Pimiento Amarillo",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "aji_verde",
+      "product_nombre": "Ají Verde",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "aji_rojo",
+      "product_nombre": "Ají Rojo",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pepino_ensalada",
+      "product_nombre": "Pepino Ensalada",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "pepino_dulce",
+      "product_nombre": "Pepino Dulce",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "zapallo_italiano",
+      "product_nombre": "Zapallo Italiano",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "berenjena_fresca",
+      "product_nombre": "Berenjena Fresca",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "cebolla_amarilla",
+      "product_nombre": "Cebolla Amarilla",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "cebolla_morada",
+      "product_nombre": "Cebolla Morada",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "cebolla_perla",
+      "product_nombre": "Cebolla Perla",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "ajo_nacional",
+      "product_nombre": "Ajo Nacional",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "zanahoria_fresca",
+      "product_nombre": "Zanahoria Fresca",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "betarraga_fresca",
+      "product_nombre": "Betarraga Fresca",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "rabanito_fresco",
+      "product_nombre": "Rabanito Fresco",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "nabo_fresco",
+      "product_nombre": "Nabo Fresco",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "papas_consumo",
+      "product_nombre": "Papas de Consumo",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "papas_tempranas",
+      "product_nombre": "Papas Tempranas",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "camote_fresco",
+      "product_nombre": "Camote Fresco",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.78,
+        "pid_Ki": 0.18,
+        "pid_Kd": 0.05,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.74,
+        "pid_max_output": 1.32,
+        "adapt_learning_rate": 0.26,
+        "adapt_window_meses": 6
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "MEDIA",
+        "estacionalidad_indice": 0.36
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.46
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.54,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.48,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.38,
+        "shock_magnitud_media": 0.18,
+        "shock_magnitud_max": 0.44,
+        "shock_tiempo_recuperacion_meses": 4,
+        "shock_buffer_recomendado": 0.62
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.22
+        },
+        "pais_importador": {
+          "nombre": "Brasil",
+          "codigo": "BR",
+          "impacto": 0.24
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "poroto_verde",
+      "product_nombre": "Poroto Verde",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.61
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.59
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.63,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.54,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.28
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.27
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "poroto_granado",
+      "product_nombre": "Poroto Granado",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.61
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.59
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.63,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.54,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.28
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.27
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "arveja_verde",
+      "product_nombre": "Arveja Verde",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.61
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.59
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.63,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.54,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.28
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.27
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "haba_fresca",
+      "product_nombre": "Haba Fresca",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.86,
+        "pid_Ki": 0.21,
+        "pid_Kd": 0.06,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.8,
+        "pid_max_output": 1.4,
+        "adapt_learning_rate": 0.31,
+        "adapt_window_meses": 4
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.61
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "MEDIA",
+        "volatilidad_indice": 0.59
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "B"
+      },
+      "oferta_demanda": {
+        "oferta_score": 4,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.63,
+        "elasticidad_clase": "UNITARIO"
+      },
+      "shock": {
+        "shock_sensibilidad": "MEDIA",
+        "shock_sensibilidad_indice": 0.64,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "MEDIA",
+        "shock_frecuencia_indice": 0.54,
+        "shock_magnitud_media": 0.24,
+        "shock_magnitud_max": 0.58,
+        "shock_tiempo_recuperacion_meses": 3,
+        "shock_buffer_recomendado": 0.72
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.28
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.27
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "choclo_fresco",
+      "product_nombre": "Choclo Fresco",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
+      "product_id": "zapallo_camote",
+      "product_nombre": "Zapallo Camote",
+      "market_id": "mercado_hortalizas_frescas",
+      "market_nombre": "Mercado Hortalizas Frescas",
+      "pid": {
+        "pid_Kp": 0.9,
+        "pid_Ki": 0.23,
+        "pid_Kd": 0.07,
+        "pid_modo": "ADAPTIVO_SIMPLE",
+        "pid_min_output": 0.82,
+        "pid_max_output": 1.44,
+        "adapt_learning_rate": 0.33,
+        "adapt_window_meses": 3
+      },
+      "estacionalidad": {
+        "estacionalidad_tipo": "ALTA",
+        "estacionalidad_indice": 0.69
+      },
+      "volatilidad": {
+        "volatilidad_nivel": "ALTA",
+        "volatilidad_indice": 0.68
+      },
+      "tipo_producto": {
+        "categoria": "BASICO",
+        "producto_criticidad": "A"
+      },
+      "oferta_demanda": {
+        "oferta_score": 5,
+        "demanda_score": 4
+      },
+      "tendencia": {
+        "tendencia_tipo": "PLANA",
+        "tendencia_pendiente": 0.0
+      },
+      "elasticidad": {
+        "elasticidad_precio": -0.69,
+        "elasticidad_clase": "ELASTICO"
+      },
+      "shock": {
+        "shock_sensibilidad": "ALTA",
+        "shock_sensibilidad_indice": 0.76,
+        "shock_tipo_principal": "OFERTA",
+        "shock_frecuencia": "ALTA",
+        "shock_frecuencia_indice": 0.62,
+        "shock_magnitud_media": 0.31,
+        "shock_magnitud_max": 0.73,
+        "shock_tiempo_recuperacion_meses": 2,
+        "shock_buffer_recomendado": 0.84
+      },
+      "geoeconomia": {
+        "pais_principal": {
+          "nombre": "Chile",
+          "codigo": "CL",
+          "impacto": 1.0
+        },
+        "pais_exportador": {
+          "nombre": "Perú",
+          "codigo": "PE",
+          "impacto": 0.36
+        },
+        "pais_importador": {
+          "nombre": "Argentina",
+          "codigo": "AR",
+          "impacto": 0.34
+        }
+      },
+      "origen_mercado": {
+        "mercado_origen_tipo": "NACIONAL"
+      },
+      "indicadores_financieros": {
+        "indicador_IPC_valor": 0.03,
+        "indicador_USD_valor": 950,
+        "indicador_EUR_valor": 1000
+      }
+    },
+    {
       "product_id": "transporte_ultima_milla",
       "product_nombre": "Transporte Ultima Milla",
       "market_id": "mercado_logistico_transporte",
