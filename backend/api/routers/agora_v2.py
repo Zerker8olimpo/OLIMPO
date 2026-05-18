@@ -1,5 +1,7 @@
-from fastapi import APIRouter, Query, HTTPException, status
+from fastapi import APIRouter, Query, HTTPException, status, Depends
 from typing import Optional, List
+from sqlalchemy.orm import Session
+from backend.api.db_deps import get_db
 from backend.agora.agora_v2_service import AgoraV2Service
 from backend.agora.family_catalog_service import FamilyCatalogService
 from backend.agora.compatibility_alias_adapter import CompatibilityAliasAdapter
@@ -139,7 +141,8 @@ async def get_pulse(
     family_id: str = Query(..., description="ID canónico o safe de la familia"),
     horizon: int = Query(..., description="Horizonte de proyección (3, 6, 12)"),
     unit_cost: Optional[float] = Query(None, description="Costo unitario opcional"),
-    user_price: Optional[float] = Query(None, description="Precio de usuario opcional")
+    user_price: Optional[float] = Query(None, description="Precio de usuario opcional"),
+    db: Session = Depends(get_db)
 ):
     if horizon not in [3, 6, 12]:
         raise HTTPException(
@@ -174,7 +177,8 @@ async def get_pulse(
             family_id=canonical_family_id,
             horizon=horizon,
             unit_cost=unit_cost,
-            user_price=user_price
+            user_price=user_price,
+            db=db
         )
         return response
     except HTTPException:

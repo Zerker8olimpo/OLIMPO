@@ -65,7 +65,8 @@ def test_pulse_contract_with_sample():
     assert len(data["warnings"]) > 0
     
     assert data["history_series"] is not None
-    assert len(data["history_series"]) == 6
+    assert len(data["history_series"]) == 0
+    assert data["source_context"]["historical_window_available"] is False
     assert data["projection_series"] is not None
     assert len(data["projection_series"]) == 6
     
@@ -91,7 +92,7 @@ def test_pulse_contract_family_without_snapshot():
     assert data["source_context"]["source_mode"] == "fallback"
     assert data["source_context"]["real_web_observation"] is False
     assert "No existe snapshot" in data["warnings"][0]
-    assert "referenciales" in data["frontend_message"]
+    assert "histórico suficiente" in data["frontend_message"]
 
 def test_frontend_friendly_errors():
     # Market not found

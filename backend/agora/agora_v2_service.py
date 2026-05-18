@@ -21,6 +21,8 @@ from backend.agora.schemas.agora_v2_models import (
     AgoraV2MarginProjectionPoint
 )
 from backend.agora.config_registry_stub import ConfigRegistryStub
+from backend.agora.agora_history_service import AgoraHistoryService
+from sqlalchemy.orm import Session
 
 class AgoraV2Service:
     def __init__(self):
@@ -34,6 +36,7 @@ class AgoraV2Service:
         self.forces_engine = MarketForcesEngine()
         self.margin_engine = MarginEngine()
         self.interpreter = CommercialInterpreter()
+        self.history_service = AgoraHistoryService()
 
     def get_sample_snapshots(self) -> List[Dict[str, Any]]:
         path = "backend/cfg/CFG_AGORA_FAMILY_SNAPSHOTS_SAMPLE.json"
@@ -58,7 +61,8 @@ class AgoraV2Service:
         horizon: int,
         unit_cost: Optional[float] = None,
         user_price: Optional[float] = None,
-        legacy_context: Optional[Dict[str, str]] = None
+        legacy_context: Optional[Dict[str, str]] = None,
+        db: Optional[Session] = None
     ) -> AgoraV2PulseResponse:
         
         warnings = []
@@ -153,23 +157,72 @@ class AgoraV2Service:
         )
 
         history_series = []
-        if data_status != "no_data":
-            trend = obs_result.get("historical_trend_percent", 0.0)
-            for i in range(-5, 1):
-                factor = 1 + (trend * i / 6)
+        
+        # TAREA 5: Pulse debe usar fuente histórica real si está disponible
+        real_history_data = None
+        if db:
+            real_history_data = self.history_service.get_last_6_months_history(
+                db, c_market_id, c_product_id, c_family_id
+            )
+
+        if real_history_data and real_history_data["history"]:
+            # Usar histórico real de la DB
+            h_list = real_history_data["history"]
+            for idx, h in enumerate(h_list):
+                # Calculamos month_index relativo al último (que es idx = len-1)
+                m_idx = idx - (len(h_list) - 1)
                 history_series.append(AgoraV2HistoryPoint(
-                    month_index=i,
-                    label=f"M{i}" if i < 0 else "Actual",
-                    reference_price=obs_result["current_reference_price"] * factor,
-                    price_min=obs_result["price_min"] * factor,
-                    price_median=obs_result["price_median"] * factor,
-                    price_avg=obs_result["price_avg"] * factor,
-                    price_max=obs_result["price_max"] * factor,
-                    confidence=snapshot.get("current", {}).get("confidence", 0.7),
-                    data_status=data_status
+                    month_index=m_idx,
+                    label=h["month"],
+                    reference_price=h["price_median"],
+                    price_min=h["price_min"],
+                    price_median=h["price_median"],
+                    price_avg=h["price_avg"],
+                    price_max=h["price_max"],
+                    confidence=0.85, 
+                    data_status=h["data_status"]
                 ))
-            if source_mode in ["sample", "fallback"]:
-                warnings.append("Serie histórica generada desde muestra controlada; no corresponde a observaciones reales mes a mes.")
+            
+            # Sincronizar estados
+            source_ctx.historical_window_available = True
+            source_ctx.historical_backfill_months = len(h_list)
+            if real_history_data["data_status"] == "real_available":
+                data_status = "real_available"
+                snapshot_status = "real_snapshot"
+        
+        elif data_status == "real_available":
+            # TAREA 1: Reconstrucción matemática segura (Guardia contra negativos)
+            trend = obs_result.get("historical_trend_percent", 0.0)
+            if source_ctx.historical_window_available:
+                for i in range(-5, 1):
+                    factor = 1 + (trend * i / 6)
+                    ref_p = max(0.1, obs_result["current_reference_price"] * factor)
+                    min_p = max(0.1, obs_result["price_min"] * factor)
+                    med_p = max(0.1, obs_result["price_median"] * factor)
+                    avg_p = max(0.1, obs_result["price_avg"] * factor)
+                    max_p = max(0.1, obs_result["price_max"] * factor)
+                    
+                    history_series.append(AgoraV2HistoryPoint(
+                        month_index=i,
+                        label=f"M{i}" if i < 0 else "Actual",
+                        reference_price=ref_p,
+                        price_min=min_p,
+                        price_median=med_p,
+                        price_avg=avg_p,
+                        price_max=max_p,
+                        confidence=snapshot.get("current", {}).get("confidence", 0.7),
+                        data_status=data_status
+                    ))
+        else:
+            # TAREA 2: Si no hay histórico real ni reconstrucción posible, vacío
+            history_series = []
+            source_ctx.historical_window_available = False
+            source_ctx.historical_backfill_months = 0
+            if data_status != "no_data":
+                frontend_message = "ÁGORA aún no tiene histórico suficiente para esta familia."
+            
+        if source_mode in ["sample", "fallback"] and history_series:
+             warnings.append("Serie histórica generada desde muestra controlada; no corresponde a observaciones reales mes a mes.")
 
         projection_series = []
         if data_status != "no_data":
