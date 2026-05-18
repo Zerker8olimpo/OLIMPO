@@ -13,6 +13,7 @@ from backend.agora.admin_security import validate_agora_admin_token
 from backend.agora.price_intelligence.manual_ingestion import ManualIngestionService
 from backend.agora.price_intelligence.snapshot_builder import SnapshotBuilder
 from backend.agora.price_intelligence.price_observer import PriceObserver
+from backend.agora.price_intelligence.source_clients.meli_oauth import MeliOAuthClient
 from backend.database.models.agora import AgoraPriceObservation, AgoraFamilyMonthlySnapshot
 
 router = APIRouter(
@@ -20,6 +21,8 @@ router = APIRouter(
     tags=["agora_v2_admin"],
     dependencies=[Depends(validate_agora_admin_token)]
 )
+
+meli_oauth = MeliOAuthClient()
 
 class SnapshotBuildRequest(BaseModel):
     market_id: str
@@ -274,3 +277,51 @@ async def list_snapshots(
     
     results = query.order_by(desc(AgoraFamilyMonthlySnapshot.month)).limit(limit).all()
     return results
+
+# --- Mercado Libre OAuth ---
+
+@router.get("/meli/oauth/url")
+async def get_meli_oauth_url():
+    """
+    TAREA 2: Obtener URL de autorización de Mercado Libre.
+    """
+    url = meli_oauth.build_meli_authorization_url()
+    return {
+        "authorization_url": url,
+        "redirect_uri": meli_oauth.redirect_uri,
+        "client_id_present": meli_oauth.client_id is not None
+    }
+
+@router.get("/meli/oauth/callback")
+async def meli_oauth_callback(code: str = Query(...)):
+    """
+    TAREA 2: Intercambiar code por token.
+    """
+    result = await meli_oauth.exchange_code_for_token(code)
+    
+    if "error" in result:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Error en OAuth de Mercado Libre: {result.get('error_description', result['error'])}"
+        )
+        
+    return {
+        "ok": True,
+        "has_access_token": "access_token" in result,
+        "has_refresh_token": "refresh_token" in result,
+        "expires_in": result.get("expires_in"),
+        "user_id": str(result.get("user_id"))
+    }
+
+@router.get("/meli/status")
+async def get_meli_status():
+    """
+    TAREA 2: Estado de la configuración de MLC.
+    """
+    return {
+        "configured": all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri]),
+        "has_client_id": meli_oauth.client_id is not None,
+        "has_client_secret": meli_oauth.client_secret is not None,
+        "has_redirect_uri": meli_oauth.redirect_uri is not None,
+        "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None
+    }
