@@ -35,6 +35,7 @@ def test_meli_oauth_url_success(admin_token, meli_creds):
     assert response.status_code == 200
     data = response.json()
     assert "authorization_url" in data
+    assert "auth.mercadolibre.cl" in data["authorization_url"]
     assert "client_id=123" in data["authorization_url"]
     assert "redirect_uri=http%3A%2F%2Flocalhost%2Fcallback" in data["authorization_url"]
 

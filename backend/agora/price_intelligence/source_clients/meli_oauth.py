@@ -10,7 +10,7 @@ class MeliOAuthClient:
     """
     
     def __init__(self):
-        self.base_auth_url = "https://auth.mercadolibre.com.ar/authorization"
+        self.base_auth_url = "https://auth.mercadolibre.cl/authorization"
         self.token_url = "https://api.mercadolibre.com/oauth/token"
 
     @property
