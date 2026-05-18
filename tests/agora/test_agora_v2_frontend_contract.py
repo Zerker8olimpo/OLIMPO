@@ -49,7 +49,8 @@ def test_pulse_contract_with_sample():
         "family_id", "safe_family_id", "history_window_months", "projection_horizon_months", 
         "observation", "projection", "economic_indicators", "market_forces", "margin_reference", 
         "commercial_interpretation", "cfg_context", "snapshot_context", "warnings", 
-        "frontend_message", "data_status", "snapshot_status", "source_context"
+        "frontend_message", "data_status", "snapshot_status", "source_context",
+        "history_series", "projection_series"
     ]
     for field in required_pulse_fields:
         assert field in data, f"Missing pulse field: {field}"
@@ -62,6 +63,20 @@ def test_pulse_contract_with_sample():
     assert data["source_context"]["display_as_reference_only"] is True
     assert data["frontend_message"] != ""
     assert len(data["warnings"]) > 0
+    
+    assert data["history_series"] is not None
+    assert len(data["history_series"]) == 6
+    assert data["projection_series"] is not None
+    assert len(data["projection_series"]) == 6
+    
+def test_pulse_contract_with_margin():
+    url = "/agora/v2/pulse?market_id=mercado_sanitario_hidraulico&product_id=tuberias_y_fittings_pvc_sanitario&family_id=tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario&horizon=12&unit_cost=1000&user_price=1200"
+    response = client.get(url)
+    assert response.status_code == 200
+    data = response.json()
+    assert "margin_projection_series" in data
+    assert data["margin_projection_series"] is not None
+    assert len(data["margin_projection_series"]) == 12
 
 def test_pulse_contract_family_without_snapshot():
     # Familia en catalogo pero no en snapshots sample

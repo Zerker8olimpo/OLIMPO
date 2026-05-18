@@ -78,7 +78,7 @@ class AgoraV2CommercialInterpretation(BaseModel):
     message: str
 
 class AgoraV2SourceContext(BaseModel):
-    source_mode: Literal["real", "sample", "fallback", "missing"]
+    source_mode: Literal["real", "sample", "fallback", "missing", "none"]
     real_web_observation: bool
     snapshot_date: Optional[str] = None
     historical_window_available: bool
@@ -86,6 +86,33 @@ class AgoraV2SourceContext(BaseModel):
     message: str
     is_sample_data: bool = False
     display_as_reference_only: bool = False
+
+class AgoraV2HistoryPoint(BaseModel):
+    month_index: int
+    label: str
+    reference_price: float
+    price_min: float
+    price_median: float
+    price_avg: float
+    price_max: float
+    confidence: float
+    data_status: Literal["real_available", "sample_available", "fallback_available", "no_data"]
+
+class AgoraV2ProjectionPoint(BaseModel):
+    month_index: int
+    label: str
+    low: float
+    base: float
+    high: float
+    confidence: float
+    trend_label: str
+
+class AgoraV2MarginProjectionPoint(BaseModel):
+    month_index: int
+    label: str
+    margin_low: float
+    margin_base: float
+    margin_high: float
 
 class AgoraV2PulseResponse(BaseModel):
     module: str = "AGORA"
@@ -100,9 +127,12 @@ class AgoraV2PulseResponse(BaseModel):
     projection_horizon_months: int
     observation: AgoraV2Observation
     projection: AgoraV2Projection
+    history_series: Optional[List[AgoraV2HistoryPoint]] = None
+    projection_series: Optional[List[AgoraV2ProjectionPoint]] = None
     economic_indicators: Dict[str, Any]
     market_forces: Dict[str, Any]
     margin_reference: AgoraV2MarginReference
+    margin_projection_series: Optional[List[AgoraV2MarginProjectionPoint]] = None
     commercial_interpretation: AgoraV2CommercialInterpretation
     cfg_context: Dict[str, Any]
     snapshot_context: Dict[str, Any]

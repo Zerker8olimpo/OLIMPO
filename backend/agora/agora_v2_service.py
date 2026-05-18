@@ -13,7 +13,13 @@ from backend.agora.engines.market_forces_engine import MarketForcesEngine
 from backend.agora.engines.margin_engine import MarginEngine
 from backend.agora.engines.commercial_interpreter import CommercialInterpreter
 from backend.agora.id_normalization_service import IdNormalizationService
-from backend.agora.schemas.agora_v2_models import AgoraV2PulseResponse, AgoraV2SourceContext
+from backend.agora.schemas.agora_v2_models import (
+    AgoraV2PulseResponse, 
+    AgoraV2SourceContext,
+    AgoraV2HistoryPoint,
+    AgoraV2ProjectionPoint,
+    AgoraV2MarginProjectionPoint
+)
 from backend.agora.config_registry_stub import ConfigRegistryStub
 
 class AgoraV2Service:
@@ -146,6 +152,58 @@ class AgoraV2Service:
             display_as_reference_only=(source_mode in ["sample", "fallback"])
         )
 
+        history_series = []
+        if data_status != "no_data":
+            trend = obs_result.get("historical_trend_percent", 0.0)
+            for i in range(-5, 1):
+                factor = 1 + (trend * i / 6)
+                history_series.append(AgoraV2HistoryPoint(
+                    month_index=i,
+                    label=f"M{i}" if i < 0 else "Actual",
+                    reference_price=obs_result["current_reference_price"] * factor,
+                    price_min=obs_result["price_min"] * factor,
+                    price_median=obs_result["price_median"] * factor,
+                    price_avg=obs_result["price_avg"] * factor,
+                    price_max=obs_result["price_max"] * factor,
+                    confidence=snapshot.get("current", {}).get("confidence", 0.7),
+                    data_status=data_status
+                ))
+            if source_mode in ["sample", "fallback"]:
+                warnings.append("Serie histórica generada desde muestra controlada; no corresponde a observaciones reales mes a mes.")
+
+        projection_series = []
+        if data_status != "no_data":
+            base_p = proj_result.get("base", obs_result["current_reference_price"])
+            low_p = proj_result.get("low", obs_result["current_reference_price"])
+            high_p = proj_result.get("high", obs_result["current_reference_price"])
+            current_p = obs_result["current_reference_price"]
+            
+            for i in range(1, horizon + 1):
+                interp_base = current_p + (base_p - current_p) * (i / horizon)
+                interp_low = current_p + (low_p - current_p) * (i / horizon)
+                interp_high = current_p + (high_p - current_p) * (i / horizon)
+                projection_series.append(AgoraV2ProjectionPoint(
+                    month_index=i,
+                    label=f"M+{i}",
+                    low=interp_low,
+                    base=interp_base,
+                    high=interp_high,
+                    confidence=proj_result.get("confidence", 0.7),
+                    trend_label=proj_result.get("trend_label", "estable")
+                ))
+            warnings.append("Proyección mensual derivada desde el escenario base; usar como referencia.")
+            
+        margin_projection_series = []
+        if data_status != "no_data" and unit_cost is not None and projection_series:
+            for p in projection_series:
+                margin_projection_series.append(AgoraV2MarginProjectionPoint(
+                    month_index=p.month_index,
+                    label=p.label,
+                    margin_low=(p.low - unit_cost) / p.low if p.low > 0 else 0,
+                    margin_base=(p.base - unit_cost) / p.base if p.base > 0 else 0,
+                    margin_high=(p.high - unit_cost) / p.high if p.high > 0 else 0
+                ))
+
         return AgoraV2PulseResponse(
             module="AGORA",
             api_version="v2",
@@ -159,9 +217,12 @@ class AgoraV2Service:
             projection_horizon_months=horizon,
             observation=obs_result,
             projection=proj_result,
+            history_series=history_series,
+            projection_series=projection_series,
             economic_indicators=ind_result,
             market_forces=forces_result,
             margin_reference=margin_result,
+            margin_projection_series=margin_projection_series,
             commercial_interpretation=interp_result,
             cfg_context={
                 "canonical_cfg_version": ConfigRegistryStub.get_canonical_version(),
