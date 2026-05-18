@@ -164,6 +164,10 @@ class AgoraV2Service:
             real_history_data = self.history_service.get_last_6_months_history(
                 db, c_market_id, c_product_id, c_family_id
             )
+            
+            # Propagar warnings (ej: tabla inexistente)
+            if real_history_data and "warnings" in real_history_data:
+                warnings.extend(real_history_data["warnings"])
 
         if real_history_data and real_history_data["history"]:
             # Usar histórico real de la DB

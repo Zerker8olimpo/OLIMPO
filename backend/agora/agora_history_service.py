@@ -1,11 +1,31 @@
 from typing import List, Optional, Dict, Any
 from sqlalchemy.orm import Session
-from sqlalchemy import select, desc
-from sqlalchemy.exc import OperationalError
+from sqlalchemy import select, desc, inspect
+from sqlalchemy.exc import OperationalError, ProgrammingError
 from backend.database.models.agora import AgoraFamilyMonthlySnapshot
 from datetime import datetime, timedelta
 
 class AgoraHistoryService:
+    def check_agora_history_storage(self, db: Session) -> Dict[str, bool]:
+        """
+        TAREA 4: Validación de almacenamiento ÁGORA.
+        Verifica si las tablas necesarias existen en la base de datos.
+        """
+        try:
+            inspector = inspect(db.get_bind())
+            tables = inspector.get_table_names()
+            return {
+                "tables_exist": "agora_price_observations" in tables and "agora_family_monthly_snapshots" in tables,
+                "observations_table": "agora_price_observations" in tables,
+                "snapshots_table": "agora_family_monthly_snapshots" in tables
+            }
+        except Exception:
+            return {
+                "tables_exist": False,
+                "observations_table": False,
+                "snapshots_table": False
+            }
+
     def get_last_6_months_history(
         self,
         db: Session,
@@ -38,9 +58,9 @@ class AgoraHistoryService:
         
         try:
             results = db.execute(stmt).scalars().all()
-        except OperationalError:
-            # TAREA 2: Si la tabla no existe (transición o tests sin migración), 
-            # devolvemos no_data de forma controlada.
+        except (OperationalError, ProgrammingError):
+            # TAREA 1: Capturar tanto error de SQLite como de PostgreSQL (UndefinedTable)
+            # para evitar 500 en producción si la tabla no existe aún.
             return {
                 "history": [],
                 "data_status": "no_data",
@@ -49,7 +69,8 @@ class AgoraHistoryService:
                     "historical_window_available": False, 
                     "historical_backfill_months": 0,
                     "message": "ÁGORA aún no tiene histórico suficiente para esta familia."
-                }
+                },
+                "warnings": ["Histórico real aún no inicializado en base de datos."]
             }
         
         if not results:
