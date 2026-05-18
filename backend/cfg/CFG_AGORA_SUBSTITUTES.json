@@ -1,0 +1,40 @@
+{
+  "pvc_sanitario": {
+    "subfamily_id": "pvc_sanitario",
+    "substitutes": [
+      {
+        "substitute_id": "hdpe_sanitario",
+        "relationship_type": "sustituto_directo_premium",
+        "impact_weight": 0.3,
+        "condition": "proyectos_infraestructura",
+        "notes": "Mayor costo, mayor durabilidad."
+      },
+      {
+        "substitute_id": "ppr_sanitario",
+        "relationship_type": "sustituto_parcial",
+        "impact_weight": 0.15,
+        "condition": "uso_habitacional",
+        "notes": "Creciente adopción por facilidad de unión térmica."
+      }
+    ]
+  },
+  "pvc_hidraulico": {
+    "subfamily_id": "pvc_hidraulico",
+    "substitutes": [
+      {
+        "substitute_id": "cobre",
+        "relationship_type": "sustituto_tradicional",
+        "impact_weight": 0.4,
+        "condition": "altas_presiones_temperatura",
+        "notes": "Referencia histórica de precio; impacto alto por commodities."
+      },
+      {
+        "substitute_id": "ppr_hidraulico",
+        "relationship_type": "sustituto_directo",
+        "impact_weight": 0.25,
+        "condition": "redes_agua_potable",
+        "notes": "Fuerte competencia en edificación nueva."
+      }
+    ]
+  }
+}

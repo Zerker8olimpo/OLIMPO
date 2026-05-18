@@ -119,3 +119,8 @@ data/*.json
 !backend/alembic/
 !backend/alembic/**
 !alembic.ini
+
+# Documentos internos / prompts / maqueta AGORA
+GEMINI.md
+Maqueta_AGORA.pdf
+propuesta_agora/

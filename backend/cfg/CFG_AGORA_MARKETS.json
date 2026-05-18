@@ -1,0 +1,9 @@
+{
+  "chile_construccion": {
+    "id": "chile_construccion",
+    "name": "Chile - Construcción",
+    "currency": "CLP",
+    "country": "Chile",
+    "active": true
+  }
+}

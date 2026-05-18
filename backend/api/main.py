@@ -34,6 +34,10 @@ from backend.api.routers.bootstrap import router as bootstrap_router
 # System (health / ready)
 from backend.api.routers.system import router as system_router
 
+# ÁGORA
+from backend.api.routers import agora
+from backend.api.routers import agora_v2
+
 # Device Reset
 from backend.api.routers.device_reset import router as device_reset_router
 
@@ -97,6 +101,10 @@ app.include_router(bootstrap_router)
 
 # Billing
 app.include_router(billing_google_router, tags=["Billing"])
+
+# ÁGORA
+app.include_router(agora.router)
+app.include_router(agora_v2.router)
 
 # Device Reset
 

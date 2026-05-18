@@ -1,0 +1,7 @@
+{
+  "chile_construccion": {
+    "inflation": { "name": "Inflación / IPC", "weight": 0.3 },
+    "exchange_rate": { "name": "Tipo de Cambio USD/CLP", "weight": 0.4 },
+    "logistics": { "name": "Combustible / Logística", "weight": 0.3 }
+  }
+}

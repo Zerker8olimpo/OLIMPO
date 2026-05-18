@@ -1,0 +1,37 @@
+{
+  "default_normalization": {
+    "min_sample_size": 10,
+    "min_similarity_score": 0.7,
+    "outlier_method": "iqr",
+    "iqr_k": 1.5,
+    "currency": "CLP",
+    "country": "Chile",
+    "allowed_units": ["unidad", "metro", "pack"],
+    "unit_normalization_rules": {
+      "pack_to_unit": true,
+      "meter_to_unit": false
+    },
+    "contamination_risk": "bajo",
+    "pack_normalization": {
+      "enabled": true,
+      "keywords": ["pack", "x10", "x5"]
+    },
+    "meter_normalization": {
+      "enabled": false
+    }
+  },
+  "subfamily_specific": {
+    "pvc_sanitario": {
+      "include_keywords": ["tubo pvc sanitario", "pvc sanitario 110"],
+      "required_terms": ["pvc", "sanitario"],
+      "exclude_terms": ["codo", "tee", "fitting", "adhesivo"],
+      "min_similarity_score": 0.72
+    },
+    "pvc_hidraulico": {
+      "include_keywords": ["tubo pvc hidraulico", "pvc hidraulico 110"],
+      "required_terms": ["pvc", "hidraulico"],
+      "exclude_terms": ["codo", "tee", "fitting", "pegamento"],
+      "min_similarity_score": 0.72
+    }
+  }
+}

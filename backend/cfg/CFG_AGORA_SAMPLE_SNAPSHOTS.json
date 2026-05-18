@@ -1,0 +1,23 @@
+{
+  "pvc_sanitario": {
+    "current": {
+      "price_median": 4390,
+      "price_min": 3990,
+      "price_avg": 4520,
+      "price_max": 4990,
+      "sample_size": 28,
+      "volatility": 0.11,
+      "historical_trend_percent": 7.8,
+      "last_update": "2026-05-16T09:40:00-04:00"
+    },
+    "indicators": {
+      "inflation": { "variation_6m": 0.031, "impact": "medio", "direction": "presiona_alza" },
+      "exchange_rate": { "variation_6m": 0.084, "impact": "alto", "direction": "presiona_alza" }
+    },
+    "market_forces": {
+      "supply": "ajustada",
+      "demand": "media_alta",
+      "substitutes": "impacto_bajo"
+    }
+  }
+}

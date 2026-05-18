@@ -1,0 +1,50 @@
+{
+  "version": "0.1.0",
+  "description": "Snapshots sample V2 por market_id/product_id/family_id para AGORA.",
+  "snapshots": [
+    {
+      "market_id": "mercado_sanitario_hidraulico",
+      "product_id": "tuberías_y_fittings_pvc_sanitario",
+      "family_id": "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario",
+      "date": "2026-05-17",
+      "current": {
+        "price_median": 4390,
+        "price_min": 3990,
+        "price_avg": 4520,
+        "price_max": 4990,
+        "sample_size": 28,
+        "volatility": 0.11,
+        "historical_trend_percent": 7.8,
+        "last_update": "2026-05-17T00:00:00-04:00"
+      },
+      "indicators": {},
+      "market_forces": {},
+      "source_context": {
+        "source_mode": "sample",
+        "real_web_observation": false
+      }
+    },
+    {
+      "market_id": "mercado_sanitario_hidraulico",
+      "product_id": "tuberías_y_fittings_pvc_presión",
+      "family_id": "tuberias_y_fittings_pvc_presion_tubos_pvc_presion",
+      "date": "2026-05-17",
+      "current": {
+        "price_median": 4500,
+        "price_min": 4100,
+        "price_avg": 4600,
+        "price_max": 5100,
+        "sample_size": 20,
+        "volatility": 0.10,
+        "historical_trend_percent": 5.5,
+        "last_update": "2026-05-17T00:00:00-04:00"
+      },
+      "indicators": {},
+      "market_forces": {},
+      "source_context": {
+        "source_mode": "sample",
+        "real_web_observation": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "chile_construccion": {
+    "market_id": "chile_construccion",
+    "subfamilies": {
+      "pvc_sanitario": {
+        "subfamily_id": "pvc_sanitario",
+        "supply_pressure_baseline": "neutral",
+        "demand_pressure_baseline": "media",
+        "high_demand_threshold": 0.85,
+        "low_supply_threshold": 0.3,
+        "oversupply_threshold": 0.7,
+        "price_pressure_if_demand_high": 0.05,
+        "price_pressure_if_supply_low": 0.08,
+        "price_relief_if_oversupply": -0.04
+      },
+      "pvc_hidraulico": {
+        "subfamily_id": "pvc_hidraulico",
+        "supply_pressure_baseline": "neutral",
+        "demand_pressure_baseline": "media_alta",
+        "high_demand_threshold": 0.8,
+        "low_supply_threshold": 0.25,
+        "oversupply_threshold": 0.75,
+        "price_pressure_if_demand_high": 0.06,
+        "price_pressure_if_supply_low": 0.1,
+        "price_relief_if_oversupply": -0.05
+      }
+    }
+  }
+}

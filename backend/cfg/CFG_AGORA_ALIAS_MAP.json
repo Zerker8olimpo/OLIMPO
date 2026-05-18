@@ -1,0 +1,30 @@
+{
+  "version": "0.1.0",
+  "description": "Mapa de compatibilidad entre IDs legacy de AGORA MVP y estructura canónica market_id/product_id/family_id.",
+  "legacy_to_canonical": {
+    "markets": {
+      "chile_construccion": {
+        "canonical_market_id": "mercado_sanitario_hidraulico",
+        "reason": "MVP legacy usado para tubo PVC; se mapea al mercado sanitario hidráulico para mantener compatibilidad."
+      }
+    },
+    "products": {
+      "tubo_pvc": {
+        "canonical_product_id": "tuberías_y_fittings_pvc_sanitario",
+        "reason": "MVP legacy representa principalmente PVC sanitario."
+      }
+    },
+    "subfamilies": {
+      "pvc_sanitario": {
+        "canonical_family_id": "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario",
+        "canonical_product_id": "tuberías_y_fittings_pvc_sanitario",
+        "canonical_market_id": "mercado_sanitario_hidraulico"
+      },
+      "pvc_hidraulico": {
+        "canonical_family_id": "tuberias_y_fittings_pvc_presion_tubos_pvc_presion",
+        "canonical_product_id": "tuberías_y_fittings_pvc_presión",
+        "canonical_market_id": "mercado_sanitario_hidraulico"
+      }
+    }
+  }
+}

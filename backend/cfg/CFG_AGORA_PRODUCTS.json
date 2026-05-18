@@ -1,0 +1,8 @@
+{
+  "tubo_pvc": {
+    "id": "tubo_pvc",
+    "name": "Tubo PVC",
+    "market_id": "chile_construccion",
+    "active": true
+  }
+}

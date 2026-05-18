@@ -1,0 +1,26 @@
+{
+  "pvc_sanitario": {
+    "id": "pvc_sanitario",
+    "name": "PVC Sanitario",
+    "product_id": "tubo_pvc",
+    "unit": "unidad",
+    "search_profile": {
+      "include_keywords": ["tubo pvc sanitario", "pvc sanitario 110"],
+      "required_terms": ["pvc", "sanitario"],
+      "exclude_terms": ["codo", "tee", "fitting"],
+      "min_similarity_score": 0.72
+    }
+  },
+  "pvc_hidraulico": {
+    "id": "pvc_hidraulico",
+    "name": "PVC Hidráulico",
+    "product_id": "tubo_pvc",
+    "unit": "unidad",
+    "search_profile": {
+      "include_keywords": ["tubo pvc hidraulico", "pvc hidraulico 110"],
+      "required_terms": ["pvc", "hidraulico"],
+      "exclude_terms": ["codo", "tee", "fitting"],
+      "min_similarity_score": 0.72
+    }
+  }
+}

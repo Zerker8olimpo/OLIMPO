@@ -1,0 +1,15 @@
+{
+  "market_positions": [
+    {
+      "id": "precio_usuario_levemente_bajo_mercado",
+      "condition": "diff < -0.02 and diff > -0.10",
+      "label": "Precio usuario levemente bajo mercado"
+    }
+  ],
+  "signals": {
+    "caution": {
+      "id": "revisar_precio_con_cautela",
+      "message": "Tu precio actual está levemente bajo la referencia de mercado. Si tu costo se mantiene y el mercado continúa al alza, podrías tener espacio para revisar precio sin perder competitividad inmediata."
+    }
+  }
+}

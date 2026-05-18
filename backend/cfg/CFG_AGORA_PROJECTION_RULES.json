@@ -1,0 +1,13 @@
+{
+  "default": {
+    "alpha_smooth": 0.2,
+    "confidence_base": 0.8,
+    "risk_factor_base": 0.05,
+    "cap_adjustment": 0.25
+  },
+  "horizons": {
+    "3": { "lambda_h": 0.5, "risk_multiplier": 0.8 },
+    "6": { "lambda_h": 1.0, "risk_multiplier": 1.0 },
+    "12": { "lambda_h": 1.8, "risk_multiplier": 1.5 }
+  }
+}
