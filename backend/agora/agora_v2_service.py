@@ -77,50 +77,75 @@ class AgoraV2Service:
         if not self.catalog.validate_market_product_family(c_market_id, c_product_id, c_family_id):
             warnings.append(f"La familia {family_id} no se encontró en el catálogo canónico.")
         
-        # 3. Obtener Snapshot
-        snapshot = self.get_snapshot_for_family(c_market_id, c_product_id, c_family_id)
+        # 3. Obtener Snapshot desde DB si está disponible
+        real_history_data = None
+        if db:
+            real_history_data = self.history_service.get_last_6_months_history(
+                db, c_market_id, c_product_id, c_family_id
+            )
+            
+            if real_history_data and "warnings" in real_history_data:
+                warnings.extend(real_history_data["warnings"])
+
+        snapshot = None
+        has_real_db_snapshot = real_history_data and real_history_data.get("data_status") == "real_available" and real_history_data["history"]
         
-        # 4. Determinar status y calidad de datos (Eliminando fallback silencioso)
-        if snapshot:
+        if has_real_db_snapshot:
+            # Usar el snapshot más reciente de la DB como observación actual
+            latest_snap = real_history_data["history"][-1]
+            snapshot = {
+                "current": {
+                    "price_median": latest_snap["price_median"],
+                    "price_min": latest_snap["price_min"],
+                    "price_avg": latest_snap["price_avg"],
+                    "price_max": latest_snap["price_max"],
+                    "sample_size": latest_snap["sample_size"],
+                    "volatility": latest_snap["volatility"],
+                    "historical_trend_percent": 0.0, # Se podría derivar si hay más historial
+                    "last_update": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+                },
+                "source_context": {
+                    "source_mode": "real",
+                    "real_web_observation": True
+                }
+            }
+        else:
+            # Fallback a archivos de muestra si existen, pero NO inventar precios
+            # Buscamos snapshot de muestra EXACTO para la familia
+            snapshot = self.get_snapshot_for_family(c_market_id, c_product_id, c_family_id)
+
+        # 4. Determinar status y calidad de datos
+        if snapshot and snapshot.get("source_context", {}).get("source_mode") == "real":
+             data_status = "real_available"
+             snapshot_status = "real_snapshot"
+             source_mode = "real"
+             real_web_observation = True
+             frontend_message = "ÁGORA está analizando el pulso del mercado para esta familia con datos reales."
+        elif snapshot:
             source_mode = snapshot.get("source_context", {}).get("source_mode", "sample")
             real_web_observation = snapshot.get("source_context", {}).get("real_web_observation", False)
             
-            if source_mode == "sample":
-                data_status = "sample_available"
-                snapshot_status = "sample_snapshot"
-                warnings.append("No existe snapshot real para esta familia. Se entrega referencia de muestra/controlada.")
-                frontend_message = "ÁGORA aún no tiene suficientes observaciones reales para esta familia. Los valores mostrados son referenciales."
-            else:
-                data_status = "real_available"
-                snapshot_status = "real_snapshot"
+            data_status = "sample_available"
+            snapshot_status = "sample_snapshot"
+            warnings.append("No existe snapshot real para esta familia. Se entrega referencia de muestra/controlada específica.")
+            frontend_message = "ÁGORA aún no tiene suficientes observaciones reales para esta familia. Los valores mostrados son referenciales."
         else:
-            # Fallback estructurado
-            warnings.append("No existe snapshot (real ni muestra) para esta familia. Se entrega fallback genérico.")
-            frontend_message = "ÁGORA aún no tiene mediciones específicas para esta familia. Los valores mostrados son referenciales y se actualizarán cuando existan mediciones."
-            data_status = "fallback_available"
+            # Fallback estructurado: Sin datos reales ni de muestra
+            warnings.append("No existe observación real de precios para esta familia.")
+            frontend_message = "ÁGORA aún no tiene mediciones reales para esta familia. Puedes consultar las variaciones macroeconómicas referenciales."
+            data_status = "no_data"
             snapshot_status = "missing_snapshot"
-            source_mode = "fallback"
+            source_mode = "none"
             real_web_observation = False
             
-            snaps = self.get_sample_snapshots()
-            if snaps:
-                snapshot = snaps[0]
-                snapshot_status = "fallback_snapshot"
-            else:
-                # Fallback de último recurso (schema-safe)
-                snapshot = {
-                    "current": {
-                        "price_median": 0, 
-                        "price_min": 0, 
-                        "price_avg": 0, 
-                        "price_max": 0, 
-                        "sample_size": 0, 
-                        "volatility": 0, 
-                        "historical_trend_percent": 0.0,
-                        "last_update": datetime.datetime.now().strftime("%Y-%m-%d")
-                    }
-                }
-                data_status = "no_data"
+            snapshot = {
+                "current": {},
+                "indicators": {
+                    "inflation": {"variation_6m": 0.03, "impact": "medio", "direction": "presiona_alza"}, 
+                    "exchange_rate": {"variation_6m": 0.05, "impact": "medio", "direction": "presiona_alza"}
+                },
+                "market_forces": {"supply": "neutral", "demand": "neutral", "substitutes": "neutral"}
+            }
 
         rules = self.cfg_adapter.get_projection_rules()
         comm_rules = self.cfg_adapter.get_commercial_rules()
@@ -157,14 +182,14 @@ class AgoraV2Service:
         )
 
         history_series = []
-        
-        # TAREA 5: Pulse debe usar fuente histórica real si está disponible
+
+        # TAREA 5 & 11: Pulse debe usar fuente histórica real si está disponible
         real_history_data = None
         if db:
             real_history_data = self.history_service.get_last_6_months_history(
                 db, c_market_id, c_product_id, c_family_id
             )
-            
+
             # Propagar warnings (ej: tabla inexistente)
             if real_history_data and "warnings" in real_history_data:
                 warnings.extend(real_history_data["warnings"])
@@ -186,54 +211,37 @@ class AgoraV2Service:
                     confidence=0.85, 
                     data_status=h["data_status"]
                 ))
-            
+
             # Sincronizar estados
             source_ctx.historical_window_available = True
             source_ctx.historical_backfill_months = len(h_list)
             if real_history_data["data_status"] == "real_available":
                 data_status = "real_available"
                 snapshot_status = "real_snapshot"
-        
-        elif data_status == "real_available":
-            # TAREA 1: Reconstrucción matemática segura (Guardia contra negativos)
-            trend = obs_result.get("historical_trend_percent", 0.0)
-            if source_ctx.historical_window_available:
-                for i in range(-5, 1):
-                    factor = 1 + (trend * i / 6)
-                    ref_p = max(0.1, obs_result["current_reference_price"] * factor)
-                    min_p = max(0.1, obs_result["price_min"] * factor)
-                    med_p = max(0.1, obs_result["price_median"] * factor)
-                    avg_p = max(0.1, obs_result["price_avg"] * factor)
-                    max_p = max(0.1, obs_result["price_max"] * factor)
-                    
-                    history_series.append(AgoraV2HistoryPoint(
-                        month_index=i,
-                        label=f"M{i}" if i < 0 else "Actual",
-                        reference_price=ref_p,
-                        price_min=min_p,
-                        price_median=med_p,
-                        price_avg=avg_p,
-                        price_max=max_p,
-                        confidence=snapshot.get("current", {}).get("confidence", 0.7),
-                        data_status=data_status
-                    ))
         else:
-            # TAREA 2: Si no hay histórico real ni reconstrucción posible, vacío
+            # TAREA 11: Si no hay histórico real en DB, NO inventamos 6 meses.
+            # Solo devolvemos historia vacía o referencial si es una muestra específica.
             history_series = []
             source_ctx.historical_window_available = False
             source_ctx.historical_backfill_months = 0
-            if data_status != "no_data":
-                frontend_message = "ÁGORA aún no tiene histórico suficiente para esta familia."
-            
+
+            if data_status == "real_available" and not real_history_data:
+                # Caso donde detectamos el mes actual como real por el observer,
+                # pero aún no hay snapshots consolidados de meses previos.
+                # Agregamos solo el punto actual si corresponde.
+                pass 
+
         if source_mode in ["sample", "fallback"] and history_series:
+
              warnings.append("Serie histórica generada desde muestra controlada; no corresponde a observaciones reales mes a mes.")
 
         projection_series = []
-        if data_status != "no_data":
-            base_p = proj_result.get("base", obs_result["current_reference_price"])
-            low_p = proj_result.get("low", obs_result["current_reference_price"])
-            high_p = proj_result.get("high", obs_result["current_reference_price"])
-            current_p = obs_result["current_reference_price"]
+        current_p = obs_result.get("current_reference_price")
+        
+        if data_status != "no_data" and current_p is not None:
+            base_p = proj_result.get("base") or current_p
+            low_p = proj_result.get("low") or current_p
+            high_p = proj_result.get("high") or current_p
             
             for i in range(1, horizon + 1):
                 interp_base = current_p + (base_p - current_p) * (i / horizon)

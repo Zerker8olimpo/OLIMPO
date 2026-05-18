@@ -86,13 +86,13 @@ def test_pulse_contract_family_without_snapshot():
     assert response.status_code == 200, f"Error: {response.text}"
     data = response.json()
     
-    # Debe ser fallback_available segun agora_v2_service.py
-    assert data["data_status"] == "fallback_available"
+    # Debe ser no_data segun agora_v2_service.py
+    assert data["data_status"] == "no_data"
     assert data["snapshot_status"] in ["missing_snapshot", "fallback_snapshot"]
-    assert data["source_context"]["source_mode"] == "fallback"
+    assert data["source_context"]["source_mode"] == "none"
     assert data["source_context"]["real_web_observation"] is False
-    assert "No existe snapshot" in data["warnings"][0]
-    assert "histórico suficiente" in data["frontend_message"]
+    assert any("No existe" in w for w in data["warnings"])
+    assert "mediciones reales" in data["frontend_message"]
 
 def test_frontend_friendly_errors():
     # Market not found

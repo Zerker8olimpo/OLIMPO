@@ -4,9 +4,12 @@ class CommercialInterpreter:
     def process(self, observation: Dict[str, Any], margin: Dict[str, Any], rules: Dict[str, Any]) -> Dict[str, Any]:
         # Lógica simplificada de interpretación
         user_price = margin.get("user_price")
-        market_price = observation["current_reference_price"]
+        market_price = observation.get("current_reference_price")
         
-        if user_price:
+        if not market_price:
+            pos_id = "mercado_sin_datos_suficientes"
+            signal = {"id": "esperar", "message": "No hay datos de mercado suficientes para interpretar tu posición."}
+        elif user_price:
             diff = (user_price - market_price) / market_price
             # Buscar en rules.market_positions
             # Por ahora hardcoded para el ejemplo
@@ -22,8 +25,8 @@ class CommercialInterpreter:
 
         return {
             "market_position": pos_id,
-            "margin_health": "margen_saludable" if margin.get("enabled") else "desconocida",
-            "margin_risk": "bajo_si_costo_se_mantiene" if margin.get("enabled") else "desconocido",
+            "margin_health": "margen_saludable" if margin.get("enabled") and market_price else "desconocida",
+            "margin_risk": "bajo_si_costo_se_mantiene" if margin.get("enabled") and market_price else "desconocido",
             "suggested_signal": signal.get("id", "N/A"),
             "message": signal.get("message", "N/A")
         }

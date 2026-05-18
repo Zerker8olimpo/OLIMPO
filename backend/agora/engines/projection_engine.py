@@ -2,8 +2,19 @@ from typing import Dict, Any
 
 class ProjectionEngine:
     def process(self, observation: Dict[str, Any], rules: Dict[str, Any], horizon: int) -> Dict[str, Any]:
-        current_price = observation["current_reference_price"]
-        hist_trend = observation["historical_trend_percent"] / 100.0
+        current_price = observation.get("current_reference_price")
+        
+        if not current_price:
+            return {
+                "horizon_months": horizon,
+                "low": None,
+                "base": None,
+                "high": None,
+                "trend_label": "desconocida",
+                "confidence": 0.0
+            }
+            
+        hist_trend = observation.get("historical_trend_percent", 0.0) / 100.0
         
         horizon_rule = rules.get("horizons", {}).get(str(horizon), {"lambda_h": 1.0, "risk_multiplier": 1.0})
         default_rules = rules.get("default", {})

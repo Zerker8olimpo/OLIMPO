@@ -79,7 +79,7 @@ async def test_pulse_without_history_returns_empty_list():
     
     # Debería ser fallback o sample, pero history_series vacío
     assert pulse.history_series == []
-    assert "ÁGORA aún no tiene histórico suficiente" in pulse.frontend_message
+    assert "mediciones reales" in pulse.frontend_message
 
 @pytest.mark.anyio
 async def test_pulse_never_negative_prices():

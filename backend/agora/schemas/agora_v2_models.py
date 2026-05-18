@@ -44,21 +44,21 @@ class AgoraV2FamilySummary(BaseModel):
     data_status: Literal["real_available", "sample_available", "fallback_available", "no_data"]
 
 class AgoraV2Observation(BaseModel):
-    current_reference_price: float
-    price_min: float
-    price_median: float
-    price_avg: float
-    price_max: float
-    historical_trend_percent: float
-    volatility: float
-    sample_size: int
+    current_reference_price: Optional[float] = None
+    price_min: Optional[float] = None
+    price_median: Optional[float] = None
+    price_avg: Optional[float] = None
+    price_max: Optional[float] = None
+    historical_trend_percent: float = 0.0
+    volatility: float = 0.0
+    sample_size: int = 0
     last_update: str
 
 class AgoraV2Projection(BaseModel):
     horizon_months: int
-    low: float
-    base: float
-    high: float
+    low: Optional[float] = None
+    base: Optional[float] = None
+    high: Optional[float] = None
     trend_label: str
     confidence: float
 

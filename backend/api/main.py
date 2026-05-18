@@ -37,6 +37,7 @@ from backend.api.routers.system import router as system_router
 # ÁGORA
 from backend.api.routers import agora
 from backend.api.routers import agora_v2
+from backend.api.routers import agora_admin
 
 # Device Reset
 from backend.api.routers.device_reset import router as device_reset_router
@@ -105,6 +106,7 @@ app.include_router(billing_google_router, tags=["Billing"])
 # ÁGORA
 app.include_router(agora.router)
 app.include_router(agora_v2.router)
+app.include_router(agora_admin.router)
 
 # Device Reset
 

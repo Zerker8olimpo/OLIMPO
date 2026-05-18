@@ -142,6 +142,7 @@ async def get_pulse(
     horizon: int = Query(..., description="Horizonte de proyección (3, 6, 12)"),
     unit_cost: Optional[float] = Query(None, description="Costo unitario opcional"),
     user_price: Optional[float] = Query(None, description="Precio de usuario opcional"),
+    refresh_if_stale: bool = Query(False, description="Intenta observar precios reales si no hay datos recientes"),
     db: Session = Depends(get_db)
 ):
     if horizon not in [3, 6, 12]:
@@ -170,6 +171,26 @@ async def get_pulse(
                     suggestion=f"Use GET /agora/v2/families?market_id={market_id}&product_id={product_id}"
                 ).model_dump()
             )
+
+        # TAREA 10: Refresh opcional si se solicita y no hay datos
+        if refresh_if_stale:
+            from backend.agora.price_intelligence.price_observer import PriceObserver
+            from backend.agora.agora_history_service import AgoraHistoryService
+            history_service = AgoraHistoryService()
+            
+            # Chequear si hay datos reales
+            h_data = history_service.get_last_6_months_history(db, canonical_market_id, canonical_product_id, canonical_family_id)
+            if h_data.get("data_status") == "no_data":
+                import asyncio
+                observer = PriceObserver()
+                try:
+                    # Timeout corto para no bloquear al usuario
+                    await asyncio.wait_for(
+                        observer.observe_family_prices(db, canonical_market_id, canonical_product_id, canonical_family_id, build_snapshot=True),
+                        timeout=8.0
+                    )
+                except Exception:
+                    pass
 
         response = await v2_service.get_pulse(
             market_id=canonical_market_id,

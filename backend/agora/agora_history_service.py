@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select, desc, inspect
 from sqlalchemy.exc import OperationalError, ProgrammingError
 from backend.database.models.agora import AgoraFamilyMonthlySnapshot
+from backend.agora.id_normalization_service import IdNormalizationService
 from datetime import datetime, timedelta
 
 class AgoraHistoryService:
@@ -37,6 +38,11 @@ class AgoraHistoryService:
         TAREA 4: Servicio lector de histórico real.
         Busca los últimos 6 meses de snapshots para una familia en la base de datos.
         """
+        # Normalizar IDs a safe para búsqueda en DB
+        s_market_id = IdNormalizationService.build_safe_id(market_id)
+        s_product_id = IdNormalizationService.build_safe_id(product_id)
+        s_family_id = IdNormalizationService.build_safe_id(family_id)
+
         # Calcular los meses de interés (últimos 6 meses aproximados para búsqueda)
         now = datetime.now()
         target_months = []
@@ -50,9 +56,9 @@ class AgoraHistoryService:
             target_months.append(f"{year}-{month:02d}")
         
         stmt = select(AgoraFamilyMonthlySnapshot).where(
-            AgoraFamilyMonthlySnapshot.market_id == market_id,
-            AgoraFamilyMonthlySnapshot.product_id == product_id,
-            AgoraFamilyMonthlySnapshot.family_id == family_id,
+            AgoraFamilyMonthlySnapshot.market_id == s_market_id,
+            AgoraFamilyMonthlySnapshot.product_id == s_product_id,
+            AgoraFamilyMonthlySnapshot.family_id == s_family_id,
             AgoraFamilyMonthlySnapshot.month.in_(target_months)
         ).order_by(desc(AgoraFamilyMonthlySnapshot.month)).limit(6)
         

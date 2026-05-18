@@ -34,8 +34,8 @@ async def test_pulse_resilience_when_table_missing():
     assert pulse.history_series == []
     assert pulse.source_context.historical_window_available is False
     assert any("Histórico real aún no inicializado" in w for w in pulse.warnings)
-    # Projection debe seguir funcionando (viene de snapshot mock/sample si no hay real)
-    assert len(pulse.projection_series) > 0
+    # Projection está vacía si no hay precio de referencia
+    assert len(pulse.projection_series) == 0
 
 @pytest.mark.anyio
 async def test_history_storage_health_check():
