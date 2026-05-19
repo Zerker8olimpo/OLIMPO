@@ -1,6 +1,8 @@
 import os
 import httpx
 from typing import List, Dict, Any, Optional
+from sqlalchemy.orm import Session
+from backend.agora.price_intelligence.source_clients.meli_oauth import MeliOAuthClient
 
 class MercadoLibreClient:
     """
@@ -11,12 +13,12 @@ class MercadoLibreClient:
     def __init__(self):
         self.site_id = "MLC" # Chile
         self.base_url = "https://api.mercadolibre.com"
-        # Soportar token si está configurado para evitar rate limits
-        self.access_token = os.getenv("MERCADO_LIBRE_ACCESS_TOKEN")
         self.timeout = 10.0
+        self.oauth = MeliOAuthClient()
 
     async def search_items(
         self,
+        db: Session,
         query: str,
         limit: int = 50,
         offset: int = 0
@@ -24,6 +26,9 @@ class MercadoLibreClient:
         """
         Busca items en Mercado Libre Chile.
         """
+        # Obtener token válido (de DB o ENV)
+        access_token = await self.oauth.get_valid_access_token(db)
+        
         url = f"{self.base_url}/sites/{self.site_id}/search"
         params = {
             "q": query,
@@ -33,12 +38,19 @@ class MercadoLibreClient:
         }
         
         headers = {}
-        if self.access_token:
-            headers["Authorization"] = f"Bearer {self.access_token}"
+        if access_token:
+            headers["Authorization"] = f"Bearer {access_token}"
             
         try:
             async with httpx.AsyncClient(timeout=self.timeout) as client:
                 response = await client.get(url, params=params, headers=headers)
+                
+                # Reportar logs seguros para auditoría
+                if access_token:
+                    print(f"MLC API: Buscando '{query}' (usando OAuth token)")
+                else:
+                    print(f"MLC API: Buscando '{query}' (sin token - público)")
+
                 response.raise_for_status()
                 data = response.json()
                 
@@ -72,7 +84,5 @@ class MercadoLibreClient:
                 return normalized_items
                 
         except Exception as e:
-            # Manejo de error controlado: logueamos pero no rompemos el proceso
-            # En un entorno real usaríamos un logger adecuado
             print(f"Error consultando Mercado Libre MLC: {str(e)}")
             return []

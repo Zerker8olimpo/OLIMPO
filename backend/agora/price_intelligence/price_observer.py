@@ -52,10 +52,14 @@ class PriceObserver:
         queries = self.query_builder.build_family_queries(market_id, product_id, family_id, family_cfg)
         
         raw_items = []
+        source_error = None
         # 3. Consultar fuente (Mercado Libre)
         for query in queries[:max_queries]:
-            items = await self.meli_client.search_items(query, limit=limit_per_query)
-            raw_items.extend(items)
+            try:
+                items = await self.meli_client.search_items(db, query, limit=limit_per_query)
+                raw_items.extend(items)
+            except Exception as e:
+                source_error = str(e)
             # Pequeño delay para no saturar si hay muchas queries
             await asyncio.sleep(0.1)
             
@@ -64,9 +68,13 @@ class PriceObserver:
                 "family_id": family_id,
                 "success": True,
                 "raw_count": 0,
+                "raw_count_api": 0,
                 "matched_count": 0,
                 "data_status": "no_data",
-                "message": "No items found for the given queries"
+                "message": "No items found for the given queries",
+                "queries_used": queries[:max_queries],
+                "source_status": "error" if source_error else "empty",
+                "source_error": source_error
             }
             
         # 4. Matching & Normalización
@@ -147,11 +155,15 @@ class PriceObserver:
             "source": source_id,
             "queries": queries,
             "raw_count": len(raw_items),
+            "raw_count_api": len(raw_items),
             "matched_count": len(matched_observations),
             "inserted": inserted_count,
             "skipped": skipped_count,
             "snapshot_built": snapshot_built,
             "data_status": data_status,
             "price_median": price_median,
-            "confidence": statistics.mean([o["match_score"] for o in valid_observations]) if valid_observations else 0.0
+            "confidence": statistics.mean([o["match_score"] for o in valid_observations]) if valid_observations else 0.0,
+            "source_status": "ok",
+            "source_error": None,
+            "queries_used": queries[:max_queries]
         }

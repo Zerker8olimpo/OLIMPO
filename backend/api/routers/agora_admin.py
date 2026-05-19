@@ -7,6 +7,7 @@ import shutil
 import tempfile
 import asyncio
 from pydantic import BaseModel
+from datetime import datetime, timezone
 
 from backend.api.db_deps import get_db
 from backend.agora.admin_security import validate_agora_admin_token
@@ -14,6 +15,7 @@ from backend.agora.price_intelligence.manual_ingestion import ManualIngestionSer
 from backend.agora.price_intelligence.snapshot_builder import SnapshotBuilder
 from backend.agora.price_intelligence.price_observer import PriceObserver
 from backend.agora.price_intelligence.source_clients.meli_oauth import MeliOAuthClient
+from backend.agora.agora_metadata_service import AgoraMetadataService
 from backend.database.models.agora import AgoraPriceObservation, AgoraFamilyMonthlySnapshot
 
 # NOTA: Se remueve la dependencia global del router para permitir que el callback de OAuth 
@@ -141,7 +143,6 @@ async def build_bulk_snapshots(
     TAREA 2: Construir snapshots masivos para un mes.
     """
     # Parse month dates
-    from datetime import datetime, timezone
     year_str, month_str = req.month.split('-')
     y, m = int(year_str), int(month_str)
     start_date = datetime(y, m, 1, tzinfo=timezone.utc)
@@ -296,13 +297,14 @@ async def get_meli_oauth_url(state: Optional[str] = Query(None)):
 @router.get("/meli/oauth/callback")
 async def meli_oauth_callback(
     code: str = Query(...), 
-    state: Optional[str] = Query(None)
+    state: Optional[str] = Query(None),
+    db: Session = Depends(get_db)
 ):
     """
     TAREA 2: Intercambiar code por token.
     LIBERADO: Accesible sin token administrativo para permitir redirección de navegador.
     """
-    result = await meli_oauth.exchange_code_for_token(code)
+    result = await meli_oauth.exchange_code_for_token(db, code)
     
     if "error" in result:
         raise HTTPException(
@@ -320,14 +322,28 @@ async def meli_oauth_callback(
     }
 
 @router.get("/meli/status", dependencies=[Depends(validate_agora_admin_token)])
-async def get_meli_status():
+async def get_meli_status(db: Session = Depends(get_db)):
     """
     TAREA 2: Estado de la configuración de MLC.
     """
+    # Consultar tokens en DB
+    meta_access = AgoraMetadataService.get(db, "meli_access_token")
+    meta_refresh = AgoraMetadataService.get(db, "meli_refresh_token")
+    
+    token_source = "none"
+    if meta_access and meta_access.value:
+        token_source = "db"
+    elif os.getenv("MERCADO_LIBRE_ACCESS_TOKEN"):
+        token_source = "env"
+
     return {
         "configured": all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri]),
         "has_client_id": meli_oauth.client_id is not None,
         "has_client_secret": meli_oauth.client_secret is not None,
         "has_redirect_uri": meli_oauth.redirect_uri is not None,
-        "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None
+        "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None,
+        "has_db_access_token": meta_access.value is not None if meta_access else False,
+        "has_db_refresh_token": meta_refresh.value is not None if meta_refresh else False,
+        "expires_at": meta_access.expires_at.isoformat() if meta_access and meta_access.expires_at else None,
+        "token_source": token_source
     }
