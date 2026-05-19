@@ -77,6 +77,13 @@ class AgoraV2CommercialInterpretation(BaseModel):
     suggested_signal: str
     message: str
 
+class AgoraV2HistoryCoverage(BaseModel):
+    required_months: int = 6
+    available_months: int
+    missing_months: int
+    history_status: Literal["none", "partial", "complete"]
+    projection_quality: Literal["unavailable", "low", "medium", "usable"]
+
 class AgoraV2SourceContext(BaseModel):
     source_mode: Literal["real", "sample", "fallback", "missing", "none"]
     real_web_observation: bool
@@ -86,6 +93,7 @@ class AgoraV2SourceContext(BaseModel):
     message: str
     is_sample_data: bool = False
     display_as_reference_only: bool = False
+    coverage: Optional[AgoraV2HistoryCoverage] = None
 
 class AgoraV2HistoryPoint(BaseModel):
     month_index: int
@@ -114,6 +122,23 @@ class AgoraV2MarginProjectionPoint(BaseModel):
     margin_base: float
     margin_high: float
 
+class AgoraV2CommercialPosition(BaseModel):
+    current_cost: Optional[float] = None
+    current_sale_price: Optional[float] = None
+    current_margin_pct: Optional[float] = None
+    market_reference_price: Optional[float] = None
+    projected_market_price: Optional[float] = None
+    market_trend_pct: float = 0.0
+    market_position_now: Literal["below_market", "in_market", "above_market", "unavailable"]
+    market_position_projected: Literal["below_market", "in_market", "above_market", "unavailable"]
+    price_gap_pct: Optional[float] = None
+    projected_gap_pct: Optional[float] = None
+    margin_status: Literal["risky", "tight", "healthy", "unavailable"]
+    commercial_risk: Literal["low", "medium", "high", "critical", "unavailable"]
+    recommendation: str
+    confidence_level: float
+    user_message: str
+
 class AgoraV2PulseResponse(BaseModel):
     module: str = "AGORA"
     api_version: str = "v2"
@@ -132,6 +157,7 @@ class AgoraV2PulseResponse(BaseModel):
     economic_indicators: Dict[str, Any]
     market_forces: Dict[str, Any]
     margin_reference: AgoraV2MarginReference
+    commercial_position: Optional[AgoraV2CommercialPosition] = None # NUEVO: Comparador comercial
     margin_projection_series: Optional[List[AgoraV2MarginProjectionPoint]] = None
     commercial_interpretation: AgoraV2CommercialInterpretation
     cfg_context: Dict[str, Any]

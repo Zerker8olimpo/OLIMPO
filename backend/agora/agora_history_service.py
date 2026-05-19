@@ -71,6 +71,13 @@ class AgoraHistoryService:
                 "history": [],
                 "data_status": "no_data",
                 "snapshot_status": "missing_history",
+                "coverage": {
+                    "required_months": 6,
+                    "available_months": 0,
+                    "missing_months": 6,
+                    "history_status": "none",
+                    "projection_quality": "unavailable"
+                },
                 "source_context": {
                     "historical_window_available": False, 
                     "historical_backfill_months": 0,
@@ -84,6 +91,13 @@ class AgoraHistoryService:
                 "history": [],
                 "data_status": "no_data",
                 "snapshot_status": "missing_history",
+                "coverage": {
+                    "required_months": 6,
+                    "available_months": 0,
+                    "missing_months": 6,
+                    "history_status": "none",
+                    "projection_quality": "unavailable"
+                },
                 "source_context": {
                     "historical_window_available": False, 
                     "historical_backfill_months": 0,
@@ -111,14 +125,41 @@ class AgoraHistoryService:
             
         # Ordenar por fecha ascendente para la serie del frontend
         history_points.sort(key=lambda x: x["month"])
-            
+
+        # TAREA 5: Calcular cobertura histórica
+        available_months = len(history_points)
+        required_months = 6
+        missing_months = max(0, required_months - available_months)
+
+        history_status = "none"
+        if available_months >= required_months:
+            history_status = "complete"
+        elif available_months > 0:
+            history_status = "partial"
+
+        projection_quality = "unavailable"
+        if history_status == "complete":
+            projection_quality = "usable"
+        elif available_months >= 3:
+            projection_quality = "medium"
+        elif available_months > 0:
+            projection_quality = "low"
+
         return {
-            "history": history_points,
-            "data_status": results[0].data_status, # El más reciente manda
-            "snapshot_status": "real_snapshot" if results[0].data_status == "real_available" else "sample_snapshot",
+            "history": history_series if (history_series := history_points) else [],
+            "data_status": results[0].data_status if results else "no_data",
+            "snapshot_status": ("real_snapshot" if results[0].data_status == "real_available" else "sample_snapshot") if results else "missing_history",
+            "coverage": {
+                "required_months": required_months,
+                "available_months": available_months,
+                "missing_months": missing_months,
+                "history_status": history_status,
+                "projection_quality": projection_quality
+            },
             "source_context": {
-                "historical_window_available": len(history_points) > 0,
-                "historical_backfill_months": len(history_points),
-                "message": "Histórico real recuperado." if results[0].data_status == "real_available" else "Histórico referencial recuperado."
+                "historical_window_available": available_months > 0,
+                "historical_backfill_months": available_months,
+                "message": "Histórico real recuperado." if (results and results[0].data_status == "real_available") else "Histórico insuficiente para una proyección robusta."
             }
         }
+

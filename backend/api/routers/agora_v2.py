@@ -13,6 +13,9 @@ from backend.agora.schemas.agora_v2_models import (
     AgoraV2ErrorResponse
 )
 
+from backend.api.security.deps import get_current_claims
+from backend.services.subscription_service import resolve_plan, get_active_subscription
+
 router = APIRouter(prefix="/agora/v2", tags=["agora_v2"])
 
 v2_service = AgoraV2Service()
@@ -140,11 +143,24 @@ async def get_pulse(
     product_id: str = Query(..., description="ID canónico o safe del producto"),
     family_id: str = Query(..., description="ID canónico o safe de la familia"),
     horizon: int = Query(..., description="Horizonte de proyección (3, 6, 12)"),
-    unit_cost: Optional[float] = Query(None, description="Costo unitario opcional"),
-    user_price: Optional[float] = Query(None, description="Precio de usuario opcional"),
+    unit_cost: Optional[float] = Query(None, description="[DEPRECATED] Use current_cost"),
+    user_price: Optional[float] = Query(None, description="[DEPRECATED] Use current_sale_price"),
+    current_cost: Optional[float] = Query(None, description="Costo unitario actual del usuario"),
+    current_sale_price: Optional[float] = Query(None, description="Precio de venta actual del usuario"),
     refresh_if_stale: bool = Query(False, description="Intenta observar precios reales si no hay datos recientes"),
+    claims: dict = Depends(get_current_claims),
     db: Session = Depends(get_db)
 ):
+    # TAREA 8: Detección de Plan
+    user_id = int(claims.get("user_id"))
+    sub = get_active_subscription(db, user_id=user_id)
+    plan = resolve_plan(sub, claims) or "basic"
+    plan = plan.lower()
+
+    # Compatibilidad con params antiguos
+    final_cost = current_cost if current_cost is not None else unit_cost
+    final_price = current_sale_price if current_sale_price is not None else user_price
+
     if horizon not in [3, 6, 12]:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -197,9 +213,10 @@ async def get_pulse(
             product_id=canonical_product_id,
             family_id=canonical_family_id,
             horizon=horizon,
-            unit_cost=unit_cost,
-            user_price=user_price,
-            db=db
+            current_cost=final_cost,
+            current_sale_price=final_price,
+            db=db,
+            plan=plan
         )
         return response
     except HTTPException:
