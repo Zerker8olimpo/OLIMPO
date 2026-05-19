@@ -69,8 +69,15 @@ def test_observe_family_auth_error_reporting(admin_token):
     """
     from backend.agora.price_intelligence.price_observer import PriceObserver
     
+    # El mock de search_items ahora debe devolver el diccionario estructurado
     with patch("backend.agora.price_intelligence.price_observer.MercadoLibreClient.search_items") as mock_search:
-        mock_search.side_effect = Exception("403 Forbidden: Access denied")
+        mock_search.return_value = {
+            "status": "forbidden",
+            "http_status": 403,
+            "raw_count_api": 0,
+            "items": [],
+            "error": "Mercado Libre rejected search request (Forbidden)"
+        }
         
         # Mock de OAuth para evitar que intente consultar DB o que devuelva valores seguros
         mock_oauth = MagicMock()
@@ -92,5 +99,8 @@ def test_observe_family_auth_error_reporting(admin_token):
             assert response.status_code == 200
             data = response.json()
             assert data["success"] is False
-            assert data["source_status"] == "source_auth_error"
-            assert "403" in data["source_error"]
+            assert data["source_status"] == "forbidden"
+            assert data["data_status"] == "source_error"
+            assert "source_requests" in data
+            assert len(data["source_requests"]) > 0
+            assert data["source_requests"][0]["http_status"] == 403

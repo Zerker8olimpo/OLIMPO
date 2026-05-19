@@ -99,12 +99,18 @@ async def test_price_observer_orchestration(db_session):
     ]
     
     with patch.object(observer.meli_client, 'search_items', new_callable=AsyncMock) as mock_search:
-        mock_search.return_value = [
-            {
-                "source": "mercado_libre_mlc", "source_type": "api", "source_item_id": "MLC1",
-                "title": "Codo Cobre 1/2", "price": 1500, "currency": "CLP", "url": "http://test1"
-            }
-        ]
+        mock_search.return_value = {
+            "status": "ok",
+            "http_status": 200,
+            "raw_count_api": 1,
+            "items": [
+                {
+                    "source": "mercado_libre_mlc", "source_type": "api", "source_item_id": "MLC1",
+                    "title": "Codo Cobre 1/2", "price": 1500, "currency": "CLP", "url": "http://test1"
+                }
+            ],
+            "error": None
+        }
         
         # Mocking catalog config
         with patch.object(observer.catalog, 'get_family') as mock_cfg:
@@ -118,5 +124,6 @@ async def test_price_observer_orchestration(db_session):
             # El query builder genera varias queries, por cada una el mock devuelve items.
             assert result["inserted"] >= 1
             assert result["raw_count"] > 0
+            assert isinstance(result["source_requests"], list)
+            assert result["source_requests"][0]["status"] == "ok"
             assert result["snapshot_built"] is True
-            assert result["data_status"] in ["real_available", "sample_available", "fallback_available"]

@@ -22,9 +22,10 @@ class MercadoLibreClient:
         query: str,
         limit: int = 50,
         offset: int = 0
-    ) -> List[Dict[str, Any]]:
+    ) -> Dict[str, Any]:
         """
         Busca items en Mercado Libre Chile.
+        Retorna un diccionario estructurado con el estado y los resultados.
         """
         # Obtener token válido (de DB o ENV)
         access_token = await self.oauth.get_valid_access_token(db)
@@ -37,7 +38,10 @@ class MercadoLibreClient:
             "condition": "new", # Solo productos nuevos para ÁGORA
         }
         
-        headers = {}
+        headers = {
+            "Accept": "application/json",
+            "User-Agent": "OLIMPO-Agora/1.0"
+        }
         if access_token:
             headers["Authorization"] = f"Bearer {access_token}"
             
@@ -50,6 +54,25 @@ class MercadoLibreClient:
                     print(f"MLC API: Buscando '{query}' (usando OAuth token)")
                 else:
                     print(f"MLC API: Buscando '{query}' (sin token - público)")
+
+                if response.status_code == 403:
+                    return {
+                        "status": "forbidden",
+                        "http_status": 403,
+                        "raw_count_api": 0,
+                        "items": [],
+                        "error": "Mercado Libre rejected search request (Forbidden)",
+                        "requires_review": True
+                    }
+                
+                if response.status_code == 401:
+                    return {
+                        "status": "unauthorized",
+                        "http_status": 401,
+                        "raw_count_api": 0,
+                        "items": [],
+                        "error": "Mercado Libre token unauthorized or expired"
+                    }
 
                 response.raise_for_status()
                 data = response.json()
@@ -81,8 +104,30 @@ class MercadoLibreClient:
                         }
                     })
                     
-                return normalized_items
+                return {
+                    "status": "ok" if normalized_items else "empty",
+                    "http_status": response.status_code,
+                    "raw_count_api": len(results),
+                    "items": normalized_items,
+                    "error": None
+                }
                 
+        except httpx.HTTPStatusError as e:
+            print(f"Error HTTP consultando Mercado Libre MLC: {str(e)}")
+            return {
+                "status": "error",
+                "http_status": e.response.status_code,
+                "raw_count_api": 0,
+                "items": [],
+                "error": f"HTTP Error: {str(e)}"
+            }
         except Exception as e:
             print(f"Error consultando Mercado Libre MLC: {str(e)}")
-            return []
+            return {
+                "status": "error",
+                "http_status": 500,
+                "raw_count_api": 0,
+                "items": [],
+                "error": f"Unexpected error: {str(e)}"
+            }
+

@@ -15,6 +15,18 @@ class QueryBuilder:
         """
         Construye una lista de términos de búsqueda optimizados para la familia.
         """
+        # CASO ESPECIAL: Tubos PVC Sanitario (Chile)
+        if family_id == "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario":
+            return [
+                "tubo pvc sanitario",
+                "tuberia pvc sanitario",
+                "cañeria pvc sanitario",
+                "tubo pvc desague",
+                "tubo pvc 110 sanitario",
+                "tubo pvc 75 sanitario",
+                "tubo pvc 50 sanitario"
+            ]
+
         queries = []
         
         # 1. Base query: frontend_label o family_nombre

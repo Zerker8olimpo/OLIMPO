@@ -80,30 +80,53 @@ class PriceObserver:
         
         raw_items = []
         source_error = None
-        source_requests = 0
+        source_requests_details = []
+        source_status = "ok"
         
         # 3. Consultar fuente (Mercado Libre)
         for query in queries[:max_queries]:
             try:
-                source_requests += 1
-                items = await self.meli_client.search_items(db, query, limit=limit_per_query)
-                raw_items.extend(items)
+                search_res = await self.meli_client.search_items(db, query, limit=limit_per_query)
+                
+                request_info = {
+                    "query": query,
+                    "status": search_res.get("status"),
+                    "http_status": search_res.get("http_status"),
+                    "raw_count_api": search_res.get("raw_count_api", 0),
+                    "error": search_res.get("error")
+                }
+                source_requests_details.append(request_info)
+                
+                if search_res.get("status") in ["forbidden", "unauthorized"]:
+                    source_status = search_res.get("status")
+                    source_error = search_res.get("error")
+                    break # Stop if forbidden/unauthorized
+                
+                if search_res.get("status") == "error":
+                    source_status = "error"
+                    source_error = search_res.get("error")
+                    break
+
+                raw_items.extend(search_res.get("items", []))
             except Exception as e:
                 source_error = str(e)
+                source_status = "error"
                 break 
             await asyncio.sleep(0.1)
             
-        if not raw_items and source_error:
+        if source_status in ["forbidden", "unauthorized", "error"]:
             return {
+                "family_id": family_id,
                 "success": False,
-                "source_status": "source_auth_error" if "403" in source_error or "401" in source_error else "error",
+                "source_status": source_status,
                 "source_error": source_error,
                 "token_source": token_source,
-                "raw_count_api": 0,
+                "raw_count_api": sum(r.get("raw_count_api", 0) for r in source_requests_details),
                 "matched_count": 0,
                 "inserted": 0,
                 "queries_used": queries[:max_queries],
-                "source_requests": source_requests
+                "source_requests": source_requests_details,
+                "data_status": "source_error" if source_status != "empty" else "no_data"
             }
             
         if not raw_items:
@@ -111,7 +134,7 @@ class PriceObserver:
                 "family_id": family_id,
                 "success": True,
                 "raw_count": 0,
-                "raw_count_api": 0,
+                "raw_count_api": sum(r.get("raw_count_api", 0) for r in source_requests_details),
                 "matched_count": 0,
                 "data_status": "no_data",
                 "message": "No items found for the given queries",
@@ -119,7 +142,7 @@ class PriceObserver:
                 "source_status": "empty",
                 "source_error": None,
                 "token_source": token_source,
-                "source_requests": source_requests
+                "source_requests": source_requests_details
             }
             
         # 4. Matching & Normalización
@@ -213,5 +236,5 @@ class PriceObserver:
             "source_error": None,
             "token_source": token_source,
             "queries_used": queries[:max_queries],
-            "source_requests": source_requests
+            "source_requests": source_requests_details
         }
