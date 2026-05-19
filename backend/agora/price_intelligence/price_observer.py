@@ -46,9 +46,24 @@ class PriceObserver:
         """
         Observa precios para una familia específica.
         """
-        # 0. Verificar Token / Auth Source
-        token = await self.meli_oauth.get_valid_access_token(db)
-        token_source = "db" if token and not os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") == token else "env" if token else "none"
+        # 0. Verificar Token / Auth Source con guardia contra fallos de DB
+        token = None
+        token_source = "none"
+        try:
+            token = await self.meli_oauth.get_valid_access_token(db)
+            env_token = os.getenv("MERCADO_LIBRE_ACCESS_TOKEN")
+            if token:
+                if env_token and token == env_token:
+                    token_source = "env"
+                else:
+                    token_source = "db"
+            else:
+                token_source = "none"
+        except Exception as e:
+            print(f"PriceObserver: Error obteniendo token: {str(e)}")
+            # Fallback seguro a ENV
+            token = os.getenv("MERCADO_LIBRE_ACCESS_TOKEN")
+            token_source = "env" if token else "none"
         
         # 1. Obtener CFG de la familia
         family_cfg = self.catalog.get_family(market_id, product_id, family_id)
@@ -75,8 +90,7 @@ class PriceObserver:
                 raw_items.extend(items)
             except Exception as e:
                 source_error = str(e)
-                break # Si falla una, probablemente fallen todas
-            # Pequeño delay para no saturar si hay muchas queries
+                break 
             await asyncio.sleep(0.1)
             
         if not raw_items and source_error:
@@ -114,14 +128,10 @@ class PriceObserver:
         rejected_examples = []
         
         for item in raw_items:
-            # Validar si el item pertenece a la familia
             match_result = self.matcher.match_item_to_family(item, family_cfg)
             
             if match_result["accepted"]:
-                # Normalizar precio y unidad
                 norm_result = self.normalizer.normalize_item_price_unit(item, family_cfg)
-                
-                # Combinar datos para el filtro
                 obs_data = {
                     **item,
                     **norm_result,
@@ -140,7 +150,6 @@ class PriceObserver:
         # 6. Persistir en DB
         inserted_count = 0
         for obs in valid_observations:
-            # Guardar metadata rica
             metadata = {
                 "source_item_id": obs.get("source_item_id"),
                 "url": obs.get("url"),
@@ -191,7 +200,7 @@ class PriceObserver:
             "queries": queries,
             "raw_count": len(raw_items),
             "raw_count_api": len(raw_items),
-            "raw_count_valid_price": len(matched_observations) + skipped_count, # Todos los que llegaron de la API
+            "raw_count_valid_price": len(matched_observations) + skipped_count, 
             "matched_count": len(matched_observations),
             "inserted": inserted_count,
             "skipped": skipped_count,

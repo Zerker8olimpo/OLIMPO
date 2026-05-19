@@ -194,12 +194,20 @@ async def observe_family(
     """
     TAREA 8: Disparar observación real para una familia.
     """
-    observer = PriceObserver()
-    result = await observer.observe_family_prices(
-        db, req.market_id, req.product_id, req.family_id, 
-        source_id=req.source_id, build_snapshot=req.build_snapshot
-    )
-    return result
+    try:
+        observer = PriceObserver()
+        result = await observer.observe_family_prices(
+            db, req.market_id, req.product_id, req.family_id, 
+            source_id=req.source_id, build_snapshot=req.build_snapshot
+        )
+        return result
+    except Exception as e:
+        return {
+            "success": False,
+            "source_status": "error",
+            "source_error": str(e),
+            "token_source": "unknown"
+        }
 
 @router.post("/observe-market", dependencies=[Depends(validate_agora_admin_token)])
 async def observe_market(
@@ -307,18 +315,34 @@ async def meli_oauth_callback(
     """
     result = await meli_oauth.exchange_code_for_token(db, code)
     
+    # TAREA 3: Respuesta explícita ante falla o falta de persistencia
     if "error" in result:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Error en OAuth de Mercado Libre: {result.get('error_description', result['error'])}"
-        )
+        return {
+            "ok": False,
+            "persisted": False,
+            "token_source": "none",
+            "error": result.get('error_description', result['error']),
+            "state": state
+        }
+        
+    # Si no persistió, lo tratamos como error aunque tengamos el token en memoria un instante
+    if not result.get("persisted"):
+        return {
+            "ok": False,
+            "persisted": False,
+            "token_source": "none",
+            "error": "Token received but could not be persisted to database.",
+            "state": state
+        }
         
     return {
         "ok": True,
         "has_access_token": "access_token" in result,
         "has_refresh_token": "refresh_token" in result,
         "expires_in": result.get("expires_in"),
-        "user_id": str(result.get("user_id")),
+        "user_id": str(result.get("user_id", "")),
+        "persisted": True,
+        "token_source": "db",
         "state": state
     }
 
@@ -327,44 +351,89 @@ async def get_meli_status(db: Session = Depends(get_db)):
     """
     TAREA 2: Estado de la configuración de MLC.
     """
-    inspector = inspect(db.get_bind())
-    if "agora_metadata" not in inspector.get_table_names():
+    try:
+        # 1. Verificar configuración base de ENV
+        config_ok = all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri])
+        
+        # 2. Verificar existencia de tabla
+        inspector = inspect(db.get_bind())
+        if "agora_metadata" not in inspector.get_table_names():
+            return {
+                "configured": config_ok,
+                "has_client_id": meli_oauth.client_id is not None,
+                "has_client_secret": meli_oauth.client_secret is not None,
+                "has_redirect_uri": meli_oauth.redirect_uri is not None,
+                "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None,
+                "has_db_access_token": False,
+                "has_db_refresh_token": False,
+                "expires_at": None,
+                "is_expired": None,
+                "token_source": "env" if os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") else "none",
+                "metadata_error": "agora_metadata table not available"
+            }
+
+        # 3. Consultar tokens en DB con alta tolerancia
+        meta_access = None
+        meta_refresh = None
+        try:
+            meta_access = AgoraMetadataService.get(db, "meli_access_token")
+            meta_refresh = AgoraMetadataService.get(db, "meli_refresh_token")
+        except Exception as e:
+            print(f"MLC Status: Error consultando service: {str(e)}")
+
+        token_source = "none"
+        is_expired = None
+        expires_at_iso = None
+        has_db_access = False
+        has_db_refresh = False
+        
+        if meta_access and hasattr(meta_access, 'value') and meta_access.value:
+            has_db_access = True
+            token_source = "db"
+            
+            # Procesamiento robusto de fecha
+            if hasattr(meta_access, 'expires_at') and meta_access.expires_at:
+                try:
+                    expires_at = meta_access.expires_at
+                    # Si viene como string, intentar parsear (SQLite fallback)
+                    if isinstance(expires_at, str):
+                        from datetime import fromisoformat
+                        expires_at = datetime.fromisoformat(expires_at.replace('Z', '+00:00'))
+
+                    # Normalizar aware
+                    if hasattr(expires_at, 'tzinfo') and expires_at.tzinfo is None:
+                        expires_at = expires_at.replace(tzinfo=timezone.utc)
+                    
+                    if hasattr(expires_at, 'isoformat'):
+                        is_expired = expires_at < datetime.now(timezone.utc)
+                        expires_at_iso = expires_at.isoformat()
+                except Exception as e:
+                    print(f"MLC Status: Error procesando fecha expiración: {str(e)}")
+                    is_expired = True # Por seguridad si no podemos leerla
+                    
+        elif os.getenv("MERCADO_LIBRE_ACCESS_TOKEN"):
+            token_source = "env"
+
+        if meta_refresh and hasattr(meta_refresh, 'value') and meta_refresh.value:
+            has_db_refresh = True
+
         return {
-            "configured": all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri]),
+            "configured": config_ok,
             "has_client_id": meli_oauth.client_id is not None,
             "has_client_secret": meli_oauth.client_secret is not None,
             "has_redirect_uri": meli_oauth.redirect_uri is not None,
             "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None,
-            "has_db_access_token": False,
-            "has_db_refresh_token": False,
-            "expires_at": None,
-            "is_expired": None,
-            "token_source": "env" if os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") else "none",
-            "metadata_error": "agora_metadata table not available"
+            "has_db_access_token": has_db_access,
+            "has_db_refresh_token": has_db_refresh,
+            "expires_at": expires_at_iso,
+            "is_expired": is_expired,
+            "token_source": token_source
+        }
+    except Exception as e:
+        # TAREA 5: No caer en 500 bajo ninguna circunstancia
+        return {
+            "configured": all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri]),
+            "token_source": "error",
+            "metadata_error": f"Error fatal consultando status: {str(e)}"
         }
 
-    # Consultar tokens en DB
-    meta_access = AgoraMetadataService.get(db, "meli_access_token")
-    meta_refresh = AgoraMetadataService.get(db, "meli_refresh_token")
-    
-    token_source = "none"
-    is_expired = None
-    if meta_access and meta_access.value:
-        token_source = "db"
-        if meta_access.expires_at:
-            is_expired = meta_access.expires_at < datetime.now(timezone.utc)
-    elif os.getenv("MERCADO_LIBRE_ACCESS_TOKEN"):
-        token_source = "env"
-
-    return {
-        "configured": all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri]),
-        "has_client_id": meli_oauth.client_id is not None,
-        "has_client_secret": meli_oauth.client_secret is not None,
-        "has_redirect_uri": meli_oauth.redirect_uri is not None,
-        "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None,
-        "has_db_access_token": meta_access.value is not None if meta_access else False,
-        "has_db_refresh_token": meta_refresh.value is not None if meta_refresh else False,
-        "expires_at": meta_access.expires_at.isoformat() if meta_access and meta_access.expires_at else None,
-        "is_expired": is_expired,
-        "token_source": token_source
-    }
