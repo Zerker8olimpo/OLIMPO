@@ -25,7 +25,7 @@ class MeliOAuthClient:
     def redirect_uri(self) -> Optional[str]:
         return os.getenv("MELI_REDIRECT_URI")
         
-    def build_meli_authorization_url(self) -> str:
+    def build_meli_authorization_url(self, state: Optional[str] = None) -> str:
         """
         Construye la URL para redirigir al usuario y obtener el code.
         """
@@ -40,6 +40,9 @@ class MeliOAuthClient:
             "client_id": c_id,
             "redirect_uri": r_uri
         }
+        if state:
+            params["state"] = state
+            
         return f"{self.base_auth_url}?{urlencode(params)}"
 
     async def exchange_code_for_token(self, code: str) -> Dict[str, Any]:

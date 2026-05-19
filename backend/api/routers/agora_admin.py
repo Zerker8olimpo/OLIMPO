@@ -16,10 +16,11 @@ from backend.agora.price_intelligence.price_observer import PriceObserver
 from backend.agora.price_intelligence.source_clients.meli_oauth import MeliOAuthClient
 from backend.database.models.agora import AgoraPriceObservation, AgoraFamilyMonthlySnapshot
 
+# NOTA: Se remueve la dependencia global del router para permitir que el callback de OAuth 
+# sea accesible sin el header X-AGORA-ADMIN-TOKEN (ya que Mercado Libre redirige vía navegador).
 router = APIRouter(
     prefix="/agora/v2/admin",
-    tags=["agora_v2_admin"],
-    dependencies=[Depends(validate_agora_admin_token)]
+    tags=["agora_v2_admin"]
 )
 
 meli_oauth = MeliOAuthClient()
@@ -47,7 +48,7 @@ class ObserveMarketRequest(BaseModel):
     source_id: str = "mercado_libre_mlc"
     limit_families: int = 20
 
-@router.get("/history-health")
+@router.get("/history-health", dependencies=[Depends(validate_agora_admin_token)])
 async def get_history_health(db: Session = Depends(get_db)):
     """
     TAREA 2: Health operativo de histórico.
@@ -76,7 +77,7 @@ async def get_history_health(db: Session = Depends(get_db)):
             "error": str(e)
         }
 
-@router.post("/price-observations/import-csv")
+@router.post("/price-observations/import-csv", dependencies=[Depends(validate_agora_admin_token)])
 async def import_price_observations(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
@@ -100,7 +101,7 @@ async def import_price_observations(
         if os.path.exists(tmp_path):
             os.remove(tmp_path)
 
-@router.post("/snapshots/build")
+@router.post("/snapshots/build", dependencies=[Depends(validate_agora_admin_token)])
 async def build_snapshot(
     req: SnapshotBuildRequest,
     db: Session = Depends(get_db)
@@ -131,7 +132,7 @@ async def build_snapshot(
         "data_status": snap.data_status
     }
 
-@router.post("/snapshots/build-bulk")
+@router.post("/snapshots/build-bulk", dependencies=[Depends(validate_agora_admin_token)])
 async def build_bulk_snapshots(
     req: SnapshotBulkBuildRequest,
     db: Session = Depends(get_db)
@@ -183,7 +184,7 @@ async def build_bulk_snapshots(
         "families_processed": len(targets)
     }
 
-@router.post("/observe-family")
+@router.post("/observe-family", dependencies=[Depends(validate_agora_admin_token)])
 async def observe_family(
     req: ObserveFamilyRequest,
     db: Session = Depends(get_db)
@@ -198,7 +199,7 @@ async def observe_family(
     )
     return result
 
-@router.post("/observe-market")
+@router.post("/observe-market", dependencies=[Depends(validate_agora_admin_token)])
 async def observe_market(
     req: ObserveMarketRequest,
     db: Session = Depends(get_db)
@@ -244,7 +245,7 @@ async def observe_market(
         "summary": results
     }
 
-@router.get("/observations")
+@router.get("/observations", dependencies=[Depends(validate_agora_admin_token)])
 async def list_observations(
     market_id: Optional[str] = None,
     product_id: Optional[str] = None,
@@ -260,7 +261,7 @@ async def list_observations(
     results = query.order_by(desc(AgoraPriceObservation.observed_at)).limit(limit).all()
     return results
 
-@router.get("/snapshots")
+@router.get("/snapshots", dependencies=[Depends(validate_agora_admin_token)])
 async def list_snapshots(
     market_id: Optional[str] = None,
     product_id: Optional[str] = None,
@@ -280,12 +281,12 @@ async def list_snapshots(
 
 # --- Mercado Libre OAuth ---
 
-@router.get("/meli/oauth/url")
-async def get_meli_oauth_url():
+@router.get("/meli/oauth/url", dependencies=[Depends(validate_agora_admin_token)])
+async def get_meli_oauth_url(state: Optional[str] = Query(None)):
     """
     TAREA 2: Obtener URL de autorización de Mercado Libre.
     """
-    url = meli_oauth.build_meli_authorization_url()
+    url = meli_oauth.build_meli_authorization_url(state=state)
     return {
         "authorization_url": url,
         "redirect_uri": meli_oauth.redirect_uri,
@@ -293,9 +294,13 @@ async def get_meli_oauth_url():
     }
 
 @router.get("/meli/oauth/callback")
-async def meli_oauth_callback(code: str = Query(...)):
+async def meli_oauth_callback(
+    code: str = Query(...), 
+    state: Optional[str] = Query(None)
+):
     """
     TAREA 2: Intercambiar code por token.
+    LIBERADO: Accesible sin token administrativo para permitir redirección de navegador.
     """
     result = await meli_oauth.exchange_code_for_token(code)
     
@@ -310,10 +315,11 @@ async def meli_oauth_callback(code: str = Query(...)):
         "has_access_token": "access_token" in result,
         "has_refresh_token": "refresh_token" in result,
         "expires_in": result.get("expires_in"),
-        "user_id": str(result.get("user_id"))
+        "user_id": str(result.get("user_id")),
+        "state": state
     }
 
-@router.get("/meli/status")
+@router.get("/meli/status", dependencies=[Depends(validate_agora_admin_token)])
 async def get_meli_status():
     """
     TAREA 2: Estado de la configuración de MLC.
