@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, String, DateTime, func
 from backend.database.base import Base
 
 class AgoraMetadata(Base):
@@ -10,5 +10,6 @@ class AgoraMetadata(Base):
     
     key: str = Column(String(255), primary_key=True)
     value: str = Column(String, nullable=True)
-    updated_at = Column(DateTime, nullable=True)
     expires_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import select, func, desc
+from sqlalchemy import select, func, desc, inspect
 from typing import List, Optional, Dict, Any
 import os
 import shutil
@@ -76,7 +76,8 @@ async def get_history_health(db: Session = Depends(get_db)):
     except Exception as e:
         return {
             "ok": False,
-            "error": str(e)
+            "error": str(e),
+            "metadata_error": "agora_metadata table not available" if "agora_metadata" in str(e) else None
         }
 
 @router.post("/price-observations/import-csv", dependencies=[Depends(validate_agora_admin_token)])
@@ -326,13 +327,32 @@ async def get_meli_status(db: Session = Depends(get_db)):
     """
     TAREA 2: Estado de la configuración de MLC.
     """
+    inspector = inspect(db.get_bind())
+    if "agora_metadata" not in inspector.get_table_names():
+        return {
+            "configured": all([meli_oauth.client_id, meli_oauth.client_secret, meli_oauth.redirect_uri]),
+            "has_client_id": meli_oauth.client_id is not None,
+            "has_client_secret": meli_oauth.client_secret is not None,
+            "has_redirect_uri": meli_oauth.redirect_uri is not None,
+            "has_env_access_token": os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") is not None,
+            "has_db_access_token": False,
+            "has_db_refresh_token": False,
+            "expires_at": None,
+            "is_expired": None,
+            "token_source": "env" if os.getenv("MERCADO_LIBRE_ACCESS_TOKEN") else "none",
+            "metadata_error": "agora_metadata table not available"
+        }
+
     # Consultar tokens en DB
     meta_access = AgoraMetadataService.get(db, "meli_access_token")
     meta_refresh = AgoraMetadataService.get(db, "meli_refresh_token")
     
     token_source = "none"
+    is_expired = None
     if meta_access and meta_access.value:
         token_source = "db"
+        if meta_access.expires_at:
+            is_expired = meta_access.expires_at < datetime.now(timezone.utc)
     elif os.getenv("MERCADO_LIBRE_ACCESS_TOKEN"):
         token_source = "env"
 
@@ -345,5 +365,6 @@ async def get_meli_status(db: Session = Depends(get_db)):
         "has_db_access_token": meta_access.value is not None if meta_access else False,
         "has_db_refresh_token": meta_refresh.value is not None if meta_refresh else False,
         "expires_at": meta_access.expires_at.isoformat() if meta_access and meta_access.expires_at else None,
+        "is_expired": is_expired,
         "token_source": token_source
     }
