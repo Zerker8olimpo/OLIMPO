@@ -128,18 +128,36 @@ class AgoraV2CommercialPosition(BaseModel):
     current_margin_pct: Optional[float] = None
     market_reference_price: Optional[float] = None
     projected_market_price: Optional[float] = None
-    market_trend_pct: float = 0.0
-    market_position_now: Literal["below_market", "in_market", "above_market", "unavailable"]
-    market_position_projected: Literal["below_market", "in_market", "above_market", "unavailable"]
+    market_trend_pct: Optional[float] = None
+    market_position_now: str
+    market_position_projected: str
     price_gap_pct: Optional[float] = None
     projected_gap_pct: Optional[float] = None
-    margin_status: Literal["risky", "tight", "healthy", "unavailable"]
-    commercial_risk: Literal["low", "medium", "high", "critical", "unavailable"]
+    margin_status: str
+    commercial_risk: str
     recommendation: str
     confidence_level: float
     user_message: str
 
 class AgoraV2PulseResponse(BaseModel):
+    agora_enabled: bool = True
+    plan_tier: str
+    feature_depth: str
+    data_mode: str
+    history_status: str
+    available_months: int
+    required_months: int
+    projection_quality: str
+    allowed_horizons: List[int]
+    requested_horizon: int
+    effective_horizon: int
+    horizon_adjusted: bool
+    user_message: str
+    admin_message: Optional[str] = None
+    source_mix: Optional[Dict[str, Any]] = None
+    last_snapshot_month: Optional[str] = None
+    commercial_position: Optional[AgoraV2CommercialPosition] = None
+
     module: str = "AGORA"
     api_version: str = "v2"
     market_id: str
@@ -157,7 +175,6 @@ class AgoraV2PulseResponse(BaseModel):
     economic_indicators: Dict[str, Any]
     market_forces: Dict[str, Any]
     margin_reference: AgoraV2MarginReference
-    commercial_position: Optional[AgoraV2CommercialPosition] = None # NUEVO: Comparador comercial
     margin_projection_series: Optional[List[AgoraV2MarginProjectionPoint]] = None
     commercial_interpretation: AgoraV2CommercialInterpretation
     cfg_context: Dict[str, Any]

@@ -33,9 +33,12 @@ def db_session():
     yield session
     session.close()
 
+from backend.api.security.deps import get_current_claims
+
 @pytest.fixture
 def client(db_session):
     app.dependency_overrides[get_db] = lambda: db_session
+    app.dependency_overrides[get_current_claims] = lambda: {"user_id": "1", "plan": "enterprise"}
     with TestClient(app) as c:
         yield c
     app.dependency_overrides.clear()

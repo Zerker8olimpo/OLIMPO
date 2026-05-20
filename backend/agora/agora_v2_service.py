@@ -361,7 +361,38 @@ class AgoraV2Service:
                     margin_high=(p.high - current_cost) / p.high if p.high > 0 else 0
                 ))
 
+        feature_depth = plan if plan in ["basic", "pro", "enterprise"] else "basic"
+        allowed_horizons = [3] if feature_depth == "basic" else [3, 6, 12]
+        horizon_adjusted = (feature_depth == "basic" and horizon in [6, 12])
+        
+        last_snapshot_month = None
+        if history_series:
+            last_snapshot_month = history_series[-1].label
+            
+        source_mix = None
+        if has_real_db_snapshot:
+             last_snap_ctx = real_history_data["history"][-1].get("source_context")
+             if last_snap_ctx:
+                 source_mix = last_snap_ctx.get("source_mix")
+
         return AgoraV2PulseResponse(
+            agora_enabled=True,
+            plan_tier=plan,
+            feature_depth=feature_depth,
+            data_mode="real" if data_status == "real_available" else ("sample" if data_status == "sample_available" else "none"),
+            history_status=source_ctx.coverage.history_status if source_ctx.coverage else "none",
+            available_months=source_ctx.coverage.available_months if source_ctx.coverage else 0,
+            required_months=6,
+            projection_quality=source_ctx.coverage.projection_quality if source_ctx.coverage else "unavailable",
+            allowed_horizons=allowed_horizons,
+            requested_horizon=horizon,
+            effective_horizon=effective_horizon,
+            horizon_adjusted=horizon_adjusted,
+            user_message=frontend_message,
+            admin_message=None,
+            source_mix=source_mix,
+            last_snapshot_month=last_snapshot_month,
+            
             module="AGORA",
             api_version="v2",
             market_id=c_market_id,

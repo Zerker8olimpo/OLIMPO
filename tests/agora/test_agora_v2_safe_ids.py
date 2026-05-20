@@ -2,9 +2,14 @@ from fastapi.testclient import TestClient
 from fastapi import FastAPI
 from backend.api.routers.agora_v2 import router
 from backend.agora.id_normalization_service import IdNormalizationService
+from backend.api.security.deps import get_current_claims
+from unittest.mock import patch
+
+patch("backend.api.routers.agora_v2.get_active_subscription", return_value=None).start()
 
 app = FastAPI()
 app.include_router(router)
+app.dependency_overrides[get_current_claims] = lambda: {"user_id": "1", "plan": "enterprise"}
 client = TestClient(app)
 
 def test_normalization_logic():
