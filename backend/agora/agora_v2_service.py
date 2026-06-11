@@ -236,34 +236,68 @@ class AgoraV2Service:
             )
 
         # TAREA 3, 4, 5, 6: Market Position Engine
-        commercial_pos = None
-        if current_sale_price is not None and current_cost is not None:
-            market_ref = obs_result.get("current_reference_price")
+        market_ref = obs_result.get("current_reference_price")
+        if market_ref is not None and market_ref <= 0:
+            market_ref = None
+            
+        projected_market = proj_result.get("base") if proj_result else None
+        if projected_market is not None and projected_market <= 0:
+            projected_market = None
+        
+        # Inicializar con valores por defecto (unavailable)
+        commercial_pos_data = {
+            "current_cost": current_cost,
+            "current_sale_price": current_sale_price,
+            "current_margin_pct": None,
+            "market_reference_price": market_ref,
+            "projected_market_price": projected_market,
+            "market_trend_pct": calculated_trend / 100.0 if calculated_trend is not None else 0.0,
+            "market_position_now": "unavailable",
+            "market_position_projected": "unavailable",
+            "price_gap_pct": None,
+            "projected_gap_pct": None,
+            "margin_status": "unavailable",
+            "commercial_risk": "unavailable",
+            "recommendation": "Aún no hay referencia suficiente para comparar esta familia con el mercado.",
+            "confidence_level": proj_result.get("confidence", 0.0) if proj_result else 0.0,
+            "user_message": "Referencia de mercado no disponible."
+        }
+
+        if current_sale_price is not None and current_sale_price > 0:
+            if current_cost is not None:
+                commercial_pos_data["current_margin_pct"] = (current_sale_price - current_cost) / current_sale_price
+                
+                # margin_status
+                m_status = "healthy"
+                if commercial_pos_data["current_margin_pct"] < 0.15: m_status = "risky"
+                elif commercial_pos_data["current_margin_pct"] < 0.25: m_status = "tight"
+                commercial_pos_data["margin_status"] = m_status
             
             if market_ref and market_ref > 0:
-                projected_market = proj_result.get("base") or market_ref
-                
-                # Fórmulas TAREA 4
-                margin_now = (current_sale_price - current_cost) / current_sale_price if current_sale_price > 0 else 0
+                # price_gap_pct
                 gap_now = (current_sale_price - market_ref) / market_ref
-                gap_proj = (current_sale_price - projected_market) / projected_market if projected_market > 0 else 0
+                commercial_pos_data["price_gap_pct"] = gap_now
                 
                 # market_position_now: +/- 5% gap
                 pos_now = "in_market"
                 if gap_now < -0.05: pos_now = "below_market"
                 elif gap_now > 0.05: pos_now = "above_market"
-                
-                # market_position_projected: +/- 5% gap
-                pos_proj = "in_market"
-                if gap_proj < -0.05: pos_proj = "below_market"
-                elif gap_proj > 0.05: pos_proj = "above_market"
-                
-                # margin_status
-                m_status = "healthy"
-                if margin_now < 0.15: m_status = "risky"
-                elif margin_now < 0.25: m_status = "tight"
+                commercial_pos_data["market_position_now"] = pos_now
+
+                # Proyección
+                if projected_market and projected_market > 0:
+                    gap_proj = (current_sale_price - projected_market) / projected_market
+                    commercial_pos_data["projected_gap_pct"] = gap_proj
+                    
+                    pos_proj = "in_market"
+                    if gap_proj < -0.05: pos_proj = "below_market"
+                    elif gap_proj > 0.05: pos_proj = "above_market"
+                    commercial_pos_data["market_position_projected"] = pos_proj
                 
                 # commercial_risk
+                m_status = commercial_pos_data["margin_status"]
+                pos_now = commercial_pos_data["market_position_now"]
+                
                 c_risk = "low"
                 if m_status == "risky":
                     c_risk = "critical" if pos_now == "above_market" else "high"
@@ -272,59 +306,31 @@ class AgoraV2Service:
                 elif pos_now == "above_market":
                     c_risk = "medium"
                 
+                commercial_pos_data["commercial_risk"] = c_risk
+                
                 # TAREA 7: Interpretación comercial
-                interp = self._interpret_market_position(pos_now, m_status, pos_proj)
-                
-                commercial_pos_data = {
-                    "current_cost": current_cost,
-                    "current_sale_price": current_sale_price,
-                    "current_margin_pct": margin_now,
-                    "market_reference_price": market_ref,
-                    "projected_market_price": projected_market,
-                    "market_trend_pct": calculated_trend / 100.0,
-                    "market_position_now": pos_now,
-                    "market_position_projected": pos_proj,
-                    "price_gap_pct": gap_now,
-                    "projected_gap_pct": gap_proj,
-                    "margin_status": m_status,
-                    "commercial_risk": c_risk,
-                    "recommendation": interp["recommendation"],
-                    "confidence_level": proj_result.get("confidence", 0.7),
-                    "user_message": interp["user_message"]
-                }
-                
-                # TAREA 8: Clipping por Plan Basic
-                if plan == "basic":
-                    commercial_pos_data["projected_market_price"] = None
-                    commercial_pos_data["market_position_projected"] = "unavailable"
-                    commercial_pos_data["projected_gap_pct"] = None
-                    commercial_pos_data["market_trend_pct"] = 0.0
-                    commercial_pos_data["commercial_risk"] = "unavailable"
-                    commercial_pos_data["price_gap_pct"] = None
-                
-                commercial_pos = commercial_pos_data
+                interp = self._interpret_market_position(
+                    commercial_pos_data["market_position_now"], 
+                    commercial_pos_data["margin_status"], 
+                    commercial_pos_data["market_position_projected"]
+                )
+                commercial_pos_data["recommendation"] = interp["recommendation"]
+                commercial_pos_data["user_message"] = interp["user_message"]
             else:
-                # TAREA 6: No inventar precio
-                commercial_pos = {
-                    "current_cost": current_cost,
-                    "current_sale_price": current_sale_price,
-                    "current_margin_pct": (current_sale_price - current_cost) / current_sale_price if current_sale_price > 0 else 0,
-                    "market_reference_price": None,
-                    "projected_market_price": None,
-                    "market_trend_pct": 0.0,
-                    "market_position_now": "unavailable",
-                    "market_position_projected": "unavailable",
-                    "price_gap_pct": None,
-                    "projected_gap_pct": None,
-                    "margin_status": "unavailable",
-                    "commercial_risk": "unavailable",
-                    "recommendation": "Aún no hay referencia suficiente para comparar esta familia con el mercado.",
-                    "confidence_level": 0.0,
-                    "user_message": "Referencia de mercado no disponible."
-                }
+                commercial_pos_data["recommendation"] = "Aún no hay referencia suficiente para comparar esta familia con el mercado."
+                commercial_pos_data["user_message"] = "Referencia de mercado no disponible."
+
+        # TAREA 8: Clipping por Plan Basic
+        if plan == "basic":
+            commercial_pos_data["projected_market_price"] = None
+            commercial_pos_data["market_position_projected"] = "unavailable"
+            commercial_pos_data["projected_gap_pct"] = None
+            commercial_pos_data["market_trend_pct"] = 0.0
+            commercial_pos_data["price_gap_pct"] = None
+            commercial_pos_data["commercial_risk"] = "unavailable"
 
         from backend.agora.schemas.agora_v2_models import AgoraV2CommercialPosition
-        comm_pos_model = AgoraV2CommercialPosition(**commercial_pos) if commercial_pos else None
+        comm_pos_model = AgoraV2CommercialPosition(**commercial_pos_data)
 
         interp_result = self.interpreter.process(obs_result, margin_result, comm_rules)
 
