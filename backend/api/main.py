@@ -42,6 +42,9 @@ from backend.api.routers import agora_admin
 # Device Reset
 from backend.api.routers.device_reset import router as device_reset_router
 
+# Importación del router web
+from backend.api.routes.web_helios import router as web_helios_router
+
 # -------------------------------------------------------
 # FASTAPI APP
 # -------------------------------------------------------
@@ -115,3 +118,6 @@ app.include_router(
     prefix="/account",
     tags=["account"]
 )
+
+# Registro del router web
+app.include_router(web_helios_router)

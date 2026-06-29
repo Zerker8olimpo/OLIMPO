@@ -34,13 +34,13 @@ class SnapshotBuilder:
         except Exception:
             return None
 
-        # Fetch observations
+        # Fetch observations: ONLY real data, no samples/fallbacks
         stmt = select(AgoraPriceObservation).where(
             AgoraPriceObservation.family_id == s_family_id,
             AgoraPriceObservation.observed_at >= start_date,
             AgoraPriceObservation.observed_at < end_date,
             AgoraPriceObservation.price > 0,
-            AgoraPriceObservation.is_real == True
+            AgoraPriceObservation.is_real == True # OBLIGATORIO
         )
         
         observations = db.execute(stmt).scalars().all()
@@ -53,11 +53,11 @@ class SnapshotBuilder:
         
         sample_size = len(prices)
         
-        # We need a minimum sample size to consider it reliable
-        if sample_size < 3:
-            data_status = "fallback_available"
+        # Rule: Data Quality strictness
+        if sample_size < 5:
+            data_status = "weak_available" # New status for low sample size
             data_quality = "low"
-        elif sample_size < 10:
+        elif sample_size < 15:
             data_status = "real_available"
             data_quality = "medium"
         else:

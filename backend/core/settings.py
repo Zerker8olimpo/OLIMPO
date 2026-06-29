@@ -63,6 +63,11 @@ class Settings(BaseSettings):
     API_BASE_URL: str = "http://localhost:8000"
     ENTERPRISE_PORTAL_URL: str = "https://olimpo.app/empresas"
 
+    # ÁGORA Capture Pipeline
+    AGORA_CAPTURE_ENABLED: bool = False
+    AGORA_CAPTURE_SOURCE: str = "manual_seed" # manual_seed, mercado_libre_mlc
+    AGORA_CAPTURE_DRY_RUN: bool = True
+
     @staticmethod
     def validate():
         pass

@@ -59,12 +59,14 @@ def test_agora_price_ingestion_and_snapshot_e2e(client, admin_token):
     assert data["ok"] is True, f"Health check failed: {data.get('error')}"
     assert data["observations_count"] == 0
     
-    # 2. Importar CSV
+    # 2. Importar CSV (5+ items para real_available)
     csv_content = (
-        "market_id,product_id,family_id,source,source_type,raw_product_name,normalized_product_name,price,currency,observed_at,confidence\n"
-        "mercado_sanitario_hidraulico,tuberias_y_fittings_pvc_sanitario,tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario,test_source,manual,Tubo Test,tubo,5000,CLP,2026-05-18,1.0\n"
+        "market_id,product_id,family_id,source_id,source_type,raw_product_name,normalized_product_name,price,currency,observed_at,confidence\n"
+        "mercado_sanitario_hidraulico,tuberias_y_fittings_pvc_sanitario,tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario,test_source,manual,Tubo Test 1,tubo,5000,CLP,2026-05-18,1.0\n"
         "mercado_sanitario_hidraulico,tuberias_y_fittings_pvc_sanitario,tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario,test_source,manual,Tubo Test 2,tubo,6000,CLP,2026-05-19,1.0\n"
         "mercado_sanitario_hidraulico,tuberias_y_fittings_pvc_sanitario,tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario,test_source,manual,Tubo Test 3,tubo,5500,CLP,2026-05-20,1.0\n"
+        "mercado_sanitario_hidraulico,tuberias_y_fittings_pvc_sanitario,tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario,test_source,manual,Tubo Test 4,tubo,5700,CLP,2026-05-21,1.0\n"
+        "mercado_sanitario_hidraulico,tuberias_y_fittings_pvc_sanitario,tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario,test_source,manual,Tubo Test 5,tubo,5300,CLP,2026-05-22,1.0\n"
     )
     
     file = ("test.csv", io.BytesIO(csv_content.encode("utf-8")), "text/csv")
@@ -74,7 +76,7 @@ def test_agora_price_ingestion_and_snapshot_e2e(client, admin_token):
         files={"file": file}
     )
     assert resp.status_code == 200
-    assert resp.json()["inserted"] == 3
+    assert resp.json()["inserted"] == 5
     
     # 3. Construir Snapshot
     build_req = {
@@ -87,7 +89,7 @@ def test_agora_price_ingestion_and_snapshot_e2e(client, admin_token):
     assert resp.status_code == 200
     data = resp.json()
     assert data["ok"] is True
-    assert data["sample_size"] == 3
+    assert data["sample_size"] == 5
     assert data["data_status"] == "real_available"
     
     # 4. Validar Pulse (Debe usar datos reales ahora)
@@ -96,7 +98,7 @@ def test_agora_price_ingestion_and_snapshot_e2e(client, admin_token):
     assert resp.status_code == 200
     pulse = resp.json()
     
-    assert pulse["observation"]["current_reference_price"] == 5500 # Mediana de 5000, 5500, 6000
+    assert pulse["observation"]["current_reference_price"] == 5500 # Mediana de 5000, 5300, 5500, 5700, 6000
     assert pulse["data_status"] == "real_available"
     assert len(pulse["history_series"]) > 0
     assert pulse["source_context"]["real_web_observation"] is True # Marcado como real

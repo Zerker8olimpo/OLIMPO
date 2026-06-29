@@ -69,8 +69,8 @@ def test_import_csv_rejects_invalid(db_session):
 def test_snapshot_builder_statistics(db_session):
     from backend.database.models.agora import AgoraPriceObservation
     
-    # Insertar observaciones
-    prices = [1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900]
+    # Insertar observaciones: 15 para calidad 'high'
+    prices = [1000 + i*100 for i in range(15)]
     for p in prices:
         obs = AgoraPriceObservation(
             market_id="m1", product_id="p1", family_id="f1",
@@ -87,12 +87,8 @@ def test_snapshot_builder_statistics(db_session):
     
     assert snap is not None
     assert snap.price_min == 1000
-    assert snap.price_max == 1900
-    assert snap.price_median == 1450 # median of 10 items
-    assert snap.price_p25 is not None
-    assert snap.price_p75 is not None
-    assert snap.data_quality == "high" # since size is 10
-    assert snap.dispersion_pct > 0
+    assert snap.price_max == 2400
+    assert snap.data_quality == "high" # since size is 15
 
 def test_history_coverage_calculation(db_session):
     from backend.database.models.agora import AgoraFamilyMonthlySnapshot

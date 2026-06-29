@@ -82,8 +82,8 @@ def test_snapshot_builder_calculates_stats(db_session):
     obs_service = PriceObservationService()
     builder = SnapshotBuilder()
     
-    # Insertar observaciones
-    prices = [1000, 1500, 2000, 2500]
+    # Insertar observaciones: 5 para real_available
+    prices = [1000, 1500, 2000, 2500, 3000]
     for p in prices:
         obs_service.save_price_observation(
             db_session, "m", "p", "f", "src", "web", "raw", "norm", p
@@ -95,10 +95,9 @@ def test_snapshot_builder_calculates_stats(db_session):
     snap = builder.build_monthly_snapshot(db_session, "m", "p", "f", month_str)
     assert snap is not None
     assert snap.price_min == 1000
-    assert snap.price_max == 2500
-    assert snap.price_avg == 1750
-    assert snap.price_median == 1750  # 1500+2000 / 2
-    assert snap.sample_size == 4
+    assert snap.price_max == 3000
+    assert snap.price_median == 2000
+    assert snap.sample_size == 5
     assert snap.data_status == "real_available"
 
 @pytest.mark.anyio

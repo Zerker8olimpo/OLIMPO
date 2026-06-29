@@ -1,30 +1,132 @@
+from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
-from typing import Optional, List
 
 class AgoraPriceSource(BaseModel):
-    source_id: str
-    source_name: str
-    source_type: str  # manual, api, web, csv
-    market_id: str
-    product_id: Optional[str] = None
-    family_id: Optional[str] = None
-    enabled: bool = True
-    priority: int = 1
+    id: str
+    name: str
+    type: str
+    authorized: bool = True
+    requires_auth: bool = False
+    reliability_weight: float = 0.5
 
 class SourceRegistry:
-    def __init__(self):
-        self.sources: List[AgoraPriceSource] = [
-            # Configuración por defecto: fuente CSV manual
-            AgoraPriceSource(
-                source_id="manual_csv_ingestion",
-                source_name="Carga Manual CSV",
-                source_type="csv",
-                market_id="*",
-                enabled=True,
-                priority=10
-            )
-        ]
+    """
+    Registro centralizado de fuentes de datos permitidas para ÁGORA.
+    Evita el hardcoding de fuentes y permite gestionar permisos por mercado.
+    """
+    
+    SOURCES = {
+        "mercado_libre_mlc": {
+            "name": "Mercado Libre Chile",
+            "type": "marketplace",
+            "authorized": True,
+            "requires_auth": True,
+            "reliability_weight": 0.85
+        },
+        "odepa_mayoristas": {
+            "name": "ODEPA Mayoristas",
+            "type": "public_catalog",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 0.95
+        },
+        "odepa_consumidor": {
+            "name": "ODEPA Consumidor",
+            "type": "public_catalog",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 0.90
+        },
+        "odepa_insumos": {
+            "name": "ODEPA Insumos",
+            "type": "public_catalog",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 0.85
+        },
+        "cne_api": {
+            "name": "CNE Energía API",
+            "type": "public_catalog",
+            "authorized": True,
+            "requires_auth": True,
+            "reliability_weight": 0.98
+        },
+        "chilecompra_api": {
+            "name": "ChileCompra / Mercado Público",
+            "type": "public_catalog",
+            "authorized": True,
+            "requires_auth": True,
+            "reliability_weight": 0.95
+        },
+        "sernac_observatorio": {
+            "name": "SERNAC Observatorio",
+            "type": "public_catalog",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 0.80
+        },
+        "banco_central_bde": {
+            "name": "Banco Central BDE",
+            "type": "index",
+            "authorized": True,
+            "requires_auth": True,
+            "reliability_weight": 1.0
+        },
+        "ine_stat": {
+            "name": "INE Stat / IPP",
+            "type": "index",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 0.95
+        },
+        "manual_seed_admin": {
+            "name": "Carga Manual Admin",
+            "type": "admin",
+            "authorized": True,
+            "requires_auth": True,
+            "reliability_weight": 1.0
+        },
+        "supplier_csv_admin": {
+            "name": "Importación Proveedor CSV",
+            "type": "admin",
+            "authorized": True,
+            "requires_auth": True,
+            "reliability_weight": 0.90
+        },
+        "test_source": {
+            "name": "Fuente de Test",
+            "type": "test",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 1.0
+        },
+        "src1": {
+            "name": "Fuente de Test Legacy",
+            "type": "test",
+            "authorized": True,
+            "requires_auth": False,
+            "reliability_weight": 1.0
+        },
+        "fallback": {
+            "name": "Datos de Fallback",
+            "type": "system",
+            "authorized": False, # No usar para snapshots reales
+            "requires_auth": False,
+            "reliability_weight": 0.0
+        }
+    }
 
-    def get_sources_for_family(self, market_id: str, product_id: str, family_id: str) -> List[AgoraPriceSource]:
-        # En el futuro se puede filtrar
-        return [s for s in self.sources if s.enabled]
+    @classmethod
+    def is_authorized(cls, source_id: str) -> bool:
+        source = cls.SOURCES.get(source_id)
+        return source.get("authorized", False) if source else False
+
+    @classmethod
+    def get_source_type(cls, source_id: str) -> str:
+        source = cls.SOURCES.get(source_id)
+        return source.get("type", "unknown") if source else "unknown"
+
+    @classmethod
+    def get_weight(cls, source_id: str) -> float:
+        source = cls.SOURCES.get(source_id)
+        return source.get("reliability_weight", 0.5) if source else 0.5

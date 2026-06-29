@@ -6,6 +6,7 @@ from dateutil import parser
 
 from backend.agora.price_intelligence.price_observation_service import PriceObservationService
 from backend.agora.price_intelligence.price_normalizer import PriceNormalizer
+from backend.agora.price_intelligence.source_registry import SourceRegistry
 
 class ManualIngestionService:
     def __init__(self):
@@ -42,41 +43,51 @@ class ManualIngestionService:
                         observed_at_str = row.get('observed_at', '').strip()
                         confidence_str = row.get('confidence', '1.0').strip()
                         source_name = row.get('source_name', '').strip()
+                        is_real_str = row.get('is_real', 'true').lower()
                         
+                        # Rule 1: Validate Source
+                        if not SourceRegistry.is_authorized(source_id):
+                            results["skipped"] += 1
+                            results["error_details"].append(f"Row {row_idx}: Source '{source_id}' is not authorized.")
+                            continue
+
                         if not all([market_id, product_id, source_id, price_str]):
                             results["skipped"] += 1
-                            results["error_details"].append(f"Row {row_idx}: Missing required fields.")
+                            results["error_details"].append(f"Row {row_idx}: Missing required fields (market, product, source, price).")
                             continue
                             
-                        # Validation: Price > 0
+                        # Rule 2: Price > 0
                         try:
-                            price = float(price_str.replace(',', ''))
+                            # Handle potential thousands separators
+                            clean_price = price_str.replace(',', '').replace('$', '').strip()
+                            price = float(clean_price)
                         except ValueError:
                             results["skipped"] += 1
-                            results["error_details"].append(f"Row {row_idx}: Invalid price format.")
+                            results["error_details"].append(f"Row {row_idx}: Invalid price format '{price_str}'.")
                             continue
                             
                         if price <= 0:
                             results["skipped"] += 1
-                            results["error_details"].append(f"Row {row_idx}: Price must be > 0.")
+                            results["error_details"].append(f"Row {row_idx}: Price must be positive.")
+                            continue
+
+                        # Rule 3: Quality Control for "is_real"
+                        is_real = is_real_str == 'true'
+                        if source_id == "fallback" or source_id == "sample":
+                            results["skipped"] += 1
+                            results["error_details"].append(f"Row {row_idx}: Source '{source_id}' is not accepted for historical data.")
                             continue
 
                         # Validation: Confidence [0, 1]
                         try:
                             confidence = float(confidence_str)
                             if not (0 <= confidence <= 1):
-                                confidence = 1.0
+                                confidence = 0.5
                         except ValueError:
-                            confidence = 1.0
+                            confidence = 0.5
                             
-                        # Validation: Rejection of fallback data
-                        if source_id.lower() == "fallback":
-                            results["skipped"] += 1
-                            results["error_details"].append(f"Row {row_idx}: Fallback data is not accepted as real history.")
-                            continue
-
                         if not family_id:
-                            # Derivar family_id
+                            # Derivar family_id si no viene
                             matched_family, conf, reason = self.normalizer.normalize_price_item(raw_name, market_id, product_id)
                             if not matched_family:
                                 results["skipped"] += 1
@@ -93,18 +104,19 @@ class ManualIngestionService:
                                     observed_at = observed_at.replace(tzinfo=timezone.utc)
                             except Exception:
                                 results["skipped"] += 1
-                                results["error_details"].append(f"Row {row_idx}: Invalid observed_at date.")
+                                results["error_details"].append(f"Row {row_idx}: Invalid observed_at date '{observed_at_str}'.")
                                 continue
                         else:
                             results["skipped"] += 1
-                            results["error_details"].append(f"Row {row_idx}: observed_at is mandatory for historical bootstrap.")
+                            results["error_details"].append(f"Row {row_idx}: observed_at is mandatory for CSV ingestion.")
                             continue
                             
                         # Save
                         metadata = {
                             "source_name": source_name,
                             "quantity": quantity_str,
-                            "ingested_at": datetime.now(timezone.utc).isoformat()
+                            "ingested_at": datetime.now(timezone.utc).isoformat(),
+                            "row_index": row_idx
                         }
                         
                         obs = self.obs_service.save_price_observation(
@@ -113,19 +125,21 @@ class ManualIngestionService:
                             product_id=product_id,
                             family_id=family_id,
                             source=source_id,
-                            source_type="csv_historical",
+                            source_type=SourceRegistry.get_source_type(source_id),
                             raw_product_name=raw_name,
                             normalized_product_name=raw_name,
                             price=price,
                             currency=currency,
                             unit=unit,
                             confidence=confidence,
-                            is_sample=False,
+                            is_sample=not is_real,
                             metadata=metadata
                         )
                         
                         if obs:
                             obs.observed_at = observed_at
+                            # Ensure is_real is correctly synced with is_sample
+                            obs.is_real = is_real
                             db.commit()
                             results["inserted"] += 1
                         else:

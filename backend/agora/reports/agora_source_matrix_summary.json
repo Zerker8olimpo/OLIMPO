@@ -1,0 +1,99 @@
+{
+  "total_families": 4296,
+  "status_distribution": {
+    "ready": 1031,
+    "manual_only": 3265
+  },
+  "market_coverage": {
+    "mercado_sanitario_hidraulico": {
+      "total": 259,
+      "ready": 259,
+      "manual": 0
+    },
+    "mercado_construccion_materiales": {
+      "total": 261,
+      "ready": 0,
+      "manual": 261
+    },
+    "mercado_retail_supermercado": {
+      "total": 238,
+      "ready": 0,
+      "manual": 238
+    },
+    "mercado_ferreteria_acabados": {
+      "total": 253,
+      "ready": 0,
+      "manual": 253
+    },
+    "mercado_agro_insumos": {
+      "total": 262,
+      "ready": 262,
+      "manual": 0
+    },
+    "mercado_frutas_frescas": {
+      "total": 270,
+      "ready": 270,
+      "manual": 0
+    },
+    "mercado_verduras_frescas": {
+      "total": 270,
+      "ready": 0,
+      "manual": 270
+    },
+    "mercado_hortalizas_frescas": {
+      "total": 240,
+      "ready": 240,
+      "manual": 0
+    },
+    "mercado_logistico_transporte": {
+      "total": 269,
+      "ready": 0,
+      "manual": 269
+    },
+    "mercado_farmaceutico_salud": {
+      "total": 270,
+      "ready": 0,
+      "manual": 270
+    },
+    "mercado_electronica_tecnologia": {
+      "total": 266,
+      "ready": 0,
+      "manual": 266
+    },
+    "mercado_industrial_MRO": {
+      "total": 264,
+      "ready": 0,
+      "manual": 264
+    },
+    "mercado_financiero_PyME": {
+      "total": 268,
+      "ready": 0,
+      "manual": 268
+    },
+    "mercado_energia_utilities": {
+      "total": 270,
+      "ready": 0,
+      "manual": 270
+    },
+    "mercado_servicios_empresariales": {
+      "total": 270,
+      "ready": 0,
+      "manual": 270
+    },
+    "mercado_textil_vestuario": {
+      "total": 270,
+      "ready": 0,
+      "manual": 270
+    },
+    "mercado_movilidad_transporte": {
+      "total": 48,
+      "ready": 0,
+      "manual": 48
+    },
+    "mercado_financiero_seguros": {
+      "total": 48,
+      "ready": 0,
+      "manual": 48
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "markets": {
+    "mercado_frutas_frescas": {
+      "primary_source_id": "odepa_mayoristas",
+      "secondary_source_ids": ["odepa_consumidor"],
+      "price_type": "unit_price",
+      "reliability_level": "high"
+    },
+    "mercado_hortalizas_frescas": {
+      "primary_source_id": "odepa_mayoristas",
+      "secondary_source_ids": ["odepa_consumidor"],
+      "price_type": "unit_price",
+      "reliability_level": "high"
+    },
+    "mercado_agro_insumos": {
+      "primary_source_id": "odepa_insumos",
+      "secondary_source_ids": ["chilecompra_api"],
+      "price_type": "unit_price",
+      "reliability_level": "medium"
+    },
+    "mercado_combustibles": {
+      "primary_source_id": "cne_api",
+      "secondary_source_ids": ["sernac_observatorio"],
+      "price_type": "tariff",
+      "reliability_level": "high"
+    },
+    "mercado_construccion": {
+      "primary_source_id": "chilecompra_api",
+      "secondary_source_ids": ["ine_stat", "mercado_libre_api"],
+      "price_type": "transaction_price",
+      "reliability_level": "high"
+    },
+    "mercado_ferreteria": {
+      "primary_source_id": "mercado_libre_api",
+      "secondary_source_ids": ["chilecompra_api"],
+      "price_type": "unit_price",
+      "reliability_level": "medium"
+    },
+    "mercado_consumo_masivo": {
+      "primary_source_id": "sernac_observatorio",
+      "secondary_source_ids": ["odepa_consumidor"],
+      "price_type": "unit_price",
+      "reliability_level": "medium"
+    },
+    "mercado_sanitario_hidraulico": {
+      "primary_source_id": "chilecompra_api",
+      "secondary_source_ids": ["mercado_libre_api"],
+      "price_type": "unit_price",
+      "reliability_level": "medium"
+    },
+    "mercado_electrico": {
+      "primary_source_id": "cne_api",
+      "secondary_source_ids": ["siss_tarifas"],
+      "price_type": "tariff",
+      "reliability_level": "high"
+    },
+    "mercado_salud": {
+      "primary_source_id": "cenabast_observatorio",
+      "secondary_source_ids": ["chilecompra_api"],
+      "price_type": "unit_price",
+      "reliability_level": "high"
+    },
+    "mercado_repuestos": {
+      "primary_source_id": "mercado_libre_api",
+      "secondary_source_ids": ["supplier_csv_admin"],
+      "price_type": "unit_price",
+      "reliability_level": "medium"
+    },
+    "mercado_indicadores": {
+      "primary_source_id": "banco_central_bde",
+      "secondary_source_ids": ["ine_stat"],
+      "price_type": "index",
+      "reliability_level": "high"
+    }
+  },
+  "default_fallback": {
+    "primary_source_id": "supplier_csv_admin",
+    "secondary_source_ids": ["manual_seed_admin"],
+    "price_type": "unit_price",
+    "reliability_level": "low"
+  }
+}
