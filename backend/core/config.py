@@ -23,6 +23,10 @@ class Settings:
     # DB
     DATABASE_URL: str = _env("DATABASE_URL", "sqlite:///./backend/db/olimpo.db") or "sqlite:///./backend/db/olimpo.db"
 
+    # Supabase
+    SUPABASE_URL: str = _env("SUPABASE_URL", "") or ""
+    SUPABASE_SERVICE_KEY: str = _env("SUPABASE_SERVICE_KEY", "") or ""
+
     # MercadoPago / otros (tu main.py lo usa para debug boolean)
     MP_ACCESS_TOKEN: str = _env("MP_ACCESS_TOKEN", "") or ""
 
