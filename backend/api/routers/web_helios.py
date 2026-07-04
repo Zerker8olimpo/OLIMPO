@@ -1,9 +1,12 @@
+import logging
 from fastapi import APIRouter, HTTPException, Header, BackgroundTasks
 from pydantic import BaseModel
 from typing import List, Optional
 from backend.services.credit_service import check_and_deduct_credit
 
+logger = logging.getLogger("olimpo.auth")
 router = APIRouter(prefix="/web", tags=["web"])
+
 
 # ── Schemas de entrada (basados en el motor real) ──────────────────
 
@@ -218,8 +221,9 @@ async def web_calculate(
         token = authorization.replace("Bearer ", "")
         user_response = sb_client.auth.get_user(token)
         user_id = user_response.user.id
-    except Exception:
-        raise HTTPException(status_code=401, detail="Token inválido")
+    except Exception as e:
+        logger.error(f"Fallo validación de token Supabase: {type(e).__name__}: {e}")
+        raise HTTPException(status_code=401, detail=f"Token inválido: {str(e)}")
 
     # 2. Verificar y descontar crédito
     has_credits = await check_and_deduct_credit(user_id)
