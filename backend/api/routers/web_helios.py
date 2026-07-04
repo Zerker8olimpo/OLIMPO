@@ -221,9 +221,8 @@ async def web_calculate(
         token = authorization.replace("Bearer ", "")
         user_response = sb_client.auth.get_user(token)
         user_id = user_response.user.id
-    except Exception as e:
-        logger.error(f"Fallo validación de token Supabase: {type(e).__name__}: {e}")
-        raise HTTPException(status_code=401, detail=f"Token inválido: {str(e)}")
+    except Exception:
+        raise HTTPException(status_code=401, detail="Token inválido")
 
     # 2. Verificar y descontar crédito
     has_credits = await check_and_deduct_credit(user_id)
