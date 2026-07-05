@@ -251,7 +251,7 @@ async def web_calculate(
         raise HTTPException(status_code=500, detail=f"Motor error: {str(e)}")
 
     # 5. Adaptar respuesta para el frontend web
-    web_response = adapt_response_for_web(request.model, raw_result.get("raw", {}))
+    web_response = adapt_response_for_web(request.model, raw_result.modelOutput)
 
     # 6. Guardar análisis en Supabase
     try:
