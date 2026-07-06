@@ -84,128 +84,130 @@ def build_helios_payload(req: WebHeliosRequest, user_id: str) -> dict:
 
 # ── Adaptador respuesta Motor → Frontend Web ───────────────────────
 
-def adapt_response_for_web(model: str, raw: dict) -> dict:
+def adapt_response_for_web(request: WebHeliosRequest, model_output: dict) -> dict:
     """Convierte la respuesta del Motor Helios al JSON que espera el frontend web."""
 
-    if model == "epsilon":
-        p50 = raw.get("p50", [])
-        p95 = raw.get("p95", [])
-        forecast_base = raw.get("forecast_base", [])
-        compra = raw.get("compra_sugerida", 0)
-        if isinstance(compra, list):
-            compra = compra[-1] if compra else 0
+    model = request.model
 
-        periods = [f"M{i+1}" for i in range(len(p50))]
+    if model == "epsilon":
+        # Safe access to model output
+        expected = model_output.get("expected", []) or model_output.get("p50", [])
+        upper = model_output.get("upper", []) or model_output.get("p95", [])
+        stress = model_output.get("stress", [])
+        confidence_index = model_output.get("confidenceIndex", 0.0)
+        volatility_index = model_output.get("volatilityIndex", 0.0)
+        recommended_purchase = model_output.get("recommendedPurchase", 0.0)
+
+        # KPI calculations
+        if confidence_index >= 0.72:
+            confidence_label = "Alta"
+        elif confidence_index >= 0.45:
+            confidence_label = "Media"
+        else:
+            confidence_label = "Baja"
+
+        kpis = {
+            "recommended_purchase": round(recommended_purchase),
+            "central_projection": round(expected[-1]) if expected else 0,
+            "upper_band": round(upper[-1]) if upper else 0,
+            "confidence_label": confidence_label,
+        }
+
+        # Chart data calculations
+        forecast = expected
+        upper_band = upper
+        lower_band = [(f - (u - f)) for f, u in zip(forecast, upper_band)]
+
+        if stress:
+            shock_upper = stress
+            shock_lower = [(f - (s - f)) for f, s in zip(forecast, shock_upper)]
+        else:
+            shock_upper = [(f + volatility_index * f * 1.25) for f in forecast]
+            shock_lower = [(f - volatility_index * f * 1.25) for f in forecast]
+        
+        periods = [f"M{i+1}" for i in range(len(forecast))]
+
+        chart_data = {
+            "periods": periods,
+            "historical": request.historical_data,
+            "forecast": forecast,
+            "upper_band": upper_band,
+            "lower_band": [max(0, val) for val in lower_band],
+            "shock_upper": shock_upper,
+            "shock_lower": [max(0, val) for val in shock_lower],
+            "purchase_line": recommended_purchase,
+        }
+
         return {
             "status": "success",
             "model": "epsilon",
-            "risk_level": "MEDIUM" if raw.get("volatilityIndex", 0) < 0.3 else "HIGH",
-            "trend_direction": "upward",
-            "kpis": {
-                "optimal_order_qty": round(compra),
-                "reorder_point": round(p50[-1]) if p50 else 0,
-                "safety_stock": round((p95[-1] - p50[-1]) if p50 and p95 else 0),
-                "service_level_achieved": raw.get("confidenceIndex", 0.87),
-            },
-            "chart_data": {
-                "forecast_line": [
-                    {
-                        "period": periods[i],
-                        "forecast": p50[i],
-                        "upper": p95[i] if i < len(p95) else p50[i],
-                        "lower": forecast_base[i] if i < len(forecast_base) else p50[i],
-                        "historical": None
-                    }
-                    for i in range(len(p50))
-                ],
-                "weekly_breakdown": [
-                    {"week": periods[i], "demand": p50[i], "lower_band": forecast_base[i] if i < len(forecast_base) else p50[i]}
-                    for i in range(len(p50))
-                ]
-            }
+            "kpis": kpis,
+            "chart_data": chart_data,
         }
 
     elif model == "sigma":
-        eoq = raw.get("eoq_dt", [0])
-        rop = raw.get("rop_dt", [0])
-        demanda = raw.get("demanda_dt", [])
-        forecast = raw.get("forecast_base", [])
-        periods = [f"M{i+1}" for i in range(len(demanda))]
+        demanda_dt = model_output.get("demanda_dt", []) or model_output.get("demandDt", [])
+        rop_dt = model_output.get("rop_dt", []) or model_output.get("ropDt", [])
+        eoq_dt = model_output.get("eoq_dt", []) or model_output.get("eoqDt", [])
+        
+        kpis = {
+            "expected_demand": round(demanda_dt[-1]) if demanda_dt else 0,
+            "reorder_point": round(rop_dt[-1]) if rop_dt else 0,
+            "recommended_lot": round(eoq_dt[-1]) if eoq_dt else 0,
+            "order_cost": model_output.get("costo_pedido", 0.0),
+        }
+
+        periods = [f"M{i+1}" for i in range(len(demanda_dt))]
+
+        chart_data = {
+            "periods": periods,
+            "historical": request.historical_data,
+            "forecasted_demand": demanda_dt,
+            "reorder_point_line": rop_dt,
+            "economic_order_quantity_line": eoq_dt,
+        }
 
         return {
             "status": "success",
             "model": "sigma",
-            "risk_level": "LOW",
-            "trend_direction": "stable",
-            "kpis": {
-                "forecasted_demand": round(demanda[-1]) if demanda else 0,
-                "safety_stock": round((eoq[-1] - rop[-1]) if eoq and rop else 0),
-                "reorder_point": round(rop[-1]) if rop else 0,
-                "confidence_score": 0.87,
-                "inventory_turnover": round(raw.get("costo_unitario", 1) / 100, 1),
-            },
-            "chart_data": {
-                "forecast_line": [
-                    {
-                        "period": periods[i],
-                        "historical": demanda[i] if i < len(demanda) else None,
-                        "forecast": forecast[i] if i < len(forecast) else None,
-                        "upper": (forecast[i] * 1.1) if i < len(forecast) and forecast[i] else None,
-                        "lower": (forecast[i] * 0.9) if i < len(forecast) and forecast[i] else None,
-                    }
-                    for i in range(max(len(demanda), len(forecast)))
-                ],
-                "weekly_breakdown": [
-                    {"week": f"M{i+1}", "demand": eoq[i] if i < len(eoq) else 0, "lower_band": rop[i] if i < len(rop) else 0}
-                    for i in range(len(eoq))
-                ]
-            }
+            "kpis": kpis,
+            "chart_data": chart_data,
         }
 
     elif model == "poseidon":
-        p = raw.get("poseidon", {})
-        prod = p.get("produccion_sugerida", [])
-        demanda = p.get("demanda_proyectada", [])
-        tanque1 = p.get("inventario_tanque1", [])
-        periods = [f"D{i+1}" for i in range(len(prod))]
+        p = model_output.get("poseidon", {})
+        demanda_proyectada = p.get("demanda_proyectada", [])
+        inventario_tanque1 = p.get("inventario_tanque1", [])
+        
+        sum_demand = sum(demanda_proyectada)
+        sum_inventory = sum(inventario_tanque1)
+        
+        kpis = {
+            "initial_stock_t1": request.inventario_inicial_tanque1 or 0,
+            "estimated_coverage": round(sum_inventory / sum_demand, 2) if sum_demand > 0 else 0,
+            "accumulated_demand": round(sum_demand),
+            "stability_score": round(1 - (p.get('pid_params', {}).get('Kd', 0.05) / 0.1), 2) if 'pid_params' in p else 0.5,
+        }
 
-        cap_util = round((sum(prod) / (len(prod) * max(prod)) * 100) if prod and max(prod) > 0 else 0)
+        periods = [f"D{i+1}" for i in range(len(demanda_proyectada))]
+
+        chart_data = {
+            "periods": periods,
+            "tank1_inventory": inventario_tanque1,
+            "tank2_inventory": p.get("inventario_tanque2", []),
+            "suggested_production": p.get("produccion_sugerida", []),
+            "projected_demand": demanda_proyectada,
+        }
 
         return {
             "status": "success",
             "model": "poseidon",
-            "risk_level": "LOW" if cap_util < 80 else "HIGH",
-            "trend_direction": "upward",
-            "kpis": {
-                "recommended_production": round(sum(prod)),
-                "capacity_utilization_pct": cap_util,
-                "batches_required": len([x for x in prod if x > 0]),
-                "efficiency_score": 0.82,
-                "bottleneck_detected": cap_util > 90,
-            },
-            "chart_data": {
-                "forecast_line": [
-                    {
-                        "period": periods[i],
-                        "forecast": demanda[i] if i < len(demanda) else 0,
-                        "upper": (demanda[i] * 1.1) if i < len(demanda) else 0,
-                        "lower": (demanda[i] * 0.9) if i < len(demanda) else 0,
-                        "historical": None
-                    }
-                    for i in range(len(demanda))
-                ],
-                "weekly_breakdown": [
-                    {"week": periods[i], "demand": prod[i], "lower_band": tanque1[i] if i < len(tanque1) else 0}
-                    for i in range(len(prod))
-                ],
-                "poseidon_specific": {
-                    "production_schedule": [
-                        {"day": periods[i], "units": prod[i], "capacity": max(prod) if prod else 0}
-                        for i in range(len(prod))
-                    ]
-                }
-            }
+            "kpis": kpis,
+            "chart_data": chart_data,
         }
+
+    # Fallback for unknown model
+    return {"status": "error", "message": f"Adaptador para modelo '{model}' no implementado."}
 
 # ── Endpoint principal ─────────────────────────────────────────────
 
@@ -230,31 +232,23 @@ async def web_calculate(
     if not has_credits:
         raise HTTPException(status_code=402, detail="INSUFFICIENT_CREDITS")
 
-    # 3. Construir payload para el Motor Helios
-    helios_payload = build_helios_payload(request, user_id)
-
-    # 4. Llamar al Motor Helios existente (Corrección de firma)
     try:
+        # 3. Construir payload para el Motor Helios
+        helios_payload = build_helios_payload(request, user_id)
+
+        # 4. Llamar al Motor Helios existente
         from backend.services.model_service import run_model_and_adapt
         
         model_name = helios_payload.get("modelName")
         model_params = helios_payload.get("modelParams")
         user_context = {"device_id": "web_app", "user_id": user_id}
 
-        # La función es síncrona y requiere 4 parámetros posicionales
         raw_result = run_model_and_adapt(model_name, model_params, background_tasks, user_context)
         
-    except Exception as e:
-        # Si el motor falla, devolver el crédito
-        from backend.services.credit_service import add_credits
-        await add_credits(user_id, 1, "free")
-        raise HTTPException(status_code=500, detail=f"Motor error: {str(e)}")
+        # 5. Adaptar respuesta para el frontend web
+        web_response = adapt_response_for_web(request, raw_result.modelOutput)
 
-    # 5. Adaptar respuesta para el frontend web
-    web_response = adapt_response_for_web(request.model, raw_result.modelOutput)
-
-    # 6. Guardar análisis en Supabase
-    try:
+        # 6. Guardar análisis en Supabase
         from backend.core.supabase_client import supabase as sb_client
         sb_client.table("analyses").insert({
             "user_id": user_id,
@@ -264,7 +258,19 @@ async def web_calculate(
             "credits_used": 1,
             "result": web_response
         }).execute()
-    except Exception:
-        pass  # No bloquear si falla el guardado
+
+    except Exception as e:
+        # Si cualquier paso del pipeline falla, se reembolsa el crédito.
+        from backend.services.credit_service import add_credits
+        await add_credits(user_id, 1, "free")
+        
+        # Loguear el error real para diagnóstico
+        logger.error(
+            f"Error en pipeline de cálculo, crédito reembolsado. User: {user_id}. Error: {type(e).__name__}: {e}",
+            exc_info=True
+        )
+        
+        # Devolver un error 500 genérico al cliente
+        raise HTTPException(status_code=500, detail=f"Error interno del servidor durante el cálculo: {type(e).__name__}")
 
     return web_response
