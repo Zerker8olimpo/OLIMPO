@@ -249,8 +249,11 @@ async def web_calculate(
         web_response = adapt_response_for_web(request, raw_result.modelOutput)
 
         # 6. Guardar análisis en Supabase
-        from backend.core.supabase_client import supabase as sb_client
-        sb_client.table("analyses").insert({
+        # Usa el cliente con SERVICE ROLE KEY (mismo que credit_service.py), no el
+        # cliente anon: el anon nunca lleva el JWT del usuario en las llamadas a
+        # PostgREST, entonces para RLS la request llega como rol "anon" -> 42501.
+        from backend.services.credit_service import supabase as sb_admin
+        sb_admin.table("analyses").insert({
             "user_id": user_id,
             "model": request.model,
             "market": request.market_id,
