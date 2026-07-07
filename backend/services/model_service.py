@@ -246,7 +246,17 @@ def _adapt_poseidon(raw_output: Optional[Dict[str, Any]]) -> Dict[str, Any]:
             "poseidonFlujo": _ensure_list(poseidon_raw.get("poseidonFlujo")),
             "product_id": poseidon_raw.get("product_id"),
             "market_id": poseidon_raw.get("market_id"),
-            "horizonte_meses": _ensure_int(poseidon_raw.get("horizonte_meses"), len(_ensure_list(poseidon_raw.get("poseidonInventario1")))),
+            "horizonte_meses": _ensure_int(
+                poseidon_raw.get("horizonte_meses"),
+                len(_ensure_list(poseidon_raw.get("poseidonInventario1"))),
+            ),
+            "demanda_proyectada": _ensure_list(poseidon_raw.get("demanda_proyectada")),
+            "inventario_tanque1": _ensure_list(poseidon_raw.get("inventario_tanque1")),
+            "inventario_tanque2": _ensure_list(poseidon_raw.get("inventario_tanque2")),
+            "flujo_t1_t2": _ensure_list(poseidon_raw.get("flujo_t1_t2")),
+            "produccion_sugerida": _ensure_list(poseidon_raw.get("produccion_sugerida")),
+            "pid_params": poseidon_raw.get("pid_params") if isinstance(poseidon_raw.get("pid_params"), dict) else {},
+            "kalman_params": poseidon_raw.get("kalman_params") if isinstance(poseidon_raw.get("kalman_params"), dict) else {},
         }
     }
     return _model_validate(PoseidonOutput, adapted)
