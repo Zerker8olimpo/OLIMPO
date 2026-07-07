@@ -1,4 +1,7 @@
 import logging
+import json
+from functools import lru_cache
+from pathlib import Path
 from fastapi import APIRouter, HTTPException, Header, BackgroundTasks
 from pydantic import BaseModel
 from typing import List, Optional
@@ -32,6 +35,36 @@ class WebHeliosRequest(BaseModel):
     capacidad_tanque_2: Optional[int] = None
     cobertura_objetivo: Optional[float] = 1.0
     cantidad_clientes: Optional[int] = None
+
+# ── Config real de productos (PID calibrado por producto) ──────────
+_CFG_PRODUCTOS_PATH = Path(__file__).resolve().parents[2] / "cfg" / "CFG_HELIOS_PRODUCTOS.json"
+
+
+@lru_cache(maxsize=1)
+def _load_productos_cfg() -> dict:
+    with _CFG_PRODUCTOS_PATH.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _get_product_pid(product_id: str) -> dict:
+    """Busca la calibración PID real del producto en CFG_HELIOS_PRODUCTOS.json.
+    Si el producto no está en el catálogo, usa el fallback genérico anterior."""
+    fallback = {"Kp": 0.5, "Ki": 0.1, "Kd": 0.05}
+    try:
+        productos = _load_productos_cfg().get("productos", [])
+        for prod in productos:
+            if prod.get("product_id") == product_id:
+                pid_cfg = prod.get("pid", {})
+                return {
+                    "Kp": float(pid_cfg.get("pid_Kp", fallback["Kp"])),
+                    "Ki": float(pid_cfg.get("pid_Ki", fallback["Ki"])),
+                    "Kd": float(pid_cfg.get("pid_Kd", fallback["Kd"])),
+                }
+    except Exception as e:
+        logger.warning(
+            f"No se pudo leer PID de producto '{product_id}' desde CFG_HELIOS_PRODUCTOS.json: {e}"
+        )
+    return fallback
 
 # ── Adaptador Web → Motor Helios ───────────────────────────────────
 
@@ -70,10 +103,10 @@ def build_helios_payload(req: WebHeliosRequest, user_id: str) -> dict:
             "capacidad_max_mensual": req.capacidad_max_mensual or 1000,
             "capacidad_tanque_1": req.capacidad_tanque_1 or 500,
             "capacidad_tanque_2": req.capacidad_tanque_2 or 500,
-            "cobertura_objetivo": req.cobertura_objetivo,
+            "cobertura_objetivo_meses": req.cobertura_objetivo,
             "cantidad_clientes": req.cantidad_clientes or 1,
             "kalman": {"usar_kalman": True, "Q": 0.1, "R": 0.5, "P0": 1.0},
-            "pid": {"Kp": 0.5, "Ki": 0.1, "Kd": 0.05}
+            "pid": _get_product_pid(req.product_id)
         })
 
     return {
@@ -189,7 +222,7 @@ def adapt_response_for_web(request: WebHeliosRequest, model_output: dict) -> dic
             "stability_score": round(1 - (p.get('pid_params', {}).get('Kd', 0.05) / 0.1), 2) if 'pid_params' in p else 0.5,
         }
 
-        periods = [f"D{i+1}" for i in range(len(demanda_proyectada))]
+        periods = [f"M{i+1}" for i in range(len(demanda_proyectada))]
 
         chart_data = {
             "periods": periods,
