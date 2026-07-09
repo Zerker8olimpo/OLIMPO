@@ -46,6 +46,12 @@ from backend.api.routers.device_reset import router as device_reset_router
 # Importación del router web (corregido desde 'routes' a 'routers')
 from backend.api.routers.web_helios import router as web_helios_router
 
+# Catalog
+from backend.api.routers import catalog
+
+# Web Billing
+from backend.api.routers import web_billing
+
 # -------------------------------------------------------
 # FASTAPI APP
 # -------------------------------------------------------
@@ -130,3 +136,9 @@ app.include_router(
 
 # Registro del router web
 app.include_router(web_helios_router)
+
+# Catalog
+app.include_router(catalog.router)
+
+# Web Billing
+app.include_router(web_billing.router)
