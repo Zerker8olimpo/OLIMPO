@@ -13,7 +13,7 @@ from backend.agora.schemas.agora_v2_models import (
     AgoraV2ErrorResponse
 )
 
-from backend.api.security.deps import get_current_claims
+from backend.api.security.deps import get_current_claims_web_or_app
 from backend.services.subscription_service import resolve_plan, get_active_subscription
 
 router = APIRouter(prefix="/agora/v2", tags=["agora_v2"])
@@ -148,13 +148,25 @@ async def get_pulse(
     current_cost: Optional[float] = Query(None, description="Costo unitario actual del usuario"),
     current_sale_price: Optional[float] = Query(None, description="Precio de venta actual del usuario"),
     refresh_if_stale: bool = Query(False, description="Intenta observar precios reales si no hay datos recientes"),
-    claims: dict = Depends(get_current_claims),
+    claims: dict = Depends(get_current_claims_web_or_app),
     db: Session = Depends(get_db)
 ):
     # TAREA 8: Detección de Plan
-    user_id = int(claims.get("user_id"))
-    sub = get_active_subscription(db, user_id=user_id)
-    plan = resolve_plan(sub, claims) or "basic"
+    raw_user_id = claims.get("user_id")
+    if raw_user_id is not None:
+        user_id = int(raw_user_id)
+        sub = get_active_subscription(db, user_id=user_id)
+        plan = resolve_plan(sub, claims) or "basic"
+    else:
+        # Sesión web (Supabase): no existe fila en la tabla `users` de este backend
+        # (esa tabla es solo para la app móvil / Google Sign-In), así que no hay
+        # Subscription SQL que resolver.
+        # TODO(agora-web-plan): antes de vender un plan Business con horizonte
+        # extendido en ÁGORA para el sitio web, reemplazar este default fijo por
+        # una lectura real de `profiles.plan` en Supabase (mismo mecanismo de
+        # cliente service-role que ya usa backend/services/credit_service.py),
+        # para que un usuario Pro/Enterprise del sitio reciba ese nivel aquí.
+        plan = "basic"
     plan = plan.lower()
 
     # Compatibilidad con params antiguos
