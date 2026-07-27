@@ -3,7 +3,10 @@
     "alpha_smooth": 0.2,
     "confidence_base": 0.8,
     "risk_factor_base": 0.05,
-    "cap_adjustment": 0.25
+    "cap_adjustment": 0.25,
+    "indicator_weight": 0.3,
+    "target_sample_size": 15,
+    "reference_history_months": 6
   },
   "horizons": {
     "3": { "lambda_h": 0.5, "risk_multiplier": 0.8 },

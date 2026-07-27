@@ -45,19 +45,22 @@ class AgoraService:
 
         rules = self.adapter.get_projection_rules()
         comm_rules = self.adapter.get_commercial_rules()
+        indicators_cfg = self.adapter.get_indicators_cfg().get(market, {})
+        supply_demand_cfg = self.adapter.get_supply_demand_cfg().get(market, {}).get("subfamilies", {}).get(subfamily, {})
+        substitutes_cfg = self.adapter.get_substitutes_cfg().get(subfamily, {})
 
         # 1. Observación
         obs_result = self.obs_engine.process(snapshot_data)
-        
-        # 2. Proyección
-        proj_result = self.proj_engine.process(obs_result, rules, horizon)
-        
-        # 3. Indicadores
-        ind_result = self.ind_engine.process(snapshot_data)
-        
-        # 4. Fuerzas de Mercado
-        forces_result = self.forces_engine.process(snapshot_data)
-        
+
+        # 2. Indicadores
+        ind_result = await self.ind_engine.process(snapshot_data, indicators_cfg)
+
+        # 3. Fuerzas de Mercado
+        forces_result = self.forces_engine.process(snapshot_data, supply_demand_cfg, substitutes_cfg)
+
+        # 4. Proyección (pondera tendencia histórica + presión económica de indicadores)
+        proj_result = self.proj_engine.process(obs_result, rules, horizon, indicators_result=ind_result)
+
         # 5. Margen
         margin_result = self.margin_engine.process(
             obs_result["current_reference_price"],

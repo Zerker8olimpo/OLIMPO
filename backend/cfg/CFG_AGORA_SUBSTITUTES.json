@@ -36,5 +36,24 @@
         "notes": "Fuerte competencia en edificación nueva."
       }
     ]
+  },
+  "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario": {
+    "subfamily_id": "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario",
+    "substitutes": [
+      {
+        "substitute_id": "hdpe_sanitario",
+        "relationship_type": "sustituto_directo_premium",
+        "impact_weight": 0.3,
+        "condition": "proyectos_infraestructura",
+        "notes": "Mayor costo, mayor durabilidad."
+      },
+      {
+        "substitute_id": "ppr_sanitario",
+        "relationship_type": "sustituto_parcial",
+        "impact_weight": 0.15,
+        "condition": "uso_habitacional",
+        "notes": "Creciente adopción por facilidad de unión térmica."
+      }
+    ]
   }
 }

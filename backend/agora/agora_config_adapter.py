@@ -33,3 +33,9 @@ class AgoraConfigAdapter:
 
     def get_snapshots(self) -> Dict[str, Any]:
         return self._load_json("CFG_AGORA_SAMPLE_SNAPSHOTS.json")
+
+    def get_supply_demand_cfg(self) -> Dict[str, Any]:
+        return self._load_json("CFG_AGORA_SUPPLY_DEMAND.json")
+
+    def get_substitutes_cfg(self) -> Dict[str, Any]:
+        return self._load_json("CFG_AGORA_SUBSTITUTES.json")

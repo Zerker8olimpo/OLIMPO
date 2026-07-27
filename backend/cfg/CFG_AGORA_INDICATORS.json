@@ -1,7 +1,12 @@
 {
   "chile_construccion": {
-    "inflation": { "name": "Inflación / IPC", "weight": 0.3 },
-    "exchange_rate": { "name": "Tipo de Cambio USD/CLP", "weight": 0.4 },
-    "logistics": { "name": "Combustible / Logística", "weight": 0.3 }
+    "inflation": { "name": "Inflación / IPC", "weight": 0.3, "codigo_mindicador": "ipc", "sensitivity_direction": "presiona_alza" },
+    "exchange_rate": { "name": "Tipo de Cambio USD/CLP", "weight": 0.4, "codigo_mindicador": "dolar", "sensitivity_direction": "presiona_alza" },
+    "logistics": { "name": "Combustible / Logística", "weight": 0.3, "codigo_mindicador": null, "sensitivity_direction": "presiona_alza" }
+  },
+  "mercado_sanitario_hidraulico": {
+    "inflation": { "name": "Inflación / IPC", "weight": 0.3, "codigo_mindicador": "ipc", "sensitivity_direction": "presiona_alza" },
+    "exchange_rate": { "name": "Tipo de Cambio USD/CLP", "weight": 0.4, "codigo_mindicador": "dolar", "sensitivity_direction": "presiona_alza" },
+    "logistics": { "name": "Combustible / Logística", "weight": 0.3, "codigo_mindicador": null, "sensitivity_direction": "presiona_alza" }
   }
 }

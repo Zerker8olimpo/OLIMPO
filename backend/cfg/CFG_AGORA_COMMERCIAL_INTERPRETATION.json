@@ -1,15 +1,61 @@
 {
   "market_positions": [
     {
+      "id": "precio_usuario_muy_bajo_mercado",
+      "diff_min": null,
+      "diff_max": -0.10,
+      "label": "Precio usuario muy bajo mercado",
+      "signal": "revisar_muy_bajo"
+    },
+    {
       "id": "precio_usuario_levemente_bajo_mercado",
-      "condition": "diff < -0.02 and diff > -0.10",
-      "label": "Precio usuario levemente bajo mercado"
+      "diff_min": -0.10,
+      "diff_max": -0.02,
+      "label": "Precio usuario levemente bajo mercado",
+      "signal": "caution"
+    },
+    {
+      "id": "precio_usuario_alineado_mercado",
+      "diff_min": -0.02,
+      "diff_max": 0.02,
+      "label": "Precio usuario alineado con mercado",
+      "signal": "alineado"
+    },
+    {
+      "id": "precio_usuario_levemente_sobre_mercado",
+      "diff_min": 0.02,
+      "diff_max": 0.10,
+      "label": "Precio usuario levemente sobre mercado",
+      "signal": "revisar_leve_alza"
+    },
+    {
+      "id": "precio_usuario_muy_sobre_mercado",
+      "diff_min": 0.10,
+      "diff_max": null,
+      "label": "Precio usuario muy sobre mercado",
+      "signal": "revisar_fuerte_alza"
     }
   ],
   "signals": {
+    "revisar_muy_bajo": {
+      "id": "revisar_precio_muy_bajo",
+      "message": "Tu precio actual está notoriamente bajo la referencia de mercado. Podría valer la pena revisar si esta diferencia refleja una estrategia comercial deliberada o una oportunidad de ajuste, considerando siempre tu margen."
+    },
     "caution": {
       "id": "revisar_precio_con_cautela",
       "message": "Tu precio actual está levemente bajo la referencia de mercado. Si tu costo se mantiene y el mercado continúa al alza, podrías tener espacio para revisar precio sin perder competitividad inmediata."
+    },
+    "alineado": {
+      "id": "monitorear_alineado",
+      "message": "Tu precio actual está alineado con la referencia de mercado observada. Una señal prudente es seguir monitoreando la tendencia antes de cualquier ajuste."
+    },
+    "revisar_leve_alza": {
+      "id": "revisar_precio_leve_alza",
+      "message": "Tu precio actual está levemente sobre la referencia de mercado. Podría ser útil monitorear la rotación y comparar con tu propuesta de valor."
+    },
+    "revisar_fuerte_alza": {
+      "id": "revisar_precio_fuerte_alza",
+      "message": "Tu precio actual está notoriamente sobre la referencia de mercado observada. Una señal prudente es revisar tu posicionamiento y margen frente a esta brecha."
     }
   }
 }

@@ -25,5 +25,21 @@
         "price_relief_if_oversupply": -0.05
       }
     }
+  },
+  "mercado_sanitario_hidraulico": {
+    "market_id": "mercado_sanitario_hidraulico",
+    "subfamilies": {
+      "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario": {
+        "subfamily_id": "tuberias_y_fittings_pvc_sanitario_tubos_pvc_sanitario",
+        "supply_pressure_baseline": "neutral",
+        "demand_pressure_baseline": "media",
+        "high_demand_threshold": 0.85,
+        "low_supply_threshold": 0.3,
+        "oversupply_threshold": 0.7,
+        "price_pressure_if_demand_high": 0.05,
+        "price_pressure_if_supply_low": 0.08,
+        "price_relief_if_oversupply": -0.04
+      }
+    }
   }
 }

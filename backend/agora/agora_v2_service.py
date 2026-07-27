@@ -172,10 +172,18 @@ class AgoraV2Service:
             "market_forces": snapshot.get("market_forces", {"supply": "neutral", "demand": "neutral", "substitutes": "neutral"})
         }
 
+        indicators_cfg = self.cfg_adapter.get_indicators_cfg().get(c_market_id, {})
+        supply_demand_cfg = self.cfg_adapter.get_supply_demand_cfg().get(c_market_id, {}).get("subfamilies", {}).get(c_family_id, {})
+        substitutes_cfg = self.cfg_adapter.get_substitutes_cfg().get(c_family_id, {})
+        history_months_available = real_history_data.get("coverage", {}).get("available_months", 0) if real_history_data else 0
+
         obs_result = self.obs_engine.process(adapted_snapshot_data)
-        proj_result = self.proj_engine.process(obs_result, rules, effective_horizon)
-        ind_result = self.ind_engine.process(adapted_snapshot_data)
-        forces_result = self.forces_engine.process(adapted_snapshot_data)
+        ind_result = await self.ind_engine.process(adapted_snapshot_data, indicators_cfg)
+        forces_result = self.forces_engine.process(adapted_snapshot_data, supply_demand_cfg, substitutes_cfg)
+        proj_result = self.proj_engine.process(
+            obs_result, rules, effective_horizon,
+            indicators_result=ind_result, history_months=history_months_available
+        )
         margin_result = self.margin_engine.process(obs_result["current_reference_price"], proj_result, current_cost, current_sale_price)
         
         # 6. Construir Respuesta
